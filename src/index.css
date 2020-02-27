@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+/*                GENERAL CLASSES                       */
+
+
+.small-paragraph
+{
+    font-size: 20px;
+    margin-bottom: 0px;
+    line-height: 28px;
+    margin-left: 0px;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+.title-small-2
+{
+  font-size: 16px;
+  margin-bottom: 5px;
+  line-height: 24px;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+}

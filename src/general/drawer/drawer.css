@@ -1,0 +1,100 @@
+#Main_Drawer
+{
+    position: fixed;
+    left:0px;
+    width:70px;
+    /* background: yellow; */
+    min-height:100vh;
+    z-index: 1;
+}
+
+#Main_Drawer_Copyright_Text
+{
+    
+    position: absolute;
+    bottom:30px;
+    left:70px;
+
+    transform-origin: 0% 100%;
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 300;
+  
+    transform: rotate(270deg);
+    ms-transform: rotate(270deg);
+    height: 45px;
+    width: 300px;
+
+}
+
+#Main_Drawer_Menu_Image_Div
+{   position: absolute;
+    right:20px;
+    top: 10px;
+    
+    transform: rotateY(200deg)
+}
+
+#Main_Drawer_Menu_Image_Div:hover
+{
+    cursor: pointer;
+}
+
+#Main_Drawer_Menu_Image{
+   
+}
+
+#Main_Drawer_Menu_Div
+{
+    transition: all 0.5s ease;
+    height: 345px;
+    background: #fff;
+    position: absolute;
+    width: 200px;
+    left:0px;
+    padding-top:5px;
+    
+    
+}
+
+.Main_Drawer_Menu_Div_Close
+{
+    top:-360px;
+}
+
+.Main_Drawer_Menu_Div_Open
+{
+    top:0px;
+    /* left: 0px; */
+}
+
+#Main_Drawer_Menu_Close_Image
+{
+    position: absolute;
+    right:10px;
+    top:10px;
+}
+
+#Main_Drawer_Menu_Close_Image:hover
+{
+    cursor: pointer;
+}
+
+.Main_Drawer_Menu_Text
+{
+    border-bottom: 1px solid #b4ec51;
+    text-align: center;
+    padding-right:16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    color:#222222
+}
+
+#Main_Drawer_Menu_Text_Wrapper
+{
+    width:80%;
+    margin-left:10%;
+}
