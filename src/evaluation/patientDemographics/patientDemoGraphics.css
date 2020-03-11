@@ -14,8 +14,7 @@
   width:75%;
   min-width: 400px;
   max-width: 900px;
-  height:100vh;
-  line-height: 100vh;
+  min-height:100vh;
   
   display: flex;
   justify-content: center;
@@ -58,6 +57,22 @@
   /* vertical-align: middle; 
   display: table-row;  */
 }
+
+#Evaluaion_PatientDemoGraphics_Form_Div Input
+{
+  color:white;
+}
+
+#Evaluaion_PatientDemoGraphics_Form_Div .MuiSelect-root
+{
+  color:white;
+}
+
+#Evaluaion_PatientDemoGraphics_Form_Div .MuiSelect-icon
+{
+  color:white;
+}
+
 
 
 #Evaluaion_PatientDemoGraphics_Next_Button_Div

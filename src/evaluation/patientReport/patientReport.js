@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 
-import MyContext from '../helper/themeContext';
+import MyContext from '../../helper/themeContext';
 
 import './patientReport.css';
 class PatientReport extends Component {

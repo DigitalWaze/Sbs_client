@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
-import BoneImage from '../assets/bone3_Bitmap.png'
+import BoneImage from '../../assets/bone3_Bitmap.png'
+import Tick from '../../assets/button-tick.png';
+
 
 import './patientProfile.css'
-import MyContext from '../helper/themeContext';
+
+import MyContext from '../../helper/themeContext';
 
 class PatientProfile extends Component {
     constructor(props) {
@@ -46,7 +49,10 @@ class PatientProfile extends Component {
                         </div>
                         <div  className="Evaluaion_PatientProfile_Box1_Content2">
                             {this.context.state.Pro===true ?
-                                <div className="Evaluaion_PatientProfile_Box_DisbaleText"> PRO </div>
+                                <div>
+                                    <div className="Evaluaion_PatientProfile_Box_DisbaleText"> Forms </div>
+                                    <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
+                                </div>
                             :
                                 <Button className="Evaluaion_PatientProfile_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./forms')}}> PRO </Button>
                             }
@@ -61,7 +67,10 @@ class PatientProfile extends Component {
                                 <div className="Evaluaion_PatientProfile_Box_DisbaleText"> Upload X-rays </div>
                             :
                             this.context.state.UXray===true ?
-                                <div className="Evaluaion_PatientProfile_Box_DisbaleText"> Upload X-rays </div>
+                                <div>
+                                    <div className="Evaluaion_PatientProfile_Box_DisbaleText"> Upload X-rays </div>
+                                    <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
+                                </div>
                             :
                                 <Button className="Evaluaion_PatientProfile_Box_Button" variant="contained" onClick={()=>{this.context.history.push('./upload-xrays')}}> Upload X-rays </Button>
                             }
@@ -84,7 +93,7 @@ class PatientProfile extends Component {
                 </div>
 
                 <div  id="Evaluaion_PatientProfile_Content2_Wrapper">
-                    <img src={BoneImage} alt="SBS" id="Evaluaion_Welcome_Image_Bone"/>
+                    <img src={BoneImage} alt="SBS" id="Evaluaion_Welcome_Image_Bone" />
                 </div>
 
 

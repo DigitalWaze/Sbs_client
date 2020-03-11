@@ -4,14 +4,19 @@ import Button from '@material-ui/core/Button';
 
 import './forms.css';
 
-import MyContext from '../helper/themeContext';
+import MyContext from '../../helper/themeContext';
 
-import Tick from '../assets/button-tick.png';
+import Tick from '../../assets/button-tick.png';
 
 class Forms extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
+    }
+
+    handleClick = () =>
+    {
+        this.context.history.push('./patient-profile')
     }
     render() { 
         return ( 
@@ -28,9 +33,9 @@ class Forms extends Component {
                     </div>
                     <div  className="Evaluaion_Forms_Box1_Content2">
                             {this.context.state.Pro===true ?
-                            <div className="aaaa">
+                            <div>
                                 <div className="Evaluaion_Forms_Box_DisbaleText"> Patient Reported Evaluation </div>
-                                <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} /> &nbsp; Complete </div>
+                                <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
                             </div>
                             :
                                 <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./patient-report')}}> Patient Reported Outcome </Button>
@@ -40,7 +45,7 @@ class Forms extends Component {
                     
                     {this.context.state.Pro===true ?
                         <div id="Evaluaion_Forms_Next_Button_Div">
-                            <Button id="Evaluaion_Forms_Next_Button" variant="contained" onClick={this.handleClick}> Next </Button>
+                            <Button id="Evaluaion_Forms_Next_Button" variant="contained" onClick={this.handleClick} > Next </Button>
                         </div>
                     :   null
                     }

@@ -19,7 +19,7 @@ class Evaluation extends Component {
                 {this.context.history.location.pathname!=="/Evaluation/Welcome" && this.context.history.location.pathname!=="/Evaluation/demographics" && this.context.history.location.pathname!=="/Evaluation"?
                     <div id="Evaluation_Main_Div_Top_Name">
                         {this.context.state.patient_name}
-                    </div>:console.log('aa')
+                    </div>:null
                 }
                 {/* { this.context.history.location.pathname!=="/Evalutaion/Welcome"?
                  

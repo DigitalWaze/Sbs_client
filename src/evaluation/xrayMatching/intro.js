@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 
-import MyContext from '../helper/themeContext';
+import Bone1Image from '../../assets/bone1_Bitmap.png'
 
-import Bone1Image from '../assets/bone1_Bitmap.png'
-
-import './welcome.css'
+import './intro.css'
 
 
 
-class Welcome extends Component {
+class Introduction extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -18,7 +16,7 @@ class Welcome extends Component {
     render() { 
         return ( 
         
-        <div id="Evaluaion_Welcome_Main_Div">
+        <div id="Evaluaion_XrayMatching_Intro_Main_Div">
 
             <div  id="Evaluaion_Welcome_Text_Wrapper">
                 <div id="Evaluaion_Welcome_Heading1_Div">
@@ -27,16 +25,13 @@ class Welcome extends Component {
                 </div>
                 <div id="Evaluaion_Welcome_Neon_Line"></div>
                 <div id="Evaluaion_Welcome_Heading2_Div">
-                    Patient Evaluation
-                    <br/>
-                    and Diagnosis
+                    Patient Specific X-ray Matching
                 </div>
                 <div id="Evaluaion_Welcome_Text_Div">
-                    Start a patient evaluation by inputting the patient’s demographics, joints that hurt, patient reported outcome (PRO)
-                    and X-rays.
+                    Evaluate the patient's level of degeneration using the Step by Step X-ray Matching System.
                 </div>
                 <div id="Evaluaion_Welcome_Next_Button_Div">
-                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./demographics')}}> Next </Button>
+                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.handleClick}> Continue </Button>
                 </div>
 
             </div>
@@ -48,5 +43,4 @@ class Welcome extends Component {
         </div> );
     }
 }
-Welcome.contextType=MyContext;
-export default Welcome;
+export default Introduction;

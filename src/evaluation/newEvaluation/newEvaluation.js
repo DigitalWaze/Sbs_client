@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './newEvaluation.css'
-import BoneImage from '../assets/bone2_Bitmap.png'
+// import BoneImage from '../assets/bone2_Bitmap.png'
 import Button from '@material-ui/core/Button';
-import MyContext from '../helper/themeContext';
+import MyContext from '../../helper/themeContext';
 
 
 class NewEvaluation extends Component {
@@ -10,6 +10,7 @@ class NewEvaluation extends Component {
         super(props);
         this.state = {  }
     }
+    
     render() { 
         return ( 
         <div id="Evaluaion_NewEvaluation_Main_Div">
