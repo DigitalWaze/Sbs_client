@@ -13,7 +13,7 @@ import Xray3 from '../../assets/xray3.jpeg';
 import Xray4 from '../../assets/xray4.jpeg';
 import Tick from '../../assets/tick-black.png';
 import Search from '../../assets/search.png';
-
+import html2canvas from 'html2canvas'
 import './report.css'
 
 const height='60px';
@@ -46,10 +46,35 @@ class ShowReport extends Component {
     {
         this.setState({ActiveImage:Xray,modal:true})
     }
+    handleNextClick = () =>
+    {
+        const global=this;
+        let newelement = document.createElement("div");
+        
+        newelement=document.getElementById("ReportMainDiv").cloneNode(true);
+        newelement.style.backgroundImage='linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51)';
+        newelement.style.position='absolute';
+        newelement.style.top='-16384px';
+        // newelement.style.display=;
+        document.getElementsByTagName('BODY')[0].append(newelement);
+        html2canvas(newelement).then(function(canvas) {
+           
+            global.downloadURI( canvas.toDataURL("image/png"),'picture')
+        });
+    }
+    downloadURI(uri, name) {
+        var link = document.createElement("a");
+        link.download = name;
+        link.href = uri;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+       
+      }
     render() { 
         return ( 
             <div id="Evaluaion_Report_Main_Div">
-                <div style={{width:'60vw',margin:'auto',padding:'10px',paddingLeft:'20px',paddingRight:'20px',border:'1px solid #fff'}}>
+                <div style={{width:'60vw',margin:'auto',padding:'10px',paddingLeft:'20px',paddingRight:'20px',border:'1px solid #fff'}} id="ReportMainDiv">
                     <Grid container>
                         <Grid container item xs={12} spacing={0} style={{height:'80px'}}>
                             <React.Fragment>
@@ -210,6 +235,9 @@ class ShowReport extends Component {
                         </div>
                        
                     </div>
+                </div>
+                <div id="Evaluaion_Report_Next_Button_Div">
+                        <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> View PRO Report Card </Button>
                 </div>
             </div> 
         );

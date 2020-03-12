@@ -13,6 +13,7 @@ import PatientReport from './evaluation/patientReport/patientReport';
 import UploadXray from './evaluation/uploadXray/uploadXray';
 import XrayMatching from './evaluation/xrayMatching/xrayMatching';
 import Report from './evaluation/report/report';
+// import Chart from './'
 
 import Bone1Image from './assets/bone3_Bitmap.png'
 import MFV from './assets/medial-flexion.png'
@@ -20,6 +21,7 @@ import MNFV from './assets/medial-nonflexion.png'
 import LFV from './assets/lateral-flexion.png'
 import LNFV from './assets/lateral-nonflexion.png'
 import KV from './assets/kneecapview.jpg'
+import Chart from './evaluation/chart/chart';
 
 
 
@@ -74,6 +76,7 @@ class Routes extends Component {
                     <Route path="/Evaluation/upload-xrays" component={UploadXray}/>
                     <Route path="/Evaluation/x-ray-matching" component={XrayMatching}/>
                     <Route path="/Evaluation/report" component={Report}/>
+                    <Route path="/Evaluation/chart" component={Chart} />
 
                 </MyContext.Provider>   
 

@@ -1,4 +1,4 @@
-#Evaluaion_NewEvaluation_Main_Div
+#Evaluaion_Chart_Main_Div
 {
     background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
     min-height: 100vh;
@@ -7,13 +7,13 @@
     overflow: hidden;
 }
 
-#Evaluaion_NewEvaluation_Content_Wrapper
+#Evaluaion_Chart_Content_Wrapper
 {
   float:left;
   margin-left:15%;
-  width:75%;
+  width:80%;
   min-width: 400px;
-  max-width: 900px;
+  max-width: 1000px;
   min-height:100vh;
   line-height: 100vh;
   
@@ -26,7 +26,7 @@
   align-items: center; */
 }
 
-#Evaluaion_NewEvaluation_Text_Div
+#Evaluaion_Chart_Text_Div
 {
     margin-bottom: 15px;
     font-size: 20px;
@@ -42,7 +42,7 @@
   display: table-row;  */
 }
 
-#Evaluaion_NewEvaluation_Heading1_Div
+#Evaluaion_Chart_Heading1_Div
 {
   font-family: Lato, sans-serif;
   color: #fff;
@@ -53,7 +53,7 @@
   line-height: 40px;
 }
 
-#Evaluaion_NewEvaluation_Heading2_Div
+#Evaluaion_Chart_Heading2_Div
 {
     font-size: 32px;
    
@@ -71,31 +71,6 @@
   display: table-row; */
 }
 
-#Evaluaion_NewEvaluation_Image_div
-{
-  float: left;
-  display: block;
-  justify-content: center;
-  flex-direction: column;
-  justify-content: center;
-  /* height:100vh; */
-  width:300px;
-  max-width:45%;
-}
 
 
-  #Evaluaion_NewEvaluation_Image_Bone
-  {
-    /* max-height:calc(100vh - 40px);
-    min-height: 100px;
-    width:auto;
-    height:auto; */
-    width: 300px;
-    margin-top: 50px;
-  }
-
-  #Evaluaion_NewEvaluation_Image_Wrapper
-  {
-    display: inline-block;
-  }
 
