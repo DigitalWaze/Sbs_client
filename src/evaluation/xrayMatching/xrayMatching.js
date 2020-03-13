@@ -42,7 +42,6 @@ class XrayMatching extends Component {
         let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
         Xray.state=state;
         Xray.notes=notes;
-        console.log(Evaluation);
     }
 
     handleIntroClick = () =>
