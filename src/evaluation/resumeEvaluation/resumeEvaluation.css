@@ -1,0 +1,83 @@
+.Evaluation_ResumeEvaluation_Main_Div
+{
+    background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+    min-height: 100vh;
+    
+    position: relative;
+    overflow: hidden;
+}
+
+.Evaluation_ResumeEvaluation_Content_Wrapper
+{
+  float:left;
+  margin-left:15%;
+  width:70%;
+  min-width: 400px;
+  max-width: 1100px;
+  min-height:100vh;
+  /* line-height: 100vh; */
+  /* vertical-align: bottom; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+
+.Evaluation_ResumeEvaluation_Heading2_Div
+{
+    font-size: 32px;
+   
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    box-sizing: border-box;
+
+    margin-top: 0px;
+    margin-bottom: 20px;
+    line-height: 48px;
+    font-weight: 700;
+}
+
+.Evaluation_ResumeEvaluation_Text_Div
+{
+    margin-bottom: 15px;
+    font-size: 20px;
+    line-height: 28px;
+
+    margin-top: 0px;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-weight: 400;
+    box-sizing: border-box;
+  
+  /* vertical-align: middle; 
+  display: table-row;  */
+}
+
+.Evaluation_ResumeEvaluation_Button_Div
+{
+    /* width:150px; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:60px
+}
+
+.Evaluation_ResumeEvaluation_Button
+{
+    display: block !important;
+    width:100% !important;
+    min-width: 150px !important;
+    padding: 15px 25px !important;
+    border-radius: 25px !important;
+    background-color: #b4ec51 !important;
+    font-family: 'Lato', sans-serif !important;
+    font-weight: bold !important;
+    text-transform: none !important;
+    font-size: 23px !important;
+    line-height: 23px !important;  
+}
+

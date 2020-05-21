@@ -9,12 +9,14 @@
 
 #Evaluaion_PatientDemoGraphics_Text_Wrapper
 {
-  float:left;
-  margin-left:15%;
+  
   width:75%;
   min-width: 400px;
   max-width: 900px;
   min-height:100vh;
+
+  float:left;
+  margin-left:15%;
   
   display: flex;
   justify-content: center;

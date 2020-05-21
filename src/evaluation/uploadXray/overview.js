@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Tick from '../../assets/button-tick.png';
 
 import './overview.css'
+import MyContext from '../../helper/themeContext';
 
 
 class OverviewBox extends Component {
@@ -13,8 +14,9 @@ class OverviewBox extends Component {
         this.state = {  }
     }
     render() { 
+        const old = this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>3?true:false;
         return ( 
-                <div id="Evaluaion_UploadXray_OverView_Box1_Div">
+                <div id="Evaluaion_UploadXray_OverView_Box1_Div" style={{height:this.context.state.Eval.length<2?this.context.state.old==true?'510px':'440px':this.context.state.old==true?'560px':'560px'}}>
                     {
                         this.props.Xrays.map((xray,id) => 
                             <div key={id}>
@@ -34,14 +36,21 @@ class OverviewBox extends Component {
                                     :
                                     <div className="Evaluaion_UploadXray_OverView_Box_DisbaleText"> {xray.name} </div>
                                 }
+
+                                
                                 </div>
                             </div>
                         )
+                    }
+                    {
+                    old==true?
+                        <Button className="Evaluaion_UploadXray_OverView_Old_Box_Button"  variant="contained" onClick={this.props.Old}> Next </Button>
+                    :null
                     }
                 
                 </div>
         );
     }
 }
- 
+OverviewBox.contextType=MyContext;
 export default OverviewBox;

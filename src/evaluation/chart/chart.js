@@ -25,23 +25,26 @@ class Chart extends Component {
                         Date of Pro Intake: 10/22/2020
                     </div>
                    
-                    <div style={{display:'block',background:'',height:'350px',background:'yellow'}}>
-                    <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',background:'green',paddingTop:'20px'}}>
-                    <span style={{color:'#231F20',position:'absolute',top:'60px',transform:'rotate(270deg) translateY(-56px)',fontFamily:'Lato',fontWeight:'700',fontSize:'17px'}}>
+                    <div style={{display:'block',background:'',height:'350px',background:'white'}}>
+                    <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
+                    <span className="arrow-text-span">
                         BETTER &nbsp; HEALTH
                     </span>
+                    <span id="arrow-div">
                         <Arrow
-                            angle={0}
-                            length={70}
-                            style={{
-                            width: '50px',
-                            height:'400px'
-                            }}
-                        />
+                                angle={0}
+                                length={70}
+                                style={{
+                                width: '50px',
+                                height:'400px'
+                                }}
+                            />
+                    </span>
+                        
                     </div>
                     {
                         [108,200,108,108,].map((text,key)=>
-                            <div style={{display:'inline-block',height:'350px',background:'',width:'250px',position:'relative'}}>
+                            <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack
                                     animate={{
@@ -65,7 +68,7 @@ class Chart extends Component {
                                 />
                             
                                 </VictoryStack>
-                                <div style={{position:'absolute',top:'0px',left:'0px',height:'30px',width:'50px',background:'purple'}}>
+                                <div style={{position:'absolute',top:'0px',left:'0px',height:'30px',width:'50px',background:''}}>
                                     <div style={{position:'relative'}}>
                                         70
                                     </div> 
@@ -82,7 +85,7 @@ class Chart extends Component {
                     </div>
                     
                     <div id="Evaluaion_Welcome_Next_Button_Div">
-                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./patient-profile')}}> Next </Button>
+                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./pdf')}}> View Patient Summary </Button>
                     </div>
                 </div>
                 

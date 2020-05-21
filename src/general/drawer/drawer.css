@@ -90,7 +90,8 @@
     padding-bottom: 20px;
     font-family: Lato, sans-serif;
     font-size: 18px;
-    color:#222222
+    color:#222222;
+    cursor: pointer;
 }
 
 #Main_Drawer_Menu_Text_Wrapper

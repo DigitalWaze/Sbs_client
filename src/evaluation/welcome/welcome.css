@@ -108,6 +108,31 @@
   margin-top: 20px;
 }
 
+@media only screen and (min-height:700px)
+{
+  #Evaluaion_Welcome_Next_Button_Div
+  {
+    margin-top:60px;
+  }
+}
+
+@media only screen and (min-height:750px)
+{
+  #Evaluaion_Welcome_Next_Button_Div
+  {
+    margin-top: 80px;
+  }
+}
+
+
+@media only screen and (min-height:800px)
+{
+  #Evaluaion_Welcome_Next_Button_Div
+  {
+    margin-top: 100px;
+  }
+}
+
 #Evaluaion_Welcome_Next_Button
 {
   display: block;

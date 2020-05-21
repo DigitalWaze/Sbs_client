@@ -6,6 +6,78 @@
     position: relative;
     overflow: hidden;
     z-index: 2;
+    
+}
+
+#ReportMainDiv
+{
+    width:60vw;
+    margin:auto;
+    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    border:1px solid #fff;
+    min-width: 700px;
+    max-width: 900px;
+}
+
+#Evaluaion_Report_Content_Wrapper
+{
+    width:100vw;
+    height: 100vh;
+    /* margin:auto; */
+
+    float:left;
+    /* margin-left:15vw; */
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media only screen and (max-width:1300px)
+{
+    #ReportMainDiv
+    {
+        width:80vw;
+    }
+}
+
+@media only screen and (max-width:950px)
+{
+    #ReportMainDiv
+    {
+        width:90vw;
+    }
+}
+
+@media only screen and (max-width:850px)
+{
+    #ReportMainDiv
+    {
+        width:calc(100vw - 40px);
+    }
+}
+
+@media only screen and (max-width:800px)
+{
+    #ReportMainDiv
+    {
+        padding-left: 5px;
+        padding-right:5px;
+        width:calc(100vw - 10px);
+    }
+}
+
+@media only screen and (max-width:767px)
+{
+    #ReportMainDiv
+    {
+        padding-left: 0px;
+        padding-right:0px;
+        width:calc(100vw);
+    }
 }
 
 .Evaluaion_Report_Box_Text1

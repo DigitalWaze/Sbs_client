@@ -26,9 +26,9 @@ class Selected extends Component {
                         Once you believe you have found a match, click "Confirm Evaluation" to move onto the next view.
                     </div>
                     {
-                        ['Normal to Sight','Moderate','Near End Stage','End Stage'].map((text,id)=>
+                        [{name:'Normal to Sight',id:'1'},{name:'Moderate',id:'2'},{name:'Near End Stage',id:'3'},{name:'End Stage',id:'4'}].map((text,id)=>
                         <div className="Evaluaion_Report_Selected_State_Button_Div">
-                            <Button className="Evaluaion_Report_Selected_State_Button" style={{color:this.props.State===text?'':'#fff', background:this.props.State===text?'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained"> {text} </Button>
+                            <Button className="Evaluaion_Report_Selected_State_Button" style={{color:this.props.State===text.id?'':'#fff', background:this.props.State===text.id?'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained"> {text.name} </Button>
                         </div>
                         )
                     }

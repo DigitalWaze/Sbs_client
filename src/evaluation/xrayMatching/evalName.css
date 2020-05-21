@@ -1,0 +1,78 @@
+#Evaluaion_XrayMatching_EvalName_Main_Div
+{
+    background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#Evaluaion_XrayMatching_EvalName_Content_Wrapper
+{
+  margin-left:10%;
+  width:80%;
+  /* min-width: 400px; */
+  max-width: 100vw;
+  min-height:100vh;
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  
+  /* justify-content: center;
+  align-items: center; */
+}
+
+#Evaluaion_XrayMatching_EvalName_Next_Button_Div
+{
+    position: absolute;
+    bottom:10px;
+    right:0px
+}
+
+#Evaluaion_XrayMatching_EvalName_Content1_Wrapper
+{
+    /* min-width: 400px;
+    max-width: 700px; */
+    /* height:100vh; */
+    display: block;
+}
+
+#Evaluaion_XrayMatching_EvalName_Content2_Wrapper
+{
+  /* float: left; */
+  display: inline-block;
+ 
+  width:100%;
+  margin-top: 50px;
+ 
+}
+
+#Evaluaion_XrayMatching_EvalName_Image_Bone_Div
+{
+  width:300px;
+  display: inline-block;
+  height:calc(100vh - 120px);
+}
+
+#Evaluaion_XrayMatching_EvalName_Image_Bone
+{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Evaluaion_XrayMatching_EvalName_Image_Left_Div {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 170px;
+  text-align: center;
+}
+
+.Evaluaion_XrayMatching_EvalName_Image_Right_Div {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 170px;
+  text-align: center;
+}
+

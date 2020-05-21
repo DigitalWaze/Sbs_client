@@ -13,14 +13,14 @@
   margin-left:15%;
   width:75%;
   min-width: 400px;
-  max-width: 900px;
+  max-width: 100vw;
   min-height:100vh;
-  line-height: 100vh;
   
   display: flex;
   justify-content: center;
   flex-direction: column;
   justify-content: center;
+  position: relative;
   
   /* justify-content: center;
   align-items: center; */
@@ -37,6 +37,9 @@
     color: #fff;
     font-weight: 400;
     box-sizing: border-box;
+    width:910px;
+    margin-left: auto;
+    margin-right: auto;
   
   /* vertical-align: middle; 
   display: table-row;  */
@@ -51,6 +54,9 @@
   margin-bottom: 5px;
   font-size: 36px;
   line-height: 40px;
+  width:910px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #Evaluaion_NewEvaluation_Heading2_Div
@@ -65,6 +71,9 @@
     margin-bottom: 5px;
     line-height: 48px;
     font-weight: 700;
+    width:910px;
+    margin-left: auto;
+    margin-right: auto;
   
 
   /* vertical-align: middle; 
@@ -73,14 +82,20 @@
 
 #Evaluaion_NewEvaluation_Image_div
 {
-  float: left;
   display: block;
   justify-content: center;
   flex-direction: column;
   justify-content: center;
   /* height:100vh; */
-  width:300px;
-  max-width:45%;
+  width:100%;
+  max-width:100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.Evaluaion_NewEvaluation_MenuItem
+{
+  color:white !important;
 }
 
 
@@ -90,12 +105,283 @@
     min-height: 100px;
     width:auto;
     height:auto; */
-    width: 300px;
-    margin-top: 50px;
+    width: 250px;
+    
   }
 
   #Evaluaion_NewEvaluation_Image_Wrapper
   {
-    display: inline-block;
+   display: inline-block;
   }
 
+  .Evaluaion_NewEvaluation_Image_Left_Div
+  {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:28px;
+    margin-right:40px;
+  }
+
+  .Evaluaion_NewEvaluation_Image_Right_Div
+  {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:28px;
+    margin-left:40px;
+  }
+
+  .Evaluaion_NewEvaluation_Image_Left_Inner_Up
+  {
+    display:block;
+    
+  }
+
+  .Evaluaion_NewEvaluation_Image_Left_Inner_Down
+  {
+    display:block;
+    margin-top:53px;
+  }
+
+  .Evaluaion_NewEvaluation_Image_Right_Inner_Up
+  {
+    display:block;
+  }
+
+  .Evaluaion_NewEvaluation_Image_Right_Inner_Down
+  {
+    display:block;
+    margin-top:53px;
+  }
+
+
+  .Evaluaion_NewEvaluation_Image_Left_Inner_Up_Content1
+  {
+    transform: translateY(-20px);
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 34px;
+
+  }
+
+  .Evaluaion_NewEvaluation_Image_Left_Inner_Down_Content1
+  {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    transform: translateY(-20px);
+  }
+
+  /* .input-class-height
+  {
+    height:60px;
+  } */
+
+  .Evaluaion_NewEvaluation_Image_Left_Inner_Up_Content2
+  {
+    display:inline-block;
+    vertical-align: top;
+    transform: translateY(-30px);
+  }
+
+  .Evaluaion_NewEvaluation_Image_Left_Inner_Down_Content2
+  {
+    display:inline-block;
+    vertical-align: top;
+    transform: translateY(-30px);
+  }
+
+   
+
+  
+
+  
+  .Evaluaion_NewEvaluation_Image_Right_Inner_Up_Content1
+  {
+    transform: translateY(-20px);
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 34px;
+
+  }
+
+  .Evaluaion_NewEvaluation_Image_Right_Inner_Down_Content1
+  {
+    transform: translateY(-20px);
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+
+  }
+
+  .Evaluaion_NewEvaluation_Image_Right_Inner_Up_Content2
+  {
+    display:inline-block;
+    vertical-align: top;
+    transform: translateY(-30px);
+    
+  }
+
+  
+
+  /* .MuiMenu-paper
+  {
+    background: rgba(0,0,0,0.8) !important;
+    border-radius: 0px !important;
+    margin-top:16px;
+  } */
+
+  .new-evaluation-select-box > .MuiMenu-paper
+  {
+    background: rgba(0,0,0,0.8) !important;
+    border-radius: 0px !important;
+    margin-top:16px;
+  }
+
+  .new-evaluation-select-box > .MuiMenu-paper > ul
+  {
+    border:1px solid white;
+    width:calc(100% - 2px);
+    /* margin:auto; */
+  }
+
+  #Evaluaion_NewEvaluation_Next_Button_Div
+{
+  display: block;
+  /* margin-top: 20px; */
+  position: absolute;
+  bottom:20px;
+  right:10px;
+}
+
+#Evaluaion_NewEvaluation_Next_Button
+{
+  display: block;
+  width:auto;
+  min-width: 300px;
+  padding: 15px 25px;
+  float: right;
+  font-size: 28px;
+  line-height: 32px;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  font-family: Lato, sans-serif;
+}
+
+
+  /* Responsive Css Down */
+
+  @media only screen and (max-width:1215px)
+  {
+    #Evaluaion_NewEvaluation_Content_Wrapper
+    {
+      width:90%;
+      margin-left:5%;
+    }
+  }
+
+  @media only screen and (max-width:1015px)
+  {
+    #Evaluaion_NewEvaluation_Content_Wrapper
+    {
+      width:calc(100% - 10px);
+      margin-left:5px;
+    }
+    
+
+  }
+
+  @media only screen and (max-width:925px)
+  {
+    .Evaluaion_NewEvaluation_Image_Right_Div
+    {
+      margin-left:5px;
+    }
+    .Evaluaion_NewEvaluation_Image_Left_Div
+    {
+      margin-right:5px;
+    }
+    #Evaluaion_NewEvaluation_Text_Div
+    {
+      width:840px;
+    }
+
+    #Evaluaion_NewEvaluation_Heading1_Div
+    {
+      width:840px;
+    }
+
+    #Evaluaion_NewEvaluation_Heading2_Div
+    {
+      width:840px;
+    }
+  }
+
+  @media only screen and (max-width:850px)
+  {
+    #Evaluaion_NewEvaluation_Image_Bone
+    {
+      width:200px
+    }
+    .Evaluaion_NewEvaluation_Image_Right_Inner_Down
+    {
+      margin-top: 25px
+    }
+
+    .Evaluaion_NewEvaluation_Image_Left_Inner_Down
+    {
+      margin-top: 25px
+    }
+    #Evaluaion_NewEvaluation_Text_Div
+    {
+      width:790px;
+    }
+
+    #Evaluaion_NewEvaluation_Heading1_Div
+    {
+      width:790px;
+    }
+
+    #Evaluaion_NewEvaluation_Heading2_Div
+    {
+      width:790px;
+    }
+
+  }
+
+  @media only screen and (max-width:805px)
+  {
+    .Evaluaion_NewEvaluation_Image_Left_Inner_Up_Content1
+    {
+      margin-right:13px;
+    }
+
+    .Evaluaion_NewEvaluation_Image_Left_Inner_Down_Content1
+    {
+      margin-right:3px;
+    }
+
+    .Evaluaion_NewEvaluation_Image_Right_Inner_Up_Content1
+    {
+      margin-left:13px;
+    }
+
+    .Evaluaion_NewEvaluation_Image_Right_Inner_Down_Content1
+    {
+      margin-left:3px;
+    }
+
+    #Evaluaion_NewEvaluation_Text_Div
+    {
+      width:740px;
+    }
+
+    #Evaluaion_NewEvaluation_Heading1_Div
+    {
+      width:740px;
+    }
+
+    #Evaluaion_NewEvaluation_Heading2_Div
+    {
+      width:740px;
+    }
+  }

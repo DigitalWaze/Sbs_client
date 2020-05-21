@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
+import { TextField } from '@material-ui/core';
+
+import RightHipIcon from '../../assets/right-hip-icon.png'
+import BoneImage from '../../assets/bone3_Bitmap.png'
+import BoneImage1 from '../../assets/bone4_Bitmap.png'
+
+import MyContext from '../../helper/themeContext';
+
+import './evalName.css'
 
 
 
@@ -12,15 +21,62 @@ class EvalName extends Component {
     render() { 
         return ( 
         
-            <div id="Evaluaion_XrayMatching_Intro_Main_Div">
+            <div>
 
-                <div  id="Evaluaion_Welcome_Text_Wrapper">
-                    <div id="Evaluaion_Welcome_Heading2_Div">
-                        {this.props.eval.name}
-                    </div>
+                <div id="Evaluaion_XrayMatching_EvalName_Content_Wrapper">
+                    <div  id="Evaluaion_XrayMatching_EvalName_Content1_Wrapper">
+                        <div id="Evaluaion_Welcome_Heading2_Div">
+                            Joint Evaluation: {this.props.eval.name}
+                        </div>
                     
-                    <div id="Evaluaion_Welcome_Next_Button_Div">
-                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.handleClick}> Next </Button>
+                    </div>
+
+                    <div  id="Evaluaion_XrayMatching_EvalName_Content2_Wrapper">
+
+                        {this.context.state.joint_id=='3'?
+                            <div className="Evaluaion_XrayMatching_EvalName_Image_Left_Div">
+
+                                <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down" >
+                                    <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content1">
+                                        <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+
+                                    </div>  
+                                    <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content2">
+                                            <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
+                                                RIGHT KNEE
+                                            </div>
+                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        :null}
+
+
+
+                        <div id="Evaluaion_XrayMatching_EvalName_Image_Bone_Div"> <img src={this.context.state.joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_XrayMatching_EvalName_Image_Bone" /></div>
+
+                        {this.context.state.joint_id=='4'?
+                            <div className="Evaluaion_XrayMatching_EvalName_Image_Right_Div">
+
+                                <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down" >
+                                    <div className="Evaluaion_PatientProfile_Image_Right_Inner_Up_Content2">
+                                            <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
+                                                LEFT KNEE
+                                            </div>
+                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                    </div>
+                                    <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down_Content1">
+                                        <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+
+                                    </div>  
+                                    
+                                </div>
+                            </div>
+                        :null}
+                    </div>
+                    <div id="Evaluaion_XrayMatching_EvalName_Next_Button_Div">
+                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.handleClick}> Next </Button>
                     </div>
                 </div>
 
@@ -28,5 +84,5 @@ class EvalName extends Component {
         );
     }
 }
- 
+EvalName.contextType=MyContext;
 export default EvalName;

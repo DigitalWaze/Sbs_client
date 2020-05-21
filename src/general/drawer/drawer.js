@@ -4,6 +4,7 @@ import MenuCloseImage from  '../../assets/cross.png';
 
 
 import './drawer.css';
+import MyContext from '../../helper/themeContext';
 
 
 class Drawer extends Component {
@@ -14,8 +15,9 @@ class Drawer extends Component {
 
     componentDidMount()
     {
-        document.getElementById('Main_Drawer_Menu_Div').classList.add('Main_Drawer_Menu_Div_Close')
-        document.addEventListener('click',this.handleClickAway);
+        if(!(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined))
+        {document.getElementById('Main_Drawer_Menu_Div').classList.add('Main_Drawer_Menu_Div_Close')
+        document.addEventListener('click',this.handleClickAway);}
     }
 
     componentWillUnmount()
@@ -46,7 +48,11 @@ class Drawer extends Component {
         {
             let Div=document.getElementById('Main_Drawer_Menu_Div');
             let Image=document.getElementById('Main_Drawer_Menu_Image')
-            if(event.target !== Div && event.target !== Image)
+            let Text=document.getElementById('Drawer_Logout_Div')
+            // console.log(Text)
+            // console.log(event.target)
+            
+            if(event.target !== Div && event.target !== Image && event.target !== Text && Text!=null )
             {
                 this.toggleMenu();
             }
@@ -54,8 +60,10 @@ class Drawer extends Component {
     }
     render() { 
         return ( 
-        
+            !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
+
         <div id="Main_Drawer">
+
 
         <div id="Main_Drawer_Menu_Image_Div"   onClick={this.toggleMenu} >
             <img src={MenuImage}  alt="Menu"  id="Main_Drawer_Menu_Image" />
@@ -70,10 +78,27 @@ class Drawer extends Component {
                 
                 <img src={MenuCloseImage} onClick={this.toggleMenu} alt="Close"  id="Main_Drawer_Menu_Close_Image"/>
                 <div id="Main_Drawer_Menu_Text_Wrapper">
-                    <div className="Main_Drawer_Menu_Text">
-                        Right Knee Sample Patient
+                {console.log( this.context.state.user_type)}
+                {
+                    this.context.state.user_type?this.context.state.user_type.id==1?
+                        <div  onClick ={()=>{this.context.history.push('/admin/create-user')}} className="Main_Drawer_Menu_Text">
+                            Create User
+                        </div> 
+                    :   null  :null
+                }
+
+                {
+                    !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
+                    <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                        Log out
                     </div>
-                    <div className="Main_Drawer_Menu_Text">
+                    :null
+
+                }
+
+
+                    
+                    {/* <div className="Main_Drawer_Menu_Text">
                         Left Knee Sample Patient
                     </div>
                     <div className="Main_Drawer_Menu_Text">
@@ -81,14 +106,20 @@ class Drawer extends Component {
                     </div>
                     <div className="Main_Drawer_Menu_Text">
                         Left Hip Sample Patient
-                    </div>
+                    </div> */}
                 </div>    
             </div>
        
         
 
-        </div> );
+        </div>
+            
+            
+            :<div>
+            </div>
+         );
     }
 }
- 
+
+Drawer.contextType=MyContext;
 export default Drawer;

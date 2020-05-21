@@ -31,17 +31,38 @@ class Forms extends Component {
                     <div className="Evaluaion_Forms_Box1_Content1">
                         <img className="Evaluaion_Forms_Box1_Content1_Image" src="https://assets.website-files.com/5d8d4f718f129fc077e4b98d/5d9e0d14916a658e42a03643_Asset%202doc.png" width="20px" alt=""/>
                     </div>
+                   
                     <div  className="Evaluaion_Forms_Box1_Content2">
-                            {this.context.state.Pro===true ?
-                            <div>
-                                <div className="Evaluaion_Forms_Box_DisbaleText"> Patient Reported Evaluation </div>
-                                <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
-                            </div>
-                            :
-                                <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./patient-report')}}> Patient Reported Outcome </Button>
-                            }
+                        {this.context.state.Pro===true ?
+                        <div>
+                            <div className="Evaluaion_Forms_Box_DisbaleText"> Patient Reported Evaluation </div>
+                            <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
+                        </div>
+                        :
                             
+                            <Button className="Evaluaion_Forms_Box_Button"  variant="contained" disabled> Upload </Button>
+                            
+                        }
+
+                            
+
                     </div>
+
+                    {this.context.state.Pro===false?
+                        <div>
+                            <div className="Evaluaion_Forms_Box1_Content1">
+                                <img className="Evaluaion_Forms_Box1_Content1_Image" src="https://assets.website-files.com/5d8d4f718f129fc077e4b98d/5d9e0d14916a658e42a03643_Asset%202doc.png" width="20px" alt=""/>
+                            </div>
+                            <div  className="Evaluaion_Forms_Box1_Content2">
+                                
+                                <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./patient-report')}}> Manual Entry </Button>
+                
+                            </div>
+                        </div>
+                    :   null
+                    }
+
+
                     
                     {this.context.state.Pro===true ?
                         <div id="Evaluaion_Forms_Next_Button_Div">

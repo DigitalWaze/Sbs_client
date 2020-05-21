@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Tick from '../../assets/button-tick.png';
 
 import './overview.css'
+import MyContext from '../../helper/themeContext';
 
 class Overview extends Component {
     constructor(props) {
@@ -13,13 +14,14 @@ class Overview extends Component {
     }
     render() { 
         return (
-            <div id="Evaluaion_XrayMatching_OverView_Main_Div">
+            <div>
                 <div  id="Evaluaion_XrayMatching_OverView_Content1_Wrapper">
                     <div id="Evaluaion_XrayMatching_OverView_Heading1_Div">
                         X-ray Evaluation
                     </div>
                     <div id="Evaluaion_XrayMatching_OverView_Heading2_Div">
-                        Right Knee
+                        {this.context.state.joint_id=='3'?'Right Knee':null}
+                        {this.context.state.joint_id=='4'?'Left Knee':null}
                     </div>
             
                     { this.props.Evaluation.Xrays.map((type,id) => 
@@ -58,5 +60,5 @@ class Overview extends Component {
         );
     }
 }
- 
+ Overview.contextType=MyContext;
 export default Overview;

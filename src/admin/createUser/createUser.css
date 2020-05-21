@@ -1,0 +1,180 @@
+#Admin_CreateUser_Main_Div
+{
+  background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#Admin_CreateUser_Content1_Wrapper
+{
+ 
+  width:100vw;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* justify-content: center;
+  align-items: center; */
+}
+
+#Admin_CreateUser_Heading1_Div
+{
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-weight: 400;
+    font-size: 75px;
+    line-height: 75px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+.react-swipeable-view-container
+{
+    /* margin:0px 0px !important; */
+    /* justify-content: space-between !important; */
+}
+
+.Admin_Swipe_Div
+{   
+    width: 100%;
+    position: relative;
+    height: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+
+
+
+
+.Admin_CreateUser_Button_Div
+{
+  display: block !important;
+  height:calc(25% - 30px);
+  /* min-width: 300px !important; */
+margin: auto;
+  margin-bottom: 0px;
+  padding-top:30px;
+    width: calc(410px); /* min-width: 300px; */
+  text-align: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  /* padding-left:40px; */
+  
+  /* position: relative; */
+  /* margin-top: 20px !important; */
+  /* padding-right: 10px !important; */
+  /* margin:20px -4px 0px -4px; */
+  
+}
+
+.Admin_CreateUser_Button
+{
+ 
+
+  display: block !important;
+  width:100% !important;
+  /* min-width: 300px !important; */
+  padding: 15px 25px !important;
+  float: left !important;
+  font-size: 28px !important;
+  line-height: 32px !important;
+  border-radius: 25px !important;
+  background-color: #b4ec51 !important;
+  font-family: Lato, sans-serif !important;
+  text-transform: none !important;
+}
+
+
+.Admin_Box1_Div
+{
+    display: block;
+    height:calc(20% - 33px);
+    padding-top: 30px;
+    /* height:60px;  */
+
+    /* background: #b4ec51 */
+}
+
+.Admin_Box1_Div_Content1
+{
+    display: inline-block;
+    font-size: 28px;
+    vertical-align:top;
+    height:60px;
+    line-height: 60px;
+    color: #fff;
+    width:170px;
+    /* background: #3023ae */
+
+}
+
+.Admin_Box1_Div_Content2
+{
+    display: inline-block;
+    height:60px;
+    /* background: #270c41; */
+    /* height: 80px; */
+    vertical-align: top;
+    margin-left:10px;
+}
+
+.Admin_CreateUser_Back_Button_Div
+{
+  display: inline-block !important;
+  height:calc(50px);
+  /* min-width: 300px !important; */
+position: relative;
+    margin: auto;
+  margin-bottom: 0px;
+/* background: #3023ae; */
+  padding-top:30px;
+    width: calc(260px); /* min-width: 300px; */
+ 
+  /* padding-left:40px; */
+  
+  /* position: relative; */
+  /* margin-top: 20px !important; */
+  /* padding-right: 10px !important; */
+  /* margin:20px -4px 0px -4px; */
+  
+}
+
+.Admin_CreateUser_Back_Button
+{
+ 
+position: absolute !important;
+right: -7px !important; 
+/* display: block !important; */
+  width:150px !important;
+  /* min-width: 300px !important; */
+  padding: 10px 25px !important;
+  float: left !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+  border-radius: 25px !important;
+  background-color: #b4ec51 !important;
+  font-family: Lato, sans-serif !important;
+}
+
+.Admin_CreateUser_Add_Button
+{
+ 
+position: absolute !important;
+right: -7px !important; 
+/* display: block !important; */
+  width:200px !important;
+  /* min-width: 300px !important; */
+  padding: 10px 25px !important;
+  float: left !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+  border-radius: 25px !important;
+  background-color: #b4ec51 !important;
+  font-family: Lato, sans-serif !important;
+}

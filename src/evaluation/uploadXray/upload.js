@@ -19,10 +19,10 @@ class UploadBox extends Component {
 
     handleUpload = (acceptedFiles) =>
     {
-        console.log(acceptedFiles)
         if(acceptedFiles.length>0)
         {
             this.setState({uploaded:true,file:acceptedFiles[0]})
+            this.props.appendFile(acceptedFiles[0],this.props.Xray.name,this.props.Xray.id)
         }
     }
     render() { 

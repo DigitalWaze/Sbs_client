@@ -16,7 +16,7 @@ class Introduction extends Component {
     render() { 
         return ( 
         
-        <div id="Evaluaion_XrayMatching_Intro_Main_Div">
+        <div>
 
             <div  id="Evaluaion_Welcome_Text_Wrapper">
                 <div id="Evaluaion_Welcome_Heading1_Div">

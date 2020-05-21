@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 
 import './matching.css'
+import MyContext from '../../helper/themeContext';
 
 class Matching extends Component {
     constructor(props) {
@@ -11,9 +12,18 @@ class Matching extends Component {
         this.state = { Active:null , Notes:null }
     }
 
-    handleClick = (e) =>
+    componentDidMount()
     {
-        this.setState({Active:e.target.innerText})
+        if(this.context.state.joint_id=='4')
+        {
+            document.getElementById('Evaluaion_XrayMatching_Matching_Content2_Wrapper').classList.add('flipme');
+        }
+    }
+
+    handleClick = (id) =>
+    {
+        this.setState({Active:id})
+        console.log(id)
     }
     handleConfirmClick = ()=>
     {
@@ -22,7 +32,7 @@ class Matching extends Component {
     }
     render() { 
         return (  
-            <div id="Evaluaion_XrayMatching_Matching_Main_Div">
+            <div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content1_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading1_Div">
                         X-Ray Matching
@@ -32,9 +42,9 @@ class Matching extends Component {
                         Once you believe you have found a match, click "Confirm Evaluation" to move onto the next view.
                     </div>
                     {
-                        ['Normal to Sight','Moderate','Near End Stage','End Stage'].map((text,id)=>
+                        [{name:'Normal to Sight',id:'1'},{name:'Moderate',id:'2'},{name:'Near End Stage',id:'3'},{name:'End Stage',id:'4'}].map((text,id)=>
                         <div className="Evaluaion_XrayMatching_Matching_State_Button_Div" key={id}>
-                            <Button className="Evaluaion_XrayMatching_Matching_State_Button" style={{color:this.state.Active===text?'':'#fff', background:this.state.Active===text?'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained" onClick={this.handleClick}> {text} </Button>
+                            <Button className="Evaluaion_XrayMatching_Matching_State_Button" style={{color:this.state.Active===text.id?'':'#fff', background:this.state.Active===text.id?'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained" onClick={()=>this.handleClick(text.id)}> {text.name} </Button>
                         </div>
                         )
                     }
@@ -56,9 +66,19 @@ class Matching extends Component {
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
                         {this.props.ActiveType} {this.props.ActiveXray}
                     </div>
-                    {/* <div>
-                        <img src={this.props.image}/>
-                    </div> */}
+                   
+                    <div style={{width:'100%',height:'calc(50% - 30px)'}}>
+                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
+                    </div>
+                    {
+                    this.state.Active!=null?
+                        <div style={{width:'100%',height:'calc(50% - 30px)'}}>
+                            <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
+                        </div>
+                    :   <div style={{width:'100%',height:'calc(50% - 30px)'}}>
+                        </div>
+
+                    }
                      
                 </div>
 
@@ -67,5 +87,5 @@ class Matching extends Component {
         );
     }
 }
- 
+Matching.contextType=MyContext;
 export default Matching;

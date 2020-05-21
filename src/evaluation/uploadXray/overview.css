@@ -7,7 +7,7 @@
     padding:10px 0px;
     border-radius: 5px;
     border:1px solid #fff;
-    height:440px;
+    /* height:560px; */
 }
 
 .Evaluaion_UploadXray_OverView_Box1_Content1
@@ -101,4 +101,22 @@
   margin-top:10px;
 }
 
+
+.Evaluaion_UploadXray_OverView_Old_Box_Button
+{
+  position: absolute;
+  right:-230px;
+  bottom:60px;
+  display: block;
+  height:57px !important;
+  min-width: 200px !important;
+  padding: 15px 25px !important;
+  font-size: 32px !important;
+  line-height: 27px !important;
+  border-radius: 25px !important;
+  background-color: #b4ec51 !important;
+  font-family: 'Lato', sans-serif !important;
+  font-weight: bold !important;
+  text-transform: none !important;
+}
 

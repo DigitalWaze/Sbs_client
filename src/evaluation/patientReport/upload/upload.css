@@ -1,0 +1,160 @@
+#Evaluaion_UploadXray_Upload_Box1_Div
+{
+    min-width: 400px;
+    width:calc(100% - 2px);
+    max-width: 700px;
+    padding:10px 0px;
+    border-radius: 5px;
+    border:1px solid #fff;
+    height:490px;
+   
+}
+
+
+.Evaluaion_UploadXray_Upload_Box_Head
+{
+  /* width:100%;
+  line-height: 100%; */
+  /* height:100%; */
+  width:450px;
+  margin: auto;
+  background-color: hsla(0, 0%, 100%, 0.23);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 50px;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  padding: 15px;
+  margin-top:10px;
+  margin-bottom: 25px;
+  display: block;
+}
+
+
+.Evaluaion_UploadXray_Upload_Box_Line
+{
+    width:480px;
+    height:2px;
+    background-color: #fff;
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.circle-with-arrow
+{
+    width: 100px;
+    height: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 500px;
+    background-image: url('../../assets/upload.png');
+    background-position: 50% 50%;
+    background-size: 50px;
+    background-repeat: no-repeat;
+}
+
+#Evaluaion_UploadXray_Upload_Box_Complete_Div
+{
+    width: 200px;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#Evaluaion_UploadXray_Upload_Box_Complete_Text_Div
+{
+    padding: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: hsla(0, 0%, 100%, 0.11);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    vertical-align:top;
+    /* margin-bottom:10px;  */
+    margin-left:10px;
+    display: inline-block;
+
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 150px;
+}
+
+.complete-circle-with-arrow
+{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 500px;
+    background-color:  #b4ec51;
+    background-image: url('../../assets/button-tick.png');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+
+#Evaluaion_UploadXray_Upload_Box_Main
+{
+    border: 2px dashed #fff;
+    width: 400px;
+    margin: auto;
+    margin-top: 15px;
+    padding: 25px 30px 15px;
+    
+}
+
+.circle-with-arrow-tiny
+{
+    width: 50px;
+    height: 50px;
+    background-size: 25px;
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 500px;
+    background-color: hsla(0, 0%, 100%, 0.27);
+    background-image: url('../../assets/upload.png');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+#Evaluaion_UploadXray_Upload_Box_Main_Text
+{
+    margin-bottom: 15px;
+    font-size: 20px;
+    line-height: 28px;
+    color: #fff;
+}
+
+#Evaluaion_UploadXray_Upload_Next_Button_Div
+{
+  display: block;
+  margin-top: 10%;
+  position: absolute;
+  bottom:10px;
+  right:10px;
+}
+
+#Evaluaion_UploadXray_Upload_Next_Button
+{
+  display: block;
+  width:auto;
+  min-width: 200px;
+  padding: 15px 25px;
+  float: right;
+  font-size: 28px;
+  line-height: 32px;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  font-family: 'Lato', sans-serif;
+  text-transform:none;
+}
+
+
