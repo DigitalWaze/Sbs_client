@@ -36,7 +36,9 @@ class Home extends Component {
               id="Home_Button"
               variant="contained"
               onClick={() => {
-                this.context.history.push("./tutorials/welcome");
+                this.context.history.push(
+                  "./tutorials/knee-Arthiritis/welcome"
+                );
               }}
             >
               {" "}

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import MyContext from "../helper/themeContext";
+import MyContext from "../../helper/themeContext";
 import { Route, Router } from "react-router-dom";
-import Welcome from "./KneeArthirits/welcome";
-import Overview from "./KneeArthirits/Overview/overview";
-import KDAA from "./KneeArthirits/KDAA/KDAA";
-import COTK from "./KneeArthirits/COTK/COTK";
+import Welcome from "./welcome";
+import Overview from "./Overview/overview";
+import KDAA from "./KDAA/KDAA";
+import COTK from "./COTK/COTK";
 
-class Tutorials extends Component {
+class KneeArthiritis extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -33,12 +33,12 @@ class Tutorials extends Component {
         <Route
           exact
           path="/tutorials/knee-Arthiritis/compartments-of-the-knee"
-          component={COTK}
+          component={Overview}
         />
       </Router>
     );
   }
 }
 
-Tutorials.contextType = MyContext;
-export default Tutorials;
+KneeArthiritis.contextType = MyContext;
+export default KneeArthiritis;

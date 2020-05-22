@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import Button from "@material-ui/core/Button";
 
-import MyContext from "../../helper/themeContext";
+import MyContext from "../../../helper/themeContext";
 
-import Bone1Image from "../../assets/bone1_Bitmap.png";
+import Bone1Image from "../../../assets/bone1_Bitmap.png";
 
 import "./welcome.css";
 
