@@ -9,6 +9,7 @@ import VDWXR from "./KneeArthirits/VDWXR/VDWXR";
 import LATMALCOTKITX from "./KneeArthirits/LATMALCOTKITX/LATMALCOTKITX";
 import VDWXRTKC from "./KneeArthirits/VDWXRTKC/VDWXRTKC";
 import COTK2 from "./KneeArthirits/COTK2/COTK2";
+import ETMALC from "./KneeArthirits/ETMALC/ETMALC";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -58,6 +59,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/compartments-of-the-knee-2"
           component={COTK2}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/evaluating-the-medial-and-lateral-compartments-v2"
+          component={ETMALC}
         />
       </Router>
     );

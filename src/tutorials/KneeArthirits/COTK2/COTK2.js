@@ -99,7 +99,7 @@ class COTK2 extends Component {
                 // disabled={this.state.kneeState === 2 ? false : true}
                 onClick={() => {
                   this.context.history.push(
-                    "./viewing-degeneration-with-x-rays-the-kneecap-compartment"
+                    "./evaluating-the-medial-and-lateral-compartments-v2"
                   );
                 }}
               >
