@@ -42,10 +42,7 @@ class LATMALCOTKITX extends Component {
     return (
       <div id="LATMALCOTKITX_Main_Div">
         <div id="LATMALCOTKITX_Content_Wrapper">
-          <div
-            id="LATMALCOTKITX_Center_Wrapper"
-            style={{ border: "2px solid red" }}
-          >
+          <div id="LATMALCOTKITX_Center_Wrapper">
             <div id="LATMALCOTKITX_Text_wrapper">
               <div id="LATMALCOTKITX_Heading1_Div">
                 Learn about the Medial and Lateral Compartments of the Knee in
@@ -124,7 +121,7 @@ class LATMALCOTKITX extends Component {
               <Button
                 id="LATMALCOTKITX_Next_Button"
                 variant="contained"
-                disabled={this.state.kneeState === 4 ? false : true}
+                // disabled={this.state.kneeState === 4 ? false : true}
                 onClick={() => {
                   this.context.history.push(
                     "./viewing-degeneration-with-x-rays-the-kneecap-compartment"

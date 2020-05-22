@@ -52,9 +52,7 @@ class VDWXRTKC extends Component {
                 id="VDWXRTKC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push(
-                    "./learn-about-the-medial-and-lateral-compartments-of-the-knee"
-                  );
+                  this.context.history.push("./compartments-of-the-knee-2");
                 }}
               >
                 {" "}
