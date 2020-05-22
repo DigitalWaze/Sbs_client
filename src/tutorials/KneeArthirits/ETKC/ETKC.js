@@ -49,7 +49,7 @@ class ETKC extends Component {
                 id="ETKC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./compartments-of-the-knee-2");
+                  this.context.history.push("./lateral-view");
                 }}
               >
                 {" "}

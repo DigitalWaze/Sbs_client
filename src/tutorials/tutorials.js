@@ -11,6 +11,7 @@ import VDWXRTKC from "./KneeArthirits/VDWXRTKC/VDWXRTKC";
 import COTK2 from "./KneeArthirits/COTK2/COTK2";
 import ETMALC from "./KneeArthirits/ETMALC/ETMALC";
 import ETKC from "./KneeArthirits/ETKC/ETKC";
+import LV from "./KneeArthirits/LV/LV";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -70,6 +71,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/evaluating-the-kneecap-compartment"
           component={ETKC}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/lateral-view"
+          component={LV}
         />
       </Router>
     );

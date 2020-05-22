@@ -1,4 +1,4 @@
-#ETKC_Main_Div {
+#LV_Main_Div {
   background-image: linear-gradient(
     119deg,
     #3023ae,
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-#ETKC_Content_Wrapper {
+#LV_Content_Wrapper {
   margin: auto;
   min-width: 400px;
   max-width: 1050px;
@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-#ETKC_Heading1_Div {
+#LV_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
   font-size: 40px;
@@ -33,34 +33,35 @@
   font-weight: bold;
 }
 
-#ETKC_Text_Div,
-#ETKC_Image_Heading {
+#LV_Text_Div,
+#LV_Image_Heading {
   font-size: 25px;
   font-family: Lato, sans-serif;
   color: #fff;
 }
 
-#ETKC_Image_Wrapper {
+#LV_Image_Wrapper {
   margin-top: 15px;
   border: 3px solid white;
   padding: 10px;
 }
 
-#ETKC_Image_Heading {
+#LV_Image_Heading {
   color: #fff;
   text-align: center;
   display: inline-block;
-  width: 50%;
+  width: 100%;
   vertical-align: middle;
 }
-#ETKC_Image_container {
+#LV_Image_container {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
-#ETKC_Inner_Image_Container {
+#LV_Inner_Image_Container {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -68,40 +69,41 @@
   justify-content: center;
   padding: 5px;
   margin: 5px;
+  width: 40%;
 }
 
-#ETKC_Inner_Image_Container img {
+#LV_Inner_Image_Container img {
   width: 100%;
 }
-#ETKC_Next_Button_Div {
+#LV_Next_Button_Div {
   display: block;
   margin-top: 0px;
 }
 
 @media only screen and (min-height: 700px) {
-  #ETKC_Next_Button_Div {
+  #LV_Next_Button_Div {
     margin-top: 60px;
   }
 }
 
 @media only screen and (min-height: 750px) {
-  #ETKC_Next_Button_Div {
+  #LV_Next_Button_Div {
     margin-top: 80px;
   }
 }
 
 @media only screen and (min-height: 800px) {
-  #ETKC_Next_Button_Div {
+  #LV_Next_Button_Div {
     margin-top: 30px;
   }
 }
 @media only screen and (max-width: 935px) {
-  #ETKC_Content_Wrapper {
+  #LV_Content_Wrapper {
     padding: 1rem 2rem 0rem 2rem;
   }
 }
 
-#ETKC_Next_Button {
+#LV_Next_Button {
   display: block;
   width: auto;
   min-width: 300px;
