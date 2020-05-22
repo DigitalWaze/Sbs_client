@@ -54,7 +54,9 @@ class ETMALC extends Component {
                 id="ETMALC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./compartments-of-the-knee-2");
+                  this.context.history.push(
+                    "./evaluating-the-kneecap-compartment"
+                  );
                 }}
               >
                 {" "}
