@@ -43,7 +43,7 @@ class LV extends Component {
                 id="LV_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./compartments-of-the-knee-2");
+                  this.context.history.push("./obtaining-the-correct-x-rays");
                 }}
               >
                 {" "}

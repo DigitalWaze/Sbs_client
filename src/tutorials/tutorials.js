@@ -12,6 +12,7 @@ import COTK2 from "./KneeArthirits/COTK2/COTK2";
 import ETMALC from "./KneeArthirits/ETMALC/ETMALC";
 import ETKC from "./KneeArthirits/ETKC/ETKC";
 import LV from "./KneeArthirits/LV/LV";
+import OTCXR from "./KneeArthirits/OTCXR/OTCXR";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -76,6 +77,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/lateral-view"
           component={LV}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/obtaining-the-correct-x-rays"
+          component={OTCXR}
         />
       </Router>
     );
