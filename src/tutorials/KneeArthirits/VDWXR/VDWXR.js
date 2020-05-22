@@ -18,7 +18,7 @@ class VDWXR extends Component {
     return (
       <div id="KDAA_Main_Div">
         <div id="KDAA_Content_Wrapper">
-          <div id="abc">
+          <div id="KDAA_Center_Wrapper">
             <div id="KDAA_Text_wrapper">
               <div id="KDAA_Heading1_Div">
                 Viewing Degeneration with X-rays:
@@ -57,7 +57,9 @@ class VDWXR extends Component {
                 id="KDAA_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./compartments-of-the-knee");
+                  this.context.history.push(
+                    "./learn-about-the-medial-and-lateral-compartments-of-the-knee"
+                  );
                 }}
               >
                 {" "}

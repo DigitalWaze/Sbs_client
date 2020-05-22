@@ -6,6 +6,7 @@ import Overview from "./KneeArthirits/Overview/overview";
 import KDAA from "./KneeArthirits/KDAA/KDAA";
 import COTK from "./KneeArthirits/COTK/COTK";
 import VDWXR from "./KneeArthirits/VDWXR/VDWXR";
+import LATMALCOTKITX from "./KneeArthirits/LATMALCOTKITX/LATMALCOTKITX";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -40,6 +41,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/viewing-degeneration-with-x-rays-copy"
           component={VDWXR}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/learn-about-the-medial-and-lateral-compartments-of-the-knee"
+          component={LATMALCOTKITX}
         />
       </Router>
     );
