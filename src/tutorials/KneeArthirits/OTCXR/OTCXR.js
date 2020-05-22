@@ -68,7 +68,9 @@ class OTCXR extends Component {
                 id="OTCXR_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./obtaining-the-correct-x-rays");
+                  this.context.history.push(
+                    "./summary-of-x-ray-views-necessary-based-on-patients-symptoms"
+                  );
                 }}
               >
                 {" "}

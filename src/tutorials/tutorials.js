@@ -13,6 +13,7 @@ import ETMALC from "./KneeArthirits/ETMALC/ETMALC";
 import ETKC from "./KneeArthirits/ETKC/ETKC";
 import LV from "./KneeArthirits/LV/LV";
 import OTCXR from "./KneeArthirits/OTCXR/OTCXR";
+import SOXRVNBOPS from "./KneeArthirits/SOXRVNBOPS/SOXRVNBOPS";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -82,6 +83,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/obtaining-the-correct-x-rays"
           component={OTCXR}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/summary-of-x-ray-views-necessary-based-on-patients-symptoms"
+          component={SOXRVNBOPS}
         />
       </Router>
     );
