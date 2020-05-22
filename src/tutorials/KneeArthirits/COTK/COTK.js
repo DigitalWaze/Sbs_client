@@ -37,7 +37,9 @@ class COTK extends Component {
               id="COTK_Next_Button"
               variant="contained"
               onClick={() => {
-                this.context.history.push("./overview");
+                this.context.history.push(
+                  "./viewing-degeneration-with-x-rays-copy"
+                );
               }}
             >
               {" "}

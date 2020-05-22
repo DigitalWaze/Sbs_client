@@ -5,6 +5,7 @@ import Welcome from "./KneeArthirits/welcome";
 import Overview from "./KneeArthirits/Overview/overview";
 import KDAA from "./KneeArthirits/KDAA/KDAA";
 import COTK from "./KneeArthirits/COTK/COTK";
+import VDWXR from "./KneeArthirits/VDWXR/VDWXR";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -34,6 +35,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/compartments-of-the-knee"
           component={COTK}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/viewing-degeneration-with-x-rays-copy"
+          component={VDWXR}
         />
       </Router>
     );
