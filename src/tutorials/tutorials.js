@@ -16,6 +16,7 @@ import OTCXR from "./KneeArthirits/OTCXR/OTCXR";
 import SOXRVNBOPS from "./KneeArthirits/SOXRVNBOPS/SOXRVNBOPS";
 import WXRWYR from "./KneeArthirits/WXRWYR/WXRWYR";
 import EKDWXR from "./KneeArthirits/EKDWXR/EKDWXR";
+import HTIJSNAD from "./KneeArthirits/HTIJSNAD/HTIJSNAD";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -100,6 +101,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/evaluating-knee-degeneration-with-x-rays"
           component={EKDWXR}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/how-to-identify-joint-space-narrowing-and-degeneration"
+          component={HTIJSNAD}
         />
       </Router>
     );
