@@ -4,12 +4,6 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../helper/themeContext";
 
-import Img1 from "../../assets/SOXRVNBOPS1.png";
-import Img2 from "../../assets/SOXRVNBOPS2.png";
-import Img3 from "../../assets/SOXRVNBOPS3.png";
-import Img4 from "../../assets/SOXRVNBOPS4.png";
-import Img5 from "../../assets/SOXRVNBOPS5.png";
-import Img6 from "../../assets/SOXRVNBOPS6.png";
 import tick from "../../assets/SOXRVNBOPS7.png";
 import nulls from "../../assets/SOXRVNBOPS8.png";
 
@@ -212,9 +206,7 @@ class SOXRVNBOPS extends Component {
                 id="SOXRVNBOPS_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push(
-                    "./summary-of-x-ray-views-necessary-based-on-patients-symptoms"
-                  );
+                  this.context.history.push("./what-x-rays-would-you-request");
                 }}
               >
                 {" "}

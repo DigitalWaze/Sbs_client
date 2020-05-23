@@ -14,6 +14,8 @@ import ETKC from "./KneeArthirits/ETKC/ETKC";
 import LV from "./KneeArthirits/LV/LV";
 import OTCXR from "./KneeArthirits/OTCXR/OTCXR";
 import SOXRVNBOPS from "./KneeArthirits/SOXRVNBOPS/SOXRVNBOPS";
+import WXRWYR from "./KneeArthirits/WXRWYR/WXRWYR";
+import EKDWXR from "./KneeArthirits/EKDWXR/EKDWXR";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -88,6 +90,16 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/summary-of-x-ray-views-necessary-based-on-patients-symptoms"
           component={SOXRVNBOPS}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/what-x-rays-would-you-request"
+          component={WXRWYR}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/evaluating-knee-degeneration-with-x-rays"
+          component={EKDWXR}
         />
       </Router>
     );
