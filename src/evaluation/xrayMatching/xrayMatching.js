@@ -21,6 +21,8 @@ import PostData1 from '../../Fetch/postData5';
 
 import GetImage from '../report/getImage';
 import html2canvas from 'html2canvas'
+import ReportPage1 from '../report/reportPage1';
+import GetImage1 from '../report/getImage1';
 
 
 class XrayMatching extends Component {
@@ -44,7 +46,7 @@ class XrayMatching extends Component {
         {
             let req={
                 visitor_id:this.context.state.report_id,
-                joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id==this.context.state.joint_id.toString())[0].joint_hurt_id
+                joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
             }
             console.log(req);
             console.log(this.context.state.Evaluations,'Evaluations')
@@ -73,13 +75,38 @@ class XrayMatching extends Component {
         var storage = firebase.storage();
         let upload=0;
 
+
+        let newelement = document.createElement("div");
+        var storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page1");
+        newelement=document.getElementsByClassName("Report-Page1")[0];
+        
+        await html2canvas(newelement).then(function(canvas) {
+            console.log( canvas.toDataURL("image/png"));
+            storageRef.putString(canvas.toDataURL("image/png"), 'data_url').then(function(snapshot) {
+                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    console.log('File available at ', downloadURL);
+                    upload=upload+1;
+                    global.handleAllCheckUpload(upload,downloadURL,1)
+                });
+              
+          });
+          return;
+      });
+
+
+
+
         // newelement=document.getElementById("GetImage").cloneNode(true);
         for(let i=0;i<this.context.state.Eval.length;i++)
         {
             let newelement = document.createElement("div");
             var storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page"+(i+2));
-            newelement=document.getElementsByClassName("GetImage")[i];
-            console.log(newelement)
+            if(i==0)
+            {
+                newelement=document.getElementsByClassName("GetImage")[0];
+            }
+            else newelement=document.getElementsByClassName("GetImage1")[i-1];
+            
             await html2canvas(newelement).then(function(canvas) {
                 console.log( canvas.toDataURL("image/png"));
                 storageRef.putString(canvas.toDataURL("image/png"), 'data_url').then(function(snapshot) {
@@ -103,7 +130,7 @@ class XrayMatching extends Component {
         req.push({visitor_id:this.context.state.report_id,imageURL:url,page_no:pageNumber})
         console.log(uploaded)
         console.log(this.context.state.Eval.length)
-        if(uploaded==this.context.state.Eval.length)
+        if(uploaded==this.context.state.Eval.length+1)
         {
             PostData1(this.context.baseUrl+'/api/v1/report/image',201,req,this.context.state.token,this.setMeThree)
         }
@@ -129,7 +156,7 @@ class XrayMatching extends Component {
     handleEvalChange = (state,notes) =>
     {
         let Evaluations=this.state.Evaluations;
-        let Evaluation=Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0];
+        let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
         let type=Evaluation.Xrays.find(type => type.name===this.state.ActiveType)
         let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
         Xray.state=state;
@@ -147,7 +174,7 @@ class XrayMatching extends Component {
     handleOverviewClick = (ActiveType,ActiveXray) =>
     {
         let Evaluations=this.state.Evaluations;
-        let Evaluation=Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0];
+        let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
         let ActiveTypeIndex=Evaluation.Xrays.findIndex(ev=>ev.name==ActiveType);
         let ActiveXrayIndex=Evaluation.Xrays[ActiveTypeIndex].xrays.findIndex(eva=>eva.name==ActiveXray);
         console.log(ActiveTypeIndex,'ActiveTypeIndex')
@@ -157,7 +184,7 @@ class XrayMatching extends Component {
     handleMatchingClick = (state,notes) =>
     {
         let Evaluations=this.state.Evaluations;
-        let Evaluation=Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0];
+        let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
         let type=Evaluation.Xrays.find(type => type.name===this.state.ActiveType)
         let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
         let XrayIndex=type.xrays.findIndex(xray => xray.name===this.state.ActiveXray)
@@ -182,7 +209,7 @@ class XrayMatching extends Component {
             else 
             {
                 let req=[];
-                let Evaluation=this.state.Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0];
+                let Evaluation=this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
                 Evaluation.Xrays.forEach(element => {
 
                     element.xrays.forEach(ele => {
@@ -215,11 +242,11 @@ class XrayMatching extends Component {
             let priority_id=null;
             if(this.context.state.Eval.length>1)
             {
-                this.context.state.Eval.filter(eva=>eva.joint_id==this.context.state.joint_id.toString())[0].isEvaluated=true;
-                let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+                this.context.state.Eval.filter(eva=>eva.joint_id.toString()==this.context.state.joint_id.toString())[0].isEvaluated=true;
+                let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
                 if(joint_idall.length>0)
                 {joint_id=joint_idall[0].joint_id;}
-                let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+                let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
                 if(priority_idall.length>0)
                 {priority_id=priority_idall[0].priority_id;}
             }
@@ -241,7 +268,7 @@ class XrayMatching extends Component {
                 
                 let req={
                     visitor_id:this.context.state.report_id,
-                    joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id==joint_id.toString())[0].joint_hurt_id
+                    joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==joint_id.toString())[0].joint_hurt_id
                 }
                 this.setState({Next:false,Matching:null,ActivePage:'EvalName',ActiveType:null,ActiveXray:null})
                 
@@ -266,27 +293,35 @@ class XrayMatching extends Component {
             
             
                 :   <div>
-                    {console.log(this.state.Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0])}
+                    {console.log(this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0])}
                         {   
                             this.state.ActivePage==='Intro' && <Introduction handleClick={this.handleIntroClick}/>
                         }
                         {
-                            this.state.ActivePage==='EvalName' && <EvalName eval={this.state.Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0]} handleClick={this.handleEvalClick}/>
+                            this.state.ActivePage==='EvalName' && <EvalName eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={this.handleEvalClick}/>
                         }
                         {
-                            this.state.ActivePage==='Overview' && <Overview Next={this.state.Next} Evaluation={this.state.Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0]} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
+                            this.state.ActivePage==='Overview' && <Overview Next={this.state.Next} Evaluation={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
                         }
                         {
-                            this.state.ActivePage==='Matching' && <Matching   eval={this.state.Evaluations.filter(Eval => Eval.joint_id==this.context.state.joint_id.toString())[0]} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>
+                            this.state.ActivePage==='Matching' && <Matching   eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>
                         }
                     </div>
                 }
                
                {
-                   this.context.state.Eval.map((eva,id)=>
-                        <GetImage className={"GetImage"} EvaluationId={eva.joint_id.toString()}/>
+                   this.context.state.Eval.map((eva,id)=>{
+                    if(id==0)
+                    { console.log('here')
+                        return <GetImage EvaluationId={eva.joint_id.toString()}/>;
+                    }
+                    return <GetImage1 EvaluationId={eva.joint_id.toString()}/>
+
+                   }
+                       
                    )
                }
+               <ReportPage1/>
             </div>
         );
     }

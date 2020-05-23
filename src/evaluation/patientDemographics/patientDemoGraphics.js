@@ -201,7 +201,7 @@ class PatientDemoGraphics extends Component {
         if(date_num.length<3 || date_num[0].toString().length<1 || date_num[1].toString().length<1 || date_num[2].toString().length!==4)
         {
             console.log(date_num)
-            this.setState({date_error:'Please Correct Format As 99 / 99 / 9999',error:'Date Format Error, Correct Format As 99 / 99 / 9999'});
+            this.setState({date_error:'Please Correct Format As 99 - 99 - 9999',error:'Date Format Error, Correct Format As 99 / 99 / 9999'});
             return false;
         }
         

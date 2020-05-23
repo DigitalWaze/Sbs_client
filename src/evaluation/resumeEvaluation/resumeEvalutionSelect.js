@@ -50,6 +50,14 @@ class ResumeEvaluationSelect extends Component {
             let patient = {};
             patient["name"]=response.patient[0].name;
             patient["birth_date"]=response.patient[0].birthday;
+            
+            let birthday=response.patient[0].birthday.toString().match(/\d+/g).map(Number);
+            let birthday_year=birthday[0];
+            let birthday_month=birthday[1];
+            let birthday_date=birthday[2];
+
+            patient["birth_date"]=birthday_date+'/'+birthday_month+'/'+birthday_year;
+
             patient["age"]=response.patient[0].age;
             patient["gender"]=response.patient[0].gender;
             patient["height"]=response.patient[0].height;
@@ -59,13 +67,29 @@ class ResumeEvaluationSelect extends Component {
             patient["home_address"]=response.patient[0].homeaddress;
             patient["email"]=response.patient[0].email;
             patient["marital_status"]=response.patient[0].maritalstatus;
-            patient["date"]=response.patient[0].date; 
+
+            let mydate=response.patient[0].date.toString().match(/\d+/g).map(Number);
+            let mydate_year=mydate[0];
+            let mydate_month=mydate[1];
+            let mydate_date=mydate[2];
+
+            if(mydate_month.toString().length==1)
+            {
+                mydate_month='0'+mydate_month;
+            }
+            
+            if(mydate_date.toString().length==1)
+            {
+                mydate_date='0'+mydate_date;
+            }
+            patient["date"]=mydate_date+'-'+mydate_month+'-'+mydate_year;
 
             console.log(patient)
-            let temp_report_id=this.context.state.temp_report_id;
+            let temp_report_id=response.incomplete_vistor_id;
             console.log(temp_report_id)
-            let temp_patient_id=this.context.state.temp_patient_id;
+            let temp_patient_id=response.patient[0].id;
             console.log(temp_patient_id)
+            
             let Eval=[];
             let active=0;
             let activePriority=0;

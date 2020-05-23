@@ -69,6 +69,11 @@
     font-family: 'Lato',sans-serif;
 }
 
+.bold
+{
+    font-weight: bold;
+}
+
 
 .GetImage_Report_Box_Text4
 {   
@@ -188,4 +193,29 @@
     color: white;
     font-size: 40px;
     padding-left:5px;
+    font-weight: bold;
+}
+
+.report-image-patient-info-div
+{
+    display: block;
+    height:300px
+}
+
+.report-image-patient-info-box
+{
+    display:block;
+    margin:10px;
+    
+}
+
+.report-image-patient-info-left
+{
+   float: left;
+   max-width: 300px;
+}
+
+.report-image-patient-info-right
+{
+   float: right;
 }

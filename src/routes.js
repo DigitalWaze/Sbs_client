@@ -252,23 +252,24 @@ class Routes extends Component {
     // {
     //     this.setState({[key]:value})
     // }
-    render() { 
+    render() {  
         return (
-            this.state.loading==false? 
+            this.state.loading==false?  
             <Router history={history}> 
-
+ 
                 <MyContext.Provider value={{evalDone:this.evalDone,setCookie:this.setCookie,getCookie:this.getCookie,logout:this.Logout, updateSession:this.updateSession,multipleUpdateValueWithHistory:this.multipleUpdateValueWithHistory,multipleUpdateValue:this.multipleUpdateValue,baseUrl:baseUrlH,state: this.state,updateValue: this.updateValue , history: history}}>   
                     {this.state.loggedIn==true?<Route path="/" component={Drawer} />:null}  {/* WIDTH 70 PX */}
 
 
-                    <Route path="/login" component={Login} />
+                    <Route exact path="/login" component={Login} />
                     
                     <Route exact path="/" component={Home} /> 
-                    <Route path="/home" component={Home} /> {/* DEFAULT */}
+                    <Route path="/home" component={Home} />   {/* DEFAULT */}
                     <Route path="/start-over" component={StartOver} />
 
                     <Route path="/evaluation" component={Evaluation} /> {/* CHECKER */} {/* ROUTER */}
-                    <Route path="/admin/create-user" component={CreateUser} /> {/* CHECKER */} {/* ROUTER */}
+                    <Route path="/admin/create-user" component={CreateUser} />
+                     
 
 
                     

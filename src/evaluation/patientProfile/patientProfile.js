@@ -108,7 +108,7 @@ class PatientProfile extends Component {
 
                     <div  id="Evaluaion_PatientProfile_Content2_Wrapper">
 
-                        {this.context.state.joint_id==='3'?
+                        {this.context.state.joint_id=='3'?
                             <div className="Evaluaion_PatientProfile_Image_Left_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down" >
@@ -130,7 +130,7 @@ class PatientProfile extends Component {
                         
 
                         <div id="Evaluaion_PatientProfile_Image_Bone_Div"> <img src={this.context.state.joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_PatientProfile_Image_Bone" /></div>
-                        {this.context.state.joint_id==='4'?
+                        {this.context.state.joint_id=='4'?
                             <div className="Evaluaion_PatientProfile_Image_Right_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down" >

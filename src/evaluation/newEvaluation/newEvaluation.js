@@ -13,19 +13,25 @@ import RightKneeIcon from '../../assets/right-knee-icon.png'
 import LeftKneeIcon from '../../assets/left-knee-icon.png'
 import BoneImage from '../../assets/bone2_Bitmap.png'
 
+import RightKneeIconRed from '../../assets/right-knee-icon-red.png'
+
+
+
 import MyContext from '../../helper/themeContext';
 
 import './newEvaluation.css'
 import PostData from '../../Fetch/postData1';
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
 
+let MenuItems2 = [{name:'Priority: No Pain', id:0},{name:'Priority: 1', id:1},{name:'Priority: 2', id:2},{name:'Priority: 3', id:3},{name:'Priority: 4', id:4}]
+let MenuItems4 = [{name:'Priority: No Pain', id:0},{name:'Priority: 1', id:1},{name:'Priority: 2', id:2},{name:'Priority: 3', id:3},{name:'Priority: 4', id:4}]
 
-const MenuItems = [{name:'Priority: No Pain', id:'0'},{name:'Priority: 1', id:'1'},{name:'Priority: 2', id:'2'},{name:'Priority: 3', id:'3'},{name:'Priority: 4', id:'4'}]
+let MenuItems = [{name:'Priority: No Pain', id:0},{name:'Priority: 1', id:1},{name:'Priority: 2', id:2},{name:'Priority: 3', id:3},{name:'Priority: 4', id:4}]
 
 class NewEvaluation extends Component {
     constructor(props) {
         super(props);
-        this.state = {  priority1:0,priority2:0,priority3:0,priority4:0}
+        this.state = {  priority1:0,priority2:0,priority3:0,priority4:0 }
     }
 
     componentDidMount()
@@ -150,6 +156,34 @@ class NewEvaluation extends Component {
     }
     handleChange= (e) =>
     {
+       
+        
+
+        if(e.target.name=='priority2')
+        {
+            console.log('here')
+            if(e.target.value!=0)
+            {
+                MenuItems4=MenuItems4.filter(option => option.id!=e.target.value.toString())
+            }
+            if(this.state.priority2!=0 && this.state.priority2!=e.target.value)
+            {
+                MenuItems4.push(MenuItems[this.state.priority2])
+            }
+        }
+
+        if(e.target.name=='priority4')
+        {
+            if(e.target.value!=0)
+            {
+                MenuItems2=MenuItems2.filter(option => option.id!=e.target.value.toString())
+            }
+            if(this.state.priority4!=0 && this.state.priority4!=e.target.value)
+            {
+                MenuItems2.push(MenuItems[this.state.priority4])
+            }
+        }
+        
         this.setState({[e.target.name]:e.target.value})
     }
     
@@ -249,7 +283,7 @@ class NewEvaluation extends Component {
                                             
                                         }}
                                         >
-                                            {MenuItems.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
+                                            {MenuItems2.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
                                         </Select>
                                     </FormControl>
         
@@ -258,7 +292,7 @@ class NewEvaluation extends Component {
                                         <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                             RIGHT KNEE
                                         </div>
-                                    <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                    <img style={{width:'40px',marginBottom:'20px'}} src={this.state.priority2!=0?RightKneeIconRed:RightKneeIcon}/>
                                 </div>
                                 
                             </div>
@@ -276,7 +310,7 @@ class NewEvaluation extends Component {
                                         <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                             LEFT HIP
                                         </div>
-                                    <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                    <img style={{width:'40px',marginBottom:'20px'}} src={LeftHipIcon}/>
                                 </div>
                                 <div className="Evaluaion_NewEvaluation_Image_Right_Inner_Up_Content1">
                                     <FormControl  variant="outlined" style={{color:'white'}}>
@@ -321,7 +355,7 @@ class NewEvaluation extends Component {
                                         <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                             LEFT KNEE
                                         </div>
-                                    <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                    <img style={{width:'40px',marginBottom:'20px'}} src={LeftKneeIcon}/>
                                 </div>
                                 <div className="Evaluaion_NewEvaluation_Image_Right_Inner_Down_Content1">
                                     <FormControl  variant="outlined" style={{color:'white'}}>
@@ -352,7 +386,7 @@ class NewEvaluation extends Component {
                                             
                                         }}
                                         >
-                                            {MenuItems.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
+                                            {MenuItems4.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
                                         </Select>
                                     </FormControl>
         
