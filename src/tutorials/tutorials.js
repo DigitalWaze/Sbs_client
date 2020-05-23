@@ -17,6 +17,7 @@ import SOXRVNBOPS from "./KneeArthirits/SOXRVNBOPS/SOXRVNBOPS";
 import WXRWYR from "./KneeArthirits/WXRWYR/WXRWYR";
 import EKDWXR from "./KneeArthirits/EKDWXR/EKDWXR";
 import HTIJSNAD from "./KneeArthirits/HTIJSNAD/HTIJSNAD";
+import WDTJSSAEFTMALC from "./KneeArthirits/WDTJSSAEFTMALC/WDTJSSAEFTMALC";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -106,6 +107,11 @@ class Tutorials extends Component {
           exact
           path="/tutorials/knee-Arthiritis/how-to-identify-joint-space-narrowing-and-degeneration"
           component={HTIJSNAD}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments"
+          component={WDTJSSAEFTMALC}
         />
       </Router>
     );

@@ -56,7 +56,7 @@ class HTIJSNAD extends Component {
                 variant="contained"
                 onClick={() => {
                   this.context.history.push(
-                    "./how-to-identify-joint-space-narrowing-and-degeneration"
+                    "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments"
                   );
                 }}
               >
