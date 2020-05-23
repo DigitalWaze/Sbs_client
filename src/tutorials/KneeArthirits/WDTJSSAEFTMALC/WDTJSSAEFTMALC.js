@@ -43,7 +43,7 @@ class WDTJSSAEFTMALC extends Component {
                 variant="contained"
                 onClick={() => {
                   this.context.history.push(
-                    "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments"
+                    "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments-2"
                   );
                 }}
               >

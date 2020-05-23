@@ -18,6 +18,17 @@ import WXRWYR from "./KneeArthirits/WXRWYR/WXRWYR";
 import EKDWXR from "./KneeArthirits/EKDWXR/EKDWXR";
 import HTIJSNAD from "./KneeArthirits/HTIJSNAD/HTIJSNAD";
 import WDTJSSAEFTMALC from "./KneeArthirits/WDTJSSAEFTMALC/WDTJSSAEFTMALC";
+import WDTJSSAEFTMALC2 from "./KneeArthirits/WDTJSSAEFTMALC2/WDTJSSAEFTMALC2";
+import LOJSND from "./KneeArthirits/LOJSND/LOJSND";
+// import JSNMC from "./KneeArthirits/JSNMC/JSNMC";
+import WITJSFTKC from "./KneeArthirits/WITJSFTKC/WITJSFTKC";
+import YMLATJSONBSOTK from "./KneeArthirits/YMLATJSONBSOTK/YMLATJSONBSOTK";
+import XRMATTDLOD from "./KneeArthirits/XRMATTDLOD/XRMATTDLOD";
+import XRMALOD from "./KneeArthirits/XRMALOD/XRMALOD";
+import Congrats from "./KneeArthirits/Congrats/Congrats";
+import SBSWelcome from "./SBS/SBSWelcome/SBSWelcome";
+import SBSVideo from "./SBS/SBSVideo/SBSVideo";
+import SBSVideo2 from "./SBS/SBSVideo2/SBSVideo2";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -113,6 +124,52 @@ class Tutorials extends Component {
           path="/tutorials/knee-Arthiritis/where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments"
           component={WDTJSSAEFTMALC}
         />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments-2"
+          component={WDTJSSAEFTMALC2}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/levels-of-joint-space-narrowing-degeneration"
+          component={LOJSND}
+        />
+        {/* <Route
+          exact
+          path="/tutorials/knee-Arthiritis/joint-space-narrowing-medial-compartment"
+          component={JSNMC}
+        /> */}
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/where-is-the-joint-space-for-the-kneecap-compartment"
+          component={WITJSFTKC}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/you-must-look-at-the-joint-space-on-both-sides-of-the-kneecap"
+          component={YMLATJSONBSOTK}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/x-ray-matching-a-tool-to-determine-levels-of-degeneration"
+          component={XRMATTDLOD}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/x-ray-matching-and-levels-of-degeneration"
+          component={XRMALOD}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/congrats"
+          component={Congrats}
+        />
+
+        {/* WHAT IS SBS ROUTES STARTS HERE */}
+
+        <Route exact path="/tutorials/sbs/welcome" component={SBSWelcome} />
+        <Route exact path="/tutorials/sbs/video" component={SBSVideo} />
+        <Route exact path="/tutorials/sbs/video2" component={SBSVideo2} />
       </Router>
     );
   }

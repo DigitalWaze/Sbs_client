@@ -25,7 +25,13 @@ class Home extends Component {
           </div>
 
           <div className="Home_Button_Div">
-            <Button id="Home_Button" variant="contained" onClick={() => {}}>
+            <Button
+              id="Home_Button"
+              variant="contained"
+              onClick={() => {
+                this.context.history.push("./tutorials/sbs/welcome");
+              }}
+            >
               {" "}
               What is Step by Step?{" "}
             </Button>
@@ -84,7 +90,9 @@ class Home extends Component {
               <Button
                 id="Home_Button_One"
                 variant="contained"
-                onClick={() => {}}
+                onClick={() => {
+                  this.context.history.push("/learn-more");
+                }}
               >
                 {" "}
                 Learn more{" "}

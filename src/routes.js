@@ -5,6 +5,7 @@ import MyContext from "./helper/themeContext";
 import Evaluation from "./evaluation/evaluation";
 import Drawer from "./general/drawer/drawer";
 import Tutorials from "./tutorials/tutorials";
+import LearnMore from "./tutorials/LearnMore/LearnMore";
 
 import Bone1Image from "./assets/bone3_Bitmap.png";
 import MFV from "./assets/medial-flexion.png";
@@ -552,6 +553,7 @@ class Routes extends Component {
           <Route path="/home" component={Home} /> {/* DEFAULT */}
           <Route path="/start-over" component={StartOver} />
           <Route path="/tutorials" component={Tutorials} />
+          <Route path="/Learn-more" component={LearnMore} />
           <Route
             path="/evaluation"
             component={Evaluation}

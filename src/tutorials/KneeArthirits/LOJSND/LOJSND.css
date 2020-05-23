@@ -1,0 +1,122 @@
+#LOJSND_Main_Div {
+  background-image: linear-gradient(
+    119deg,
+    #3023ae,
+    #53a0fd 47%,
+    #6eb6cc 81%,
+    #b4ec51
+  );
+  min-height: 80vh;
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+#LOJSND_Content_Wrapper {
+  margin: auto;
+  min-width: 700px;
+  max-width: 1050px;
+  height: 100vh;
+  padding: 1rem 0rem 1rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#LOJSND_Heading1_Div {
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+#LOJSND_Text_Div,
+#LOJSND_Inner_Text_Container,
+#LOJSND_Inner_Image_text {
+  font-size: 22px;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+#LOJSND_Inner_Text_Container {
+  text-align: center;
+}
+
+#LOJSND_Inner_Image_text {
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  text-align: center;
+  padding: 5px;
+}
+
+#LOJSND_Inner_Image_text div {
+  width: 100%;
+}
+
+#LOJSND_Image_Wrapper {
+  margin-top: 15px;
+  border: 3px solid white;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* justify-content: center; */
+}
+
+#LOJSND_Inner_Image_Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+#LOJSND_Image_Wrapper img {
+  width: 100%;
+}
+
+#LOJSND_Next_Button_Div {
+  display: block;
+  margin-top: 0px;
+}
+
+@media only screen and (min-height: 700px) {
+  #LOJSND_Next_Button_Div {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (min-height: 750px) {
+  #LOJSND_Next_Button_Div {
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (min-height: 800px) {
+  #LOJSND_Next_Button_Div {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 935px) {
+  #LOJSND_Content_Wrapper {
+    padding: 2rem 0rem 0rem 0rem;
+    max-width: 650px;
+  }
+}
+
+#LOJSND_Next_Button {
+  display: block;
+  width: auto;
+  min-width: 300px;
+  padding: 15px 25px;
+  float: right;
+  font-size: 28px;
+  line-height: 32px;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  font-family: Lato, sans-serif;
+}

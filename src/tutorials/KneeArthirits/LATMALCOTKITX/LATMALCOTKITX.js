@@ -121,7 +121,7 @@ class LATMALCOTKITX extends Component {
               <Button
                 id="LATMALCOTKITX_Next_Button"
                 variant="contained"
-                // disabled={this.state.kneeState === 4 ? false : true}
+                disabled={this.state.kneeState === 4 ? false : true}
                 onClick={() => {
                   this.context.history.push(
                     "./viewing-degeneration-with-x-rays-the-kneecap-compartment"

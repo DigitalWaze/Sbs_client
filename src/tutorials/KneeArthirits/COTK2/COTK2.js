@@ -96,7 +96,7 @@ class COTK2 extends Component {
               <Button
                 id="COTK2_Next_Button"
                 variant="contained"
-                // disabled={this.state.kneeState === 2 ? false : true}
+                disabled={this.state.kneeState === 2 ? false : true}
                 onClick={() => {
                   this.context.history.push(
                     "./evaluating-the-medial-and-lateral-compartments-v2"
