@@ -392,7 +392,7 @@ class PatientDemoGraphics extends Component {
                             <span style={{display:'inline-block',width:'80px'}}>Height:</span> 
 
                             <FormControl fullWidth style={{width:'calc(100% - 100px)'}} >
-                                <InputMask mask={`9'9"`}  maskChar=" "
+                                <InputMask mask={`9'99"`}  maskChar=" "
                                     disabled={old}
                                     id="height"
                                     value={this.state.height}

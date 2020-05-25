@@ -43,7 +43,7 @@ class Home extends Component {
               variant="contained"
               onClick={() => {
                 this.context.history.push(
-                  "./tutorials/knee-Arthiritis/welcome"
+                  "/tutorials/knee-Arthiritis/welcome"
                 );
               }}
             >
@@ -51,11 +51,13 @@ class Home extends Component {
               Knee Arthritis Education{" "}
             </Button>
           </div>
-
           <div className="Home_Button_Div">
-            <Button id="Home_Button" variant="contained" onClick={() => {}}>
+            <Button id="Home_Button" variant="contained" onClick={() => {this.context.history.push(
+                  "/tutorials/matching-education/welcome"
+                );
+                }}>
               {" "}
-              X-ray Mataching Education{" "}
+              X-ray Matching Education{" "}
             </Button>
           </div>
 

@@ -5,6 +5,8 @@
     
     position: relative;
     overflow: hidden;
+    box-sizing: unset;
+
 }
 
 #Evaluaion_PatientDemoGraphics_Text_Wrapper

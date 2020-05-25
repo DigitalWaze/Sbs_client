@@ -4,6 +4,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  box-sizing: unset;
 }
 
 #Admin_CreateUser_Content1_Wrapper
@@ -54,11 +55,11 @@
 .Admin_CreateUser_Button_Div
 {
   display: block !important;
-  height:calc(25% - 30px);
+  height:calc(20% - 30px);
   /* min-width: 300px !important; */
 margin: auto;
   margin-bottom: 0px;
-  padding-top:30px;
+  padding-top:10px;
     width: calc(410px); /* min-width: 300px; */
   text-align: center;
   justify-self: center;
@@ -94,7 +95,7 @@ margin: auto;
 .Admin_Box1_Div
 {
     display: block;
-    height:calc(20% - 33px);
+    height:calc(20% - 40px);
     padding-top: 30px;
     /* height:60px;  */
 
