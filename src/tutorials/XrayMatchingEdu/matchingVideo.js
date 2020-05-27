@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 import Button from "@material-ui/core/Button";
 
-import MyContext from "../../../helper/themeContext";
+import MyContext from "../../helper/themeContext";
 
-import "./SBSVideo.css";
+import "../SBS/SBSVideo/SBSVideo.css";
 
-class SBSVideo extends Component {
+class MatchingVideo extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -21,7 +21,7 @@ class SBSVideo extends Component {
             <div id="SBSVideo_Image_Wrapper">
               <div className="sbs-video-text-wrapper">
                 <div id="SBSVideo_Heading1_Div">
-                  What is Hip & Knee Step by Step
+                  Step by Step X-ray Matching Process
                 </div>
               </div>
               <video
@@ -31,7 +31,7 @@ class SBSVideo extends Component {
                 className="sbs-video-wrapper"
               >
                 <source
-                  src="https://drive.google.com/uc?id=18dRIg0cCSDN7741mv-PjO-x7Kcs-mwqd"
+                  src="https://drive.google.com/uc?id=1GNXQgyfN6_RhpLcets9SXt6CO4zrR_9E"
                   type="video/mp4"
                 />
               </video>
@@ -41,7 +41,7 @@ class SBSVideo extends Component {
                 id="SBSVideo_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./video2");
+                  this.context.history.push("./lets-get-started");
                 }}
               >
                 {" "}
@@ -54,5 +54,5 @@ class SBSVideo extends Component {
     );
   }
 }
-SBSVideo.contextType = MyContext;
-export default SBSVideo;
+MatchingVideo.contextType = MyContext;
+export default MatchingVideo;

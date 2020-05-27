@@ -7,21 +7,26 @@
     #b4ec51
   );
   min-height: 100vh;
-  padding: 10px;
   position: relative;
   overflow: hidden;
+}
+
+.sbs-video-wrapper
+{
+  width: auto;
+  max-width: calc(100vw - 150px);
+  height: auto;
+  max-height: calc(100vh - 200px);
 }
 
 #SBSVideo_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 1050px;
   height: 100vh;
-  padding: 2rem 1rem 1rem 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
 }
 
 #SBSVideo_Heading1_Div {
@@ -34,12 +39,15 @@
 }
 
 #SBSVideo_Image_Wrapper {
-  border: 3px solid white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
   justify-content: space-around;
+  margin:auto;
   margin-top: 15px;
+  margin-bottom: 15px;
+  /* width: max-content;
+  height: max-content; */
 }
 
 #SBSVideo_Image_Container {
@@ -57,19 +65,21 @@
 #SBSVideo_Next_Button_Div {
   display: block;
   margin-top: 0px;
+  margin-right: 20px;
+
 }
 
 @media only screen and (min-height: 700px) {
   #SBSVideo_Next_Button_Div {
-    margin-top: 60px;
+    margin-top: 30px;
   }
 }
 
-@media only screen and (min-height: 750px) {
+/* @media only screen and (min-height: 750px) {
   #SBSVideo_Next_Button_Div {
-    margin-top: 80px;
+    margin-top: 30px;
   }
-}
+} */
 
 @media only screen and (min-height: 800px) {
   #SBSVideo_Next_Button_Div {
@@ -94,3 +104,18 @@
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
 }
+
+
+.sbs-video-text-wrapper 
+{
+  /* margin-left: 75px; */
+}
+
+/* @media only screen and (min-width: 1424px) {
+  .sbs-video-text-wrapper {
+    width:1270px;
+    margin: auto;
+  }
+} */
+
+
