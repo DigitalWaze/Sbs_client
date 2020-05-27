@@ -68,6 +68,16 @@ class EKDWXR extends Component {
                 id="EKDWXR_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
+              <Button
+                id="EKDWXR_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push(
                     "./how-to-identify-joint-space-narrowing-and-degeneration"
                   );

@@ -44,6 +44,16 @@ class WDTJSSAEFTMALC2 extends Component {
                 id="WDTJSSAEFTMALC2_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
+              <Button
+                id="WDTJSSAEFTMALC2_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push(
                     "./levels-of-joint-space-narrowing-degeneration"
                   );

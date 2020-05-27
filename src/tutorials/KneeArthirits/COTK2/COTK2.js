@@ -52,32 +52,32 @@ class COTK2 extends Component {
               </div>
             </div>
             <div id="COTK2_Buttons_wrapper">
-              <div id="COTK2_Pair_Buttons_wrapper">
-                <Button
-                  id="COTK2_Button"
-                  variant="contained"
-                  onClick={() => this.handleClick(1)}
-                  style={
-                    this.state.kneeState === 1 || this.state.kneeState > 1
-                      ? { display: "none" }
-                      : null
-                  }
-                >
-                  Right Kneecap <br /> Compartment
-                </Button>
-                <Button
-                  id="COTK2_Button"
-                  variant="contained"
-                  onClick={() => this.handleClick(2)}
-                  style={
-                    this.state.kneeState === 2 || this.state.kneeState > 2
-                      ? { display: "none" }
-                      : null
-                  }
-                >
-                  Left Kneecap <br /> Compartment
-                </Button>
-              </div>
+              {/* <div id="COTK2_Pair_Buttons_wrapper"> */}
+              <Button
+                id="COTK2_Button"
+                variant="contained"
+                onClick={() => this.handleClick(1)}
+                style={
+                  this.state.kneeState === 1 || this.state.kneeState > 1
+                    ? { display: "none" }
+                    : null
+                }
+              >
+                Right Kneecap <br /> Compartment
+              </Button>
+              <Button
+                id="COTK2_Button"
+                variant="contained"
+                onClick={() => this.handleClick(2)}
+                style={
+                  this.state.kneeState === 2 || this.state.kneeState > 2
+                    ? { display: "none" }
+                    : null
+                }
+              >
+                Left Kneecap <br /> Compartment
+              </Button>
+              {/* </div> */}
             </div>
             <div id="COTK2_Image_Wrapper">
               <div id="COTK2_Image_Container">
@@ -87,12 +87,17 @@ class COTK2 extends Component {
                 <img src={imageSource2} alt="COTK2" />
               </div>
             </div>
-            <div
-              id="COTK2_Next_Button_Div"
-              style={
-                this.state.kneeState === 2 ? { opacity: 1 } : { opacity: 0.5 }
-              }
-            >
+            <div id="COTK2_Next_Button_Div">
+              <Button
+                id="COTK2_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
               <Button
                 id="COTK2_Next_Button"
                 variant="contained"
@@ -102,6 +107,9 @@ class COTK2 extends Component {
                     "./evaluating-the-medial-and-lateral-compartments-v2"
                   );
                 }}
+                style={
+                  this.state.kneeState === 2 ? { opacity: 1 } : { opacity: 0.5 }
+                }
               >
                 {" "}
                 Continue{" "}

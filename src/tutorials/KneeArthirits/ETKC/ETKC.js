@@ -49,6 +49,16 @@ class ETKC extends Component {
                 id="ETKC_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
+              <Button
+                id="ETKC_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push("./lateral-view");
                 }}
               >

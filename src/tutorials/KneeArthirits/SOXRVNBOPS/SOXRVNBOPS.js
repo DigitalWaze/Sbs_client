@@ -206,6 +206,16 @@ class SOXRVNBOPS extends Component {
                 id="SOXRVNBOPS_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
+              <Button
+                id="SOXRVNBOPS_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push("./what-x-rays-would-you-request");
                 }}
               >

@@ -7,7 +7,7 @@
     #b4ec51
   );
   min-height: 100vh;
-  padding: 10px;
+  padding: 0px;
   position: relative;
   overflow: hidden;
 }
@@ -15,7 +15,7 @@
 #XRMATTDLOD_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 1050px;
+  max-width: 830px;
   height: 100vh;
   padding: 2rem 1rem 1rem 1rem;
   display: flex;
@@ -27,25 +27,30 @@
 #XRMATTDLOD_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 30px;
-  margin-bottom: 5px;
+  font-size: 26px;
+  margin-bottom: 2px;
   display: block;
   font-weight: bold;
 }
 
-#XRMATTDLOD_Text_Div {
-  font-size: 21px;
+#XRMATTDLOD_Text_Div,
+#XRMATTDLOD_Inner_Text_Container {
+  font-size: 16px;
   font-family: Lato, sans-serif;
   color: #fff;
   box-sizing: border-box;
 }
 
+#XRMATTDLOD_Inner_Text_Container {
+  text-align: center;
+}
+
 #XRMATTDLOD_Image_Wrapper {
   border: 3px solid white;
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
   margin-top: 10px;
 }
 
@@ -62,41 +67,18 @@
 }
 
 #XRMATTDLOD_Next_Button_Div {
-  display: block;
-  margin-top: 0px;
-}
-
-@media only screen and (min-height: 700px) {
-  #XRMATTDLOD_Next_Button_Div {
-    margin-top: 60px;
-  }
-}
-
-@media only screen and (min-height: 750px) {
-  #XRMATTDLOD_Next_Button_Div {
-    margin-top: 80px;
-  }
-}
-
-@media only screen and (min-height: 800px) {
-  #XRMATTDLOD_Next_Button_Div {
-    margin-top: 30px;
-  }
-}
-@media only screen and (max-width: 760px) {
-  #XRMATTDLOD_Content_Wrapper {
-    padding: 1rem 1rem 1rem 1rem;
-  }
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 #XRMATTDLOD_Next_Button {
   display: block;
   width: auto;
-  min-width: 300px;
-  padding: 15px 25px;
-  float: right;
-  font-size: 28px;
-  line-height: 32px;
+  min-width: 220px;
+  padding: 16px 6px;
+  font-size: 18px;
+  line-height: 17px;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;

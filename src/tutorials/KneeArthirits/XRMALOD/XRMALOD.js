@@ -21,16 +21,12 @@ class XRMALOD extends Component {
           <div id="XRMALOD_Center_Wrapper">
             <div id="XRMALOD_Text_wrapper">
               <div id="XRMALOD_Heading1_Div">
-                Levels of Joint Space Narrowing = Degeneration
+                X-ray Matching and Levels of Degeneration
               </div>
-
               <div id="XRMALOD_Text_Div">
-                Degeneration is not all or nothing. There are progressive levels
-                of wear: normal/slight, moderate, near end stage and end stage.
-                For a complete evaluation, examine the narrowing of all three
-                compartments of the knee and evaluate the level of degeneration
-                in each independently. Be aware that each compartment may have a
-                different level of degeneration.
+                Below is Step by Step database of comparison X-rays you will use
+                to match X-rays for a patient. Observe how the joint space
+                changes between the levels of degeneration.
               </div>
             </div>
             <div id="XRMALOD_Image_Wrapper">
@@ -41,10 +37,20 @@ class XRMALOD extends Component {
                 <img src={Img2} alt="XRMALOD1" />
               </div>
               <div id="XRMALOD_Inner_Text_Container">
-                Example of decreasing joint space in the medial compartment
+                Example of decreasing joint space in all compartment
               </div>
             </div>
             <div id="XRMALOD_Next_Button_Div">
+              <Button
+                id="XRMALOD_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
               <Button
                 id="XRMALOD_Next_Button"
                 variant="contained"

@@ -78,7 +78,8 @@
 }
 
 #Tutorials_Congrats_Next_Button_Div {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
 }
 

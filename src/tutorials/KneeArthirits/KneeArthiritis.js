@@ -4,6 +4,7 @@ import { Route, Router } from "react-router-dom";
 import Welcome from "./welcome";
 import Overview from "./Overview/overview";
 import KDAA from "./KDAA/KDAA";
+import KDAA2 from "./KDAA2/KDAA2";
 import COTK from "./COTK/COTK";
 import VDWXR from "./VDWXR/VDWXR";
 import LATMALCOTKITX from "./LATMALCOTKITX/LATMALCOTKITX";
@@ -35,12 +36,7 @@ class KneeArthiritis extends Component {
   render() {
     return (
       <Router history={this.context.history}>
-       
-       <Route
-          exact
-          path="/tutorials/knee-Arthiritis"
-          component={Welcome}
-        />
+        <Route exact path="/tutorials/knee-Arthiritis" component={Welcome} />
         <Route
           exact
           path="/tutorials/knee-Arthiritis/welcome"
@@ -53,15 +49,21 @@ class KneeArthiritis extends Component {
         />
         <Route
           exact
+          path="/tutorials/knee-Arthiritis/knee-degeneration-and-arthritis-2"
+          component={KDAA2}
+        />
+        <Route
+          exact
           path="/tutorials/knee-Arthiritis/knee-degeneration-and-arthritis"
           component={KDAA}
         />
+
         <Route
           exact
           path="/tutorials/knee-Arthiritis/compartments-of-the-knee"
           component={COTK}
         />
-         <Route
+        <Route
           exact
           path="/tutorials/knee-Arthiritis/viewing-degeneration-with-x-rays-copy"
           component={VDWXR}

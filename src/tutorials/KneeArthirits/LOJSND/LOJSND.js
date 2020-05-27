@@ -55,6 +55,16 @@ class LOJSND extends Component {
                 id="LOJSND_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
+              <Button
+                id="LOJSND_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push(
                     "./where-is-the-joint-space-for-the-kneecap-compartment"
                   );

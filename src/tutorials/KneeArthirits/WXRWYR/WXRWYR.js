@@ -178,6 +178,16 @@ class WXRWYR extends Component {
                 id="WXRWYR_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
+              <Button
+                id="WXRWYR_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push(
                     "./evaluating-knee-degeneration-with-x-rays"
                   );

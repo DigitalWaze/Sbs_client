@@ -42,7 +42,19 @@ class Overview extends Component {
               id="Tutorials_Overview_Next_Button"
               variant="contained"
               onClick={() => {
-                this.context.history.push("./knee-degeneration-and-arthritis");
+                this.context.history.goBack();
+              }}
+            >
+              {" "}
+              Back{" "}
+            </Button>
+            <Button
+              id="Tutorials_Overview_Next_Button"
+              variant="contained"
+              onClick={() => {
+                this.context.history.push(
+                  "./knee-degeneration-and-arthritis-2"
+                );
               }}
             >
               {" "}

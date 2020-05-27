@@ -17,34 +17,46 @@ class COTK extends Component {
     return (
       <div id="COTK_Main_Div">
         <div id="COTK_Content_Wrapper">
-          <div id="COTK_Text_wrapper">
-            <div id="COTK_Heading1_Div">Compartments of the Knee</div>
-            <div id="COTK_Text_Div">
-              The knee joint is divided into three compartments: Medial
-              (inside), Lateral (outside) and Kneecap. The medial and lateral
-              compartments are the main weight bearing areas between the femur
-              and the tibia. The kneecap compartment is where the kneecap rubs
-              on the femur.
+          <div id="COTK_Center_Wrapper">
+            <div id="COTK_Text_wrapper">
+              <div id="COTK_Heading1_Div">Compartments of the Knee</div>
+              <div id="COTK_Text_Div">
+                The knee joint is divided into three compartments: Medial
+                (inside), Lateral (outside) and Kneecap. The medial and lateral
+                compartments are the main weight bearing areas between the femur
+                and the tibia. The kneecap compartment is where the kneecap rubs
+                on the femur.
+              </div>
             </div>
-          </div>
-          <div id="COTK_Image_Wrapper">
-            <div id="COTK_Image_Container">
-              <img src={Img1} alt="COTK1" />
+            <div id="COTK_Image_Wrapper">
+              <div id="COTK_Image_Container">
+                <img src={Img1} alt="COTK1" />
+              </div>
             </div>
-          </div>
-          <div id="COTK_Next_Button_Div">
-            <Button
-              id="COTK_Next_Button"
-              variant="contained"
-              onClick={() => {
-                this.context.history.push(
-                  "./viewing-degeneration-with-x-rays-copy"
-                );
-              }}
-            >
-              {" "}
-              Continue{" "}
-            </Button>
+            <div id="COTK_Next_Button_Div">
+              <Button
+                id="COTK_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
+              <Button
+                id="COTK_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.push(
+                    "./viewing-degeneration-with-x-rays-copy"
+                  );
+                }}
+              >
+                {" "}
+                Continue{" "}
+              </Button>
+            </div>
           </div>
         </div>
       </div>

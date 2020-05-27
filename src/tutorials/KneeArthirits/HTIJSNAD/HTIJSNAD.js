@@ -32,7 +32,9 @@ class HTIJSNAD extends Component {
               </div>
             </div>
             <div id="HTIJSNAD_Image_Wrapper">
-              <div id="HTIJSNAD_Inner_text">Normal Joint Spaces</div>
+              <div id="HTIJSNAD_Inner_text">
+                Comparing Two Medial Compartments
+              </div>
               <div id="HTIJSNAD_Image_Pair_Wrapper">
                 <div id="HTIJSNAD_Inner_Wrapper">
                   <div id="HTIJSNAD_Inner_Image_Container">
@@ -51,6 +53,16 @@ class HTIJSNAD extends Component {
               </div>
             </div>
             <div id="HTIJSNAD_Next_Button_Div">
+              <Button
+                id="HTIJSNAD_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
               <Button
                 id="HTIJSNAD_Next_Button"
                 variant="contained"

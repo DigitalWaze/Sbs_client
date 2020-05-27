@@ -30,6 +30,16 @@ class Congrats extends Component {
               id="Tutorials_Congrats_Next_Button"
               variant="contained"
               onClick={() => {
+                this.context.history.goBack();
+              }}
+            >
+              {" "}
+              back{" "}
+            </Button>
+            <Button
+              id="Tutorials_Congrats_Next_Button"
+              variant="contained"
+              onClick={() => {
                 this.context.history.push("/");
               }}
             >

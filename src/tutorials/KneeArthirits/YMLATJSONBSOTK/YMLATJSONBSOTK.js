@@ -52,6 +52,16 @@ class YMLATJSONBSOTK extends Component {
                 id="YMLATJSONBSOTK_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
+              <Button
+                id="YMLATJSONBSOTK_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push(
                     "./x-ray-matching-a-tool-to-determine-levels-of-degeneration"
                   );

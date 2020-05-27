@@ -6,8 +6,8 @@
     #6eb6cc 81%,
     #b4ec51
   );
-  min-height: 80vh;
-  padding: 10px;
+  max-height: 100vh;
+  padding: 0px;
   position: relative;
   overflow: hidden;
 }
@@ -15,7 +15,7 @@
 #WXRWYR_Content_Wrapper {
   margin: auto;
   min-width: 400px;
-  max-width: 950px;
+  max-width: 830px;
   height: 100vh;
   padding: 1rem 0rem 1rem 0rem;
   display: flex;
@@ -27,36 +27,35 @@
 #WXRWYR_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 40px;
-  margin-bottom: 10px;
+  font-size: 26px;
   display: block;
   font-weight: bold;
 }
 
 #WXRWYR_Text_Div {
-  font-size: 25px;
+  font-size: 16px;
   font-family: Lato, sans-serif;
   color: #fff;
 }
 #WXRWYR_Image_heading {
-  font-size: 25px;
+  font-size: 17px;
   font-family: Lato, sans-serif;
   color: #fff;
   align-self: center;
   text-align: center;
-  padding: 10px 0;
+  padding: 7px 0;
 }
 
 #WXRWYR_Image_Wrapper {
   margin-top: 15px;
   border: 3px solid white;
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   flex-direction: row;
 }
 
 #WXRWYR_Images_col {
-  width: 33.33%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -106,11 +105,11 @@
   align-items: center;
   /* justify-content: space-between; */
   width: 100%;
-  margin: 10px;
+  margin: 0 10px;
 }
 
 #WXRWYR_Inner_Image_Container img {
-  width: 95%;
+  width: 75%;
 }
 
 #WXRWYR_tick {
@@ -126,46 +125,24 @@
 } */
 
 #WXRWYR_Next_Button_Div {
-  display: block;
-  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-@media only screen and (min-height: 700px) {
-  #WXRWYR_Next_Button_Div {
-    margin-top: 20px;
-  }
-
-  #WXRWYR_Image_heading {
-    font-size: 23px;
-  }
-}
-
-@media only screen and (min-height: 750px) {
-  #WXRWYR_Next_Button_Div {
-    margin-top: 20px;
-  }
-  #WXRWYR_Image_heading {
-    font-size: 23px;
-  }
-}
-
-@media only screen and (min-height: 800px) {
-  #WXRWYR_Next_Button_Div {
-    margin-top: 10px;
-  }
-  #WXRWYR_Image_heading {
-    font-size: 24px;
+@media only screen and (max-width: 935px) {
+  #WXRWYR_Content_Wrapper {
+    padding: 1rem 1rem 1rem 1rem;
   }
 }
 
 #WXRWYR_Next_Button {
   display: block;
   width: auto;
-  min-width: 300px;
-  padding: 15px 25px;
-  float: right;
-  font-size: 28px;
-  line-height: 32px;
+  min-width: 220px;
+  padding: 16px 6px;
+  font-size: 18px;
+  line-height: 17px;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;

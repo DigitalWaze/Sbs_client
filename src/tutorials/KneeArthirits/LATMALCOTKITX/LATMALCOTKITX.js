@@ -114,10 +114,20 @@ class LATMALCOTKITX extends Component {
             </div>
             <div
               id="LATMALCOTKITX_Next_Button_Div"
-              style={
-                this.state.kneeState === 4 ? { opacity: 1 } : { opacity: 0.5 }
-              }
+              // style={
+              //   this.state.kneeState === 4 ? { opacity: 1 } : { opacity: 0.5 }
+              // }
             >
+              <Button
+                id="LATMALCOTKITX_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
               <Button
                 id="LATMALCOTKITX_Next_Button"
                 variant="contained"
@@ -127,6 +137,9 @@ class LATMALCOTKITX extends Component {
                     "./viewing-degeneration-with-x-rays-the-kneecap-compartment"
                   );
                 }}
+                style={
+                  this.state.kneeState === 4 ? { opacity: 1 } : { opacity: 0.5 }
+                }
               >
                 {" "}
                 Continue{" "}

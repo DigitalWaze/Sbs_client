@@ -43,6 +43,16 @@ class WITJSFTKC extends Component {
                 id="WITJSFTKC_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
+              <Button
+                id="WITJSFTKC_Next_Button"
+                variant="contained"
+                onClick={() => {
                   this.context.history.push(
                     "./you-must-look-at-the-joint-space-on-both-sides-of-the-kneecap"
                   );

@@ -25,12 +25,9 @@ class VDWXRTKC extends Component {
               </div>
               <div id="VDWXRTKC_Heading1_Div">The Kneecap Compartment</div>
               <div id="VDWXRTKC_Text_Div">
-                Different X-ray views must be taken to view all compartments of
-                the knee. Regular X-rays are the best way to determine the
-                extent of joint degeneration. In healthy knees, the medial and
-                lateral joint spaces are filled by cartilage. The width of the
-                space is important as wear and degeneration is directly related
-                to joint space narrowing.
+                The level of degeneration in the kneecap compartment
+                (patello-femoral compartment) is directly related to the amount
+                of joint space between the femur and the kneecap.
               </div>
             </div>
             <div id="VDWXRTKC_Image_Wrapper">
@@ -48,6 +45,16 @@ class VDWXRTKC extends Component {
               </div>
             </div>
             <div id="VDWXRTKC_Next_Button_Div">
+              <Button
+                id="VDWXRTKC_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                Back{" "}
+              </Button>
               <Button
                 id="VDWXRTKC_Next_Button"
                 variant="contained"

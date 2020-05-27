@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../helper/themeContext";
 
-import Img1 from "../../assets/KDAA1.png";
-import Img2 from "../../assets/KDAA2.png";
+import Img1 from "../../assets/KDAA1_1.png";
+import Img2 from "../../assets/KDAA1_2.png";
 
 import "./KDAA.css";
 
@@ -40,6 +40,16 @@ class KDAA extends Component {
             </div>
           </div>
           <div id="KDAA_Next_Button_Div">
+            <Button
+              id="KDAA_Next_Button"
+              variant="contained"
+              onClick={() => {
+                this.context.history.goBack();
+              }}
+            >
+              {" "}
+              Back{" "}
+            </Button>
             <Button
               id="KDAA_Next_Button"
               variant="contained"

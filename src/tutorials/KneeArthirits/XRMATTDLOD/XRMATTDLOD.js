@@ -36,8 +36,21 @@ class XRMATTDLOD extends Component {
               <div id="XRMATTDLOD_Image_Container">
                 <img src={Img1} alt="XRMATTDLOD" />
               </div>
+              <div id="XRMATTDLOD_Inner_Text_Container">
+                Example of decreasing joint space in the medial compartment
+              </div>
             </div>
             <div id="XRMATTDLOD_Next_Button_Div">
+              <Button
+                id="XRMATTDLOD_Next_Button"
+                variant="contained"
+                onClick={() => {
+                  this.context.history.goBack();
+                }}
+              >
+                {" "}
+                back{" "}
+              </Button>
               <Button
                 id="XRMATTDLOD_Next_Button"
                 variant="contained"

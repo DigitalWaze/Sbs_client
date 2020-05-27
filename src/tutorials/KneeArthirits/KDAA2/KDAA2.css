@@ -1,4 +1,4 @@
-#OTCXR_Main_Div {
+#KDAA2_Main_Div {
   background-image: linear-gradient(
     119deg,
     #3023ae,
@@ -7,77 +7,73 @@
     #b4ec51
   );
   min-height: 100vh;
-  padding: 0px;
+  padding: 10px;
   position: relative;
   overflow: hidden;
 }
 
-#OTCXR_Content_Wrapper {
+#KDAA2_Content_Wrapper {
   margin: auto;
-  min-width: 400px;
+  min-width: 700px;
   max-width: 830px;
   height: 100vh;
-  padding: 1rem 0rem 1rem 0rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem 1rem 1rem 1rem;
 }
 
-#OTCXR_Heading1_Div {
+#KDAA2_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
   font-size: 26px;
-  margin-bottom: 10px;
   display: block;
   font-weight: bold;
 }
 
-#OTCXR_Text_Div,
-#OTCXR_Image_heading {
+#KDAA2_Text_Div,
+#KDAA2_Image_Heading {
   font-size: 16px;
   font-family: Lato, sans-serif;
   color: #fff;
+  box-sizing: border-box;
 }
 
-#OTCXR_Image_Wrapper {
+#KDAA2_Image_Wrapper {
   margin-top: 15px;
   border: 3px solid white;
-  padding: 10px;
+  padding: 15px;
 }
 
-#OTCXR_Images_Container {
+#KDAA2_Image_Heading {
+  color: #fff;
+  text-align: center;
+}
+#KDAA2_Image_container {
+  margin-top: 10px;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
   align-items: stretch;
-  justify-content: center;
 }
 
-#OTCXR_Inner_Image_Container {
+#KDAA2_Inner_Image_Container {
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 48%;
 }
 
-#OTCXR_Inner_Image_Container img {
-  width: 60%;
+#KDAA2_Inner_Image_Container img {
+  width: 100%;
 }
-
-#OTCXR_Next_Button_Div {
+#KDAA2_Next_Button_Div {
+  display: block;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
 }
 
-@media only screen and (max-width: 935px) {
-  #OTCXR_Content_Wrapper {
-    padding: 1rem 1rem 1rem 1rem;
-  }
-}
-
-#OTCXR_Next_Button {
+#KDAA2_Next_Button {
   display: block;
   width: auto;
   min-width: 220px;

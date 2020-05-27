@@ -7,7 +7,7 @@
     #b4ec51
   );
   min-height: 100vh;
-  padding: 10px;
+  padding: 0px;
   position: relative;
   overflow: hidden;
 }
@@ -15,7 +15,7 @@
 #COTK2_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 1050px;
+  max-width: 830px;
   height: 100vh;
   padding: 2rem 1rem 1rem 1rem;
   display: flex;
@@ -27,14 +27,14 @@
 #COTK2_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 40px;
+  font-size: 26px;
   margin-bottom: 10px;
   display: block;
   font-weight: bold;
 }
 
 #COTK2_Text_Div {
-  font-size: 25px;
+  font-size: 16px;
   font-family: Lato, sans-serif;
   color: #fff;
   box-sizing: border-box;
@@ -55,6 +55,7 @@
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 #COTK2_Pair_Buttons_wrapper Button {
@@ -64,14 +65,16 @@
 #COTK2_Button {
   display: block;
   width: auto;
-  min-width: 223px;
-  padding: 15px 23px;
-  font-size: 23px;
-  line-height: 26px;
-  border-radius: 25px;
-  background-color: #b4ec51;
   font-family: Lato, sans-serif;
   text-transform: none;
+  min-width: 220px;
+  padding: 16px 6px;
+  float: right;
+  font-size: 18px;
+  line-height: 17px;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  margin: 0 10px;
 }
 
 #COTK2_Image_Wrapper {
@@ -95,27 +98,11 @@
 }
 
 #COTK2_Next_Button_Div {
-  display: block;
-  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-@media only screen and (min-height: 700px) {
-  #COTK2_Next_Button_Div {
-    margin-top: 60px;
-  }
-}
-
-@media only screen and (min-height: 750px) {
-  #COTK2_Next_Button_Div {
-    margin-top: 80px;
-  }
-}
-
-@media only screen and (min-height: 800px) {
-  #COTK2_Next_Button_Div {
-    margin-top: 30px;
-  }
-}
 @media only screen and (max-width: 760px) {
   #COTK2_Content_Wrapper {
     padding: 1rem 1rem 1rem 1rem;
@@ -125,11 +112,10 @@
 #COTK2_Next_Button {
   display: block;
   width: auto;
-  min-width: 300px;
-  padding: 15px 25px;
-  float: right;
-  font-size: 28px;
-  line-height: 32px;
+  min-width: 220px;
+  padding: 16px 6px;
+  font-size: 18px;
+  line-height: 17px;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
