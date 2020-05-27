@@ -1,4 +1,4 @@
-#JSNMC_Main_Div {
+#JSNLC_Main_Div {
   background-image: linear-gradient(
     119deg,
     #3023ae,
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-#JSNMC_Content_Wrapper {
+#JSNLC_Content_Wrapper {
   margin: auto;
   min-width: 700px;
   max-width: 830px;
@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-#JSNMC_Heading1_Div {
+#JSNLC_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
   font-size: 26px;
@@ -33,20 +33,20 @@
   font-weight: bold;
 }
 
-#JSNMC_Text_Div,
-#JSNMC_Inner_Text_Container,
-#JSNMC_Inner_Image_text,
-#JSNMC_box_Container > div {
+#JSNLC_Text_Div,
+#JSNLC_Inner_Text_Container,
+#JSNLC_Inner_Image_text,
+#JSNLC_box_Container > div {
   font-size: 16px;
   font-family: Lato, sans-serif;
   color: #fff;
 }
 
-#JSNMC_Inner_Text_Container {
+#JSNLC_Inner_Text_Container {
   text-align: center;
 }
 
-#JSNMC_Inner_Image_text {
+#JSNLC_Inner_Image_text {
   display: flex;
   flex-direction: row;
   align-self: stretch;
@@ -54,11 +54,11 @@
   padding: 5px;
 }
 
-#JSNMC_Inner_Image_text div {
+#JSNLC_Inner_Image_text div {
   width: 100%;
 }
 
-#JSNMC_Image_Wrapper {
+#JSNLC_Image_Wrapper {
   margin-top: 15px;
   border: 3px solid white;
   padding: 5px;
@@ -68,14 +68,14 @@
   /* justify-content: center; */
 }
 
-#JSNMC_Grid_Container {
+#JSNLC_Grid_Container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
 }
 
-#JSNMC_Row_Container {
+#JSNLC_Row_Container {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -83,14 +83,14 @@
   margin: 5px 0;
 }
 
-#JSNMC_box_Container {
+#JSNLC_box_Container {
   margin: 5px;
   background-color: #d3d3d3;
   width: 100%;
   cursor: pointer;
 }
 
-#JSNMC_box_Container > div {
+#JSNLC_box_Container > div {
   height: 100%;
   background-color: #fa9e2d;
   display: flex;
@@ -100,7 +100,7 @@
   text-align: center;
 }
 
-#JSNMC_Inner_Image_Container {
+#JSNLC_Inner_Image_Container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,24 +108,24 @@
   margin: 10px;
 }
 
-#JSNMC_Image_Wrapper img {
+#JSNLC_Image_Wrapper img {
   width: 100%;
 }
 
-#JSNMC_Next_Button_Div {
+#JSNLC_Next_Button_Div {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
 
 @media screen and (max-width: 935px) {
-  #JSNMC_Content_Wrapper {
+  #JSNLC_Content_Wrapper {
     padding: 2rem 1rem 1rem 1rem;
     /* max-width: 650px; */
   }
 }
 
-#JSNMC_Next_Button {
+#JSNLC_Next_Button {
   display: block;
   width: auto;
   min-width: 220px;

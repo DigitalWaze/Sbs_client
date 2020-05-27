@@ -4,15 +4,15 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../helper/themeContext";
 
-import Img1 from "../../assets/JSNMC1.png";
-import Img2 from "../../assets/JSNMC2.png";
-import Img3 from "../../assets/JSNMC3.png";
-import Img4 from "../../assets/JSNMC4.png";
+import Img1 from "../../assets/JSNKC1.png";
+import Img2 from "../../assets/JSNKC2.png";
+import Img3 from "../../assets/JSNKC3.png";
+import Img4 from "../../assets/JSNKC4.png";
 import Img5 from "../../assets/LOJSND2.png";
 
-import "./JSNMC.css";
+import "./JSNKC.css";
 
-class JSNMC extends Component {
+class JSNKC extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,45 +33,25 @@ class JSNMC extends Component {
   };
   render() {
     return (
-      <div id="JSNMC_Main_Div">
-        <div id="JSNMC_Content_Wrapper">
-          <div id="JSNMC_Center_Wrapper">
-            <div id="JSNMC_Text_wrapper">
-              <div id="JSNMC_Heading1_Div">
-                Joint Space Narrowing - Medial Compartment
+      <div id="JSNKC_Main_Div">
+        <div id="JSNKC_Content_Wrapper">
+          <div id="JSNKC_Center_Wrapper">
+            <div id="JSNKC_Text_wrapper">
+              <div id="JSNKC_Heading1_Div">
+                Joint Space Narrowing - Kneecap Compartment
               </div>
 
-              <div id="JSNMC_Text_Div">
+              <div id="JSNKC_Text_Div">
                 Starting with the knee with the least degeneration, put the
-                X-rays in order of severity of degeneration seen in the medial
+                X-rays in order of severity of degeneration seen in the kneecap
                 compartment
               </div>
             </div>
-            <div id="JSNMC_Image_Wrapper">
-              <div id="JSNMC_Grid_Container">
-                <div id="JSNMC_Row_Container">
+            <div id="JSNKC_Image_Wrapper">
+              <div id="JSNKC_Grid_Container">
+                <div id="JSNKC_Row_Container">
                   <div
-                    id="JSNMC_box_Container"
-                    onClick={() => this.clickHandle(2)}
-                    style={
-                      this.state.orangeState > 2
-                        ? { opacity: 0.5 }
-                        : { opacity: 1 }
-                    }
-                  >
-                    <img
-                      src={Img1}
-                      alt="JSNMC1"
-                      style={
-                        this.state.orangeState === 2 ||
-                        this.state.orangeState < 2
-                          ? { display: "block" }
-                          : { display: "none" }
-                      }
-                    />
-                  </div>
-                  <div
-                    id="JSNMC_box_Container"
+                    id="JSNKC_box_Container"
                     onClick={() => this.clickHandle(4)}
                     style={
                       this.state.orangeState > 4
@@ -80,8 +60,8 @@ class JSNMC extends Component {
                     }
                   >
                     <img
-                      src={Img2}
-                      alt="JSNMC1"
+                      src={Img1}
+                      alt="JSNKC1"
                       style={
                         this.state.orangeState === 4 ||
                         this.state.orangeState < 4
@@ -91,27 +71,27 @@ class JSNMC extends Component {
                     />
                   </div>
                   <div
-                    id="JSNMC_box_Container"
-                    onClick={() => this.clickHandle(1)}
+                    id="JSNKC_box_Container"
+                    onClick={() => this.clickHandle(2)}
                     style={
-                      this.state.orangeState > 1
+                      this.state.orangeState > 2
                         ? { opacity: 0.5 }
                         : { opacity: 1 }
                     }
                   >
                     <img
-                      src={Img3}
-                      alt="JSNMC1"
+                      src={Img2}
+                      alt="JSNKC1"
                       style={
-                        this.state.orangeState === 1 ||
-                        this.state.orangeState < 1
+                        this.state.orangeState === 2 ||
+                        this.state.orangeState < 2
                           ? { display: "block" }
                           : { display: "none" }
                       }
                     />
                   </div>
                   <div
-                    id="JSNMC_box_Container"
+                    id="JSNKC_box_Container"
                     onClick={() => this.clickHandle(3)}
                     style={
                       this.state.orangeState > 3
@@ -120,8 +100,8 @@ class JSNMC extends Component {
                     }
                   >
                     <img
-                      src={Img4}
-                      alt="JSNMC1"
+                      src={Img3}
+                      alt="JSNKC1"
                       style={
                         this.state.orangeState === 3 ||
                         this.state.orangeState < 3
@@ -130,9 +110,29 @@ class JSNMC extends Component {
                       }
                     />
                   </div>
+                  <div
+                    id="JSNKC_box_Container"
+                    onClick={() => this.clickHandle(1)}
+                    style={
+                      this.state.orangeState > 1
+                        ? { opacity: 0.5 }
+                        : { opacity: 1 }
+                    }
+                  >
+                    <img
+                      src={Img4}
+                      alt="JSNKC1"
+                      style={
+                        this.state.orangeState === 1 ||
+                        this.state.orangeState < 1
+                          ? { display: "block" }
+                          : { display: "none" }
+                      }
+                    />
+                  </div>
                 </div>
-                <div id="JSNMC_Row_Container">
-                  <div id="JSNMC_box_Container">
+                <div id="JSNKC_Row_Container">
+                  <div id="JSNKC_box_Container">
                     <div
                       style={
                         this.state.orangeState === 1
@@ -144,7 +144,7 @@ class JSNMC extends Component {
                     </div>
                     <img
                       src={Img1}
-                      alt="JSNMC1"
+                      alt="JSNKC1"
                       style={
                         this.state.orangeState > 1
                           ? { display: "block" }
@@ -152,7 +152,7 @@ class JSNMC extends Component {
                       }
                     />
                   </div>
-                  <div id="JSNMC_box_Container">
+                  <div id="JSNKC_box_Container">
                     <div
                       style={
                         this.state.orangeState === 2
@@ -164,7 +164,7 @@ class JSNMC extends Component {
                     </div>
                     <img
                       src={Img2}
-                      alt="JSNMC1"
+                      alt="JSNKC1"
                       style={
                         this.state.orangeState > 2
                           ? { display: "block" }
@@ -172,7 +172,7 @@ class JSNMC extends Component {
                       }
                     />
                   </div>
-                  <div id="JSNMC_box_Container">
+                  <div id="JSNKC_box_Container">
                     <div
                       style={
                         this.state.orangeState === 3
@@ -184,7 +184,7 @@ class JSNMC extends Component {
                     </div>
                     <img
                       src={Img3}
-                      alt="JSNMC1"
+                      alt="JSNKC1"
                       style={
                         this.state.orangeState > 3
                           ? { display: "block" }
@@ -192,7 +192,7 @@ class JSNMC extends Component {
                       }
                     />
                   </div>
-                  <div id="JSNMC_box_Container">
+                  <div id="JSNKC_box_Container">
                     <div
                       style={
                         this.state.orangeState === 4
@@ -204,7 +204,7 @@ class JSNMC extends Component {
                     </div>
                     <img
                       src={Img4}
-                      alt="JSNMC1"
+                      alt="JSNKC1"
                       style={
                         this.state.orangeState > 4
                           ? { display: "block" }
@@ -214,18 +214,18 @@ class JSNMC extends Component {
                   </div>
                 </div>
               </div>
-              <div id="JSNMC_Inner_Image_Container">
-                <img src={Img5} alt="JSNMC1" />
+              <div id="JSNKC_Inner_Image_Container">
+                <img src={Img5} alt="JSNKC1" />
               </div>
-              <div id="JSNMC_Inner_Image_text">
+              <div id="JSNKC_Inner_Image_text">
                 <div>Thickest Joint Space</div>
                 <div>Decreasing Joint Space</div>
                 <div>Least Joint Space</div>
               </div>
             </div>
-            <div id="JSNMC_Next_Button_Div">
+            <div id="JSNKC_Next_Button_Div">
               <Button
-                id="JSNMC_Next_Button"
+                id="JSNKC_Next_Button"
                 variant="contained"
                 onClick={() => {
                   this.context.history.goBack();
@@ -235,7 +235,7 @@ class JSNMC extends Component {
                 back{" "}
               </Button>
               <Button
-                id="JSNMC_Next_Button"
+                id="JSNKC_Next_Button"
                 variant="contained"
                 disabled={this.state.clickState < 4 ? true : false}
                 style={
@@ -243,7 +243,7 @@ class JSNMC extends Component {
                 }
                 onClick={() => {
                   this.context.history.push(
-                    "./joint-space-narrowing-lateral-compartment"
+                    "./x-ray-matching-a-tool-to-determine-levels-of-degeneration"
                   );
                 }}
               >
@@ -257,5 +257,5 @@ class JSNMC extends Component {
     );
   }
 }
-JSNMC.contextType = MyContext;
-export default JSNMC;
+JSNKC.contextType = MyContext;
+export default JSNKC;

@@ -66,7 +66,7 @@ class LOJSND extends Component {
                 variant="contained"
                 onClick={() => {
                   this.context.history.push(
-                    "./where-is-the-joint-space-for-the-kneecap-compartment"
+                    "./joint-space-narrowing-medial-compartment"
                   );
                 }}
               >

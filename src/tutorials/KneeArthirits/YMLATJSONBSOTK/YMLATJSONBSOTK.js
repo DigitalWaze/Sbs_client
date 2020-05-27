@@ -63,7 +63,7 @@ class YMLATJSONBSOTK extends Component {
                 variant="contained"
                 onClick={() => {
                   this.context.history.push(
-                    "./x-ray-matching-a-tool-to-determine-levels-of-degeneration"
+                    "./joint-space-narrowing-kneecap-compartment"
                   );
                 }}
               >

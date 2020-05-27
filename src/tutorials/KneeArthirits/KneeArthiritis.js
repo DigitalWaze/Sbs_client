@@ -20,9 +20,12 @@ import EKDWXR from "./EKDWXR/EKDWXR";
 import HTIJSNAD from "./HTIJSNAD/HTIJSNAD";
 import WDTJSSAEFTMALC from "./WDTJSSAEFTMALC/WDTJSSAEFTMALC";
 import LOJSND from "./LOJSND/LOJSND";
+import JSNMC from "./JSNMC/JSNMC";
+import JSNLC from "./JSNLC/JSNLC";
 import WDTJSSAEFTMALC2 from "./WDTJSSAEFTMALC2/WDTJSSAEFTMALC2";
 import WITJSFTKC from "./WITJSFTKC/WITJSFTKC";
 import YMLATJSONBSOTK from "./YMLATJSONBSOTK/YMLATJSONBSOTK";
+import JSNKC from "./JSNKC/JSNKC";
 import XRMATTDLOD from "./XRMATTDLOD/XRMATTDLOD";
 import XRMALOD from "./XRMALOD/XRMALOD";
 import Congrats from "./Congrats/Congrats";
@@ -138,11 +141,16 @@ class KneeArthiritis extends Component {
           path="/tutorials/knee-Arthiritis/levels-of-joint-space-narrowing-degeneration"
           component={LOJSND}
         />
-        {/* <Route
+        <Route
           exact
           path="/tutorials/knee-Arthiritis/joint-space-narrowing-medial-compartment"
           component={JSNMC}
-        /> */}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/joint-space-narrowing-lateral-compartment"
+          component={JSNLC}
+        />
         <Route
           exact
           path="/tutorials/knee-Arthiritis/where-is-the-joint-space-for-the-kneecap-compartment"
@@ -152,6 +160,11 @@ class KneeArthiritis extends Component {
           exact
           path="/tutorials/knee-Arthiritis/you-must-look-at-the-joint-space-on-both-sides-of-the-kneecap"
           component={YMLATJSONBSOTK}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/joint-space-narrowing-kneecap-compartment"
+          component={JSNKC}
         />
         <Route
           exact
