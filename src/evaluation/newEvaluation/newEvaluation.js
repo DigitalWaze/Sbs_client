@@ -5,6 +5,8 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
+import { TextField } from '@material-ui/core';
+
 
 
 import RightHipIcon from '../../assets/right-hip-icon.png'
@@ -31,7 +33,7 @@ let MenuItems = [{name:'Priority: No Pain', id:0},{name:'Priority: 1', id:1},{na
 class NewEvaluation extends Component {
     constructor(props) {
         super(props);
-        this.state = {  priority1:0,priority2:0,priority3:0,priority4:0 }
+        this.state = {  priority1:0,priority2:0,priority3:0,priority4:0,anyOne:false }
     }
 
     componentDidMount()
@@ -56,6 +58,13 @@ class NewEvaluation extends Component {
 
             this.setState({priority2,priority4})
         }
+    }
+
+    ResetMe = () =>
+    {
+        MenuItems2=MenuItems;
+        MenuItems4=MenuItems;
+        this.setState({priority2enable:true,priority4enable:true,priority1:0,priority2:0,priority3:0,priority4:0,anyOne:false})  
     }
 
     // handleClick = () =>
@@ -161,7 +170,6 @@ class NewEvaluation extends Component {
 
         if(e.target.name=='priority2')
         {
-            console.log('here')
             if(e.target.value!=0)
             {
                 MenuItems4=MenuItems4.filter(option => option.id!=e.target.value.toString())
@@ -184,7 +192,8 @@ class NewEvaluation extends Component {
             }
         }
         
-        this.setState({[e.target.name]:e.target.value})
+        this.setState({[e.target.name]:e.target.value,[e.target.name+'enable']:false,anyOne:true})
+        
     }
     
     render() { 
@@ -256,37 +265,40 @@ class NewEvaluation extends Component {
 
                             <div className="Evaluaion_NewEvaluation_Image_Left_Inner_Down" >
                                 <div className="Evaluaion_NewEvaluation_Image_Left_Inner_Down_Content1">
-                                    <FormControl  variant="outlined" style={{color:'white'}}>
-                                        {/* <InputLabel  htmlFor="outlined-priority1-native-simple" style={{color:'white'}}>Priority</InputLabel> */}
-                                        <Select
-                                        disabled={old}
-                                        MenuProps={{
-                                            anchorOrigin: {
-                                            vertical: "bottom",
-                                            horizontal: "left"
-                                            },
-                                            transformOrigin: {
-                                            vertical: "top",
-                                            horizontal: "left"
-                                            },
-                                            getContentAnchorEl: null,
-                                            className:"new-evaluation-select-box"
-                                        }}
-                                        style={{height:'60px',minWidth:'180px',color:'white',borderRadius:'0px'}}
-                                        
-                                        value={this.state.priority2}
-                                        onChange={this.handleChange}
-                                        // label="Priority"
-                                        inputProps={{
-                                            name: 'priority2',
-                                            className:"input-class-height"
+                                    {this.state.priority2enable==false?
+                                        <TextField value={"Priority: "+this.state.priority2} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                    :   <FormControl  variant="outlined" style={{color:'white'}}>
+                                            {/* <InputLabel  htmlFor="outlined-priority1-native-simple" style={{color:'white'}}>Priority</InputLabel> */}
+                                            <Select
+                                            disabled={old}
+                                            MenuProps={{
+                                                anchorOrigin: {
+                                                vertical: "bottom",
+                                                horizontal: "left"
+                                                },
+                                                transformOrigin: {
+                                                vertical: "top",
+                                                horizontal: "left"
+                                                },
+                                                getContentAnchorEl: null,
+                                                className:"new-evaluation-select-box"
+                                            }}
+                                            style={{height:'60px',minWidth:'180px',color:'white',borderRadius:'0px'}}
                                             
-                                        }}
-                                        >
-                                            {MenuItems2.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
-                                        </Select>
-                                    </FormControl>
-        
+                                            value={this.state.priority2}
+                                            onChange={this.handleChange}
+                                            // label="Priority"
+                                            inputProps={{
+                                                name: 'priority2',
+                                                className:"input-class-height"
+                                                
+                                            }}
+                                            >
+                                                {MenuItems2.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
+                                            </Select>
+                                        </FormControl>
+                                    }
+                                    
                                 </div>  
                                 <div className="Evaluaion_NewEvaluation_Image_Left_Inner_Down_Content2">
                                         <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
@@ -358,37 +370,40 @@ class NewEvaluation extends Component {
                                     <img style={{width:'40px',marginBottom:'20px'}} src={LeftKneeIcon}/>
                                 </div>
                                 <div className="Evaluaion_NewEvaluation_Image_Right_Inner_Down_Content1">
-                                    <FormControl  variant="outlined" style={{color:'white'}}>
-                                        {/* <InputLabel  htmlFor="outlined-priority1-native-simple" style={{color:'white'}}>Priority</InputLabel> */}
-                                        <Select
-                                        disabled={old}
-                                        MenuProps={{
-                                            anchorOrigin: {
-                                            vertical: "bottom",
-                                            horizontal: "left"
-                                            },
-                                            transformOrigin: {
-                                            vertical: "top",
-                                            horizontal: "left"
-                                            },
-                                            getContentAnchorEl: null,
-                                            className:"new-evaluation-select-box"
+                                    {this.state.priority4enable==false?
+                                        <TextField value={"Priority: "+this.state.priority4} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                    :   <FormControl  variant="outlined" style={{color:'white'}}>
+                                            {/* <InputLabel  htmlFor="outlined-priority1-native-simple" style={{color:'white'}}>Priority</InputLabel> */}
+                                            <Select
+                                            disabled={old}
+                                            MenuProps={{
+                                                anchorOrigin: {
+                                                vertical: "bottom",
+                                                horizontal: "left"
+                                                },
+                                                transformOrigin: {
+                                                vertical: "top",
+                                                horizontal: "left"
+                                                },
+                                                getContentAnchorEl: null,
+                                                className:"new-evaluation-select-box"
 
-                                        }}
-                                        style={{height:'60px',minWidth:'180px',color:'white',borderRadius:'0px'}}
-                                        
-                                        value={this.state.priority4}
-                                        onChange={this.handleChange}
-                                        // label="Priority"
-                                        inputProps={{
-                                            name: 'priority4',
-                                            className:"input-class-height"
+                                            }}
+                                            style={{height:'60px',minWidth:'180px',color:'white',borderRadius:'0px'}}
                                             
-                                        }}
-                                        >
-                                            {MenuItems4.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
-                                        </Select>
-                                    </FormControl>
+                                            value={this.state.priority4}
+                                            onChange={this.handleChange}
+                                            // label="Priority"
+                                            inputProps={{
+                                                name: 'priority4',
+                                                className:"input-class-height"
+                                                
+                                            }}
+                                            >
+                                                {MenuItems4.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)}
+                                            </Select>
+                                        </FormControl>
+                                    }
         
                                 </div>  
                                 
@@ -398,6 +413,16 @@ class NewEvaluation extends Component {
                         </div>
                     
                     </div>
+                    {
+                    old!=true && this.state.anyOne==true?
+                        <div onClick={this.ResetMe} style={{position:'absolute',bottom:'10px',left:'calc(50% - 100px)',margin:'auto',textAlign:'center',fontSize:'17px',fontWeight:'bold',borderRadius:'50px',width:'100px',height:'100px',background:'#b4ec51'}}>
+                            <div style={{alignSelf:'center',marginTop:'30px'}}>
+                                Reset Priorities
+                            </div>
+                        </div>
+                    :null
+                    }
+                    
                     <div id="Evaluaion_NewEvaluation_Next_Button_Div">
                         <Button id="Evaluaion_NewEvaluation_Next_Button" variant="contained" onClick={this.handleClick}> Next </Button>
                     </div>
