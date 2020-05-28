@@ -62,7 +62,9 @@ class Home extends Component {
           </div>
 
           <div className="Home_Button_Div">
-            <Button id="Home_Button" variant="contained" onClick={() => {}}>
+            <Button id="Home_Button" variant="contained" onClick={() => {this.context.history.push(
+                  "tutorials/matching-training/welcome"
+                );}}>
               {" "}
               X-ray Matching Training{" "}
             </Button>

@@ -5,8 +5,7 @@ import GetData from '../../Fetch/getData1';
 import PDFViewer from 'pdf-viewer-reactjs'  
 import './evalpdf.css'       
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
-import { css } from '@material-ui/system';
-import Page1 from '../../assets/page1.png';
+
 import Button from '@material-ui/core/Button';
 
 

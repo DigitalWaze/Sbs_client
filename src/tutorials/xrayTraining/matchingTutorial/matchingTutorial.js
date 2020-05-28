@@ -5,7 +5,7 @@ import Overview from './overview';
 import Matching from './matching';
 
 import Bone1Image from '../../../assets/bone3_Bitmap.png'
-import MFV from '../../../assets/medial-flexion.png'
+import MFV from '../../../assets/medial-flexion-traaining-up.png'
 import MNFV from '../../../assets/medial-nonflexion.png'
 import LFV from '../../../assets/lateral-flexion.png'
 import LNFV from '../../../assets/lateral-nonflexion.png'
@@ -151,7 +151,7 @@ class MatchingTutorial extends Component {
                 // this.setState({loading:true})
 
                 // console.log(req);
-                this.context.history.push('./video2')
+                this.context.history.push('./congratulations')
             }
             
 

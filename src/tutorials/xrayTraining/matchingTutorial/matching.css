@@ -12,3 +12,15 @@
     color: #b4ec51;
     font-weight: bold;
 }
+
+#Evaluaion_XrayMatching_Matching_Content3_Wrapper
+{
+    float: left;
+    width: 50px;
+    
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+}
