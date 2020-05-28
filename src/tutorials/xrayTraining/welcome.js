@@ -6,14 +6,13 @@ import MyContext from '../../helper/themeContext';
 
 import Bone1Image from '../../assets/bone1_Bitmap.png'
 
-import './welcome.css'
 
 
 
-class LGS extends Component {
+class Welcome extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {  } 
     }
 
     
@@ -29,13 +28,13 @@ class LGS extends Component {
                 </div>
                 <div id="Evaluaion_Welcome_Neon_Line"></div>
                 <div id="Evaluaion_Welcome_Heading2_Div">
-                How to Match X-rays
-                Using Step by Step
+                    X-ray Training
+
                     {/* <br/>
                     and Diagnosis */}
                 </div>
                 <div id="Evaluaion_Welcome_Text_Div">
-                You will review a sample patient with right knee pain only. Match the patient’s X-ray to one of the X-rays in our database. Do this for each compartment in each view.
+                    Start matching X-rays and perfect your evaluation skills. Practice matching X-rays for the three compartments of the knee. Realtime feedback will be provided with each evaluation.
                 </div>
                 <div id="Evaluaion_Welcome_Next_Button_Div">
                     <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./matching-tutorial')}}> Continue </Button>
@@ -50,5 +49,5 @@ class LGS extends Component {
         </div> );
     }
 }
-LGS.contextType=MyContext;
-export default LGS;
+Welcome.contextType=MyContext;
+export default Welcome;

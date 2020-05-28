@@ -105,7 +105,7 @@
 #Evaluaion_Welcome_Next_Button_Div
 {
   display: block;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 @media only screen and (min-height:700px)
@@ -145,4 +145,5 @@
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+  text-transform: none !important;
 }

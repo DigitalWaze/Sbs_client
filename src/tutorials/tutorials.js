@@ -9,6 +9,7 @@ import SBSVideo from "./SBS/SBSVideo/SBSVideo";
 import SBSVideo2 from "./SBS/SBSVideo2/SBSVideo2";
 import KneeArthiritis from "./KneeArthirits/KneeArthiritis";
 import MatchingEducation from "./XrayMatchingEdu/matchingEducation";
+import XrayTraining from "./xrayTraining/xrayTraining";
 
 
 
@@ -26,6 +27,7 @@ class Tutorials extends Component {
        
         <Route path="/tutorials/knee-Arthiritis" component={KneeArthiritis} />
         <Route path="/tutorials/matching-education" component={MatchingEducation} />
+        <Route path="/tutorials/matching-training" component={XrayTraining} />
 
 
         {/* WHAT IS SBS ROUTES STARTS HERE */}

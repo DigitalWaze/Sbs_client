@@ -137,6 +137,23 @@
   margin-bottom: 30px;
 }
 
+.matching-down
+{
+  position: relative;
+  max-width: 500px;
+  max-height: calc(50% - 30px);
+  text-align: center;
+}
+
+
+@media only screen and (max-height:657px)
+{
+  .matching-down
+  {
+    max-width: 380px;
+  }
+}
+
 
 .flipme img
 {

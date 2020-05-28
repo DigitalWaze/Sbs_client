@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import Button from "@material-ui/core/Button";
 
-import MyContext from "../../helper/themeContext";
+import MyContext from "../../../helper/themeContext";
 
-import "../SBS/SBSVideo/SBSVideo.css";
+import "../../SBS/SBSVideo/SBSVideo.css";
 
 class MatchingVideo extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class MatchingVideo extends Component {
                 className="sbs-video-wrapper"
               >
                 <source
-                  src="https://drive.google.com/uc?id=1GNXQgyfN6_RhpLcets9SXt6CO4zrR_9E"
+                  src="https://drive.google.com/uc?id=1gaJD8E2vOSdA3lUKagPjb0gIFVd4UpiU"
                   type="video/mp4"
                 />
               </video>
@@ -41,7 +41,7 @@ class MatchingVideo extends Component {
                 id="SBSVideo_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./lets-get-started");
+                  this.context.history.push("./report");
                 }}
               >
                 {" "}

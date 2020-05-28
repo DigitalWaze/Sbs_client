@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Welcome from './welcome';
+import Welcome from './welcome/welcome';
 import { Route, Router,Redirect  } from "react-router-dom";
 import MyContext from '../../helper/themeContext';
-import MatchingVideo from './matchingVideo'
-import LGS from './LGS';
+import MatchingVideo from './matchingVideo/matchingVideo'
+import MatchingVideo2 from './matchingVideo2/matchingVideo2'
+
+import LGS from './LGS/LGS';
 import MatchingTutorial from './matchingTutorial/matchingTutorial';
+import ShowReport from './report/showReport';
 
 class MatchingEducation extends Component {
     constructor(props) {
@@ -19,6 +22,8 @@ class MatchingEducation extends Component {
                 <Route  exact path="/tutorials/matching-education/video" component={MatchingVideo} />
                 <Route  exact path="/tutorials/matching-education/lets-get-started" component={LGS} />
                 <Route  exact path="/tutorials/matching-education/matching-tutorial" component={MatchingTutorial} />
+                <Route  exact path="/tutorials/matching-education/video2" component={MatchingVideo2} />
+                <Route  exact path="/tutorials/matching-education/report" component={ShowReport} />
 
 
             </Router>
