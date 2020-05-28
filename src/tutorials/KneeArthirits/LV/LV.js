@@ -53,6 +53,10 @@ class LV extends Component {
                 id="LV_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    15
+                  );
                   this.context.history.push("./obtaining-the-correct-x-rays");
                 }}
               >

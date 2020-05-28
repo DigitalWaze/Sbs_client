@@ -188,6 +188,10 @@ class WXRWYR extends Component {
                 id="WXRWYR_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    18
+                  );
                   this.context.history.push(
                     "./evaluating-knee-degeneration-with-x-rays"
                   );

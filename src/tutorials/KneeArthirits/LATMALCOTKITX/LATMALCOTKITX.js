@@ -133,6 +133,10 @@ class LATMALCOTKITX extends Component {
                 variant="contained"
                 disabled={this.state.kneeState === 4 ? false : true}
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    10
+                  );
                   this.context.history.push(
                     "./viewing-degeneration-with-x-rays-the-kneecap-compartment"
                   );

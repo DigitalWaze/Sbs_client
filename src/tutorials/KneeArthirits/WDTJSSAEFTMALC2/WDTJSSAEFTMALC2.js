@@ -54,6 +54,10 @@ class WDTJSSAEFTMALC2 extends Component {
                 id="WDTJSSAEFTMALC2_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    22
+                  );
                   this.context.history.push(
                     "./levels-of-joint-space-narrowing-degeneration"
                   );

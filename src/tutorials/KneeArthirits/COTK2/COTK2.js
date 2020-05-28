@@ -52,7 +52,6 @@ class COTK2 extends Component {
               </div>
             </div>
             <div id="COTK2_Buttons_wrapper">
-              {/* <div id="COTK2_Pair_Buttons_wrapper"> */}
               <Button
                 id="COTK2_Button"
                 variant="contained"
@@ -77,7 +76,6 @@ class COTK2 extends Component {
               >
                 Left Kneecap <br /> Compartment
               </Button>
-              {/* </div> */}
             </div>
             <div id="COTK2_Image_Wrapper">
               <div id="COTK2_Image_Container">
@@ -103,6 +101,10 @@ class COTK2 extends Component {
                 variant="contained"
                 disabled={this.state.kneeState === 2 ? false : true}
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    12
+                  );
                   this.context.history.push(
                     "./evaluating-the-medial-and-lateral-compartments-v2"
                   );

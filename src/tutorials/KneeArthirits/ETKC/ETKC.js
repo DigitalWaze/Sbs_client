@@ -59,6 +59,10 @@ class ETKC extends Component {
                 id="ETKC_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    14
+                  );
                   this.context.history.push("./lateral-view");
                 }}
               >

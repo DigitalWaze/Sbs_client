@@ -17,7 +17,7 @@
   min-width: 700px;
   max-width: 830px;
   height: 100vh;
-  padding: 1rem 0rem 1rem 0rem;
+  padding: 0rem 0rem 0rem 0rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,6 @@
   font-family: Lato, sans-serif;
   color: #fff;
   font-size: 26px;
-  margin-bottom: 0px;
   display: block;
   font-weight: bold;
 }
@@ -42,9 +41,9 @@
 }
 
 #VDWXRTKC_Image_Wrapper {
-  margin-top: 15px;
+  margin-top: 10px;
   border: 3px solid white;
-  padding: 15px;
+  padding: 5px;
 }
 
 #VDWXRTKC_Image_Heading {
@@ -82,7 +81,7 @@
 
 @media only screen and (max-width: 935px) {
   #VDWXRTKC_Content_Wrapper {
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 0rem 0rem 0rem 0rem;
   }
 }
 

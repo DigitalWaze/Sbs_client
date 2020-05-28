@@ -65,6 +65,10 @@ class LOJSND extends Component {
                 id="LOJSND_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    23
+                  );
                   this.context.history.push(
                     "./joint-space-narrowing-medial-compartment"
                   );
