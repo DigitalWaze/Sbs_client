@@ -216,6 +216,10 @@ class SOXRVNBOPS extends Component {
                 id="SOXRVNBOPS_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    17
+                  );
                   this.context.history.push("./what-x-rays-would-you-request");
                 }}
               >

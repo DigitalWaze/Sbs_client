@@ -52,6 +52,10 @@ class WDTJSSAEFTMALC extends Component {
                 id="WDTJSSAEFTMALC_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    21
+                  );
                   this.context.history.push(
                     "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments-2"
                   );

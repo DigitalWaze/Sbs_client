@@ -52,6 +52,10 @@ class Overview extends Component {
               id="Tutorials_Overview_Next_Button"
               variant="contained"
               onClick={() => {
+                this.context.setCookie(
+                  "tutorial-" + this.context.state.user_id,
+                  5
+                );
                 this.context.history.push(
                   "./knee-degeneration-and-arthritis-2"
                 );

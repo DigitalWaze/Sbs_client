@@ -67,6 +67,10 @@ class VDWXR extends Component {
                 id="VDWXR_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    9
+                  );
                   this.context.history.push(
                     "./learn-about-the-medial-and-lateral-compartments-of-the-knee"
                   );

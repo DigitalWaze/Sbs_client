@@ -55,6 +55,10 @@ class XRMATTDLOD extends Component {
                 id="XRMATTDLOD_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    29
+                  );
                   this.context.history.push(
                     "./x-ray-matching-and-levels-of-degeneration"
                   );

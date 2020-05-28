@@ -67,6 +67,10 @@ class HTIJSNAD extends Component {
                 id="HTIJSNAD_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    20
+                  );
                   this.context.history.push(
                     "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments"
                   );

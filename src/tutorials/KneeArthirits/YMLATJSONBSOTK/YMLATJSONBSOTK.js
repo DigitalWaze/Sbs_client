@@ -62,6 +62,10 @@ class YMLATJSONBSOTK extends Component {
                 id="YMLATJSONBSOTK_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    27
+                  );
                   this.context.history.push(
                     "./joint-space-narrowing-kneecap-compartment"
                   );

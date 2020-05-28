@@ -24,10 +24,6 @@
 }
 
 #Tutorials_Welcome_Image_Bone {
-  /* max-height:calc(100vh - 40px);
-  min-height: 100px;
-  width:auto;
-  height:auto; */
   width: 300px;
   margin-top: 50px;
 }

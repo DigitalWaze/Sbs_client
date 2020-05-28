@@ -34,32 +34,24 @@ class OTCXR extends Component {
               <div id="OTCXR_Images_Container">
                 <div id="OTCXR_Inner_Image_Container">
                   <div id="OTCXR_Image_heading">Standing Bilateral Flexion</div>
-                  {/* <div id="OTCXR_Image"> */}
                   <img src={Img1} alt="OTCXR1" />
-                  {/* </div> */}
                 </div>
                 <div id="OTCXR_Inner_Image_Container">
                   <div id="OTCXR_Image_heading">
                     Standing Bilateral Non-Flexion
                   </div>
-                  {/* <div id="OTCXR_Image"> */}
                   <img src={Img2} alt="OTCXR1" />
-                  {/* </div> */}
                 </div>
               </div>
 
               <div id="OTCXR_Images_Container">
                 <div id="OTCXR_Inner_Image_Container">
                   <div id="OTCXR_Image_heading">Right Kneecap View</div>
-                  {/* <div id="OTCXR_Image"> */}
                   <img src={Img3} alt="OTCXR1" />
-                  {/* </div> */}
                 </div>
                 <div id="OTCXR_Inner_Image_Container">
                   <div id="OTCXR_Image_heading">Right Lateral View</div>
-                  {/* <div id="OTCXR_Image"> */}
                   <img src={Img4} alt="OTCXR1" style={{ width: "46%" }} />
-                  {/* </div> */}
                 </div>
               </div>
             </div>
@@ -78,6 +70,10 @@ class OTCXR extends Component {
                 id="OTCXR_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    16
+                  );
                   this.context.history.push(
                     "./summary-of-x-ray-views-necessary-based-on-patients-symptoms"
                   );

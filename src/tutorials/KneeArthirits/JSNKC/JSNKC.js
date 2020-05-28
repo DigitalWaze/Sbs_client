@@ -242,6 +242,10 @@ class JSNKC extends Component {
                   this.state.clickState < 4 ? { opacity: 0.5 } : { opacity: 1 }
                 }
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    28
+                  );
                   this.context.history.push(
                     "./x-ray-matching-a-tool-to-determine-levels-of-degeneration"
                   );

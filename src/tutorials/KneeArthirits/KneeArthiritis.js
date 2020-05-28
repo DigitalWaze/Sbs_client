@@ -28,6 +28,7 @@ import YMLATJSONBSOTK from "./YMLATJSONBSOTK/YMLATJSONBSOTK";
 import JSNKC from "./JSNKC/JSNKC";
 import XRMATTDLOD from "./XRMATTDLOD/XRMATTDLOD";
 import XRMALOD from "./XRMALOD/XRMALOD";
+import XRMMS from "./XRMMS/XRMMS";
 import Congrats from "./Congrats/Congrats";
 
 class KneeArthiritis extends Component {
@@ -175,6 +176,11 @@ class KneeArthiritis extends Component {
           exact
           path="/tutorials/knee-Arthiritis/x-ray-matching-and-levels-of-degeneration"
           component={XRMALOD}
+        />
+        <Route
+          exact
+          path="/tutorials/knee-Arthiritis/x-ray-matching-moderate-selected"
+          component={XRMMS}
         />
         <Route
           exact

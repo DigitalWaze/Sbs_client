@@ -59,6 +59,10 @@ class VDWXRTKC extends Component {
                 id="VDWXRTKC_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    11
+                  );
                   this.context.history.push("./compartments-of-the-knee-2");
                 }}
               >

@@ -31,6 +31,10 @@ class SBSWelcome extends Component {
               id="Tutorials_SBS_Welcome_Next_Button"
               variant="contained"
               onClick={() => {
+                this.context.setCookie(
+                  "tutorial-" + this.context.state.user_id,
+                  1
+                );
                 this.context.history.push("./video");
               }}
             >

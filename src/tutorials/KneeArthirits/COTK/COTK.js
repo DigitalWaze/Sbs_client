@@ -48,6 +48,10 @@ class COTK extends Component {
                 id="COTK_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    8
+                  );
                   this.context.history.push(
                     "./viewing-degeneration-with-x-rays-copy"
                   );

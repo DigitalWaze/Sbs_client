@@ -55,7 +55,13 @@ class XRMALOD extends Component {
                 id="XRMALOD_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("./congrats");
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    30
+                  );
+                  this.context.history.push(
+                    "./x-ray-matching-moderate-selected"
+                  );
                 }}
               >
                 {" "}

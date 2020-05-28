@@ -78,6 +78,10 @@ class EKDWXR extends Component {
                 id="EKDWXR_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    19
+                  );
                   this.context.history.push(
                     "./how-to-identify-joint-space-narrowing-and-degeneration"
                   );

@@ -41,7 +41,13 @@ class SBSVideo2 extends Component {
                 id="SBSVideo2_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push("/");
+                  this.context.setCookie(
+                    "tutorial-" + this.context.state.user_id,
+                    3
+                  );
+                  this.context.history.push(
+                    "/tutorials/knee-Arthiritis/welcome"
+                  );
                 }}
               >
                 {" "}
