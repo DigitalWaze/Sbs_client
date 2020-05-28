@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 
 import BoneImage from '../../assets/bone3_Bitmap.png'
 import BoneImage1 from '../../assets/bone4_Bitmap.png'
+import BoneImage2 from '../../assets/bone5_Bitmap.png'
 
 
 import Tick from '../../assets/button-tick.png';
@@ -108,12 +109,12 @@ class PatientProfile extends Component {
 
                     <div  id="Evaluaion_PatientProfile_Content2_Wrapper">
 
-                        {this.context.state.joint_id=='3'?
+                        {this.context.state.Eval.length>1||this.context.state.joint_id=='3'?
                             <div className="Evaluaion_PatientProfile_Image_Left_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down" >
                                     <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content1">
-                                        <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                        <TextField value={"Priority: "+this.context.state.Eval.find(eva=>eva.joint_id.toString()=='3').priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
             
                                     </div>  
                                     <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content2">
@@ -127,10 +128,9 @@ class PatientProfile extends Component {
                             </div>
                         :null}
 
-                        
 
-                        <div id="Evaluaion_PatientProfile_Image_Bone_Div"> <img src={this.context.state.joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_PatientProfile_Image_Bone" /></div>
-                        {this.context.state.joint_id=='4'?
+                        <div id="Evaluaion_PatientProfile_Image_Bone_Div"> <img src={this.context.state.Eval.length>1?BoneImage2:this.context.state.joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_PatientProfile_Image_Bone" /></div>
+                        {this.context.state.Eval.length>1||this.context.state.joint_id=='4'?
                             <div className="Evaluaion_PatientProfile_Image_Right_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down" >
@@ -141,8 +141,7 @@ class PatientProfile extends Component {
                                         <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
                                     </div>
                                     <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down_Content1">
-                                        <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
-            
+                                        <TextField value={"Priority: "+this.context.state.Eval.find(eva=>eva.joint_id.toString()=='4').priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
                                     </div>  
                                     
                                 </div>

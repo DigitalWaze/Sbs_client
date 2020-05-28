@@ -149,6 +149,9 @@ class Routes extends Component {
       let evaluation_stage = this.getCookie("evaluation_stage");
       let temp_report_id = this.getCookie("temp_report_id");
       let temp_patient_id = this.getCookie("temp_patient_id");
+      let tutorial_rem=this.getCookie('tutorial-'+user_id);
+
+      console.log(tutorial_rem);
 
       if (
         token == undefined ||
@@ -183,7 +186,6 @@ class Routes extends Component {
           evaluation_stage: evaluation_stage,
           temp_report_id: temp_report_id,
           temp_patient_id,
-          temp_patient_id,
           loading: false,
           loggedIn: true,
           token: token,
@@ -193,14 +195,25 @@ class Routes extends Component {
           user_type: { id: user_type_id, type: user_type_name },
           organization: organization,
         });
-        if (parseInt(evaluation_stage) > 0) {
-          {
-            history.push("/evaluation/resume-evaluation");
-          }
+
+        if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
+        {
+          history.push("/tutorials/resume-tutorial");
         }
-        if (history.location.pathname == "/login") {
-          history.push("/");
+        else if (parseInt(evaluation_stage) > 0) {
+          
+          history.push("/evaluation/resume-evaluation");
+          
         }
+
+        else if(tutorial_rem==41)
+        {
+          history.push('/evaluation/welcome'); 
+        }
+        // else if (history.location.pathname == "/login") {
+        //   history.push("/");
+        // }
+        else  history.push("/tutorials/sbs/welcome");
       }
     }
   }
@@ -554,10 +567,7 @@ class Routes extends Component {
           <Route path="/start-over" component={StartOver} />
           <Route path="/tutorials" component={Tutorials} />
           <Route path="/Learn-more" component={LearnMore} />
-          <Route
-            path="/evaluation"
-            component={Evaluation}
-          /> {/* CHECKER */} {/* ROUTER */}
+          <Route path="/evaluation" component={Evaluation}/> {/* CHECKER */} {/* ROUTER */}
           <Route path="/admin/create-user" component={CreateUser} />{" "}
           {/* CHECKER */} {/* ROUTER */}
           {/* CHECKER */} {/* ROUTER */}

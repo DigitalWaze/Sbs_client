@@ -37,7 +37,8 @@ class Welcome extends Component {
                     Start matching X-rays and perfect your evaluation skills. Practice matching X-rays for the three compartments of the knee. Realtime feedback will be provided with each evaluation.
                 </div>
                 <div id="Evaluaion_Welcome_Next_Button_Div">
-                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./matching-tutorial')}}> Continue </Button>
+                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.setCookie("tutorial-" + this.context.state.user_id,39);
+this.context.history.push('./matching-tutorial')}}> Continue </Button>
                 </div>
 
             </div>

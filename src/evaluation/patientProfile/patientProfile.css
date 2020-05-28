@@ -9,7 +9,7 @@
 #Evaluaion_PatientProfile_Content_Wrapper
 {
   margin-left:10%;
-  width:80%;
+  width:90%;
   /* min-width: 400px; */
   max-width: 100vw;
   min-height:100vh;
@@ -28,7 +28,7 @@
 {
   /* float:left; */
   width:45%;
-  margin-right: 5%;
+  margin-right: 20px;
   /* min-width: 400px;
   max-width: 700px; */
   /* height:100vh; */
@@ -201,7 +201,7 @@
   flex-direction: column;
   justify-content: center;
   height:100vh; */
-  width:50%;
+  width:calc(55% - 20px);
   /* margin-left: 5%; */
   margin-top: 150px;
   
@@ -213,8 +213,9 @@
 {
   display: inline-block;
   vertical-align: top;
-  margin-top:190px;
+  margin-top:170px;
   text-align: center;
+  transform: translateX(35px);
 }
 
 .Evaluaion_PatientProfile_Image_Left_Inner_Down
@@ -227,7 +228,7 @@
 {
   display: inline-block;
   vertical-align: top;
-  margin-top:190px;
+  margin-top:170px;
   text-align: center;
 }
 
@@ -241,7 +242,7 @@
 {
   display: inline-block;
   vertical-align: top;
-  margin-right: 20px;
+  margin-right: 5px;
   transform: translateY(-20px);
 }
 
@@ -257,7 +258,7 @@
   transform: translateY(-20px);
   display: inline-block;
   vertical-align: top;
-  margin-left: 20px;
+  margin-left: 5px;
 
 }
 
@@ -288,7 +289,7 @@
 
 #Evaluaion_PatientProfile_Image_Bone_Div
 {
-  width:300px;
+  width:260px;
   display: inline-block;
   height: calc(100vh - 160px);
 }
@@ -329,31 +330,55 @@
   }
 }
 
-
-@media only screen and (max-width:1350px)
+@media only screen and (max-width:1417px)
 {
-  #Evaluaion_PatientProfile_Content_Wrapper
+  #Evaluaion_PatientProfile_Content1_Wrapper
   {
-    width:90%
+    width:40%
+  }
+  #Evaluaion_PatientProfile_Content2_Wrapper
+  {
+    width:calc(60% - 20px);
   }
 }
 
-@media only screen and (max-width:1190px)
+
+@media only screen and (max-width:1350px)
+{
+  #Evaluaion_PatientProfile_Content1_Wrapper
+  {
+    margin-right:0px;
+  }
+
+  #Evaluaion_PatientProfile_Content2_Wrapper
+  {
+    width:calc(60% - 0px);
+  }
+  
+}
+
+@media only screen and (max-width:1260px)
+{
+  #Evaluaion_PatientProfile_Content1_Wrapper
+  {
+    margin-right:-10px;
+  }
+
+  #Evaluaion_PatientProfile_Content2_Wrapper
+  {
+    width:calc(60% + 10px);
+  }
+  
+}
+
+@media only screen and (max-width:1260px)
 {
   #Evaluaion_PatientProfile_Content_Wrapper
   {
     width:93%;
     margin-left:7%;
   }
-  #Evaluaion_PatientProfile_Content1_Wrapper
-  {
-    width:43%;
-    margin-right: 2%
-  }
-  #Evaluaion_PatientProfile_Content2_Wrapper
-  {
-    width:55%;
-  }
+  
 }
 
 @media only screen and (max-width:1050px)

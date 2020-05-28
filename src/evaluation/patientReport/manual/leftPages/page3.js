@@ -4,9 +4,8 @@ import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 
 
-import './patientReport.css';
-import MyContext from '../../../helper/themeContext';
-class Page3 extends Component {
+import MyContext from '../../../../helper/themeContext';
+class Page3Left extends Component {
     constructor(props) {
         super(props);
         this.state = { Answer6:null,Answer7:null}
@@ -17,21 +16,21 @@ class Page3 extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
 
-    componentDidMount()
-    {
-        this.setState({Answer6:this.props.Answer6,Answer7:this.props.Answer7})
-    }
+    // componentDidMount()
+    // {
+    //     this.setState({Answer6:this.props.Answer6,Answer7:this.props.Answer7})
+    // }
     
 
     handleClick = () =>
     {
-        this.props.changeAnswer('Question6',this.state.Answer6)
-        this.props.changeAnswer('Question7',this.state.Answer7)
-        if(this.state.Answer6==null || this.state.Answer7==null)
-        {
-            alert('Please choose an appropriate option')
-        }
-        else this.props.handlePageChange();
+       
+        // if(this.state.Answer6==null || this.state.Answer7==null)
+        // {
+        //     alert('Please choose an appropriate option')
+        // }
+        // else 
+        this.props.handlePageChange();
     }
     render() {
         const old= this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2?true:false; 
@@ -42,12 +41,12 @@ class Page3 extends Component {
 
             <div  id="Evaluaion_PatientReport_Content_Wrapper">
                 <div id="Evaluaion_PatientReport_Heading1_Div">
-                    KOOS, JR. KNEE SURVEY <span className="red-emphasis"> Right Knee </span>
+                    KOOS, JR. KNEE SURVEY <span className="red-emphasis"> Left Knee </span>
                 </div>
 
                 <div className="Evaluaion_PatientReport_Text1">
                     <span className="Evaluaion_PatientReport_SubHead2">Function, daily living </span> <br/> 
-                    The following questions concern your physical function. By this we mean your ability to move around and to look after yourself. For each of the following activities please indicate the degree of dificulty you have experienced in the <b> last week </b> due to your <span className="red-emphasis"> right </span>knee.
+                    The following questions concern your physical function. By this we mean your ability to move around and to look after yourself. For each of the following activities please indicate the degree of dificulty you have experienced in the <b> last week </b> due to your <span className="red-emphasis"> left </span> knee.
                 </div>
 
 
@@ -114,5 +113,5 @@ class Page3 extends Component {
         </div> );
     }
 }
-Page3.contextType=MyContext;
-export default Page3;
+Page3Left.contextType=MyContext;
+export default Page3Left;

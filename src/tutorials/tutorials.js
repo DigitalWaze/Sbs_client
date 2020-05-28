@@ -10,6 +10,8 @@ import SBSVideo2 from "./SBS/SBSVideo2/SBSVideo2";
 import KneeArthiritis from "./KneeArthirits/KneeArthiritis";
 import MatchingEducation from "./XrayMatchingEdu/matchingEducation";
 import XrayTraining from "./xrayTraining/xrayTraining";
+import ResumeTutorial from "./resumeTutorial/resumeTutorial";
+import ResumeTutorialSelect from "./resumeTutorial/resumeTutorialSelect";
 
 
 
@@ -24,7 +26,8 @@ class Tutorials extends Component {
       <Router history={this.context.history}>
        
 
-       
+       <Route exact path="/tutorials/resume-tutorial" component={ResumeTutorial} />
+        <Route exact path="/tutorials/resume-tutorial/recover" component={ResumeTutorialSelect} />
         <Route path="/tutorials/knee-Arthiritis" component={KneeArthiritis} />
         <Route path="/tutorials/matching-education" component={MatchingEducation} />
         <Route path="/tutorials/matching-training" component={XrayTraining} />

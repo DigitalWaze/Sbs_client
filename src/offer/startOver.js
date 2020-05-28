@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Button } from '@material-ui/core';
+import MyContext from '../helper/themeContext';
 
 class StartOver extends Component {
     constructor(props) {
@@ -18,10 +19,10 @@ class StartOver extends Component {
             
 
             <div className="Evaluation_ResumeEvaluation_Button_Div">
-                <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('/tutorial/page1')}> Review the Education </Button>
+                <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=> {this.context.setCookie('tutorial-'+this.context.state.user_id,41); this.props.history.push('/tutorials/sbs/welcome')} }> Review the Education </Button>
             </div>
             <div className="Evaluation_ResumeEvaluation_Button_Div">
-                <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('/evaluation/welcome')}> Evaluate a Patient </Button>
+                <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=> {this.context.setCookie('tutorial-'+this.context.state.user_id,41); this.props.history.push('/evaluation/welcome')} }> Evaluate a Patient </Button>
             </div>
 
         </div>
@@ -30,5 +31,6 @@ class StartOver extends Component {
     </div> );
     }
 }
- 
+
+StartOver.contextType=MyContext;
 export default StartOver;

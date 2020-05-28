@@ -45,8 +45,8 @@ class Congratulations extends Component {
                     If you would like to more practice, click on
                     “Try Training Again.”                </div>
                 <div id="Evaluaion_Welcome_Next_Button_Div">
-                    <Button id="Evaluaion_Welcome_Next_Button" style={{marginRight:'20px'}} variant="contained" onClick={()=>{this.context.history.push('/evaluation')}}> Next </Button>
-                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./matching-tutorial')}}> Try Training Again </Button>
+                    <Button id="Evaluaion_Welcome_Next_Button" style={{marginRight:'20px'}} variant="contained" onClick={()=>{ this.context.setCookie("tutorial-" + this.context.state.user_id,41); this.context.history.push('/evaluation')}}> Next </Button>
+                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{ this.context.history.push('./matching-tutorial')}}> Try Training Again </Button>
 
                 </div>
 

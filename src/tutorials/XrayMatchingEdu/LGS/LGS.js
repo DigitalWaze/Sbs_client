@@ -35,7 +35,7 @@ class LGS extends Component {
                 You will review a sample patient with right knee pain only. Match the patient’s X-ray to one of the X-rays in our database. Do this for each compartment in each view.
                 </div>
                 <div id="Evaluaion_Welcome_Next_Button_Div">
-                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./matching-tutorial')}}> Continue </Button>
+                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.setCookie("tutorial-" + this.context.state.user_id,35); this.context.history.push('./matching-tutorial')}}> Continue </Button>
                 </div>
 
             </div>

@@ -37,7 +37,7 @@ class Welcome extends Component {
                     the evaluation process.
                 </div>
                 <div id="Evaluaion_Welcome_Next_Button_Div">
-                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./video')}}> Continue </Button>
+                    <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.setCookie("tutorial-" + this.context.state.user_id,33); this.context.history.push('./video')}}> Continue </Button>
                 </div>
 
             </div>

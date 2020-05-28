@@ -7,10 +7,7 @@
     #b4ec51
   );
   min-height: 100vh;
-<<<<<<< HEAD
-=======
   padding: 0px;
->>>>>>> 3d555a698f02a3ca2f6fb6d1b8ce6a79f6d9c24d
   position: relative;
   overflow: hidden;
 }
@@ -20,14 +17,11 @@
   min-width: 700px;
   max-width: 830px;
   height: 100vh;
-<<<<<<< HEAD
-=======
   padding: 0rem 1rem 0rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
->>>>>>> 3d555a698f02a3ca2f6fb6d1b8ce6a79f6d9c24d
 }
 
 #KDAA2_Heading1_Div {

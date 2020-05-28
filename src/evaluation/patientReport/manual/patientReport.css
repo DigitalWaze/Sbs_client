@@ -133,6 +133,15 @@
   right:10px;
 }
 
+#Evaluaion_PatientReport_Back_Button_Div
+{
+  display: block;
+  margin-top: 10%;
+  position: absolute;
+  bottom:10px;
+  left:70px;
+}
+
 #Evaluaion_PatientReport_Next_Button
 {
   display: block;
@@ -146,5 +155,11 @@
   background-color: #b4ec51;
   font-family: 'Lato', sans-serif;
   text-transform:none;
+}
+
+.red-emphasis {
+  font-family: Lato, sans-serif;
+  color: #7b1414;
+  font-weight: 700;
 }
 

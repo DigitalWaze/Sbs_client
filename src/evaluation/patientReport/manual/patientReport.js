@@ -7,11 +7,22 @@ import Page2 from './page2';
 import Page3 from './page3';
 import PostData from '../../../Fetch/postData2';
 import { SemipolarLoading } from 'react-loadingg';
+import Page1Left from './leftPages/page1';
+import Page2Left from './leftPages/page2';
+import Page3Left from './leftPages/page3';
 
 class PatientReport extends Component {
     constructor(props) {
         super(props);
-        this.state = { page:0,form:null,loading:true }
+        this.state = { page:0,form:null,loading:true,tempLeft:false }
+    }
+
+    componentWillMount()
+    {
+        if(this.context.state.Eval.length>1)
+        {
+            this.setState({tempLeft:true})
+        }
     }
 
     componentDidMount()
@@ -66,17 +77,48 @@ class PatientReport extends Component {
     {
         switch(this.state.page)
         {
-            case 0: return <Page1 Answer1={this.state.form.find((question)=>question.name=="Question1").pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
-            case 1: return <Page2 Answer2={this.state.form.find((question)=>question.name=="Question2").pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3").pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4").pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5").pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
-            case 2: return <Page3 Answer6={this.state.form.find((question)=>question.name=="Question6").pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7").pro_severity_id}handlePageChange={this.next} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 0: return <Page1 handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1").pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
+            case 1: return <Page2 handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2").pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3").pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4").pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5").pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 2: return <Page3 handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6").pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7").pro_severity_id}handlePageChange={this.next} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
             default: return <div> Unreachable step</div>;
         }
+    }
+
+    getPageLeft = () =>
+    {
+        switch(this.state.page)
+        {
+            case 0: return <Page1Left handleBack = {this.handleBack1} handlePageChange={this.handlePageChange} />;
+            case 1: return <Page2Left handleBack = {this.handleBack2} handlePageChange={this.handlePageChange} />;
+            case 2: return <Page3Left handleBack = {this.handleBack3} handlePageChange={this.next} />;
+            default: return <div> Unreachable step</div>;
+        }
+    }
+
+    handleBack1 = () =>
+    {
+        this.context.history.push('./forms')
+    }
+
+    handleBack3 = () =>
+    {
+        this.setState({page:1})
+    }
+    handleBack2 = () =>
+    {
+        this.setState({page:0})
     }
 
     next = () =>
     {
         console.log(this.state.form)
-        if(this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2)
+        if(this.state.tempLeft==true)
+        {
+            this.setState({tempLeft:false,page:0})
+        }
+
+
+        else if(this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2)
         {
             this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true}],'./forms')
         }
@@ -107,7 +149,11 @@ class PatientReport extends Component {
             //if this.state.form does not exist then loader
             <div id="Evaluaion_PatientReport_Main_Div">
                  {/* {console.log(this.context.state)} */}
-                {this.state.loading==true?<SemipolarLoading size={'large'}  color={'#b4ec51'}/>:this.getPage()}
+                {this.state.loading==true?
+                    <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
+                : this.state.tempLeft==true?
+                    this.getPageLeft():
+                    this.getPage()}
             </div>
         
         );

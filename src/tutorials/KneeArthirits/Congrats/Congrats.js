@@ -40,7 +40,8 @@ class Congrats extends Component {
               id="Tutorials_Congrats_Next_Button"
               variant="contained"
               onClick={() => {
-                this.context.history.push("/");
+                this.context.setCookie("tutorial-" + this.context.state.user_id,32);
+                this.context.history.push("/tutorials/matching-education/welcome");
               }}
             >
               {" "}

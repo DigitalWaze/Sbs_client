@@ -41,6 +41,7 @@ class MatchingVideo extends Component {
                 id="SBSVideo_Next_Button"
                 variant="contained"
                 onClick={() => {
+                  this.context.setCookie("tutorial-" + this.context.state.user_id,34);
                   this.context.history.push("./lets-get-started");
                 }}
               >

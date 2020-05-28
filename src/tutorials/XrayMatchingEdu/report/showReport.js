@@ -73,7 +73,8 @@ class ShowReport extends Component {
 
     handleNextClick = () =>
     {
-        // this.context.history.push('./chart')
+        this.context.setCookie("tutorial-" + this.context.state.user_id,38);
+        this.context.history.push('/tutorials/matching-training/welcome')
     }
 
     
@@ -245,7 +246,7 @@ class ShowReport extends Component {
                     </div>
                 </div>
                 <div id="Evaluaion_Report_Next_Button_Div">
-                        <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'View PRO Report Card'}  </Button>
+                        <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> Xray Matching Training  </Button>
                 </div>
                 
             </div> 

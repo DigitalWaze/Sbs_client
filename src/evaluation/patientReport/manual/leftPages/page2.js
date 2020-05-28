@@ -4,9 +4,8 @@ import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 
 
-import './patientReport.css';
-import MyContext from '../../../helper/themeContext';
-class Page2 extends Component {
+import MyContext from '../../../../helper/themeContext';
+class Page2Left extends Component {
     constructor(props) {
         super(props);
         this.state = { Answer2:null,Answer3:null,Answer4:null,Answer5:null }
@@ -15,21 +14,19 @@ class Page2 extends Component {
     {
         this.setState({[e.target.name]:e.target.value})
     }
-    componentDidMount()
-    {
-        this.setState({Answer2:this.props.Answer2,Answer3:this.props.Answer3,Answer4:this.props.Answer4,Answer5:this.props.Answer5})
-    }
+    // componentDidMount()
+    // {
+    //     this.setState({Answer2:this.props.Answer2,Answer3:this.props.Answer3,Answer4:this.props.Answer4,Answer5:this.props.Answer5})
+    // }
     handleClick = () =>
     {
-        this.props.changeAnswer('Question2',this.state.Answer2)
-        this.props.changeAnswer('Question3',this.state.Answer3)
-        this.props.changeAnswer('Question4',this.state.Answer4)
-        this.props.changeAnswer('Question5',this.state.Answer5)
-        if(this.state.Answer2==null || this.state.Answer3==null ||this.state.Answer4==null ||this.state.Answer5==null)
-        {
-            alert('Please choose an appropriate option')
-        }
-        else this.props.handlePageChange();
+        
+        // if(this.state.Answer2==null || this.state.Answer3==null ||this.state.Answer4==null ||this.state.Answer5==null)
+        // {
+        //     alert('Please choose an appropriate option')
+        // }
+        // else
+        this.props.handlePageChange();
 
     }
     render() { 
@@ -41,12 +38,12 @@ class Page2 extends Component {
 
             <div  id="Evaluaion_PatientReport_Content_Wrapper">
                 <div id="Evaluaion_PatientReport_Heading1_Div">
-                    KOOS, JR. KNEE SURVEYS <span className="red-emphasis"> Right Knee </span>
+                    KOOS, JR. KNEE SURVEYS <span className="red-emphasis"> Left Knee </span>
                 </div>
 
                 <div className="Evaluaion_PatientReport_Text1">
                     <span className="Evaluaion_PatientReport_SubHead2">Pain</span> <br/>
-                    What amount of <span className="red-emphasis"> right </span> knee pain have you experienced the <b> last week </b>during the following activities?
+                    What amount of <span className="red-emphasis"> left </span> knee pain have you experienced the <b> last week </b>during the following activities?
                 </div>
 
                
@@ -150,7 +147,7 @@ class Page2 extends Component {
                 <div id="Evaluaion_PatientReport_Back_Button_Div">
                     <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.props.handleBack}> Back </Button>
                 </div>
-
+                
                 <div id="Evaluaion_PatientReport_Next_Button_Div">
                     <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.handleClick}> Next </Button>
                 </div>
@@ -163,6 +160,6 @@ class Page2 extends Component {
     }
 }
 
-Page2.contextType=MyContext;
+Page2Left.contextType=MyContext;
 
-export default Page2;
+export default Page2Left;

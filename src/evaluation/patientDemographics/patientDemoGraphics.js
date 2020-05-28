@@ -310,9 +310,9 @@ class PatientDemoGraphics extends Component {
                         Patient Demographics
                     </div>
                     <FormControl component="fieldset">
-                        <RadioGroup row aria-label="new or old patient" name="new or old patient" defaultValue={old.toString()}>
-                            <FormControlLabel disabled={old}  value={"false"} style={{color:"white"}} control={<Radio style={{color:"white"}} />} label="New Patient" />
-                            <FormControlLabel disabled={!old} value={"true"}  style={{color:"white"}} control={<Radio style={{color:"white"}} />} label="Return Patient" />
+                        <RadioGroup row aria-label="new or old patient" name="new or old patient" defaultValue={"false"}>
+                            <FormControlLabel disabled={false}  value={"false"} style={{color:"white"}} control={<Radio style={{color:"white"}} />} label="New Patient" />
+                            <FormControlLabel disabled={true} value={"true"}  style={{color:"white"}} control={<Radio style={{color:"white"}} />} label="Return Patient" />
                         </RadioGroup>
                     </FormControl>
                     <div id="Evaluaion_PatientDemoGraphics_Form_Div">

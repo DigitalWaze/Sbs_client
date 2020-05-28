@@ -42,7 +42,7 @@ class Matching extends Component {
                         Once you believe you have found a match, click "Confirm Evaluation" to move onto the next view.
                     </div>
                     {
-                        [{name:'Normal to Sight',id:'1'},{name:'Moderate',id:'2'},{name:'Near End Stage',id:'3'},{name:'End Stage',id:'4'}].map((text,id)=>
+                        [{name:'Normal to Slight',id:'1'},{name:'Moderate',id:'2'},{name:'Near End Stage',id:'3'},{name:'End Stage',id:'4'}].map((text,id)=>
                         <div className="Evaluaion_XrayMatching_Matching_State_Button_Div" key={id}>
                             <Button className="Evaluaion_XrayMatching_Matching_State_Button" style={{color:this.state.Active===text.id?'':'#fff', background:this.state.Active===text.id?'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained" onClick={()=>this.handleClick(text.id)}> {text.name} </Button>
                         </div>
@@ -64,7 +64,7 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        {this.props.ActiveType} {this.props.ActiveXray}
+                        {this.props.ActiveType=="Kneecap"?'Kneecap':this.props.ActiveType + ' ' + this.props.ActiveXray}
                     </div>
                    
                     <div style={{width:'100%',height:'calc(50% - 30px)'}}>

@@ -151,6 +151,7 @@ class MatchingTutorial extends Component {
                 // this.setState({loading:true})
 
                 // console.log(req);
+                this.context.setCookie("tutorial-" + this.context.state.user_id,36);
                 this.context.history.push('./video2')
             }
             
