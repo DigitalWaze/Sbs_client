@@ -68,7 +68,7 @@ class EKDWXR extends Component {
                 id="EKDWXR_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push("./what-x-rays-would-you-request");
                 }}
               >
                 {" "}

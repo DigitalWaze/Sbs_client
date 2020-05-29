@@ -44,7 +44,9 @@ class WDTJSSAEFTMALC2 extends Component {
                 id="WDTJSSAEFTMALC2_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments"
+                  );
                 }}
               >
                 {" "}

@@ -90,7 +90,9 @@ class COTK2 extends Component {
                 id="COTK2_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./viewing-degeneration-with-x-rays-the-kneecap-compartment"
+                  );
                 }}
               >
                 {" "}

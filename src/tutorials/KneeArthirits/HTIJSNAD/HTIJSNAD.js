@@ -57,7 +57,9 @@ class HTIJSNAD extends Component {
                 id="HTIJSNAD_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./evaluating-knee-degeneration-with-x-rays"
+                  );
                 }}
               >
                 {" "}

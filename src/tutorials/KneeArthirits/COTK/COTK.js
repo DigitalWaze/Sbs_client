@@ -38,7 +38,9 @@ class COTK extends Component {
                 id="COTK_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./knee-degeneration-and-arthritis"
+                  );
                 }}
               >
                 {" "}

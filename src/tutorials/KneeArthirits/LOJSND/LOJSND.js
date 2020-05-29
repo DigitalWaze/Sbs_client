@@ -55,7 +55,9 @@ class LOJSND extends Component {
                 id="LOJSND_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./where-does-the-joint-space-start-and-end-for-the-medial-and-lateral-compartments-2"
+                  );
                 }}
               >
                 {" "}

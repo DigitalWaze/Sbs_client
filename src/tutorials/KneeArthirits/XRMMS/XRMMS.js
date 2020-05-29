@@ -82,7 +82,9 @@ class XRMMS extends Component {
                 id="XRMMS_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./x-ray-matching-and-levels-of-degeneration"
+                  );
                 }}
               >
                 {" "}

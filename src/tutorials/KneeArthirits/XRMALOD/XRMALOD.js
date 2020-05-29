@@ -45,7 +45,9 @@ class XRMALOD extends Component {
                 id="XRMALOD_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./x-ray-matching-a-tool-to-determine-levels-of-degeneration"
+                  );
                 }}
               >
                 {" "}

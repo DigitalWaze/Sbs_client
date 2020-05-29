@@ -57,7 +57,7 @@ class VDWXR extends Component {
                 id="VDWXR_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push("./compartments-of-the-knee");
                 }}
               >
                 {" "}

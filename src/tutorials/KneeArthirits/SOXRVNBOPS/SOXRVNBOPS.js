@@ -206,7 +206,7 @@ class SOXRVNBOPS extends Component {
                 id="SOXRVNBOPS_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push("./obtaining-the-correct-x-rays");
                 }}
               >
                 {" "}

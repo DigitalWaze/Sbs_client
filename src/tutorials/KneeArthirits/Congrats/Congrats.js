@@ -30,7 +30,7 @@ class Congrats extends Component {
               id="Tutorials_Congrats_Next_Button"
               variant="contained"
               onClick={() => {
-                this.context.history.goBack();
+                this.context.history.push("./x-ray-matching-moderate-selected");
               }}
             >
               {" "}
