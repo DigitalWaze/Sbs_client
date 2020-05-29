@@ -45,7 +45,9 @@ class KDAA extends Component {
                 id="KDAA_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./knee-degeneration-and-arthritis-2"
+                  );
                 }}
               >
                 {" "}

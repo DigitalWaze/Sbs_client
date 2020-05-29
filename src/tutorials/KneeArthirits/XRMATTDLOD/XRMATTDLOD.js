@@ -45,7 +45,9 @@ class XRMATTDLOD extends Component {
                 id="XRMATTDLOD_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./joint-space-narrowing-kneecap-compartment"
+                  );
                 }}
               >
                 {" "}

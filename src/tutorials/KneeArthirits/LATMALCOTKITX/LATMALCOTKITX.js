@@ -122,7 +122,9 @@ class LATMALCOTKITX extends Component {
                 id="LATMALCOTKITX_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./viewing-degeneration-with-x-rays-copy"
+                  );
                 }}
               >
                 {" "}

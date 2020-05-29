@@ -228,7 +228,9 @@ class JSNKC extends Component {
                 id="JSNKC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./you-must-look-at-the-joint-space-on-both-sides-of-the-kneecap"
+                  );
                 }}
               >
                 {" "}

@@ -49,7 +49,9 @@ class ETKC extends Component {
                 id="ETKC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./evaluating-the-medial-and-lateral-compartments-v2"
+                  );
                 }}
               >
                 {" "}

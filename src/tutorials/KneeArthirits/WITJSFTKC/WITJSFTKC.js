@@ -43,7 +43,9 @@ class WITJSFTKC extends Component {
                 id="WITJSFTKC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./joint-space-narrowing-lateral-compartment"
+                  );
                 }}
               >
                 {" "}

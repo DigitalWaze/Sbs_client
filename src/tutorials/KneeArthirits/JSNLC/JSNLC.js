@@ -228,7 +228,9 @@ class JSNLC extends Component {
                 id="JSNLC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./joint-space-narrowing-medial-compartment"
+                  );
                 }}
               >
                 {" "}

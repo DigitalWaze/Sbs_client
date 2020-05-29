@@ -52,7 +52,9 @@ class YMLATJSONBSOTK extends Component {
                 id="YMLATJSONBSOTK_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./where-is-the-joint-space-for-the-kneecap-compartment"
+                  );
                 }}
               >
                 {" "}

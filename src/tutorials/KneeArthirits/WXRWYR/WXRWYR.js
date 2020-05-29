@@ -178,7 +178,9 @@ class WXRWYR extends Component {
                 id="WXRWYR_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./summary-of-x-ray-views-necessary-based-on-patients-symptoms"
+                  );
                 }}
               >
                 {" "}

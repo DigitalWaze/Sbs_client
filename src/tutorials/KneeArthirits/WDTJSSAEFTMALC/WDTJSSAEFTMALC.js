@@ -42,7 +42,9 @@ class WDTJSSAEFTMALC extends Component {
                 id="WDTJSSAEFTMALC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./how-to-identify-joint-space-narrowing-and-degeneration"
+                  );
                 }}
               >
                 {" "}

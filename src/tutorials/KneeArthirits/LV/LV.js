@@ -43,7 +43,9 @@ class LV extends Component {
                 id="LV_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./evaluating-the-kneecap-compartment"
+                  );
                 }}
               >
                 {" "}

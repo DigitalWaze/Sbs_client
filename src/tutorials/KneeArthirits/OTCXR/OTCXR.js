@@ -60,7 +60,7 @@ class OTCXR extends Component {
                 id="OTCXR_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push("./lateral-view");
                 }}
               >
                 {" "}

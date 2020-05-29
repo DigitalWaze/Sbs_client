@@ -228,7 +228,9 @@ class JSNMC extends Component {
                 id="JSNMC_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push(
+                    "./levels-of-joint-space-narrowing-degeneration"
+                  );
                 }}
               >
                 {" "}

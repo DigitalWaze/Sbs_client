@@ -44,7 +44,7 @@ class KDAA2 extends Component {
                 id="KDAA2_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.goBack();
+                  this.context.history.push("./overview");
                 }}
               >
                 {" "}
