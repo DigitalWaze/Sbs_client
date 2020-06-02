@@ -37,7 +37,7 @@ class XRMALOD extends Component {
                 <img src={Img2} alt="XRMALOD1" />
               </div>
               <div id="XRMALOD_Inner_Text_Container">
-                Example of decreasing joint space in all compartment
+                Examples of decreasing joint space in all compartments
               </div>
             </div>
             <div id="XRMALOD_Next_Button_Div">

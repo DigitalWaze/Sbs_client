@@ -37,7 +37,7 @@ class XRMATTDLOD extends Component {
                 <img src={Img1} alt="XRMATTDLOD" />
               </div>
               <div id="XRMATTDLOD_Inner_Text_Container">
-                Example of decreasing joint space in the medial compartment
+                Comparison X-rays from SBS Database
               </div>
             </div>
             <div id="XRMATTDLOD_Next_Button_Div">
