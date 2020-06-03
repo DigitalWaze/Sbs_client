@@ -25,7 +25,7 @@ class Chart extends Component {
                         Date of Pro Intake: 10/22/2020
                     </div>
                    
-                    <div style={{display:'block',background:'',height:'350px',background:'white'}}>
+                    <div style={{display:'inline-block',width:'fit-content',marginRight:'20px',background:'',height:'350px',background:'white'}}>
                     <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
                     <span className="arrow-text-span">
                         BETTER &nbsp; HEALTH
@@ -40,10 +40,22 @@ class Chart extends Component {
                                 }}
                             />
                     </span>
+
+                    <span style={{position:'absolute',top:'5px',left:'20px',fontSize:'20px',fontWeight:'bold',whiteSpace:'nowrap',overflow:'hidden'}}>
+                        PAIN
+                    </span>
+                    <span style={{position:'absolute',top:'60px',left:'40px',fontSize:'16px',fontWeight:'bold',whiteSpace:'nowrap',overflow:'hidden'}}>
+                        Right Knee Pain
+                    </span>
+                    <span style={{position:'absolute',top:'60px',left:'320px',fontSize:'16px',fontWeight:'bold',whiteSpace:'nowrap',overflow:'hidden'}}>
+                        Left Knee Pain
+                    </span>
                         
                     </div>
+
+                   
                     {
-                        [108,200,108,108,].map((text,key)=>
+                        [108,200].map((text,key)=>
                             <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack
@@ -82,7 +94,90 @@ class Chart extends Component {
                        
                        )
                    } 
+                    
+                </div>
+
+
+
+
+
+
+
+
+                <div style={{display:'inline-block',width:'fit-content',background:'',height:'350px',background:'white'}}>
+                    <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
+                    <span className="arrow-text-span">
+                        BETTER &nbsp; HEALTH
+                    </span>
+                    <span id="arrow-div">
+                        <Arrow
+                                angle={0}
+                                length={70}
+                                style={{
+                                width: '50px',
+                                height:'400px'
+                                }}
+                            />
+                    </span>
+
+                    <span style={{position:'absolute',top:'5px',left:'20px',fontSize:'20px',fontWeight:'bold',whiteSpace:'nowrap',overflow:'hidden'}}>
+                        FUNCTIONAL AND PHYSICAL HEALTH
+                    </span>
+                    <span style={{position:'absolute',top:'60px',left:'40px',fontSize:'16px',fontWeight:'bold',whiteSpace:'nowrap',overflow:'hidden'}}>
+                        Joint Functional (ADL)
+                    </span>
+                    <span style={{position:'absolute',top:'60px',left:'320px',fontSize:'16px',fontWeight:'bold',whiteSpace:'nowrap',overflow:'hidden'}}>
+                        Overall Physical Function (PCS)
+                    </span>
+                        
+
+                    
+
                     </div>
+
+                   
+                    {
+                        [108,200].map((text,key)=>
+                            <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
+                                
+                                <VictoryStack
+                                    animate={{
+                                        duration: 2000,
+                                        onLoad: { duration: 1000 }
+                                    }}
+                                height={450}
+                                //   width={100}
+                                colorScale={["#F56C7A", "#F7A11A", "#B9DBA7"]}>
+                               
+                                <VictoryArea
+                                    data={[{x: "a", y: 4}, {x: "b", y: 4}]}
+                                />
+                                
+                                <VictoryArea
+                                    data={[{x: "a", y: 3}, {x: "b", y: 3}]}
+                                />
+                                
+                                <VictoryArea
+                                    data={[{x: "a", y: 3}, {x: "b", y: 3}]}
+                                />
+                            
+                                </VictoryStack>
+                                <div style={{position:'absolute',top:'0px',left:'0px',height:'30px',width:'50px',background:''}}>
+                                    <div style={{position:'relative'}}>
+                                        70
+                                    </div> 
+                                </div>
+                                <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'11px',background:'#221E20',top:[text+'px'],left:'125px',height:'11px'}}>
+                                </div>
+                                <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'1px',background:'#221E20',top:[text+11+'px'],left:'129.7px',height:'10px'}}>
+                                </div>
+
+                            </div>
+                       
+                       )
+                   } 
+                    
+                </div>
                     
                     <div id="Evaluaion_Welcome_Next_Button_Div">
                         <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{this.context.history.push('./pdf')}}> View Patient Summary </Button>

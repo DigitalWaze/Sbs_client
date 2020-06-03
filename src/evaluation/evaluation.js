@@ -54,6 +54,7 @@ import KVUP4 from '../assets/kneecap-up-4.png'
 import ResumeEvaluation from './resumeEvaluation/resumeEvaluation';
 import ResumeEvaluationSelect from './resumeEvaluation/resumeEvalutionSelect';
 import Pdf from './pdf/pdf';
+import EvaluationHistory from './evaluationHistory/evaluationHistory';
 
 
 
@@ -113,7 +114,7 @@ class Evaluation extends Component {
         //---------Dummy Data End---------------------------------
 
         //Initializing Evaluation State
-        this.context.multipleUpdateValue([{key:'XrayMatch',value:false},{key:'UXray',value:false},{key:'Pro',value:false},{key:'Evaluations',value:Evaluations},{key:'Eval',value:[]},{key:'form',value:form},{key:'patient',value:{}},{key:'report_id',value:null} ])
+        this.context.multipleUpdateValue([{key:'Xrays',value:[]},{key:'XrayMatch',value:false},{key:'UXray',value:false},{key:'Pro',value:false},{key:'Evaluations',value:Evaluations},{key:'Eval',value:[]},{key:'form',value:form},{key:'patient',value:{}},{key:'report_id',value:null} ])
 
 
         
@@ -155,6 +156,7 @@ class Evaluation extends Component {
                         <Route path="/Evaluation/report" component={Report}/>
                         <Route path="/Evaluation/chart" component={Chart} />
                         <Route path="/Evaluation/pdf" component={Pdf} />
+                        <Route path="/Evaluation/evaluation-history" component={EvaluationHistory} />
 
 
                     </Router>

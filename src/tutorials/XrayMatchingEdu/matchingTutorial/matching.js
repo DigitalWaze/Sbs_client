@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 
 import MyContext from '../../../helper/themeContext';
+import Modal from '@material-ui/core/Modal';
 
 import NoMatching from '../../../assets/no_matching.png'
 import Ruler from '../../../assets/ruler.png'
@@ -13,7 +14,7 @@ import './matching.css'
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { Active:null , Notes:null,error:false,next:false }
+        this.state = { Active:null , Notes:null,error:false,next:false,openModal:false}
     }
 
    
@@ -48,6 +49,22 @@ class Matching extends Component {
         }
         
     }
+
+    handleModalClose = () =>
+    {
+        this.setState({openModal:false})
+    }
+    handleModalOpen = () =>
+    {
+        this.setState({openModal:true})
+    }
+
+    Submit =() =>
+    {
+        this.handleModalClose();
+    }
+
+
     render() { 
         return (  
             <div>
@@ -85,7 +102,7 @@ class Matching extends Component {
                         {
                             this.state.Active &&
                             <div className="Evaluaion_XrayMatching_Matching_AddNotes_Button_Div">
-                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleNotesClick}> Add Notes </Button>
+                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleModalOpen}> Add Notes </Button>
                             </div>
                         }
                         
@@ -97,24 +114,51 @@ class Matching extends Component {
                         {this.props.ActiveType=="Kneecap"?'Kneecap':this.props.ActiveType + ' ' + this.props.ActiveXray}
                     </div>
                    
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)'}}>
+                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
                         <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
                     </div>
                     {
                     this.state.Active!=null?
-                        <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)'}}>
+                        <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
                             <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                         </div>
                     :   <div className="matching-down" >
-                            <div style={{background:'black',height:'100%',width:'100%'}}>
+                            <div style={{height:'100%',width:'100%'}}>
                                 <img style={{maxWidth:'100%',maxHeight:'100%',height:'auto',width:'auto'}} src={NoMatching}/>
-                                <img style={{position:'absolute',right:'0px'}} src={Ruler} />
                             </div>
                         </div>
 
                     }
                      
                 </div>
+                <Modal
+                open={this.state.openModal}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                style={{position:'absolute',left:'calc(50vw - 250px)',top:'calc(50vh - 250px)'}}
+                >
+                    <div className="Evaluaion_XrayMatching_Matching_Modal_Div">
+
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Heading">
+                            Notes
+                        </div>
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
+                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea">
+
+                            </textarea>
+                        </div>
+                        <div style={{marginTop:'20px',marginLeft:'50px'}}>
+                            <div className="Evaluaion_XrayMatching_Matching_Modal1_Button_Div">
+                                    <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.Submit}> Submit </Button>
+                            </div>
+                            <div className="Evaluaion_XrayMatching_Matching_Modal2_Button_Div">
+                                    <Button className="Evaluaion_XrayMatching_Matching_Modal2_Button" variant="outlined" onClick={this.handleModalClose}> Cancel </Button>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                </Modal>
 
             
             </div>

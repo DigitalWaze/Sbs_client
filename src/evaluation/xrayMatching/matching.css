@@ -91,21 +91,48 @@
 
 .Evaluaion_XrayMatching_Matching_AddNotes_Button_Div
 {
-  width: 30%;
+  width: 35%;
   float: right;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal1_Button_Div
+{
+  width: 35%;
+  float: left;
+  margin-right: 20px;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal2_Button_Div
+{
+  width: 30%;
+  float: left;
 }
 
 .Evaluaion_XrayMatching_Matching_AddNotes_Button
 {
-    display: inline-block;
-    width:100% !important;
-    padding: 5px 15px !important;
-    font-size: 20px !important;
-    line-height: 48px !important;
-    border-radius: 25px !important;
-    background: #b4ec51 !important;
-    font-family: 'Lato', sans-serif !important;
-    text-transform: none !important;
+  display: inline-block;
+  width:100% !important;
+  padding: 5px 15px !important;
+  font-size: 20px !important;
+  line-height: 48px !important;
+  border-radius: 25px !important;
+  background: #b4ec51 !important;
+  font-family: 'Lato', sans-serif !important;
+  text-transform: none !important;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal2_Button
+{
+  display: inline-block;
+  width:100% !important;
+  padding: 5px 15px !important;
+  font-size: 20px !important;
+  line-height: 48px !important;
+  border-radius: 25px !important;
+  font-family: 'Lato', sans-serif !important;
+  text-transform: none !important;
+  border: 1px solid #b4ec51 !important;
+  color:#b4ec51 !important;
 }
 
 #Evaluaion_XrayMatching_Matching_Content2_Wrapper
@@ -143,16 +170,59 @@
   max-width: 500px;
   max-height: calc(50% - 30px);
   text-align: center;
+  margin: auto;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Div
+{
+  background:#3023AE;
+  width:500px;
+  height:480px;
+  padding-top:15px;
+  border-radius: 0px;
+  outline:none !important;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Heading
+{
+  margin-left:50px;
+  margin-bottom:20px;
+  font-size: 36px;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Notes_Div
+{
+  background:white;
+  margin:auto;
+  width:400px;
+  height:300px;
+  border-radius: 10px;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea
+{
+  width:380px;
+  height:280px;
+  margin-left: 10px;
+  margin-top:10px;
+  resize: none;
+  border:none;
+  outline: none;
+  font-size: 20px;
+  line-height: 30px;
+  overflow: hidden;
 }
 
 
-@media only screen and (max-height:657px)
+/* @media only screen and (max-height:657px)
 {
   .matching-down
   {
     max-width: 380px;
   }
-}
+} */
 
 
 .flipme img

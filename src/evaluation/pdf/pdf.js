@@ -71,7 +71,7 @@ class Pdf extends Component {
                 <div id="Evaluation_PDF_Content_Wrapper" >
                     
                     <div id="Evaluaion_pdf_Heading1_Div">
-                        Final Report
+                        Patient Summary
                     </div>
                     <PDFViewer
                 
@@ -97,7 +97,7 @@ class Pdf extends Component {
                     <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.handleDownload}> Download </Button>
                 </div>
                 <div id="Evaluaion_PatientReport_Next_Button_Div">
-                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={()=>{this.context.history.push('/home')}}> View Recommended Care Pathways </Button>
+                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={()=>{ this.context.history.push('./evaluation-history')}}> View Evaluation History </Button>
                 </div>
             </div>:
             <SemipolarLoading size={"large"} color={'#b4ec51'}/>

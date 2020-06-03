@@ -13,17 +13,27 @@
   margin-left:15%;
   width:80%;
   min-width: 400px;
-  max-width: 1100px;
-  min-height:100vh;
+  /* min-height:100vh; */
   /* line-height: 100vh; */
   /* vertical-align: bottom; */
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   flex-direction: column;
   justify-content: center;
+  margin-top:calc(50vh - 300px)
   
   /* justify-content: center;
   align-items: center; */
+}
+
+@media only screen and (max-width:1400px)
+{
+  #Evaluaion_Chart_Content_Wrapper
+  {
+    width:90%;
+    margin-left:7%;
+
+  }
 }
 
 #Evaluaion_Chart_Text_Div

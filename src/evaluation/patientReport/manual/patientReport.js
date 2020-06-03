@@ -63,6 +63,8 @@ class PatientReport extends Component {
         let form=this.state.form;
         form.find((question)=>question.name==state).pro_severity_id=value;
         form.find((question)=>question.name==state).visitor_id=this.context.state.report_id;
+        form.find((question)=>question.name==state)['joint_id']=this.context.state.joint_id;
+
         // console.log(thisone)
         // console.log(form)
         // this.setState({[state]:value})

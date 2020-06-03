@@ -159,12 +159,12 @@ class Matching extends Component {
                                 </div>
                         }   
                        
-                        {
+                        {/* {
                             this.state.Active &&
                             <div className="Evaluaion_XrayMatching_Matching_AddNotes_Button_Div">
                                 <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleNotesClick}> Add Notes </Button>
                             </div>
-                        }
+                        } */}
                         
                     </div>
                     
@@ -174,19 +174,18 @@ class Matching extends Component {
                         {this.props.ActiveType=="Kneecap"?'Kneecap':this.props.ActiveType + ' ' + this.props.ActiveXray}
                     </div>
                    
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)'}}>
+                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
                         <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.state.Xrays[this.state.training].imageUrl}/>
                     </div>
                     {
                     this.state.Active!=null?
-                        <div style={{display:'inline-block',maxWidth:'500px',maxHeight:'calc(50% - 30px)'}}>
+                        <div style={{display:'inline-block',maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
                             <img style={{maxWidth:'100%',maxHeight:'calc(50vh - 30px)',width:'auto',height:'auto'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                             <img style={{position:'absolute',right:'0px'}} src={Ruler} />
                         </div>
                     :   <div className="matching-down" >
-                            <div style={{background:'black',height:'100%',width:'100%'}}>
-                                <img style={{maxWidth:'500px',maxHeight:'calc(50vh - 30px)',height:'auto',width:'auto',opacity:'0.2'}} src={NoMatching}/>
-                                <img style={{position:'absolute',right:'0px'}} src={Ruler} />
+                            <div style={{height:'100%',width:'100%',textAlign:'center',margin:'auto'}}>
+                                <img style={{maxWidth:'100%',maxHeight:'100%',height:'auto',width:'auto'}} src={NoMatching}/>
                             </div>
                         </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
+import Modal from '@material-ui/core/Modal';
 
 
 import './matching.css'
@@ -9,7 +10,7 @@ import MyContext from '../../helper/themeContext';
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { Active:null , Notes:null }
+        this.state = { Active:null , Notes:null,openModal:false }
     }
 
     componentDidMount()
@@ -18,6 +19,15 @@ class Matching extends Component {
         {
             document.getElementById('Evaluaion_XrayMatching_Matching_Content2_Wrapper').classList.add('flipme');
         }
+    }
+
+    handleModalClose = () =>
+    {
+        this.setState({openModal:false})
+    }
+    handleModalOpen = () =>
+    {
+        this.setState({openModal:true})
     }
 
     handleClick = (id) =>
@@ -55,7 +65,7 @@ class Matching extends Component {
                         {
                             this.state.Active &&
                             <div className="Evaluaion_XrayMatching_Matching_AddNotes_Button_Div">
-                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleNotesClick}> Add Notes </Button>
+                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleModalOpen}> Add Notes </Button>
                             </div>
                         }
                         
@@ -82,6 +92,16 @@ class Matching extends Component {
                      
                 </div>
 
+                <Modal
+                open={this.state.openModal}
+                onClose={this.handleModalClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                >
+                    <div style={{background:'green',width:'200px',height:'200px'}}>
+
+                    </div>
+                </Modal>
             
             </div>
         );

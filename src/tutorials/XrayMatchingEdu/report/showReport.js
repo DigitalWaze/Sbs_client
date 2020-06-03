@@ -95,7 +95,7 @@ class ShowReport extends Component {
                                             {this.context.state.patient_name}
                                         </span>
                                     </Grid>
-                                    <Grid container item xs={4} >
+                                    {/* <Grid container item xs={4} >
                                         <React.Fragment>
                                             <Grid item xs={9}>
                                                 <span className="Evaluaion_Report_Box_Priority">
@@ -108,7 +108,7 @@ class ShowReport extends Component {
                                             </span>
                                             </Grid>
                                         </React.Fragment>
-                                    </Grid>
+                                    </Grid> */}
 
                                 </React.Fragment>
                             </Grid>
@@ -179,7 +179,7 @@ class ShowReport extends Component {
                                         <React.Fragment key={id}>    
                                             <Grid item xs={4} style={{position:'relative',border:'1px solid #fff',height:`calc(${height} - 2px)` }}>
                                                 <div className="Evaluaion_Report_Box_Button_Div"> 
-                                                    <Button className="Evaluaion_Report_Box_Button"  variant="contained" onClick={()=>{}}> {xray.name} </Button>
+                                                    <Button className="Evaluaion_Report_Box_Button"  variant="contained" onClick={()=>this.handleSelect(type.name,xray.name,xray.state,xray.up)}> {xray.name} </Button>
                                                 </div>
                                             </Grid>
                                             <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state==1?'#6C8D31':''}}>

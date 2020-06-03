@@ -21,7 +21,7 @@ class MatchingVideo extends Component {
             <div id="SBSVideo_Image_Wrapper">
               <div className="sbs-video-text-wrapper">
                 <div id="SBSVideo_Heading1_Div">
-                  Step by Step X-ray Matching Process
+                  The Step by Step Patient Report Card
                 </div>
               </div>
               <video

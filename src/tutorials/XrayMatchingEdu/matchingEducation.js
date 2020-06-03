@@ -8,6 +8,7 @@ import MatchingVideo2 from './matchingVideo2/matchingVideo2'
 import LGS from './LGS/LGS';
 import MatchingTutorial from './matchingTutorial/matchingTutorial';
 import ShowReport from './report/showReport';
+import Report from './report/report';
 
 class MatchingEducation extends Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class MatchingEducation extends Component {
                 <Route  exact path="/tutorials/matching-education/lets-get-started" component={LGS} />
                 <Route  exact path="/tutorials/matching-education/matching-tutorial" component={MatchingTutorial} />
                 <Route  exact path="/tutorials/matching-education/video2" component={MatchingVideo2} />
-                <Route  exact path="/tutorials/matching-education/report" component={ShowReport} />
+                <Route  exact path="/tutorials/matching-education/report" component={Report} />
 
 
             </Router>
