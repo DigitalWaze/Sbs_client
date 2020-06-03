@@ -58,7 +58,7 @@ class EKDWXR extends Component {
                     <div id="EKDWXR_Inner_Image_Container">
                       <img style={{ width: "60%" }} src={Img3} alt="EKDWXR2" />
                     </div>
-                    <div id="EKDWXR_Inner_text">Degeneration Lateral</div>
+                    <div id="EKDWXR_Inner_text">Degeneration Medial</div>
                   </div>
                 </div>
               </div>
