@@ -39,7 +39,9 @@ class SBSVideo extends Component {
                     "tutorial-" + this.context.state.user_id,
                     2
                   );
-                  this.context.history.push("./video2");
+                  this.context.history.push(
+                    "/tutorials/knee-Arthiritis/welcome"
+                  );
                 }}
               >
                 {" "}

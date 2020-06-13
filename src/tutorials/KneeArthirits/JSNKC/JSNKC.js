@@ -143,7 +143,7 @@ class JSNKC extends Component {
                       Click on the X-ray with Normal/Slight degeneration
                     </div>
                     <img
-                      src={Img1}
+                      src={Img4}
                       alt="JSNKC1"
                       style={
                         this.state.orangeState > 1
@@ -203,7 +203,7 @@ class JSNKC extends Component {
                       Click on the X-ray with End Stage degeneration
                     </div>
                     <img
-                      src={Img4}
+                      src={Img1}
                       alt="JSNKC1"
                       style={
                         this.state.orangeState > 4

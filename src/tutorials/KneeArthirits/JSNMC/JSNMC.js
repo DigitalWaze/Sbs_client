@@ -143,7 +143,7 @@ class JSNMC extends Component {
                       Click on the X-ray with Normal/Slight degeneration
                     </div>
                     <img
-                      src={Img1}
+                      src={Img3}
                       alt="JSNMC1"
                       style={
                         this.state.orangeState > 1
@@ -163,7 +163,7 @@ class JSNMC extends Component {
                       Click on the X-ray with Moderate degeneration
                     </div>
                     <img
-                      src={Img2}
+                      src={Img1}
                       alt="JSNMC1"
                       style={
                         this.state.orangeState > 2
@@ -183,7 +183,7 @@ class JSNMC extends Component {
                       Click on the X-ray with Near End Stage degeneration
                     </div>
                     <img
-                      src={Img3}
+                      src={Img4}
                       alt="JSNMC1"
                       style={
                         this.state.orangeState > 3
@@ -203,7 +203,7 @@ class JSNMC extends Component {
                       Click on the X-ray with End Stage degeneration
                     </div>
                     <img
-                      src={Img4}
+                      src={Img2}
                       alt="JSNMC1"
                       style={
                         this.state.orangeState > 4

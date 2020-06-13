@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 import Button from "@material-ui/core/Button";
 
-import MyContext from "../../../helper/themeContext";
+import MyContext from "../../helper/themeContext";
 
-import "./SBSVideo2.css";
+import "./Video.css";
 
-class SBSVideo2 extends Component {
+class Video extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,13 +14,13 @@ class SBSVideo2 extends Component {
 
   render() {
     return (
-      <div id="SBSVideo2_Main_Div">
-        <div id="SBSVideo2_Content_Wrapper">
-          <div id="SBSVideo2_Center_Wrapper">
-            <div id="SBSVideo2_Text_wrapper">
-              <div id="SBSVideo2_Heading1_Div">Evaluating a Patient</div>
+      <div id="Video_Main_Div">
+        <div id="Video_Content_Wrapper">
+          <div id="Video_Center_Wrapper">
+            <div id="Video_Text_wrapper">
+              <div id="Video_Heading1_Div">Evaluating a Patient</div>
             </div>
-            <div id="SBSVideo2_Image_Wrapper">
+            <div id="Video_Image_Wrapper">
               <video
                 video
                 controls
@@ -36,18 +36,16 @@ class SBSVideo2 extends Component {
                 />
               </video>
             </div>
-            <div id="SBSVideo2_Next_Button_Div">
+            <div id="Video_Next_Button_Div">
               <Button
-                id="SBSVideo2_Next_Button"
+                id="Video_Next_Button"
                 variant="contained"
                 onClick={() => {
                   this.context.setCookie(
                     "tutorial-" + this.context.state.user_id,
                     3
                   );
-                  this.context.history.push(
-                    "/tutorials/knee-Arthiritis/welcome"
-                  );
+                  this.context.history.push("./Demographics");
                 }}
               >
                 {" "}
@@ -60,5 +58,5 @@ class SBSVideo2 extends Component {
     );
   }
 }
-SBSVideo2.contextType = MyContext;
-export default SBSVideo2;
+Video.contextType = MyContext;
+export default Video;
