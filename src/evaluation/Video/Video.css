@@ -1,4 +1,4 @@
-#SBSVideo2_Main_Div {
+#Video_Main_Div {
   background-image: linear-gradient(
     119deg,
     #3023ae,
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-#SBSVideo2_Content_Wrapper {
+#Video_Content_Wrapper {
   margin: auto;
   min-width: 700px;
   max-width: 830px;
@@ -24,7 +24,7 @@
   align-items: stretch;
 }
 
-#SBSVideo2_Heading1_Div {
+#Video_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
   font-size: 30px;
@@ -32,7 +32,7 @@
   font-weight: bold;
 }
 
-#SBSVideo2_Image_Wrapper {
+#Video_Image_Wrapper {
   border: 3px solid white;
   display: flex;
   flex-direction: row;
@@ -41,29 +41,29 @@
   margin-top: 15px;
 }
 
-#SBSVideo2_Image_Container {
+#Video_Image_Container {
   width: 80%;
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: stretch;
 }
-#SBSVideo2_Image_Container img {
+#Video_Image_Container img {
   width: 100%;
 }
 
-#SBSVideo2_Next_Button_Div {
+#Video_Next_Button_Div {
   display: block;
   margin-top: 10px;
 }
 
 @media only screen and (max-width: 760px) {
-  #SBSVideo2_Content_Wrapper {
+  #Video_Content_Wrapper {
     padding: 0rem 1rem 0rem 1rem;
   }
 }
 
-#SBSVideo2_Next_Button {
+#Video_Next_Button {
   float: right;
   display: block;
   width: auto;
@@ -74,4 +74,22 @@
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+#Evaluation_Main_Div_Top_Name {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: 118px;
+  min-height: 14px;
+  color: #333333;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  line-height: 14px;
+  font-weight: 700;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #000;
+  z-index: 1;
+  text-align: center;
 }
