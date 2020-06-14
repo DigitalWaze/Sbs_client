@@ -55,7 +55,7 @@ class Chart extends Component {
 
                    
                     {
-                        [108,200].map((text,key)=>
+                        [108,22].map((text,key)=>
                             <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack
@@ -80,14 +80,26 @@ class Chart extends Component {
                                 />
                             
                                 </VictoryStack>
-                                <div style={{position:'absolute',top:'0px',left:'0px',height:'30px',width:'50px',background:''}}>
-                                    <div style={{position:'relative'}}>
+                                <div style={{position:'absolute',top:'20px',left:'0px',fontWeight:'bold',height:'30px',width:'50px',background:''}}>
+                                    <div style={{position:'relative',left:'0px'}}>
+                                        100
+                                    </div> 
+                                    <div style={{position:'relative',top:'41px',left:'9px'}}>
                                         70
+                                    </div> 
+                                    <div style={{position:'relative',top:'85px',left:'9px'}}>
+                                        40
+                                    </div> 
+                                    <div style={{position:'relative',top:'145px',left:'19px'}}>
+                                        0
                                     </div> 
                                 </div>
                                 <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'11px',background:'#221E20',top:[text+'px'],left:'125px',height:'11px'}}>
                                 </div>
-                                <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'1px',background:'#221E20',top:[text+11+'px'],left:'129.7px',height:'10px'}}>
+                                <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'1px',background:'#221E20',top:[text+11+'px'],left:'130px',height:'10px'}}>
+                                </div>
+                                <div style={{color:'#000',fontSize:'14px',fontWeight:'bold',position:'absolute',zIndex:'2',top:[text+20+'px'],left:key==0?'122px':'116px'}}>
+                                    {key==0?50:100}
                                 </div>
 
                             </div>
@@ -137,7 +149,7 @@ class Chart extends Component {
 
                    
                     {
-                        [108,200].map((text,key)=>
+                        [80,93].map((text,key)=>
                             <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack
@@ -154,22 +166,34 @@ class Chart extends Component {
                                 />
                                 
                                 <VictoryArea
-                                    data={[{x: "a", y: 3}, {x: "b", y: 3}]}
+                                    data={key==1?[{x: "a", y: 2}, {x: "b", y: 2}]:[{x: "a", y: 3}, {x: "b", y: 3}]}
                                 />
                                 
                                 <VictoryArea
-                                    data={[{x: "a", y: 3}, {x: "b", y: 3}]}
+                                    data={key==0?[{x: "a", y: 3}, {x: "b", y: 3}]:[{x: "a", y: 4}, {x: "b", y: 4}]}
                                 />
                             
                                 </VictoryStack>
-                                <div style={{position:'absolute',top:'0px',left:'0px',height:'30px',width:'50px',background:''}}>
-                                    <div style={{position:'relative'}}>
+                                <div style={{position:'absolute',top:'20px',fontWeight:'bold',left:'0px',height:'30px',width:'50px',background:''}}>
+                                <div style={{position:'relative',left:'0px'}}>
+                                        100
+                                    </div> 
+                                    <div style={{position:'relative',top:'41px',left:'9px'}}>
                                         70
+                                    </div> 
+                                    <div style={{position:'relative',top:'85px',left:'9px'}}>
+                                        40
+                                    </div> 
+                                    <div style={{position:'relative',top:'145px',left:'19px'}}>
+                                        0
                                     </div> 
                                 </div>
                                 <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'11px',background:'#221E20',top:[text+'px'],left:'125px',height:'11px'}}>
                                 </div>
-                                <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'1px',background:'#221E20',top:[text+11+'px'],left:'129.7px',height:'10px'}}>
+                                <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'1px',background:'#221E20',top:[text+11+'px'],left:'130px',height:'10px'}}>
+                                </div>
+                                <div style={{color:'#000',fontSize:'14px',fontWeight:'bold',position:'absolute',zIndex:'2',top:[text+20+'px'],left:key==0?'122px':'122px'}}>
+                                    {key==0?63:39}
                                 </div>
 
                             </div>

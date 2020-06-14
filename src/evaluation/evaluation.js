@@ -14,6 +14,7 @@ import UploadXray from './uploadXray/uploadXray';
 import XrayMatching from './xrayMatching/xrayMatching';
 import Chart from './chart/chart';
 import Report from './report/report';
+import RandomPdf from './randomPdf/pdf'
 
 import Bone1Image from '../assets/bone3_Bitmap.png'
 import MFV from '../assets/medial-flexion.png'
@@ -51,6 +52,13 @@ import MNFVUP4 from '../assets/medial-nonflexion-up-4.png'
 import LFVUP4 from '../assets/lateral-flexion-up-4.png'
 import LNFVUP4 from '../assets/lateral-nonflexion-up-4.png'
 import KVUP4 from '../assets/kneecap-up-4.png'
+
+import LMFV from '../assets/left-medial-flexion.png'
+import LMNFV from '../assets/left-medial-nonflexion.png'
+import LLFV from '../assets/left-lateral-flexion.png'
+import LLNFV from '../assets/left-lateral-nonflexion.png'
+
+
 import ResumeEvaluation from './resumeEvaluation/resumeEvaluation';
 import ResumeEvaluationSelect from './resumeEvaluation/resumeEvalutionSelect';
 import Pdf from './pdf/pdf';
@@ -74,8 +82,8 @@ class Evaluation extends Component {
             [   
                 {name:'Right Knee',image:Bone1Image  , joint_id:'3',
                     Xrays:[ 
-                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
                         {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
 
                     ] 
@@ -83,22 +91,14 @@ class Evaluation extends Component {
 
                 {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
                     Xrays:[ 
-                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:null,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,notes:null,thumbnail:null,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:null,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,notes:null,thumbnail:null,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:null,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
                     ] 
                 }
 
             ]
-        let form=[
-            {name:'Question1',question_id:1,pro_severity_id:null,visitor_id:null},
-            {name:'Question2',question_id:2,pro_severity_id:null,visitor_id:null},
-            {name:'Question3',question_id:3,pro_severity_id:null,visitor_id:null},
-            {name:'Question4',question_id:4,pro_severity_id:null,visitor_id:null},
-            {name:'Question5',question_id:5,pro_severity_id:null,visitor_id:null},
-            {name:'Question6',question_id:6,pro_severity_id:null,visitor_id:null},
-            {name:'Question7',question_id:7,pro_severity_id:null,visitor_id:null}
-        ]
+        let form=[];
         if(this.context.state.evaluation_stage==null || this.context.state.evaluation_stage<1 || !this.context.state.evaluation_stage)
         {
             this.context.history.push('/evaluation/welcome')
@@ -157,7 +157,9 @@ class Evaluation extends Component {
                         <Route path="/Evaluation/chart" component={Chart} />
                         <Route path="/Evaluation/pdf" component={Pdf} />
                         <Route path="/Evaluation/evaluation-history" component={EvaluationHistory} />
+                        <Route path="/Evaluation/selected-patient-report" component={RandomPdf} />
 
+                        
 
                     </Router>
                 </div>

@@ -216,6 +216,16 @@
     background:#B4EC51;
  }
 
+ .Evaluaion_Report_Box_Notes_Box
+{
+    position:absolute;
+    border-radius:5px; 
+    bottom:10px;
+    right:20px;
+    padding:10px 10px 2px;
+    background:#B4EC51;
+ }
+
  #Evaluaion_Report_Next_Button_Div
 {
   display: block;

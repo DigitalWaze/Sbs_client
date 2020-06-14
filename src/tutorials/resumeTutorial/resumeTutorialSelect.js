@@ -4,12 +4,6 @@ import './resumeTutorial.css';
 import { Button } from '@material-ui/core';
 import { SemipolarLoading } from 'react-loadingg';
 import MyContext from '../../helper/themeContext';
-import GetData from '../../Fetch/getDataUniversal';
-
-import Xray1 from '../../assets/xray1.jpeg';
-import Xray2 from '../../assets/xray2.jpeg';
-import Xray3 from '../../assets/xray3.jpeg';
-import Xray4 from '../../assets/xray4.png';
 
 class ResumeTutorialSelect extends Component {
     constructor(props) {

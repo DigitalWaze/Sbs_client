@@ -14,21 +14,25 @@ class Page2Left extends Component {
     {
         this.setState({[e.target.name]:e.target.value})
     }
-    // componentDidMount()
-    // {
-    //     this.setState({Answer2:this.props.Answer2,Answer3:this.props.Answer3,Answer4:this.props.Answer4,Answer5:this.props.Answer5})
-    // }
+    componentDidMount()
+    {
+        this.setState({Answer2:this.props.Answer2,Answer3:this.props.Answer3,Answer4:this.props.Answer4,Answer5:this.props.Answer5})
+    }
     handleClick = () =>
     {
-        
-        // if(this.state.Answer2==null || this.state.Answer3==null ||this.state.Answer4==null ||this.state.Answer5==null)
-        // {
-        //     alert('Please choose an appropriate option')
-        // }
-        // else
-        this.props.handlePageChange();
+        this.props.changeAnswer('Question2',this.state.Answer2)
+        this.props.changeAnswer('Question3',this.state.Answer3)
+        this.props.changeAnswer('Question4',this.state.Answer4)
+        this.props.changeAnswer('Question5',this.state.Answer5)
+        if(this.state.Answer2==null || this.state.Answer3==null ||this.state.Answer4==null ||this.state.Answer5==null)
+        {
+            alert('Please choose an appropriate option')
+        }
+        else this.props.handlePageChange();
 
     }
+
+   
     render() { 
         const old= this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2?true:false;
 

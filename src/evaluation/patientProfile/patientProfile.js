@@ -14,7 +14,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 
-import RightHipIcon from '../../assets/right-hip-icon.png'
+import RightKneeIconRed from '../../assets/right-knee-icon-red.png'
+import LeftKneeIconRed from '../../assets/left-knee-icon-red.png'
 
 
 import './patientProfile.css'
@@ -69,7 +70,7 @@ class PatientProfile extends Component {
                                         <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
                                     </div>
                                 :
-                                    <Button className="Evaluaion_PatientProfile_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./forms')}}> PRO </Button>
+                                    <Button className="Evaluaion_PatientProfile_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./forms')}}> PRO: KOOS </Button>
                                 }
                                 
                             </div>
@@ -121,7 +122,7 @@ class PatientProfile extends Component {
                                             <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                                 RIGHT KNEE
                                             </div>
-                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightKneeIconRed}/>
                                     </div>
                                     
                                 </div>
@@ -138,7 +139,7 @@ class PatientProfile extends Component {
                                             <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                                 LEFT KNEE
                                             </div>
-                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                        <img style={{width:'40px',marginBottom:'20px'}} src={LeftKneeIconRed}/>
                                     </div>
                                     <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down_Content1">
                                         <TextField value={"Priority: "+this.context.state.Eval.find(eva=>eva.joint_id.toString()=='4').priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 

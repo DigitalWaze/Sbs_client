@@ -30,7 +30,7 @@ class Overview extends Component {
                             {
                             type.xrays.map((xray,id) => 
                                 <div key={id}>
-                                    <div className="Evaluaion_XrayMatching_OverView_Box1_Content1">
+                                    <div className="Evaluaion_XrayMatching_OverView_Box1_Content1" style={{opacity:xray.isDone==true?0.3:xray.enable==true?1:0.3}}>
                                         <img className="Evaluaion_XrayMatching_OverView_Box1_Content1_Image" alt={xray.name} src={xray.thumbnail}/>
                                     </div>
                                     <div  className="Evaluaion_XrayMatching_OverView_Box1_Content2">

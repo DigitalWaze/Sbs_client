@@ -10,6 +10,8 @@ import { SemipolarLoading } from 'react-loadingg';
 import Page1Left from './leftPages/page1';
 import Page2Left from './leftPages/page2';
 import Page3Left from './leftPages/page3';
+import RightIntroPage from './rightIntroPage';
+import LeftIntroPage from './leftPages/introPage';
 
 class PatientReport extends Component {
     constructor(props) {
@@ -21,7 +23,13 @@ class PatientReport extends Component {
     {
         if(this.context.state.Eval.length>1)
         {
-            this.setState({tempLeft:true})
+            // this.setState({tempLeft:true})
+            this.setState({totalLeft:2,active:this.context.state.joint_id})
+        }
+
+        else {
+            // this.setState({tempLeft:true})
+            this.setState({totalLeft:1,active:this.context.state.joint_id})
         }
     }
 
@@ -60,10 +68,19 @@ class PatientReport extends Component {
 
     changeAnswer(state,value)
     {
+        // let joint_id=null;
+        // if(this.state.totalLeft==2)
+        // {
+        //     joint_id=this.context.state.joint_id;
+        // }
+
+        // else joint_id=this.context.state.Eval.find(eva.joint_id.toString()!=this.context.state.joint_id.toString()).jont_id;
+       
+        console.log(this.state.active)
         let form=this.state.form;
-        form.find((question)=>question.name==state).pro_severity_id=value;
-        form.find((question)=>question.name==state).visitor_id=this.context.state.report_id;
-        form.find((question)=>question.name==state)['joint_id']=this.context.state.joint_id;
+        form.find((question)=>question.name==state && question.joint_id.toString()==this.state.active.toString()).pro_severity_id=value;
+        form.find((question)=>question.name==state && question.joint_id.toString()==this.state.active.toString()).visitor_id=this.context.state.report_id;
+        // form.find((question)=>question.name==state)['joint_id']=this.context.state.joint_id;
 
         // console.log(thisone)
         // console.log(form)
@@ -79,9 +96,10 @@ class PatientReport extends Component {
     {
         switch(this.state.page)
         {
-            case 0: return <Page1 handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1").pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
-            case 1: return <Page2 handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2").pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3").pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4").pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5").pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
-            case 2: return <Page3 handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6").pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7").pro_severity_id}handlePageChange={this.next} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 0: return <RightIntroPage handleBack = {this.handleBack0} handlePageChange={this.handlePageChange} />;
+            case 1: return <Page1 handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
+            case 2: return <Page2 handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 3: return <Page3 handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.next} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
             default: return <div> Unreachable step</div>;
         }
     }
@@ -90,33 +108,46 @@ class PatientReport extends Component {
     {
         switch(this.state.page)
         {
-            case 0: return <Page1Left handleBack = {this.handleBack1} handlePageChange={this.handlePageChange} />;
-            case 1: return <Page2Left handleBack = {this.handleBack2} handlePageChange={this.handlePageChange} />;
-            case 2: return <Page3Left handleBack = {this.handleBack3} handlePageChange={this.next} />;
+            case 0: return <LeftIntroPage handleBack = {this.handleBack0} handlePageChange={this.handlePageChange} />;
+            case 1: return <Page1Left handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
+            case 2: return <Page2Left handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange}  changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 3: return <Page3Left handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.next}  changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
             default: return <div> Unreachable step</div>;
         }
     }
 
-    handleBack1 = () =>
+    handleBack0 = () =>
     {
         this.context.history.push('./forms')
     }
 
+    handleBack1 = () =>
+    {
+        this.setState({page:0})
+    }
+
     handleBack3 = () =>
     {
-        this.setState({page:1})
+        this.setState({page:2})
     }
     handleBack2 = () =>
     {
-        this.setState({page:0})
+        this.setState({page:1})
     }
 
     next = () =>
     {
         console.log(this.state.form)
-        if(this.state.tempLeft==true)
+        if(this.state.totalLeft==2)
         {
-            this.setState({tempLeft:false,page:0})
+            let joint_id=null;
+            if(this.context.state.joint_id=='3')
+            {
+                joint_id='4'
+            }
+
+            else  joint_id='3'
+            this.setState({totalLeft:1,page:0,active:joint_id})
         }
 
 
@@ -153,9 +184,9 @@ class PatientReport extends Component {
                  {/* {console.log(this.context.state)} */}
                 {this.state.loading==true?
                     <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
-                : this.state.tempLeft==true?
-                    this.getPageLeft():
-                    this.getPage()}
+                : this.state.active.toString()=='3'?
+                    this.getPage():this.getPageLeft()
+                    }
             </div>
         
         );

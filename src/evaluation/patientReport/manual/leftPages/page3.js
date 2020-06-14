@@ -16,21 +16,21 @@ class Page3Left extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
 
-    // componentDidMount()
-    // {
-    //     this.setState({Answer6:this.props.Answer6,Answer7:this.props.Answer7})
-    // }
+    componentDidMount()
+    {
+        this.setState({Answer6:this.props.Answer6,Answer7:this.props.Answer7})
+    }
     
 
     handleClick = () =>
     {
-       
-        // if(this.state.Answer6==null || this.state.Answer7==null)
-        // {
-        //     alert('Please choose an appropriate option')
-        // }
-        // else 
-        this.props.handlePageChange();
+        this.props.changeAnswer('Question6',this.state.Answer6)
+        this.props.changeAnswer('Question7',this.state.Answer7)
+        if(this.state.Answer6==null || this.state.Answer7==null)
+        {
+            alert('Please choose an appropriate option')
+        }
+        else this.props.handlePageChange();
     }
     render() {
         const old= this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2?true:false; 

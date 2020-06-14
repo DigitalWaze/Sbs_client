@@ -10,7 +10,7 @@ import MyContext from '../../helper/themeContext';
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { Active:null , Notes:null,openModal:false }
+        this.state = { Active:null , Notes:'',openModal:false,tempNotes:null }
     }
 
     componentDidMount()
@@ -21,13 +21,26 @@ class Matching extends Component {
         }
     }
 
+    Submit = () =>
+    {
+        this.setState({Notes:this.state.tempNotes,openModal:false});
+    }
+
+    textAreaChange = (e) =>
+    {
+        this.setState({tempNotes:e.target.value})
+        
+    }
+
+
+
     handleModalClose = () =>
     {
         this.setState({openModal:false})
     }
     handleModalOpen = () =>
     {
-        this.setState({openModal:true})
+        this.setState({openModal:true,tempNotes:this.state.Notes})
     }
 
     handleClick = (id) =>
@@ -94,12 +107,30 @@ class Matching extends Component {
 
                 <Modal
                 open={this.state.openModal}
-                onClose={this.handleModalClose}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
+                style={{position:'absolute',left:'calc(50vw - 250px)',top:'calc(50vh - 250px)'}}
                 >
-                    <div style={{background:'green',width:'200px',height:'200px'}}>
+                    <div className="Evaluaion_XrayMatching_Matching_Modal_Div">
 
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Heading">
+                            Notes
+                        </div>
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
+                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.tempNotes} onChange={this.textAreaChange}>
+
+                            </textarea>
+                        </div>
+                        <div style={{marginTop:'20px',marginLeft:'50px'}}>
+                            <div className="Evaluaion_XrayMatching_Matching_Modal1_Button_Div">
+                                    <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.Submit}> Submit </Button>
+                            </div>
+                            <div className="Evaluaion_XrayMatching_Matching_Modal2_Button_Div">
+                                    <Button className="Evaluaion_XrayMatching_Matching_Modal2_Button" variant="outlined" onClick={this.handleModalClose}> Cancel </Button>
+                            </div>
+
+                        </div>
+                       
                     </div>
                 </Modal>
             

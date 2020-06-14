@@ -13,16 +13,17 @@ import Xray3 from '../../assets/xray3.jpeg';
 import Xray4 from '../../assets/xray4.jpeg';
 import Tick from '../../assets/tick-black.png';
 import Search from '../../assets/search.png';
+import Notes from '../../assets/notes.png';
+
 import html2canvas from 'html2canvas'
 import './report.css'
-import GetImage from './getImage';
 
 const height='60px';
 
 class ShowReport extends Component {
     constructor(props) {
         super(props);
-        this.state = {  Evaluation:{} ,modal:false, total:0}
+        this.state = {  Evaluation:{} ,modal:false, total:0 , openModal:false}
     }
 
 
@@ -39,6 +40,17 @@ class ShowReport extends Component {
         this.props.handleState(State,Type,Xray,Image);
         this.props.handleView('Selected');
     }
+
+    handleModalClose = () =>
+    {
+        this.setState({openModal:false})
+    }
+
+    handleModalOpen= () =>
+    {
+        this.setState({openModal:true})
+    }
+
     modalOpen = () =>
     {
         this.setState({modal:true})
@@ -52,15 +64,60 @@ class ShowReport extends Component {
         this.setState({ActiveImage:Xray,modal:true})
     }
 
+    handleNotesClick = (id) =>
+    {   
+        let notes="";
+        if(id==1)
+        {
+            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="FlexionView").notes 
+            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="FlexionView").notes  
+        }
+        else if(id==2)
+        {
+            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Non-FlexionView").notes 
+            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Non-FlexionView").notes  
+        }
+
+        else if(id==3)
+        {
+            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Kneecap').xrays.find(y => y.name==="Kneecap").notes 
+        }
+        console.log(notes);
+       
+        this.setState({Notes:notes,openModal:true})
+    }
+
     handleNextClick = () =>
     {
-        if(this.state.total>1)
+        if(this.context.state.noOfEvalRemainToUpload<2)
         {
-            let Evaluation=this.context.state.Evaluations.filter(eva=> eva.joint_id!=this.context.state.joint_id)[0];
-            let priority_id=this.context.state.Eval.filter(eva=>eva.joint_id!=this.context.state.joint_id)[0].priority_id;
-            this.setState({total:this.state.total-1,Evaluation,priority_id})
+            this.context.history.push('./chart')
         }
-        else this.context.history.push('./chart')
+
+        else
+        {
+            let joint_id=null;
+            let priority_id=null
+            let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+            if(joint_idall.length>0)
+            {joint_id=joint_idall[0].joint_id;}
+            let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+            if(priority_idall.length>0)
+            {priority_id=priority_idall[0].priority_id;}
+            
+            console.log(joint_id)
+            
+            if(joint_id!=null)
+            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:1},{key:'joint_id',value:joint_id},{key:'activePriority',value:priority_id}],'./x-ray-matching')
+
+            else alert('Something Wrong')
+        }
+        // {
+        //     let Evaluation=this.context.state.Evaluations.filter(eva=> eva.joint_id!=this.context.state.joint_id)[0];
+        //     let priority_id=this.context.state.Eval.filter(eva=>eva.joint_id!=this.context.state.joint_id)[0].priority_id;
+        //     this.setState({total:this.state.total-1,Evaluation,priority_id})
+        // }
+        // else this.context.history.push('./chart')
     }
 
     handleNextClicks = () =>
@@ -227,32 +284,44 @@ class ShowReport extends Component {
                                     <img src={this.state.ActiveImage} alt="Xray" style={{maxHeight:'60vh'}} />
                                 </div>
                             </Modal>
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}  onClick={()=>{this.handleSearchClick(Xray1)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}  >
                                 <img src={Xray1} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray1)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
-                                </div>    
+                                </div>  
+                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(1)}}>
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
+                                </div>  
                             </div>
 
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} onClick={()=>{this.handleSearchClick(Xray2)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
                                 <img src={Xray2} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray2)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
+                                </div>
+                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(2)}} >
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
                                 </div>
                             </div>
 
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} onClick={()=>{this.handleSearchClick(Xray3)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
                                 <img src={Xray3} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray3)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
+                                </div>
+                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(3)}}>
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
                                 </div>
                             </div>
 
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} onClick={()=>{this.handleSearchClick(Xray4)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
                                 <img src={Xray4} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray4)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
                                 </div>
+                                {/* <div className="Evaluaion_Report_Box_Notes_Box">
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
+                                </div> */}
                             </div>
                         
                         </div>
@@ -261,6 +330,32 @@ class ShowReport extends Component {
                 <div id="Evaluaion_Report_Next_Button_Div">
                         <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'View PRO Report Card'}  </Button>
                 </div>
+                <Modal
+                open={this.state.openModal}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                style={{position:'absolute',left:'calc(50vw - 250px)',top:'calc(50vh - 250px)'}}
+                >
+                    <div className="Evaluaion_XrayMatching_Matching_Modal_Div">
+
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Heading">
+                            Notes
+                        </div>
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
+                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.Notes}>
+
+                            </textarea>
+                        </div>
+                        <div style={{marginTop:'20px',marginLeft:'50px'}}>
+                            
+                            <div className="Evaluaion_XrayMatching_Matching_Modal2_Button_Div">
+                                    <Button className="Evaluaion_XrayMatching_Matching_Modal2_Button" variant="outlined" onClick={this.handleModalClose}> Close </Button>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                </Modal>
                 
             </div> 
         );

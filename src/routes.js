@@ -49,7 +49,6 @@ import KVUP4 from "./assets/kneecap-up-4.png";
 import Login from "./login/login";
 import CreateUser from "./admin/createUser/createUser";
 import Home from "./home/home";
-import { ConsoleWriter } from "istanbul-lib-report";
 import StartOver from "./offer/startOver";
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
 
@@ -58,7 +57,7 @@ const baseUrlH = "https://sbs-server-adonis.herokuapp.com";
 class Routes extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: false };
+    this.state = { loading: true };
   }
 
   getCookie(cname) {
@@ -133,89 +132,90 @@ class Routes extends Component {
     this.setCookie("temp_patient_id", this.state.temp_patient_id, 30);
   };
 
-  // componentWillMount() {
-  //   if (
-  //     this.state.token == null ||
-  //     !this.state.token ||
-  //     this.state.token == "" ||
-  //     this.state.token == " "
-  //   ) {
-  //     let token = this.getCookie("token");
-  //     let type = this.getCookie("type");
-  //     let user_id = this.getCookie("user_id");
-  //     let user_email = this.getCookie("user_email");
-  //     let user_type_id = this.getCookie("user_type_id");
-  //     let user_type_name = this.getCookie("user_type_name");
-  //     let organization = this.getCookie("organization");
-  //     let evaluation_stage = this.getCookie("evaluation_stage");
-  //     let temp_report_id = this.getCookie("temp_report_id");
-  //     let temp_patient_id = this.getCookie("temp_patient_id");
-  //     let tutorial_rem=this.getCookie('tutorial-'+user_id);
+  componentWillMount() {
+    if (
+      this.state.token == null ||
+      !this.state.token ||
+      this.state.token == "" ||
+      this.state.token == " "
+    ) {
+      let token = this.getCookie("token");
+      let type = this.getCookie("type");
+      let user_id = this.getCookie("user_id");
+      let user_email = this.getCookie("user_email");
+      let user_type_id = this.getCookie("user_type_id");
+      let user_type_name = this.getCookie("user_type_name");
+      let organization = this.getCookie("organization");
+      let evaluation_stage = this.getCookie("evaluation_stage");
+      let temp_report_id = this.getCookie("temp_report_id");
+      let temp_patient_id = this.getCookie("temp_patient_id");
+      let tutorial_rem=this.getCookie('tutorial-'+user_id);
 
-  //     console.log(tutorial_rem);
+      console.log(tutorial_rem);
 
-  //     if (
-  //       token == undefined ||
-  //       token == "" ||
-  //       token == " " ||
-  //       type == undefined ||
-  //       type == "" ||
-  //       type == " " ||
-  //       user_id == undefined ||
-  //       user_id == "" ||
-  //       user_id == " " ||
-  //       user_email == undefined ||
-  //       user_email == "" ||
-  //       user_email == " " ||
-  //       user_type_id == undefined ||
-  //       user_type_id == "" ||
-  //       user_type_id == " " ||
-  //       user_type_name == undefined ||
-  //       user_type_name == "" ||
-  //       user_type_name == " " ||
-  //       organization == undefined ||
-  //       organization == "" ||
-  //       organization == " "
-  //     ) {
-  //       console.log("No Login Session");
-  //       this.setState({ loading: false });
-  //       history.push("/login");
-  //     } else {
-  //       console.log(evaluation_stage);
-  //       this.setState({
-  //         old: false,
-  //         evaluation_stage: evaluation_stage,
-  //         temp_report_id: temp_report_id,
-  //         temp_patient_id,
-  //         loading: false,
-  //         loggedIn: true,
-  //         token: token,
-  //         type: type,
-  //         user_id: user_id,
-  //         user_email: user_email,
-  //         user_type: { id: user_type_id, type: user_type_name },
-  //         organization: organization,
-  //       });
+      if (
+        token == undefined ||
+        token == "" ||
+        token == " " ||
+        type == undefined ||
+        type == "" ||
+        type == " " ||
+        user_id == undefined ||
+        user_id == "" ||
+        user_id == " " ||
+        user_email == undefined ||
+        user_email == "" ||
+        user_email == " " ||
+        user_type_id == undefined ||
+        user_type_id == "" ||
+        user_type_id == " " ||
+        user_type_name == undefined ||
+        user_type_name == "" ||
+        user_type_name == " " ||
+        organization == undefined ||
+        organization == "" ||
+        organization == " "
+      ) {
+        console.log("No Login Session");
+        this.setState({ loading: false });
+        history.push("/login");
+      } else {
+        console.log(evaluation_stage);
+        this.setState({
+          old: false,
+          evaluation_stage: evaluation_stage,
+          temp_report_id: temp_report_id,
+          temp_patient_id,
+          loading: false,
+          loggedIn: true,
+          token: token,
+          type: type,
+          user_id: user_id,
+          user_email: user_email,
+          user_type: { id: user_type_id, type: user_type_name },
+          organization: organization,
+        });
 
-  //       if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
-  //       {
-  //         history.push("/tutorials/resume-tutorial");
-  //       }
-  //       else if (parseInt(evaluation_stage) > 0) {
+        if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
+        {
+          history.push("/tutorials/resume-tutorial");
+        }
+        else if (parseInt(evaluation_stage) > 0) {
           
-  //         history.push("/evaluation/resume-evaluation");
+          history.push("/evaluation/resume-evaluation");
           
-  //       }
+        }
 
-  //       else if(tutorial_rem==41)
-  //       {
-  //         history.push('/evaluation/welcome'); 
-  //       }
+        else if(tutorial_rem==41)
+        {
+          console.log('this')
+          history.push('/evaluation/welcome'); 
+        }
        
-  //       else  history.push("/tutorials/sbs/welcome");
-  //     }
-  //   }
-  // }
+        else  history.push("/tutorials/sbs/welcome");
+      }
+    }
+  }
 
   updateValue = (key, value) => {
     this.setState({ [key]: value });

@@ -11,7 +11,11 @@ class Page1Left extends Component {
         this.state = { Answer1:null}
     }
 
-    
+    componentDidMount()
+    {
+        this.setState({Answer1:this.props.Answer1})
+    }
+
     handleChange = (e) =>
     {
         console.log(e.target.value)
@@ -20,12 +24,12 @@ class Page1Left extends Component {
 
     handleClick = () =>
     {
-        // if(this.state.Answer1==null)
-        // {
-        //     alert('Please choose an appropriate option')
-        // }
-        // else 
-        this.props.handlePageChange();
+        this.props.changeAnswer('Question1',this.state.Answer1)
+        if(this.state.Answer1==null)
+        {
+            alert('Please choose an appropriate option')
+        }
+        else this.props.handlePageChange();
     }
     render() { 
         const options=[{value:'None',id:1},{value:'Mild',id:2},{value:'Moderate',id:3},{value:'Severe',id:4},{value:'Extreme',id:5}];
@@ -34,13 +38,9 @@ class Page1Left extends Component {
         
         <div>
             <div  id="Evaluaion_PatientReport_Content_Wrapper">
+            
                 <div id="Evaluaion_PatientReport_Heading1_Div">
                     KOOS, JR. KNEE SURVEY  <span className="red-emphasis"> Left Knee </span>
-                </div>
-
-                <div className="Evaluaion_PatientReport_Text1">
-                    <span className="Evaluaion_PatientReport_SubHead1">INSTRUCTIONS: </span> <span>This survey asks for your view about your knee. This information will help us keep track of how you feel about your knee and how well you are able to do your usual activities. </span> <br/>
-                    <span>Answer every question by ticking the appropriate box, <u> only </u> one box for each question. If you are unsure about how to answer a question, please give the best answer you can.</span>
                 </div>
 
                 <div className="Evaluaion_PatientReport_Text2" >

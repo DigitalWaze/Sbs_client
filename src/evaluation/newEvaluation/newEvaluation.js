@@ -16,7 +16,7 @@ import LeftKneeIcon from '../../assets/left-knee-icon.png'
 import BoneImage from '../../assets/bone2_Bitmap.png'
 
 import RightKneeIconRed from '../../assets/right-knee-icon-red.png'
-
+import LeftKneeIconRed from '../../assets/left-knee-icon-red.png'
 
 
 import MyContext from '../../helper/themeContext';
@@ -103,13 +103,13 @@ class NewEvaluation extends Component {
             }
 
             let active=0;
-            let activePriority=0;
+            let activePriority=6;
             let id=0;
             if(Eval.length>0)
             {
                 while(Eval.length>id)
                 {
-                    if(Eval[id].priority_id>activePriority)
+                    if(Eval[id].priority_id<activePriority)
                     {
                         activePriority=Eval[id].priority_id;
                         active=Eval[id].joint_id;
@@ -141,6 +141,22 @@ class NewEvaluation extends Component {
 
     setMe = (response) =>
     {
+        let form=[];
+
+            for(let i=0; i<this.state.Eval.length;i++)
+            {
+                form.push({name:'Question1',question_id:1,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+                form.push({name:'Question2',question_id:2,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+                form.push({name:'Question3',question_id:3,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+                form.push({name:'Question4',question_id:4,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+                form.push({name:'Question5',question_id:5,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+                form.push({name:'Question6',question_id:6,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+                form.push({name:'Question7',question_id:7,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            }
+
+
+
+
         if(response.res && response.res.length>0)
         {
             let Eval=this.state.Eval;
@@ -151,9 +167,10 @@ class NewEvaluation extends Component {
                 
             });
             console.log(Eval);
+            console.log(this.state.Eval.length)
             this.context.updateSession();
             this.context.setCookie('evaluation_stage',2,30);
-            this.context.multipleUpdateValueWithHistory([{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:Eval}],'./patient-profile')
+            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:Eval}],'./patient-profile')
             // this.setState({loading:false})
         }
 
@@ -367,7 +384,7 @@ class NewEvaluation extends Component {
                                         <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                             LEFT KNEE
                                         </div>
-                                    <img style={{width:'40px',marginBottom:'20px'}} src={LeftKneeIcon}/>
+                                    <img style={{width:'40px',marginBottom:'20px'}} src={this.state.priority4!=0?LeftKneeIconRed:LeftKneeIcon}/>
                                 </div>
                                 <div className="Evaluaion_NewEvaluation_Image_Right_Inner_Down_Content1">
                                     {this.state.priority4enable==false?

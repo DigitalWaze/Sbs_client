@@ -92,22 +92,33 @@ class ResumeEvaluationSelect extends Component {
             
             let Eval=[];
             let active=0;
-            let activePriority=0;
-            let newForm=[
-                {name:'Question1',question_id:1,pro_severity_id:null,visitor_id:null},
-                {name:'Question2',question_id:2,pro_severity_id:null,visitor_id:null},
-                {name:'Question3',question_id:3,pro_severity_id:null,visitor_id:null},
-                {name:'Question4',question_id:4,pro_severity_id:null,visitor_id:null},
-                {name:'Question5',question_id:5,pro_severity_id:null,visitor_id:null},
-                {name:'Question6',question_id:6,pro_severity_id:null,visitor_id:null},
-                {name:'Question7',question_id:7,pro_severity_id:null,visitor_id:null}
-            ]
+            let activePriority=5;
+            //populating forms
+            let newForm=[];
+           
+           
             let Xrays=[];
+            let noOfEvalRemainToUpload=null;
 
             if(parseInt(this.context.state.evaluation_stage)>1)
             {
                 if(response.joint_hurt_priority.length>0)
                 {
+
+                    for(let i=0; i<response.joint_hurt_priority.length; i++)
+                    {
+                        newForm.push({name:'Question1',question_id:1,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                        newForm.push({name:'Question2',question_id:2,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                        newForm.push({name:'Question3',question_id:3,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                        newForm.push({name:'Question4',question_id:4,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                        newForm.push({name:'Question5',question_id:5,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                        newForm.push({name:'Question6',question_id:6,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                        newForm.push({name:'Question7',question_id:7,pro_severity_id:null,visitor_id:null,joint_id:response.joint_hurt_priority[i].joint_id})
+                    }
+
+                    noOfEvalRemainToUpload=response.joint_hurt_priority.length;
+
+                    
                     
                     response.joint_hurt_priority.forEach(element => {
                         let name=null;
@@ -127,7 +138,7 @@ class ResumeEvaluationSelect extends Component {
                         {
                             name='Left Hip'
                         }
-                        if(element.priority_id>activePriority)
+                        if(element.priority_id<activePriority)
                         {
                             activePriority=element.priority_id;
                             active=element.joint_id;
@@ -147,7 +158,7 @@ class ResumeEvaluationSelect extends Component {
                    
                     response.form.forEach(element => {
 
-                        let question=newForm.find(el => el.question_id==element.question_id);
+                        let question=newForm.find(el => el.question_id==element.question_id && el.joint_id.toString()==element.joint_id.toString());
                         question.visitor_id=element.visitor_id;
                         question.pro_severity_id=element.pro_severity_id;
                     });
@@ -212,7 +223,7 @@ class ResumeEvaluationSelect extends Component {
             }
 
             console.log(newForm)
-            this.context.multipleUpdateValueWithHistory([{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
+            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
         }
 
         

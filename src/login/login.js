@@ -10,7 +10,8 @@ import GetAuth from '../Fetch/getAuth';
 import './login.css';
 import MyContext from '../helper/themeContext';
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
-import { thisExpression } from '@babel/types';
+import Bone1Image from '../assets/bone1_Bitmap.png'
+
 
 const style = theme => ({
 
@@ -138,29 +139,38 @@ class Login extends Component {
             {this.state.loading==true?
                 <SemipolarLoading size={"large"} color={'#b4ec51'}/>
             :
-                <div  id="Login_Content1_Wrapper">
-                    <div id="Login_Heading1_Div">
-                        Hip & <span style={{color:'#b4ec51',fontWeight:'bold'}}> Knee </span> <br/>
-                        Step by Step
-                        <div id="Home_Neon_Line"></div>
-                    </div>
-                    <div className="Login_Box1_Div">
-                        <div className="Login_Box1_Div_Content1"> User Id: </div>
-                        <div className="Login_Box1_Div_Content2">
-                            <TextField  InputProps={{ classes: { input: classes.textfield} }} id="userid" className={classes.textfield} onChange={this.handleChange} style={{fontSize:'30px !important'}} variant="outlined" />
+                <div>
+                    <div  id="Login_Content1_Wrapper">
+                        <div id="Login_Heading1_Div">
+                            Hip & <span style={{color:'#b4ec51',fontWeight:'bold'}}> Knee </span> <br/>
+                            Step by Step
+                            <div id="Home_Neon_Line"></div>
+                        </div>
+                        <div className="Login_Box1_Div">
+                            <div className="Login_Box1_Div_Content1"> User Id: </div>
+                            <div className="Login_Box1_Div_Content2">
+                                <TextField  InputProps={{ classes: { input: classes.textfield} }} id="userid" className={classes.textfield} onChange={this.handleChange} style={{fontSize:'30px !important'}} variant="outlined" />
+                            </div>
+                        </div>
+                        <div className="Login_Box1_Div">
+                            <div className="Login_Box1_Div_Content1"> Password: </div>
+                            <div className="Login_Box1_Div_Content2">
+                                <TextField  InputProps={{ classes: { input: classes.textfield } }} type="password" id="password" className={classes.textfield} onChange={this.handleChange} style={{fontSize:'30px !important'}} variant="outlined" />
+                            </div>
+                        </div>
+
+                        {this.state.error==true?<div style={{marginTop:'20px',color:'red'}}> wrong email or password </div>:null}
+
+                        <div id="Login_Button_Div">
+                            <Button id="Login_Button" type="submit" variant="contained" onClick={this.handleLogin}> Login </Button>
                         </div>
                     </div>
-                    <div className="Login_Box1_Div">
-                        <div className="Login_Box1_Div_Content1"> Password: </div>
-                        <div className="Login_Box1_Div_Content2">
-                            <TextField  InputProps={{ classes: { input: classes.textfield } }} type="password" id="password" className={classes.textfield} onChange={this.handleChange} style={{fontSize:'30px !important'}} variant="outlined" />
-                        </div>
-                    </div>
-
-                    {this.state.error==true?<div style={{marginTop:'20px',color:'red'}}> wrong email or password </div>:null}
-
-                    <div id="Login_Button_Div">
-                        <Button id="Login_Button" type="submit" variant="contained" onClick={this.handleLogin}> Login </Button>
+                    <div  id="Login_Content2_Wrapper">
+                        <img src={Bone1Image} alt="SBS" id="Login_Image_Bone"/> 
+                        <div id="Login_Content2_Wrapper_Text" >
+                            The right care <br/>
+                            at the right time
+                        </div>  
                     </div>
                 </div>
             }

@@ -5,16 +5,59 @@ import Button from '@material-ui/core/Button';
 
 import './evaluationHistory.css';
 import MyContext from '../../helper/themeContext';
+import GetData from '../../Fetch/getDataUniversal';
+import { SemipolarLoading } from 'react-loadingg';
 class EvaluationHistory extends Component {
     constructor(props) {
         super(props);
-        this.state = { }
+        this.state = { loading:true,rows:[] }
     }
 
     handleClick = () =>
     {
         this.context.clearEvalState();
         this.context.history.push('./welcome')
+    }
+
+    componentDidMount()
+    {
+        GetData(this.context.baseUrl+'/api/v1/user/reports',400,this.context.state.token,this.setMe);
+    }
+
+    setMe = (response) =>
+    {
+        if(response.length>0)
+        {
+            let rows=[];
+            response.forEach(element => {
+            let mydate=element.patient[0].date.toString().match(/\d+/g).map(Number);
+            let mydate_year=mydate[0];
+            let mydate_month=mydate[1];
+            let mydate_date=mydate[2];
+
+            if(mydate_month.toString().length==1)
+            {
+                mydate_month='0'+mydate_month;
+            }
+            
+            if(mydate_date.toString().length==1)
+            {
+                mydate_date='0'+mydate_date;
+            }
+            let newdate=mydate_date+'-'+mydate_month+'-'+mydate_year;
+                rows.push({patient_id:element.patient[0].id,patient_name:element.patient[0].name,evaluation_date:newdate,report_id:element.id})
+            });
+
+            this.setState({rows,loading:false})
+        }
+
+        else this.setState({loading:false})
+
+    }
+
+    handleViewReport = (report_id) =>
+    {
+        this.context.multipleUpdateValueWithHistory([{key:'random_report_id',value:report_id}],'./selected-patient-report')
     }
 
     
@@ -24,7 +67,10 @@ class EvaluationHistory extends Component {
         return ( 
         
         <div id="Evaluaion_PatientReport_Main_Div">
-            <div  id="Evaluaion_PatientReport_Content_Wrapper">
+            {this.state.loading==true?
+            <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
+            :
+            <div  id="Evaluaion_PatientReport_Content_Wrapper" style={{justifyContent:'flex-start'}}>
                 <div id="Evaluaion_PatientReport_Heading1_Div">
                    Select a Report to View
                 </div>
@@ -46,24 +92,35 @@ class EvaluationHistory extends Component {
                 <div id="Evalution_History_Table_Line" style={{width:'100%',height:'2px',background:'#ffffff'}}>
                     
                 </div>
+
+                <div id="Evalution_History_Table_Body">
+                {
+                    this.state.rows.map((row,id)=>
+                    <div className="Evalution_History_Table_Body_Row">
+                        <div className="Evalution_History_Table_Body_Text" style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
+                            {row.patient_name}
+                        </div>
+                        <div className="Evalution_History_Table_Body_Text" style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
+                            {row.evaluation_date}
+                        </div>
+                        <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
+                            <Button className="Evaluaion_History_Button"  variant="contained" onClick={()=>{this.handleViewReport(row.report_id)}}> View Report </Button>
+                        </div>
+
+                        <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
+                            <Button className="Evaluaion_History_Button"  variant="contained"> Suggested Care Pathway </Button>
+                        </div>
+
+
+                    </div>)
+                }
+                   
+                </div>
                 
 
                    
                 </div>
-                {/* <div className="Evaluaion_PatientReport_Text1">
-                    <span className="Evaluaion_PatientReport_SubHead1">INSTRUCTIONS: </span> <span>This survey asks for your view about your knee. This information will help us keep track of how you feel about your knee and how well you are able to do your usual activities. </span> <br/>
-                    <span>Answer every question by ticking the appropriate box, <u> only </u> one box for each question. If you are unsure about how to answer a question, please give the best answer you can.</span>
-                </div>
-
-                <div className="Evaluaion_PatientReport_Text2" >
-                    <span className="Evaluaion_PatientReport_SubHead2">Stiffness </span> <br/> <span>The following question concerns the amount of joint stiffness you have experienced during the <b>last week </b>in your <span className="red-emphasis"> right </span> knee. Stiffness is a sensation of restriction or slowness in the ease with which you move your <span className="red-emphasis"> right </span> knee joint. </span>
-                </div>
-
-                <div className="Evaluaion_PatientReport_Question_Div">
-                    1. How severe is your <span className="red-emphasis"> right </span> knee stiffness after first wakening in the morning?
-                </div> */}
-
-{/* this.context.clearEvalState(); */}
+                
                 
 
                 <div id="Evaluaion_PatientReport_Back_Button_Div">
@@ -76,6 +133,7 @@ class EvaluationHistory extends Component {
                
 
             </div>
+            }
         
 
         </div> );

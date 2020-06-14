@@ -7,7 +7,6 @@ import MatchingVideo2 from './matchingVideo2/matchingVideo2'
 
 import LGS from './LGS/LGS';
 import MatchingTutorial from './matchingTutorial/matchingTutorial';
-import ShowReport from './report/showReport';
 import Report from './report/report';
 
 class MatchingEducation extends Component {

@@ -40,7 +40,7 @@ class Forms extends Component {
                         </div>
                         :
                             
-                            <Button className="Evaluaion_Forms_Box_Button"  variant="contained" disabled> Upload </Button>
+                            <Button className="Evaluaion_Forms_Box_Button"  variant="contained" disabled> KOOS Upload </Button>
                             
                         }
 
@@ -55,7 +55,7 @@ class Forms extends Component {
                             </div>
                             <div  className="Evaluaion_Forms_Box1_Content2">
                                 
-                                <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./patient-report')}}> Manual Entry </Button>
+                                <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./patient-report')}}> KOOS Manual Entry </Button>
                 
                             </div>
                         </div>

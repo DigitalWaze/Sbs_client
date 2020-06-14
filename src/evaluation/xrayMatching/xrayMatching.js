@@ -44,6 +44,7 @@ class XrayMatching extends Component {
     {
         if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
         {
+            console.log(this.context.state.joint_id)
             let req={
                 visitor_id:this.context.state.report_id,
                 joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
@@ -240,40 +241,51 @@ class XrayMatching extends Component {
         {
             let joint_id=null;
             let priority_id=null;
-            if(this.context.state.Eval.length>1)
+
+            if(this.context.state.noOfEvalRemainToUpload>1)
             {
                 this.context.state.Eval.filter(eva=>eva.joint_id.toString()==this.context.state.joint_id.toString())[0].isEvaluated=true;
-                let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
-                if(joint_idall.length>0)
-                {joint_id=joint_idall[0].joint_id;}
-                let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
-                if(priority_idall.length>0)
-                {priority_id=priority_idall[0].priority_id;}
+                
+                console.log('SECOND EVAL');
+                console.log(joint_id,'joint_id')
+                //load new matching;
+                this.setState({Next:true,Matching:null,loading:false});
+                
+                // let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+                // if(joint_idall.length>0)
+                // {joint_id=joint_idall[0].joint_id;}
+                // let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+                // if(priority_idall.length>0)
+                // {priority_id=priority_idall[0].priority_id;}
             }
 
-            console.log(joint_id,'joint_id')
-            if(!joint_id || joint_id==null)
+            else
             {
                 console.log('SINGLE EVAL');
                 this.context.evalDone();
                 await this.handleReportUpload();
             }
 
-            else
-            {
-                console.log('SECOND EVAL');
-                console.log(joint_id,'joint_id')
-                //load new matching;
-                this.context.multipleUpdateValue([{key:'joint_id',value:joint_id},{key:'activePriority',value:priority_id}])
+            // console.log(joint_id,'joint_id')
+            // if(!joint_id || joint_id==null)
+            // {
+            //     console.log('SINGLE EVAL');
+            //     this.context.evalDone();
+            //     await this.handleReportUpload();
+            // }
+
+            // else
+            // {
+            //     console.log('SECOND EVAL');
+            //     console.log(joint_id,'joint_id')
+            //     //load new matching;
+
+            //     this.setState({Next:true,Matching:null,loading:false});
+
+            //     this.context.multipleUpdateValue([{key:'noOfEvalRemainToUpload',value:1},{key:'joint_id',value:joint_id},{key:'activePriority',value:priority_id}])
+            //     this.setState({Next:true,Matching:null,loading:false});
                 
-                let req={
-                    visitor_id:this.context.state.report_id,
-                    joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==joint_id.toString())[0].joint_hurt_id
-                }
-                this.setState({Next:false,Matching:null,ActivePage:'EvalName',ActiveType:null,ActiveXray:null})
-                
-                GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe)
-            }
+            // }
         }
         else {alert('Error! Please try again later.')}
     }

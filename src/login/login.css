@@ -14,16 +14,41 @@
 #Login_Content1_Wrapper
 {
  
-  width:100vw;
+  width:60vw;
   height:100vh;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  vertical-align: top;
   
   /* justify-content: center;
   align-items: center; */
+}
+
+#Login_Content2_Wrapper
+{
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  height:100vh;
+  width:400px;
+  max-width:40vh;
+
+}
+
+#Login_Content2_Wrapper_Text
+{
+  transform: translateY(-80px);
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: center
+  
 }
 
 #Login_Heading1_Div
@@ -100,4 +125,10 @@
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+#Login_Image_Bone
+{
+  width: 100%;
+  margin-top: 50px;
 }

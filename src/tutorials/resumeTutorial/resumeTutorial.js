@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './resumeTutorial.css';
 import { Button } from '@material-ui/core';
-import GetData from '../../Fetch/getDataUniversal';
 import MyContext from '../../helper/themeContext';
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
 
