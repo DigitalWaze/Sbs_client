@@ -249,7 +249,7 @@ class ShowReport extends Component {
                                         <React.Fragment key={id}>    
                                             <Grid item xs={4} style={{position:'relative',border:'1px solid #fff',height:`calc(${height} - 2px)` }}>
                                                 <div className="Evaluaion_Report_Box_Button_Div"> 
-                                                    <Button className="Evaluaion_Report_Box_Button"  variant="contained" onClick={()=>this.handleSelect(type.name,xray.name,xray.state,xray.image)}> {xray.name} </Button>
+                                                    <Button className="Evaluaion_Report_Box_Button"  variant="contained" onClick={()=>this.handleSelect(type.name,xray.name,xray.state,xray.up)}> {xray.name} </Button>
                                                 </div>
                                             </Grid>
                                             <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state==1?'#6C8D31':''}}>

@@ -36,7 +36,7 @@ let Evaluation=
         Xrays:[ 
             {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:4,state_id:4,notes:null,thumbnail:MFV,up:MFVUP,answer:'3'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:4,state_id:4,notes:null,thumbnail:MNFV,up:MNFVUP,answer:'3'}]},
             {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LFV,up:LFVUP,answer:'1'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LNFV,up:LNFVUP,answer:'1'}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:2,state_id:2,notes:null,thumbnail:KV,up:KVUP,answer:'4'}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:4,state_id:2,notes:null,thumbnail:KV,up:KVUP,answer:'4'}]},
 
         ] 
     }

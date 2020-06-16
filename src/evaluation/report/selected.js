@@ -5,6 +5,11 @@ import Button from '@material-ui/core/Button';
 
 import './selected.css'
 
+import MEDFLXDOWN1 from '../../assets/medial-flexion-up-1.png'
+
+
+
+
 class Selected extends Component {
     
 
@@ -17,6 +22,7 @@ class Selected extends Component {
     render() { 
         return (  
             <div id="Evaluaion_Report_Selected_Main_Div">
+            {console.log(this.props.XrayImage)}
                 <div  id="Evaluaion_Report_Selected_Content1_Wrapper">
                     <div id="Evaluaion_Report_Selected_Heading1_Div">
                         X-Ray Matching
@@ -41,8 +47,15 @@ class Selected extends Component {
                 </div>
                 <div  id="Evaluaion_Report_Selected_Content2_Wrapper">
                     <div id="Evaluaion_Report_Selected_Heading3_Div">
-                        {this.props.ActiveType} {this.props.ActiveXray}
+                        {this.props.Type=="Kneecap"?"Kneecap": this.props.Type + " " + this.props.Xray}
                     </div>
+                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
+                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.XrayImage}/>
+                    </div>
+                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
+                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.Type=='Lateral'?this.props.Xray=="FlexionView"?require(`../../assets/lateral-flexion-up-${this.props.State}.png`):require(`../../assets/lateral-nonflexion-up-${this.props.State}.png`):this.props.Type=='Medial'?this.props.Xray=="FlexionView"?require(`../../assets/medial-flexion-up-${this.props.State}.png`):require(`../../assets/medial-nonflexion-up-${this.props.State}.png`):this.props.Type=='Kneecap'?require(`../../assets/kneecap-up-${this.props.State}.png`):null} />
+                    </div>
+
                     {/* <div>
                         <img src={this.props.image}/>
                     </div> */}

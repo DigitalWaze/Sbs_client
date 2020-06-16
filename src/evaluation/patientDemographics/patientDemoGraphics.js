@@ -72,7 +72,7 @@ class PatientDemoGraphics extends Component {
             {
                 date='0';
             }
-            date=date+d.getMonth()+'-';
+            date=date+(d.getMonth()+1)+'-';
             if(d.getDate().toString().length==1)
             {
                 date=date+'0';

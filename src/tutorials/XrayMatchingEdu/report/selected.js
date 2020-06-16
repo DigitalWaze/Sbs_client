@@ -6,7 +6,7 @@ import MEDFLXDOWN from '../../../assets/medial-flexion-up-4.png'
 import MEDNONFLXDOWN from '../../../assets/medial-nonflexion-up-4.png'
 import LATFLXDOWN from '../../../assets/lateral-flexion-up-1.png'
 import LATNONFLXDOWN from '../../../assets/lateral-nonflexion-up-1.png'
-import KNEEDOWN from '../../../assets/kneecap-up-2.png'
+import KNEEDOWN from '../../../assets/kneecap-up-4.png'
 
 
 
@@ -48,7 +48,7 @@ class Selected extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        {this.props.Type} {this.props.Xray}
+                      {this.props.Type=="Kneecap"?"Kneecap": this.props.Type + " " + this.props.Xray}
                     </div>
                     <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
                         <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.Image}/>

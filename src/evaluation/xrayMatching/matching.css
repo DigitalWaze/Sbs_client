@@ -168,7 +168,7 @@
 {
   position: relative;
   max-width: 500px;
-  max-height: calc(50% - 30px);
+  max-height: calc(50% - 27px);
   text-align: center;
   margin: auto;
 }

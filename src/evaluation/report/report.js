@@ -24,7 +24,7 @@ class Report extends Component {
         
         <div>
             {this.state.View==="Report" && <ShowReport handleView={(View)=>this.handleView(View)} handleState={(ActiveState,ActiveType,ActiveXray,XrayImage)=>this.setActive(ActiveState,ActiveType,ActiveXray,XrayImage)}  />}
-            {this.state.View==="Selected" && <Selected State={this.state.ActiveState} Type={this.state.ActiveType} Xray={this.state.ActiveXray} handleView={(View)=>this.handleView(View)} handleState={(ActiveState,ActiveType,ActiveXray,XrayImage)=>this.setActive(ActiveState,ActiveType,ActiveXray,XrayImage)} />}
+            {this.state.View==="Selected" && <Selected XrayImage={this.state.XrayImage} State={this.state.ActiveState} Type={this.state.ActiveType} Xray={this.state.ActiveXray} handleView={(View)=>this.handleView(View)} handleState={(ActiveState,ActiveType,ActiveXray,XrayImage)=>this.setActive(ActiveState,ActiveType,ActiveXray,XrayImage)} />}
         </div> );
     }
 }
