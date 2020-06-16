@@ -60,7 +60,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  align-items: stretch;
+  align-items: flex-start;
 }
 #XRMATTDLOD_Image_Container img {
   width: 100%;

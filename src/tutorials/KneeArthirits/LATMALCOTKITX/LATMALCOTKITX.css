@@ -82,7 +82,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  align-items: stretch;
+  align-items: flex-start;
 }
 #LATMALCOTKITX_Image_Container img {
   width: 100%;

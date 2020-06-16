@@ -165,7 +165,7 @@ class WXRWYR extends Component {
                         <img src={tick} alt="tick" id="WXRWYR_tick" />
                       </div>
                       <div id="WXRWYR_Image">
-                        <img src={Img6} alt="WXRWYR1" />
+                        <img id="WXRWYR_Exception" src={Img6} alt="WXRWYR1" />
                       </div>
                     </div>
                   </div>
