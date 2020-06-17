@@ -24,7 +24,7 @@ class Video extends Component {
                 </div>
               </div>
               
-              <video className="sbs-video-wrapper" video controls autoplay style={{width: "100%",height: "auto", }}> 
+              <video className="sbs-video-wrapper" video controls autoplay> 
                 <source src="https://drive.google.com/uc?id=1L3mlyp4_we7wGV2sYiRGItPia162IBWv" type="video/mp4" />
               </video>
             </div>

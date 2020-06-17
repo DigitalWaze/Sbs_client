@@ -188,8 +188,8 @@ class ShowReport extends Component {
                             
                                     <Grid item xs={12}>
                                         <span className="Evaluaion_Report_Box_Text3">
-                                            X-ray Evaluations: 10/22/2020 <br/>
-                                            Date X-ray Taken: 10/22/2020
+                                            X-ray Evaluations: {this.context.state.patient.date} <br/>
+                                            Date X-ray Taken: {this.context.state.patient.date} 
                                         </span>
                                     </Grid>
                                 </React.Fragment>
