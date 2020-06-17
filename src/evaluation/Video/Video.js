@@ -14,29 +14,21 @@ class Video extends Component {
 
   render() {
     return (
-      <div id="Video_Main_Div">
-        <div id="Video_Content_Wrapper">
-          <div id="Video_Center_Wrapper">
-            <div id="Video_Text_wrapper">
-              <div id="Video_Heading1_Div">Evaluating a Patient</div>
-            </div>
-            <div id="Video_Image_Wrapper">
-              <video
-                video
-                controls
-                autoplay
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-              >
-                <source
-                  src="https://drive.google.com/uc?id=1L3mlyp4_we7wGV2sYiRGItPia162IBWv"
-                  type="video/mp4"
-                />
+      <div id="SBSVideo_Main_Div">
+        <div id="SBSVideo_Content_Wrapper">
+          <div id="SBSVideo_Center_Wrapper">
+            <div id="SBSVideo_Image_Wrapper">
+              <div className="sbs-video-text-wrapper">
+                <div id="SBSVideo_Heading1_Div">
+                  Evaluating a Patient
+                </div>
+              </div>
+              
+              <video className="sbs-video-wrapper" video controls autoplay style={{width: "100%",height: "auto", }}> 
+                <source src="https://drive.google.com/uc?id=1L3mlyp4_we7wGV2sYiRGItPia162IBWv" type="video/mp4" />
               </video>
             </div>
-            <div id="Video_Next_Button_Div">
+            <div id="SBSVideo_Next_Button_Div">
               <Button
                 id="Video_Next_Button"
                 variant="contained"

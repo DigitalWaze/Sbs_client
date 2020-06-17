@@ -170,7 +170,7 @@
   max-width: 500px;
   max-height: calc(50% - 27px);
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .Evaluaion_XrayMatching_Matching_Modal_Div
