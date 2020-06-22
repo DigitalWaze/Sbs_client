@@ -61,7 +61,7 @@ class XRMMS extends Component {
       </div>
       <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                    RIGHT KNEE - MEDIAL FLEXION VIEW
+                      MEDIAL FLEXION VIEW
                     </div>
                    
                     <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)'}}>

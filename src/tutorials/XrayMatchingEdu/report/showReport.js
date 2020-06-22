@@ -27,6 +27,7 @@ import MNFVUP from '../../../assets/medial-nonflexion-up.png'
 import LFVUP from '../../../assets/lateral-flexion-up.png'
 import LNFVUP from '../../../assets/lateral-nonflexion-up.png'
 import KVUP from '../../../assets/matching_tutorial_keencap_up.png'
+import './showReport.css'
 // import './report.css'
 
 const height='60px';
@@ -34,7 +35,7 @@ const height='60px';
 let Evaluation= 
     {name:'Right Knee',image:Bone1Image  , joint_id:'3',
         Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:4,state_id:4,notes:null,thumbnail:MFV,up:MFVUP,answer:'3'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:4,state_id:4,notes:null,thumbnail:MNFV,up:MNFVUP,answer:'3'}]},
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:3,state_id:4,notes:null,thumbnail:MFV,up:MFVUP,answer:'2'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:3,state_id:4,notes:null,thumbnail:MNFV,up:MNFVUP,answer:'2'}]},
             {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LFV,up:LFVUP,answer:'1'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LNFV,up:LNFVUP,answer:'1'}]},
             {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:4,state_id:2,notes:null,thumbnail:KV,up:KVUP,answer:'4'}]},
 
@@ -81,7 +82,7 @@ class ShowReport extends Component {
     render() { 
         return ( 
             <div id="Evaluaion_Report_Main_Div">
-                <div id="Evaluaion_Report_Content_Wrapper">
+                <div id="Evaluaion_Report_Content_Wrapper" style={{flexDirection:'row'}}>
                     <div  id="ReportMainDiv">
                         <Grid container>
                             <Grid container item xs={12} spacing={0} style={{height:'80px'}}>
@@ -185,10 +186,10 @@ class ShowReport extends Component {
                                             <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state==1?'#6C8D31':''}}>
                                                 <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==1 && <img src={Tick} alt="Ticked" /> } </div> 
                                             </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==2?'#FA9E2D':''}}>
+                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==2?'yellow':''}}>
                                                 <div className="Evaluaion_Report_Box_Selected_Box"  > {xray.state==2 && <img src={Tick} alt="Ticked" /> }  </div> 
                                             </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==3?'#C50000':''}}>
+                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==3?'#fa9e2d':''}}>
                                                 <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==3 && <img src={Tick} alt="Ticked" /> } </div> 
                                             </Grid>
                                             <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==4?'#C50000':''}}>
@@ -243,6 +244,9 @@ class ShowReport extends Component {
                             </div>
                         
                         </div>
+                    </div>
+                    <div className="Tutorials_XrayMatching_Education_Report_Explanation_Div">
+                        Click on a view or x-ray to review your evaluation
                     </div>
                 </div>
                 <div id="Evaluaion_Report_Next_Button_Div">

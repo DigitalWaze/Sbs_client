@@ -87,7 +87,7 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        {this.props.ActiveType=="Kneecap"?'Kneecap':this.props.ActiveType + ' ' + this.props.ActiveXray}
+                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP':this.props.ActiveType.toUpperCase() + ' ' + this.props.ActiveXray}
                     </div>
                    
                     <div style={{width:'100%',height:'calc(50% - 30px)'}}>

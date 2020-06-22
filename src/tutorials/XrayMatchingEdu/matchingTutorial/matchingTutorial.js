@@ -11,8 +11,8 @@ import LFV from '../../../assets/lateral-flexion.png'
 import LNFV from '../../../assets/lateral-nonflexion.png'
 import KV from '../../../assets/kneecapview.jpg'
 
-import MFVUP from '../../../assets/medial-flexion-up.png'
-import MNFVUP from '../../../assets/medial-nonflexion-up.png'
+import MFVUP from '../../../assets/matching-education-medial-flexion-up.png'
+import MNFVUP from '../../../assets/matching-education-medial-nonflexion-up.png'
 import LFVUP from '../../../assets/lateral-flexion-up.png'
 import LNFVUP from '../../../assets/lateral-nonflexion-up.png'
 import KVUP from '../../../assets/matching_tutorial_keencap_up.png'
@@ -40,25 +40,19 @@ import MNFVUP4 from '../../../assets/medial-nonflexion-up-4.png'
 import LFVUP4 from '../../../assets/lateral-flexion-up-4.png'
 import LNFVUP4 from '../../../assets/lateral-nonflexion-up-4.png'
 import KVUP4 from '../../../assets/kneecap-up-4.png'
-
-
-
-
-
-
-
-
 // import './xrayMatching.css';
 import MyContext from '../../../helper/themeContext';
 import { SemipolarLoading } from 'react-loadingg';
 
+let Next=false;
+
+
 let Evaluation= 
     {name:'Right Knee',image:Bone1Image  , joint_id:'3',
         Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,answer:'4'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,answer:'4'}]},
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,answer:'3'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,answer:'3'}]},
             {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,answer:'1'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,answer:'1'}]},
             {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,answer:'4'}]},
-
         ] 
     }
 
@@ -74,7 +68,10 @@ class MatchingTutorial extends Component {
             ActiveType:null,
             ActiveXray:null,
             Next:false,
-            req:[]
+            req:[],
+            start:true,
+            
+
          }
     }
 
@@ -108,7 +105,7 @@ class MatchingTutorial extends Component {
         let ActiveXrayIndex=Evaluation.Xrays[ActiveTypeIndex].xrays.findIndex(eva=>eva.name==ActiveXray);
         console.log(ActiveTypeIndex,'ActiveTypeIndex')
         console.log(ActiveXrayIndex,'ActiveXrayIndex')
-        this.setState({ActivePage:'Matching',ActiveType,ActiveXray,ActiveXrayIndex,ActiveTypeIndex})
+        this.setState({ActivePage:'Matching',ActiveType,ActiveXray,ActiveXrayIndex,ActiveTypeIndex,start:false})
     }
     handleMatchingClick = (state,notes) =>
     {
@@ -151,8 +148,10 @@ class MatchingTutorial extends Component {
                 // this.setState({loading:true})
 
                 // console.log(req);
-                this.context.setCookie("tutorial-" + this.context.state.user_id,36);
-                this.context.history.push('./video2')
+                Next=true;
+                this.setState({Next:true})
+
+                
             }
             
 
@@ -170,6 +169,8 @@ class MatchingTutorial extends Component {
         // await this.handleReportUpload();
         // this.context.updateSession();
         // this.context.multipleUpdateValueWithHistory([{key:'Evaluations',value:this.state.Evaluations}],'./report')
+        this.context.setCookie("tutorial-" + this.context.state.user_id,36);
+        this.context.history.push('./video2')
     }
 
     render() { 
@@ -181,7 +182,7 @@ class MatchingTutorial extends Component {
                 :   <div>
                     
                         {
-                            this.state.ActivePage==='Overview' && <Overview Next={this.state.Next} Evaluation={this.state.Evaluation} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
+                            this.state.ActivePage==='Overview' && <Overview start={this.state.start} Next={Next} Evaluation={this.state.Evaluation} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
                         }
                         {
                             this.state.ActivePage==='Matching' && <Matching   eval={this.state.Evaluation} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>

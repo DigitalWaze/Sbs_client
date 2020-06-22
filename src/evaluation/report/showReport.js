@@ -255,10 +255,10 @@ class ShowReport extends Component {
                                             <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state==1?'#6C8D31':''}}>
                                                 <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==1 && <img src={Tick} alt="Ticked" /> } </div> 
                                             </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==2?'#FA9E2D':''}}>
+                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==2?'yellow':''}}>
                                                 <div className="Evaluaion_Report_Box_Selected_Box"  > {xray.state==2 && <img src={Tick} alt="Ticked" /> }  </div> 
                                             </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==3?'#C50000':''}}>
+                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==3?'#fa9e2d':''}}>
                                                 <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==3 && <img src={Tick} alt="Ticked" /> } </div> 
                                             </Grid>
                                             <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==4?'#C50000':''}}>

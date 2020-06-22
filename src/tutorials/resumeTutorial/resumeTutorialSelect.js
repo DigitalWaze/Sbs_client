@@ -89,7 +89,7 @@ class ResumeTutorialSelect extends Component {
                     </div> */}
                     <div className="Evaluation_ResumeEvaluation_Text_Div">
                         Would you like to resume the education
-                        where you left o or start over?
+                        where you left or start over?
                     </div>
 
                     <div className="Evaluation_ResumeEvaluation_Button_Div">

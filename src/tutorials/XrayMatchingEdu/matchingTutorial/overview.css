@@ -1,0 +1,38 @@
+.Tutorials_XrayMatchingEducation_Matching_Main_Content_Wrapper
+{
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+#Tutorials_XrayMatchingEducation_Matching_Overview_Explanation_Div
+{
+    display: inline-block;
+    position: absolute;
+    top:0px;
+    width:200px;
+    background: green;
+    height:auto;
+    margin-left:10px;
+    background-color: rgba(18, 20, 53, 0.81);
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+
+    
+}
+
+.Tutorials_XrayMatchingEducation_Matching_Overview_Wrapper
+{
+    width: 800px;
+    margin: auto;
+    display: inline-block;
+    
+    align-items: center;
+}
+
+

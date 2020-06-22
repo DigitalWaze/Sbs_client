@@ -168,7 +168,8 @@
 {
   position: relative;
   max-width: 500px;
-  max-height: calc(50% - 27px);
+  max-height: calc(50% - 30px);
+  margin-left:1px;
   text-align: center;
   /* margin: auto; */
 }
@@ -213,6 +214,37 @@
   font-size: 20px;
   line-height: 30px;
   overflow: hidden;
+}
+
+.Evaluaion_XrayMatching_Matching_Image_Label1
+{
+  position: absolute;
+  top:20px;
+  left:60px;
+  width:130px;
+  height:auto;
+  background: white;
+  font-size: 18px;
+  line-height: 11px;
+  font-family: Lato, sans-serif;
+
+  padding: 8px;
+}
+
+.Evaluaion_XrayMatching_Matching_Image_Label2
+{
+  position: absolute;
+  top:20px;
+  left:60px;
+  width:150px;
+  height:auto;
+  background: rgb(255, 255, 255);
+  opacity: 0.25;
+  font-size: 13px;
+  line-height: 11px;
+  font-family: Lato, sans-serif;
+  color:#333333;
+  padding: 8px;
 }
 
 

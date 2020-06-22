@@ -4,6 +4,7 @@ import './resumeTutorial.css';
 import { Button } from '@material-ui/core';
 import MyContext from '../../helper/themeContext';
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
+import GetData from '../../Fetch/getDataUniversal';
 
 class ResumeTutorial extends Component {
     constructor(props) {
@@ -14,8 +15,13 @@ class ResumeTutorial extends Component {
     handleDelete = () =>
     {
         //call api to delete eva
-        //navigate to offer        
-        this.props.history.push('/start-over')
+        //navigate to offer 
+        if(this.context.state.evaluation_stage>0)
+        {
+            this.setState({loading:true})
+            GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMe)
+        }  
+        else this.props.history.push('/start-over')
     }
 
     setMe = () =>
@@ -25,6 +31,8 @@ class ResumeTutorial extends Component {
         this.context.setCookie('temp_patient_id','',0);
         this.context.multipleUpdateValueWithHistory([{key:'evaluation_stage',value:null},{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'old',value:false}],'/start-over');
     }
+
+    
     render() { 
         return ( 
         <div className="Evaluation_ResumeEvaluation_Main_Div">
@@ -40,11 +48,20 @@ class ResumeTutorial extends Component {
                     </div>
 
                     <div className="Evaluation_ResumeEvaluation_Button_Div">
-                        <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('/tutorials/resume-tutorial/recover')}> Yes </Button>
+                        <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('/tutorials/resume-tutorial/recover')}>  {this.context.state.evaluation_stage>0?'Resume Tutorial':'Yes'} </Button>
                     </div>
+                    
+                    {
+                        this.context.state.evaluation_stage>0?
+                        <div className="Evaluation_ResumeEvaluation_Button_Div">
+                            <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('/evaluation/resume-evaluation/recover')}> Resume Evaluation </Button>
+                        </div>:null
+                    }
+
                     <div className="Evaluation_ResumeEvaluation_Button_Div">
-                        <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={this.handleDelete}> No </Button>
+                        <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={this.handleDelete}> No, I would like to start over. </Button>
                     </div>
+                    
 
                 </div>
             }

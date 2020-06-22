@@ -7,6 +7,7 @@ import MyContext from '../../../helper/themeContext';
 import Modal from '@material-ui/core/Modal';
 
 import NoMatching from '../../../assets/no_matching.png'
+import NotesIcon from '../../../assets/notes.png'
 import Ruler from '../../../assets/ruler.png'
 
 import './matching.css'
@@ -102,7 +103,7 @@ class Matching extends Component {
                         {
                             this.state.Active &&
                             <div className="Evaluaion_XrayMatching_Matching_AddNotes_Button_Div">
-                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleModalOpen}> Add Notes </Button>
+                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleModalOpen}> Add Notes <img style={{marginLeft:'15px'}} src={NotesIcon}/></Button>
                             </div>
                         }
                         
@@ -111,11 +112,14 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        {this.props.ActiveType=="Kneecap"?'Kneecap':this.props.ActiveType + ' ' + this.props.ActiveXray}
+                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP':this.props.ActiveType.toUpperCase() + ' ' + this.props.ActiveXray.toUpperCase()}
                     </div>
                    
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
+                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center',position:'relative'}}>
                         <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
+                        <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
+                            YOUR PATIENT
+                        </div>
                     </div>
                     {
                     this.state.Active!=null?
@@ -124,7 +128,10 @@ class Matching extends Component {
                         </div>
                     :   <div className="matching-down" >
                             <div style={{height:'100%',width:'100%'}}>
-                                <img style={{maxWidth:'100%',maxHeight:'100%',height:'auto',width:'auto'}} src={NoMatching}/>
+                                <img style={{maxWidth:'100%',maxHeight:'100%',height:'auto',width:'auto',position:'relative'}} src={NoMatching}/>
+                                <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
+                                   COMPARISION X-RAYS
+                                </div>
                             </div>
                         </div>
 

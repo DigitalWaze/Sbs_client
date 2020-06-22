@@ -55,27 +55,40 @@
 .Evaluaion_XrayMatching_OverView_Box_Div
 {
     min-width: 400px;
-    width:calc(100% - 2px);
+    width:calc(100% - 205px);
     max-width: 700px;
     padding:10px 0px 0px;
     border-radius: 5px;
     border:1px solid #fff;
     /* height:215px; */
     margin-bottom:10px;
+    display:inline-block;
+}
+
+.Evaluaion_XrayMatching_OverView_Label_Div
+{
+  display: inline-block;
+  width:185px;
+  font-size: 50px;
+  color:white;
+  line-height: 45px;
+  padding-right: 15px;
+  vertical-align: top;
 }
 
 .Evaluaion_XrayMatching_OverView_Box1_Content1
 {
-    width:calc(20% - 20px);
-    background:#BBBBBB;
-    height:70px;
+    width:calc(20%);
+    /* background:#BBBBBB; */
+    height:90px;
     display: inline-block;
     align-items: center;
     align-content: ce5nter;
     text-align: center;
     justify-content: center;
-    padding:5px 5px;
+    /* padding:5px 5px; */
     margin-bottom:5px; 
+    margin-left: 5px;
      
 }
 .Evaluaion_XrayMatching_OverView_Box1_Content1_Image
