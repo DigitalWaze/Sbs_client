@@ -15,7 +15,8 @@
 #VDWXRTKC_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 830px;
+  width: 60%;
+  /* max-width: 830px; */
   height: 100vh;
   padding: 0rem 0rem 0rem 0rem;
   display: flex;
@@ -27,14 +28,14 @@
 #VDWXRTKC_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 26px;
+  font-size: 2vw;
   display: block;
   font-weight: bold;
 }
 
 #VDWXRTKC_Text_Div,
 #VDWXRTKC_Image_Heading {
-  font-size: 16px;
+  font-size: 1.3vw;
   font-family: Lato, sans-serif;
   color: #fff;
   box-sizing: border-box;

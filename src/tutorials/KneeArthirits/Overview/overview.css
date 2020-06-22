@@ -83,6 +83,8 @@
 #Tutorials_Overview_Text_Div ul li {
   margin: 15px 0;
   line-height: 40px;
+  display: list-item;
+  list-style: disc;
 }
 #Tutorials_Overview_Next_Button_Div {
   display: flex;

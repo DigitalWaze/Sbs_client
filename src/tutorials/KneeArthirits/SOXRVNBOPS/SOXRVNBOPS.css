@@ -15,7 +15,8 @@
 #SOXRVNBOPS_Content_Wrapper {
   margin: auto;
   min-width: 400px;
-  max-width: 830px;
+  width: 58%;
+  /* max-width: 830px; */
   height: 100vh;
   padding: 0rem 0rem 0rem 0rem;
   display: flex;
@@ -27,7 +28,7 @@
 #SOXRVNBOPS_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 26px;
+  font-size: 2vw;
   margin-bottom: 10px;
   display: block;
   font-weight: bold;
@@ -56,7 +57,7 @@
 #SOXRVNBOPS_Table_Col_1 {
   width: 40%;
   padding: 20px;
-  font-size: 17px;
+  font-size: 1.4vw;
   font-family: Lato, sans-serif;
   color: #fff;
 }
@@ -94,10 +95,11 @@
   transform-origin: 12% 0%;
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 15px;
+  font-size: 1.2vw;
   font-weight: 300;
   transform: rotate(305deg);
   border: transparent !important;
+  text-align: center;
 }
 
 #SOXRVNBOPS_tick {
@@ -136,7 +138,7 @@
     padding: 0rem 1rem 0rem 1rem;
   }
   .SOXRVNBOPS_Rotaed p {
-    font-size: 15px;
+    font-size: 1.2vw;
   }
 }
 
@@ -145,7 +147,7 @@
   width: auto;
   min-width: 220px;
   padding: 16px 6px;
-  font-size: 18px;
+  font-size: 1.3vw;
   line-height: 17px;
   border-radius: 25px;
   background-color: #b4ec51;

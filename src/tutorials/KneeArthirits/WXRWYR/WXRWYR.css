@@ -15,7 +15,8 @@
 #WXRWYR_Content_Wrapper {
   margin: auto;
   min-width: 400px;
-  max-width: 830px;
+  width: 58%;
+  /* max-width: 830px; */
   height: 100vh;
   padding: 0rem 0rem 0rem 0rem;
   display: flex;
@@ -27,18 +28,18 @@
 #WXRWYR_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 26px;
+  font-size: 2vw;
   display: block;
   font-weight: bold;
 }
 
 #WXRWYR_Text_Div {
-  font-size: 16px;
+  font-size: 1.3vw;
   font-family: Lato, sans-serif;
   color: #fff;
 }
 #WXRWYR_Image_heading {
-  font-size: 17px;
+  font-size: 1.2vw;
   font-family: Lato, sans-serif;
   color: #fff;
   align-self: center;

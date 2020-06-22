@@ -15,7 +15,8 @@
 #COTK_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 830px;
+  width: 58%;
+  /* max-width: 830px; */
   height: 100vh;
   padding: 0rem 1rem 0rem 1rem;
   display: flex;
@@ -27,7 +28,7 @@
 #COTK_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 26px;
+  font-size: 2vw;
   margin-bottom: 10px;
   display: block;
   font-weight: bold;
@@ -35,7 +36,7 @@
 
 #COTK_Text_Div,
 #COTK_Image_Heading {
-  font-size: 16px;
+  font-size: 1.3vw;
   font-family: Lato, sans-serif;
   color: #fff;
   box-sizing: border-box;
@@ -80,7 +81,7 @@
     font-size: 15px;
   }
 }
-
+/* 
 @media screen and (min-height: 700px) {
   #COTK_Content_Wrapper {
     padding: 0rem 1rem 0rem 1rem;
@@ -95,7 +96,7 @@
   #COTK_Image_Heading {
     font-size: 16px;
   }
-}
+} */
 
 #COTK_Next_Button {
   display: block;
