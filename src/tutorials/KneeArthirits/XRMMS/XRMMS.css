@@ -15,7 +15,8 @@
 #XRMMS_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 830px;
+  width: 58%;
+  /* max-width: 830px; */
   height: 100vh;
   padding: 0rem 0rem 0rem 0rem;
   display: flex;

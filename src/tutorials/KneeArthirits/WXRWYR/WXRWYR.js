@@ -10,8 +10,6 @@ import Img3 from "../../assets/WXRWYR3.png";
 import Img4 from "../../assets/WXRWYR4.png";
 import Img5 from "../../assets/WXRWYR5.png";
 import Img6 from "../../assets/WXRWYR6.png";
-import Img2_2 from "../../assets/WXRWYR2_2.png";
-import Img3_3 from "../../assets/WXRWYR3_3.png";
 import tick from "../../assets/SOXRVNBOPS7.png";
 import cross from "../../assets/WXRWYR7.png";
 
@@ -111,7 +109,7 @@ class WXRWYR extends Component {
                         <img src={cross} alt="tick" id="WXRWYR_tick" />
                       </div>
                       <div id="WXRWYR_Image">
-                        <img src={Img2_2} alt="WXRWYR1" />
+                        <img src={Img2} alt="WXRWYR1" />
                       </div>
                     </div>
                   </div>
@@ -151,7 +149,7 @@ class WXRWYR extends Component {
                         <img src={cross} alt="tick" id="WXRWYR_tick" />
                       </div>
                       <div id="WXRWYR_Image">
-                        <img src={Img3_3} alt="WXRWYR1" />
+                        <img src={Img3} alt="WXRWYR1" />
                       </div>
                     </div>
                   </div>

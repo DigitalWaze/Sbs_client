@@ -14,7 +14,7 @@
 
 #SOXRVNBOPS_Content_Wrapper {
   margin: auto;
-  min-width: 400px;
+  min-width: 700px;
   width: 58%;
   /* max-width: 830px; */
   height: 100vh;
@@ -39,14 +39,16 @@
 }
 
 #SOXRVNBOPS_Image_Wrapper {
-  margin-top: 15px;
   border: 3px solid white;
-  padding: 40px 10px 10px 10px;
-  height: 450px;
+  padding: 15px;
+}
+#SOXRVNBOPS_Image_Container {
+  width: 100%;
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 #SOXRVNBOPS_Table_Row {
@@ -148,8 +150,18 @@
   min-width: 220px;
   padding: 16px 6px;
   font-size: 1.3vw;
-  line-height: 17px;
+  line-height: 1.4vw;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  #SOXRVNBOPS_Heading1_Div {
+    font-size: 2.8vw;
+  }
+
+  #SOXRVNBOPS_Next_Button {
+    font-size: 1.9vw;
+  }
 }

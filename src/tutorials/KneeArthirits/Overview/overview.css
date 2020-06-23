@@ -79,6 +79,7 @@
   color: #fff;
   font-weight: 400;
   box-sizing: border-box;
+  margin-left: 50px;
 }
 #Tutorials_Overview_Text_Div ul li {
   margin: 15px 0;

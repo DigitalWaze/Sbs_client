@@ -66,7 +66,7 @@
   margin-top: 10px;
 }
 
-@media screen and (max-width: 935px) {
+/* @media screen and (max-width: 935px) {
   #COTK_Content_Wrapper {
     padding: 0rem 1rem 0rem 1rem;
     max-width: 750px;
@@ -80,7 +80,7 @@
   #COTK_Image_Heading {
     font-size: 15px;
   }
-}
+} */
 /* 
 @media screen and (min-height: 700px) {
   #COTK_Content_Wrapper {
@@ -103,9 +103,22 @@
   width: auto;
   min-width: 220px;
   padding: 16px 6px;
-  font-size: 18px;
-  line-height: 17px;
+  font-size: 1.3vw;
+  line-height: 1.4vw;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  #COTK_Heading1_Div {
+    font-size: 2.8vw;
+  }
+
+  #COTK_Text_Div {
+    font-size: 1.9vw;
+  }
+  #COTK_Next_Button {
+    font-size: 1.9vw;
+  }
 }

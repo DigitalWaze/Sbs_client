@@ -15,7 +15,8 @@
 #HTIJSNAD_Content_Wrapper {
   margin: auto;
   min-width: 700px;
-  max-width: 830px;
+  width: 58%;
+  /* max-width: 830px; */
   height: 100vh;
   padding: 0rem 0rem 0rem 0rem;
   display: flex;
@@ -27,14 +28,14 @@
 #HTIJSNAD_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 26px;
+  font-size: 2vw;
   display: block;
   font-weight: bold;
 }
 
 #HTIJSNAD_Text_Div,
 #HTIJSNAD_Image_Heading {
-  font-size: 16px;
+  font-size: 1.3vw;
   font-family: Lato, sans-serif;
   color: #fff;
 }
@@ -94,7 +95,7 @@
 
 #HTIJSNAD_Inner_text {
   color: #fff;
-  font-size: 16px;
+  font-size: 1.2vw;
   text-align: center;
   padding: 5px 0;
   align-self: stretch;
@@ -118,9 +119,27 @@
   width: auto;
   min-width: 220px;
   padding: 16px 6px;
-  font-size: 18px;
-  line-height: 17px;
+  font-size: 1.3vw;
+  line-height: 1.4vw;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  #HTIJSNAD_Heading1_Div {
+    font-size: 2.8vw;
+  }
+
+  #HTIJSNAD_Text_Div,
+  #HTIJSNAD_Image_Heading {
+    font-size: 1.9vw;
+  }
+  #HTIJSNAD_Next_Button {
+    font-size: 1.9vw;
+  }
+
+  #HTIJSNAD_Inner_text {
+    font-size: 1.8vw;
+  }
 }

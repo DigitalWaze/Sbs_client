@@ -87,9 +87,23 @@
   width: auto;
   min-width: 220px;
   padding: 16px 6px;
-  font-size: 18px;
-  line-height: 17px;
+  font-size: 1.3vw;
+  line-height: 1.4vw;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  #KDAA_Heading1_Div {
+    font-size: 3vw;
+  }
+
+  #KDAA_Text_Div,
+  #KDAA_Image_Heading {
+    font-size: 2vw;
+  }
+  #KDAA_Next_Button {
+    font-size: 1.9vw;
+  }
 }
