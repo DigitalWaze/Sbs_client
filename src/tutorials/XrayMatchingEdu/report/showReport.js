@@ -210,10 +210,15 @@ class ShowReport extends Component {
                             <Modal
                                 open={this.state.modal}
                                 onClose={this.modalClose}
+                                
                             >
-                                <div style={{display:'inline-block',padding:'10px',background:'#3023AE',width:'auto'}}>
-                                    <img src={this.state.ActiveImage} alt="Xray" style={{maxHeight:'60vh'}} />
+                                <div className="Evaluation_Report_XrayImage_Modal_Wrapper">
+                                    <div className="Evaluation_Report_XrayImage_Modal">
+                                        <img src={this.state.ActiveImage} alt="Xray" style={{display:'block',maxHeight:'60vh'}} />
+                                        <Button onClick={this.modalClose} variant="contained" id="Evaluaion_Report_Modal_Close_Button"> Close </Button>
+                                    </div>
                                 </div>
+                                
                             </Modal>
                             <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}  onClick={()=>{this.handleSearchClick(Xray1)}}>
                                 <img src={Xray1} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>

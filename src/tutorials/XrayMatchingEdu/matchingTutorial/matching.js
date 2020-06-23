@@ -115,7 +115,7 @@ class Matching extends Component {
                         RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP':this.props.ActiveType.toUpperCase() + ' ' + this.props.ActiveXray.toUpperCase()}
                     </div>
                    
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center',position:'relative'}}>
+                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center',position:'relative'}}>
                         <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
                         <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
                             YOUR PATIENT
@@ -123,7 +123,7 @@ class Matching extends Component {
                     </div>
                     {
                     this.state.Active!=null?
-                        <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
+                        <div style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center'}}>
                             <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                         </div>
                     :   <div className="matching-down" >

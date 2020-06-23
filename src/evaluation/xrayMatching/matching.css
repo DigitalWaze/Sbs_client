@@ -168,8 +168,8 @@
 {
   position: relative;
   max-width: 500px;
-  max-height: calc(50% - 30px);
-  margin-left:1px;
+  max-height: calc(50% - 49px);
+  margin-left:0px;
   text-align: center;
   /* margin: auto; */
 }

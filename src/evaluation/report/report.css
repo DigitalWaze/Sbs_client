@@ -250,4 +250,53 @@
   text-transform:none;
 }
 
+.Evaluation_Report_XrayImage_Modal
+{
+    /* style={{display:'inline-block',padding:'10px',background:'#3023AE',width:'auto'}} */
+    display:block;
+    padding: 10px;
+    background: #3023ae;
+    /* width: auto; */
+    max-width: fit-content;
+    /* position: absolute !important;
+    top:50%; */
+    /* margin-left: 50%; */
+    
+    align-self: center;
+    /* margin: auto auto */
+    /* position: absolute;
+    left: 25%;
+    top: 22%; */
+    
+
+}
+
+.Evaluation_Report_XrayImage_Modal_Wrapper
+{
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#Evaluaion_Report_Modal_Close_Button
+{
+    display: block;
+    width:auto;
+    min-width: 200px;
+    padding: 15px 25px;
+    font-size: 20px;
+    line-height: 20px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: 'Lato', sans-serif !important;
+    text-transform:none;
+    margin-top:20px;
+    margin-left: calc(50% - 100px);
+}
+
 
