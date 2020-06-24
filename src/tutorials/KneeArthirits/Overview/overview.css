@@ -12,113 +12,118 @@
   overflow: hidden;
 }
 
-#Tutorials_Overview_Image_div {
-  float: left;
+#Tutorials_Overview_Content_Wrapper {
+  margin: auto;
+  min-width: 700px;
+  width: 74%;
+  /* max-width: 830px; */
+  height: 100vh;
+  padding: 0rem 0rem 0rem 0rem;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
-  width: 300px;
-  max-width: 45%;
+  align-items: center;
 }
 
-#Tutorials_Overview_Image_Bone {
-  /* max-height:calc(100vh - 40px);
-  min-height: 100px;
-  width:auto;
-  height:auto; */
-  width: 300px;
-  margin-top: 50px;
+#Tutorials_Overview_Center_Wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#Tutorials_Overview_Inner_Content_Wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 #Tutorials_Overview_Text_Wrapper {
-  float: left;
-  margin-left: 15%;
-  width: 70%;
-  min-width: 400px;
-  max-width: 700px;
-  height: 100vh;
-  line-height: 100vh;
-
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
 
-  /* justify-content: center;
-  align-items: center; */
+#Tutorials_Overview_Image_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#Tutorials_Overview_Image_Bone {
+  width: 28vw;
+  /* max-width: 400px;
+  min-width: 250px; */
 }
 
 #Tutorials_Overview_Heading1_Div {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-size: 47px;
-  line-height: 48px;
-  font-weight: 600;
+  font-size: 3vw;
   margin-bottom: 10px;
   display: block;
-}
-
-#Tutorials_Overview_Heading2_Div {
-  margin-bottom: 10px;
-  font-size: 35px;
-  line-height: 45px;
-  font-weight: 400;
-  font-family: Lato, sans-serif;
-  color: #fff;
-  box-sizing: border-box;
+  font-weight: bold;
 }
 
 #Tutorials_Overview_Text_Div {
-  font-size: 30px;
-  line-height: 40px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  font-size: 2vw;
   font-family: Lato, sans-serif;
   color: #fff;
-  font-weight: 400;
-  box-sizing: border-box;
-  margin-left: 50px;
 }
+
 #Tutorials_Overview_Text_Div ul li {
-  margin: 15px 0;
-  line-height: 40px;
+  margin-left: 5%;
+  margin-top: 5px;
+  /* line-height: 3vw; */
   display: list-item;
   list-style: disc;
 }
+
 #Tutorials_Overview_Next_Button_Div {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-@media only screen and (min-height: 700px) {
-  #Tutorials_Overview_Next_Button_Div {
-    margin-top: 60px;
-  }
-}
-
-@media only screen and (min-height: 750px) {
-  #Tutorials_Overview_Next_Button_Div {
-    margin-top: 80px;
-  }
-}
-
-@media only screen and (min-height: 800px) {
-  #Tutorials_Overview_Next_Button_Div {
-    margin-top: 100px;
-  }
-}
-
 #Tutorials_Overview_Next_Button {
   display: block;
   width: auto;
-  min-width: 300px;
+  min-width: 220px;
   padding: 15px 25px;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 1.3vw;
+  line-height: 1.4vw;
   border-radius: 25px;
   background-color: #b4ec51;
   font-family: Lato, sans-serif;
+}
+
+#Tutorials_Overview_Back_Button {
+  display: block;
+  width: auto;
+  min-width: 220px;
+  padding: 15px 25px;
+  font-size: 1.3vw;
+  line-height: 1.4vw;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  font-family: Lato, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  #Tutorials_Overview_Heading1_Div {
+    font-size: 3.2vw;
+  }
+
+  #Tutorials_Overview_Text_Div {
+    font-size: 2.3vw;
+  }
+  #Tutorials_Overview_Next_Button,
+  #Tutorials_Overview_Back_Button {
+    font-size: 1.9vw;
+  }
+
+  #Tutorials_Overview_Image_Bone {
+    width: 50vw;
+  }
+
+  #Tutorials_Overview_Text_Div ul li {
+    margin-left: 7%;
+  }
 }
