@@ -69,13 +69,13 @@ class ShowReport extends Component {
         let notes="";
         if(id==1)
         {
-            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="FlexionView").notes 
-            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="FlexionView").notes  
+            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Flexion View").notes 
+            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Flexion View").notes  
         }
         else if(id==2)
         {
-            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Non-FlexionView").notes 
-            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Non-FlexionView").notes  
+            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Non-Flexion View").notes 
+            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Non-Flexion View").notes  
         }
 
         else if(id==3)
@@ -91,7 +91,7 @@ class ShowReport extends Component {
     {
         if(this.context.state.noOfEvalRemainToUpload<2)
         {
-            this.context.history.push('./chart')
+            this.context.history.push('./report-card-summary')
         }
 
         else
@@ -280,9 +280,14 @@ class ShowReport extends Component {
                                 open={this.state.modal}
                                 onClose={this.modalClose}
                             >
-                                <div style={{display:'inline-block',padding:'10px',background:'#3023AE',width:'auto'}}>
-                                    <img src={this.state.ActiveImage} alt="Xray" style={{maxHeight:'60vh'}} />
+                                <div className="Evaluation_Report_XrayImage_Modal_Wrapper">
+                                    <div className="Evaluation_Report_XrayImage_Modal">
+                                        <img src={this.state.ActiveImage} alt="Xray" style={{display:'block',maxHeight:'60vh'}} />
+                                        <Button onClick={this.modalClose} variant="contained" id="Evaluaion_Report_Modal_Close_Button"> Close </Button>
+                                    </div>
                                 </div>
+
+                                
                             </Modal>
                             <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}  >
                                 <img src={Xray1} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
@@ -328,7 +333,7 @@ class ShowReport extends Component {
                     </div>
                 </div>
                 <div id="Evaluaion_Report_Next_Button_Div">
-                        <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'View PRO Report Card'}  </Button>
+                    <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'View Report Summary'}  </Button>
                 </div>
                 <Modal
                 open={this.state.openModal}

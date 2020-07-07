@@ -11,6 +11,8 @@ class ResumeEvaluation extends Component {
         this.state = { loading:false }
     }
 
+
+
     handleDelete = () =>
     {
         //call api to delete eva
@@ -29,11 +31,13 @@ class ResumeEvaluation extends Component {
     }
     render() { 
         return ( 
+            
         <div className="Evaluation_ResumeEvaluation_Main_Div">
             {this.state.loading?
                 <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
             :
                 <div className="Evaluation_ResumeEvaluation_Content_Wrapper">
+                
                     <div className="Evaluation_ResumeEvaluation_Heading2_Div">
                         Welcome back to Hip & Knee Step by Step
                     </div>

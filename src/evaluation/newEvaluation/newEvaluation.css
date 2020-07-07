@@ -7,6 +7,12 @@
     overflow: hidden;
 }
 
+.Evaluaion_NewEvaluation_Disabled_TextBox
+{
+  width:180px;
+  opacity: 0.5;
+}
+
 #Evaluaion_NewEvaluation_Content_Wrapper
 {
   float:left;

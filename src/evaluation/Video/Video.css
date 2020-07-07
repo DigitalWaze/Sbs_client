@@ -76,20 +76,3 @@
   font-family: Lato, sans-serif;
 }
 
-#Evaluation_Main_Div_Top_Name {
-  position: absolute;
-  top: 0px;
-  right: 20px;
-  width: 118px;
-  min-height: 14px;
-  color: #333333;
-  font-family: "Lato", sans-serif;
-  font-size: 20px;
-  line-height: 14px;
-  font-weight: 700;
-  padding: 12px;
-  background: #fff;
-  border: 1px solid #000;
-  z-index: 1;
-  text-align: center;
-}

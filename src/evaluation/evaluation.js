@@ -64,6 +64,7 @@ import ResumeEvaluation from './resumeEvaluation/resumeEvaluation';
 import ResumeEvaluationSelect from './resumeEvaluation/resumeEvalutionSelect';
 import Pdf from './pdf/pdf';
 import EvaluationHistory from './evaluationHistory/evaluationHistory';
+import BeforeReport from './beforeReport/beforeReport';
 
 
 
@@ -360,8 +361,8 @@ class Evaluation extends Component {
             [   
                 {name:'Right Knee',image:Bone1Image  , joint_id:'3',
                     Xrays:[ 
-                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
                         {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
 
                     ] 
@@ -369,8 +370,8 @@ class Evaluation extends Component {
 
                 {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
                     Xrays:[ 
-                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
                         {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
                     ] 
                 }
@@ -409,7 +410,7 @@ class Evaluation extends Component {
             {this.context.state.report_id===undefined?'loader':
 
                 <div>
-                    {this.context.history.location.pathname!=="/evaluation/welcome" && this.context.history.location.pathname!=="/evaluation/demographics" && this.context.history.location.pathname!=="/evaluation"?
+                    { this.context.history.location.pathname!=="/evaluation/resume-evaluation/recover" && this.context.history.location.pathname!=="/evaluation/Video" && this.context.history.location.pathname!=="/evaluation/Demographics" && this.context.history.location.pathname!=="/evaluation/welcome" && this.context.history.location.pathname!=="/evaluation/demographics" && this.context.history.location.pathname!=="/evaluation"?
                         <div id="Evaluation_Main_Div_Top_Name">
                             {this.context.state.patient.name}
                         </div>:null
@@ -429,12 +430,15 @@ class Evaluation extends Component {
                         <Route exact path="/Evaluation/patient-profile" component={PatientProfile} />
 
                         <Route path="/Evaluation/forms" component={Forms}/>
+                        
                         <Route path="/Evaluation/patient-report" component={PatientReport}/>
 
                         <Route path="/Evaluation/upload-xrays" component={UploadXray}/>
                         <Route path="/Evaluation/x-ray-matching" component={XrayMatching}/>
 
+                        <Route path="/Evaluation/report-card-summary" component={BeforeReport}/>
                         <Route path="/Evaluation/report" component={Report}/>
+
                         <Route path="/Evaluation/chart" component={Chart} />
                         <Route path="/Evaluation/pdf" component={Pdf} />
                         <Route path="/Evaluation/evaluation-history" component={EvaluationHistory} />

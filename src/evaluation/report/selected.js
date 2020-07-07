@@ -47,13 +47,18 @@ class Selected extends Component {
                 </div>
                 <div  id="Evaluaion_Report_Selected_Content2_Wrapper">
                     <div id="Evaluaion_Report_Selected_Heading3_Div">
-                        {this.props.Type=="Kneecap"?"Kneecap": this.props.Type + " " + this.props.Xray}
+                    {/* RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> } */}
+
+                        RIGHT KNEE - {this.props.Type=="Kneecap"?"KNEECAP": <span> { this.props.Type.toUpperCase()}  <br/> { this.props.Xray.toUpperCase()} </span> }
                     </div>
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.XrayImage}/>
+                    <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                        <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.XrayImage}/>
+                        <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
+                            YOUR PATIENT
+                        </div>
                     </div>
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.Type=='Lateral'?this.props.Xray=="FlexionView"?require(`../../assets/lateral-flexion-up-${this.props.State}.png`):require(`../../assets/lateral-nonflexion-up-${this.props.State}.png`):this.props.Type=='Medial'?this.props.Xray=="FlexionView"?require(`../../assets/medial-flexion-up-${this.props.State}.png`):require(`../../assets/medial-nonflexion-up-${this.props.State}.png`):this.props.Type=='Kneecap'?require(`../../assets/kneecap-up-${this.props.State}.png`):null} />
+                    <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                        <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.Type=='Lateral'?this.props.Xray=="Flexion View"?require(`../../assets/lateral-flexion-up-${this.props.State}.png`):require(`../../assets/lateral-nonflexion-up-${this.props.State}.png`):this.props.Type=='Medial'?this.props.Xray=="Flexion View"?require(`../../assets/medial-flexion-up-${this.props.State}.png`):require(`../../assets/medial-nonflexion-up-${this.props.State}.png`):this.props.Type=='Kneecap'?require(`../../assets/kneecap-up-${this.props.State}.png`):null} />
                     </div>
 
                     {/* <div>

@@ -44,7 +44,7 @@ class EvaluationHistory extends Component {
             {
                 mydate_date='0'+mydate_date;
             }
-            let newdate=mydate_date+'-'+mydate_month+'-'+mydate_year;
+            let newdate=mydate_month+'-'+mydate_date+'-'+mydate_year;
                 rows.push({patient_id:element.patient[0].id,patient_name:element.patient[0].name,evaluation_date:newdate,report_id:element.id})
             });
 

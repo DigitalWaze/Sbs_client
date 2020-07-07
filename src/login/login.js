@@ -75,11 +75,17 @@ class Login extends Component {
         console.log(response);
         if(response.id!==null && response.id)
         {
+            let isTutorialCompleted=null;
+            if(response.isTutorialCompleted==1)
+            {
+                isTutorialCompleted=true;
+            }
             this.context.updateValue('token',response.token || null);
             this.context.updateValue('type',response.type || null);
             this.context.updateValue('user_id',response.id || null);
             this.context.updateValue('user_email',response.email || null);
             this.context.updateValue('user_type',response.user_type || null);
+            this.context.updateValue('isTutorialCompleted',isTutorialCompleted || null);
             this.context.updateValue('organization',response.organization);
             this.context.updateValue('old',false);
             let tutorial_rem=this.context.getCookie('tutorial-'+response.id);
@@ -87,12 +93,10 @@ class Login extends Component {
             this.context.updateValue('loggedIn',true);
 
             this.context.updateSession();
-            if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
-            {
-              this.context.history.push("/tutorials/resume-tutorial");
-            }
+            
 
-            else if(response.state)
+            let temp_stage_id=null;
+            if(response.state)
             {
                 if(response.state.length>0)
                 {
@@ -100,22 +104,32 @@ class Login extends Component {
                     {
                         let temp_patient_id=response.state[0].visitor.patient_id;
                         let temp_report_id=response.state[0].visitor.id;
-                        let temp_stage_id=response.state[0].stage.id;
+                        temp_stage_id=response.state[0].stage.id;
                         this.context.setCookie('evaluation_stage',temp_stage_id,30);
                         this.context.setCookie('temp_report_id',temp_report_id,30);
                         this.context.setCookie('temp_patient_id',temp_patient_id,30);
 
-                        this.context.multipleUpdateValueWithHistory([{key:'evaluation_stage',value:temp_stage_id},{key:'temp_report_id',value:temp_report_id},{key:'temp_patient_id',value:temp_patient_id}],'/evaluation/resume-evaluation')
+                        this.context.multipleUpdateValue([{key:'evaluation_stage',value:temp_stage_id},{key:'temp_report_id',value:temp_report_id},{key:'temp_patient_id',value:temp_patient_id}])
                         // this.context.history.push('/evaluation/resume-evaluation');
                     }
-                    else this.context.history.push('/tutorials/sbs/welcome');
+                    
                 }
-                else this.context.history.push('/tutorials/sbs/welcome');
+                
+            }
+
+            if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
+            {
+              this.context.history.push("/tutorials/resume-tutorial");
+            }
+
+            else if(temp_stage_id!=null)
+            {
+                this.context.history.push('/evaluation/resume-evaluation');
             }
             
             else if(tutorial_rem==41)
             {
-                this.context.history.push('/evaluation/welcome'); 
+                this.context.history.push('/tutorials/resume-tutorial');
             }
                 
 

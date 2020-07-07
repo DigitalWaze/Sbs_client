@@ -47,7 +47,7 @@ let MedialFlex=[{imageUrl:MF1,answer:'2'},{imageUrl:MF2,answer:'1'},{imageUrl:MF
 let MedialNonFlex=[{imageUrl:MNF1,answer:'1'},{imageUrl:MNF2,answer:'2'},{imageUrl:MNF3,answer:'3'},{imageUrl:MNF4,answer:'4'}]
 let LateralFlex=[{imageUrl:LF1,answer:'1'},{imageUrl:LF2,answer:'2'},{imageUrl:LF3,answer:'4'},{imageUrl:LF4,answer:'3'}]
 let LateralNonFlex=[{imageUrl:LNF1,answer:'3'},{imageUrl:LNF2,answer:'1'},{imageUrl:LNF3,answer:'4'},{imageUrl:LNF4,answer:'2'}]
-let KneecapView=[{imageUrl:KV1,answer:'4'},{imageUrl:KV2,answer:'2'},{imageUrl:KV3,answer:'3'},{imageUrl:KV4,answer:'1'}]
+let KneecapView=[{imageUrl:KV1,answer:'4'},{imageUrl:KV2,answer:'1'},{imageUrl:KV3,answer:'3'},{imageUrl:KV4,answer:'2'}]
 
 
 class Matching extends Component {
@@ -171,28 +171,27 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP':this.props.ActiveType.toUpperCase() + ' ' + this.props.ActiveXray.toUpperCase()}
+                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
                     </div>
                    
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center',position:'relative'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.state.Xrays[this.state.training].imageUrl}/>
+                    <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                        <img className="Evaluaion_XrayMatching_Matching_Xray_Image"  src={this.state.Xrays[this.state.training].imageUrl}/>
                         <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
                             YOUR PATIENT
                         </div>
                     </div>
                     {
                     this.state.Active!=null?
-                        <div style={{display:'inline-block',maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center'}}>
-                            <img style={{maxWidth:'100%',maxHeight:'100%',width:'auto',height:'auto'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
+                        <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                             <img style={{position:'absolute',right:'0px'}} src={Ruler} />
                         </div>
                     :   <div className="matching-down" >
-                            <div style={{height:'100%',width:'100%',textAlign:'center',margin:'auto'}}>
-                                <img style={{maxWidth:'100%',maxHeight:'100%',height:'auto',width:'auto'}} src={NoMatching}/>
-                                <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
-                                   COMPARISION X-RAYS
-                                </div>
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={NoMatching}/>
+                            <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
+                                COMPARISION X-RAYS
                             </div>
+
                         </div>
 
                     }

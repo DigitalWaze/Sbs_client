@@ -25,6 +25,8 @@ import ReportPage1 from '../report/reportPage1';
 import GetImage1 from '../report/getImage1';
 
 
+let Next=false;
+
 class XrayMatching extends Component {
     constructor(props) {
         super(props);
@@ -139,6 +141,7 @@ class XrayMatching extends Component {
 
     setMeThree = () =>
     {
+        Next=true;
         this.setState({loading:false,Next:true,Matching:null});
     }
 
@@ -249,6 +252,7 @@ class XrayMatching extends Component {
                 console.log('SECOND EVAL');
                 console.log(joint_id,'joint_id')
                 //load new matching;
+                Next=true;
                 this.setState({Next:true,Matching:null,loading:false});
                 
                 // let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
@@ -313,7 +317,7 @@ class XrayMatching extends Component {
                             this.state.ActivePage==='EvalName' && <EvalName eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={this.handleEvalClick}/>
                         }
                         {
-                            this.state.ActivePage==='Overview' && <Overview Next={this.state.Next} Evaluation={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
+                            this.state.ActivePage==='Overview' && <Overview Next={Next} Evaluation={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
                         }
                         {
                             this.state.ActivePage==='Matching' && <Matching   eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>

@@ -48,14 +48,18 @@ class Selected extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                      {this.props.Type=="Kneecap"?"Kneecap": this.props.Type + " " + this.props.Xray}
+                     RIGHT KNEE - {this.props.Type=="Kneecap"?"KNEECAP": <span> {this.props.Type.toUpperCase()}  <br/> {this.props.Xray.toUpperCase()} </span> }
+                     {/* RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> } */}
+
+                   </div>
+                    <div  className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                        <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.Image}/>
+                        <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
+                            YOUR PATIENT
+                        </div>
                     </div>
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.Image}/>
-                    </div>
-                   { console.log(this.props.Xray=="FlexionView")}
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 30px)',textAlign:'center'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.Type=='Lateral'?this.props.Xray=="FlexionView"?LATFLXDOWN:LATNONFLXDOWN:this.props.Type=='Medial'?this.props.Xray=="FlexionView"?MEDFLXDOWN:MEDNONFLXDOWN:this.props.Type=='Kneecap'?KNEEDOWN:null} />
+                    <div  className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                        <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.Type=='Lateral'?this.props.Xray=="Flexion View"?LATFLXDOWN:LATNONFLXDOWN:this.props.Type=='Medial'?this.props.Xray=="Flexion View"?MEDFLXDOWN:MEDNONFLXDOWN:this.props.Type=='Kneecap'?KNEEDOWN:null} />
                     </div>
                      
                 </div>

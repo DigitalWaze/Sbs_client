@@ -18,12 +18,12 @@ class Overview extends Component {
         return (
             <div>
                 <div  id="Evaluaion_XrayMatching_OverView_Content1_Wrapper">
-                    <div id="Evaluaion_XrayMatching_OverView_Heading1_Div">
-                        X-ray Evaluation
+                    <div id="Evaluaion_XrayMatching_OverView_Heading1_Div" style={{transform:'translateX(-270px)',marginBottom:'40px'}}>
+                        X-ray Training
                     </div>
-                    <div id="Evaluaion_XrayMatching_OverView_Heading2_Div">
+                    {/* <div id="Evaluaion_XrayMatching_OverView_Heading2_Div">
                         Right Knee Sample Patient
-                    </div>
+                    </div> */}
             
                     <div className="Tutorials_XrayMatchingEducation_Matching_Main_Content_Wrapper">
                         <div className="Tutorials_XrayMatchingEducation_Matching_Overview_Wrapper">

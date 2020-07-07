@@ -213,9 +213,9 @@
 {
   display: inline-block;
   vertical-align: top;
-  margin-top:170px;
+  margin-top:150px;
   text-align: center;
-  transform: translateX(35px);
+  transform: translateX(10px);
 }
 
 .Evaluaion_PatientProfile_Image_Left_Inner_Down
@@ -228,7 +228,7 @@
 {
   display: inline-block;
   vertical-align: top;
-  margin-top:170px;
+  margin-top:150px;
   text-align: center;
 }
 

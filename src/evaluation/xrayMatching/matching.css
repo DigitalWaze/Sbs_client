@@ -138,8 +138,8 @@
 #Evaluaion_XrayMatching_Matching_Content2_Wrapper
 {
   float:left;
-  width:35%;
-  min-width:250px;
+  /* width:35%; */
+  /* min-width:250px; */
   max-width: 700px;
   height:100vh;
   
@@ -152,6 +152,20 @@
   align-items: center; */
 }
 
+.Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper
+{
+  /* style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center',position:'relative'}} */
+  position: relative;
+}
+
+.Evaluaion_XrayMatching_Matching_Xray_Image
+{
+  /* style={{maxWidth:'100%',maxHeight:'100%'}} */
+  /* position: relative; */
+  max-width: 500px;
+  max-height: calc(50vh - 50px);
+}
+
 #Evaluaion_XrayMatching_Matching_Heading3_Div
 {
   font-family: 'Lato', sans-serif;
@@ -160,17 +174,17 @@
   margin-bottom: 5px;
   font-size: 28px;
   line-height: 30px;
-  text-align: left;
+  text-align: right;
   margin-bottom: 30px;
 }
 
 .matching-down
 {
   position: relative;
-  max-width: 500px;
+  /* max-width: 500px;
   max-height: calc(50% - 49px);
   margin-left:0px;
-  text-align: center;
+  text-align: center; */
   /* margin: auto; */
 }
 
@@ -220,7 +234,7 @@
 {
   position: absolute;
   top:20px;
-  left:60px;
+  left:20px;
   width:130px;
   height:auto;
   background: white;
@@ -235,11 +249,11 @@
 {
   position: absolute;
   top:20px;
-  left:60px;
+  left:20px;
   width:150px;
   height:auto;
   background: rgb(255, 255, 255);
-  opacity: 0.25;
+  opacity: 0.8;
   font-size: 13px;
   line-height: 11px;
   font-family: Lato, sans-serif;
@@ -248,12 +262,26 @@
 }
 
 
-/* @media only screen and (max-height:657px)
+/* @media only screen and (max-height:695px)
 {
-  .matching-down
+  .Evaluaion_XrayMatching_Matching_Image_Label2
   {
-    max-width: 380px;
+    left:60px;
   }
+  .Evaluaion_XrayMatching_Matching_Image_Label1
+  {
+    left:60px;
+  }
+} */
+
+/* .matching-text-to-image-wrapper
+{    
+  height: inherit;
+  max-height: 100%;
+  max-width: 100%;
+  width: inherit;
+  position: relative;
+
 } */
 
 

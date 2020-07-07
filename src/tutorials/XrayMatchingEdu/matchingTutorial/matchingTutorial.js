@@ -50,8 +50,8 @@ let Next=false;
 let Evaluation= 
     {name:'Right Knee',image:Bone1Image  , joint_id:'3',
         Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,answer:'3'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,answer:'3'}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,answer:'1'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,answer:'1'}]},
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,answer:'3'},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,answer:'3'}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,answer:'1'},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,answer:'1'}]},
             {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,answer:'4'}]},
         ] 
     }
@@ -113,6 +113,37 @@ class MatchingTutorial extends Component {
         let type=Evaluation.Xrays.find(type => type.name===this.state.ActiveType)
         let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
         let XrayIndex=type.xrays.findIndex(xray => xray.name===this.state.ActiveXray)
+
+        if(type.name==="Medial")
+        {
+            if(Xray.name==="Flexion View")
+            {
+                this.context.updateValue('TMFVNotes',notes);
+            }
+
+            else if(Xray.name==="Non-Flexion View")
+            {
+                this.context.updateValue('TMNFVNotes',notes); 
+            }
+        }
+
+        else if(type.name==="Lateral")
+        {
+            if(Xray.name==="Flexion View")
+            {
+                this.context.updateValue('TLFVNotes',notes);
+            }
+
+            else if(Xray.name==="Non-Flexion View")
+            {
+                this.context.updateValue('TLNFVNotes',notes); 
+            }
+        }
+
+        else if(type.name==="Kneecap")
+        {
+            this.context.updateValue('TKCVNotes',notes); 
+        }
         Xray.state=state;
         Xray.notes=notes;
         Xray.isDone=true;

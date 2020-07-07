@@ -93,6 +93,7 @@ class Routes extends Component {
       temp_patient_id: null,
       joint_id: null,
       activePriority: null,
+      isTutorialCompleted:0,
       Evaluations: [],
       Eval: [],
       Xrays:[],
@@ -110,7 +111,9 @@ class Routes extends Component {
     this.setCookie("user_email", "", 0);
     this.setCookie("user_type_id", "", 0);
     this.setCookie("user_type_name", "", 0); 
+    this.setCookie("isTutorialCompleted", "", 0); 
     this.setCookie("organization", "", 0);
+
     this.setCookie("tutorial", "", 0);
     this.setCookie("evaluation_stage", "", 0);
     this.setCookie("temp_report_id", "", 0);
@@ -126,6 +129,7 @@ class Routes extends Component {
     this.setCookie("user_email", this.state.user_email, 30);
     this.setCookie("user_type_id", this.state.user_type.id, 30);
     this.setCookie("user_type_name", this.state.user_type.type, 30);
+    this.setCookie("isTutorialCompleted", this.state.isTutorialCompleted, 30);
     this.setCookie("organization", this.state.organization, 30);
     this.setCookie("tutorial", this.state.tutorial, 30);
     this.setCookie("temp_report_id", this.state.temp_report_id, 30);
@@ -146,6 +150,8 @@ class Routes extends Component {
       let user_type_id = this.getCookie("user_type_id");
       let user_type_name = this.getCookie("user_type_name");
       let organization = this.getCookie("organization");
+      let isTutorialCompleted = this.getCookie("isTutorialCompleted");
+      
       let evaluation_stage = this.getCookie("evaluation_stage");
       let temp_report_id = this.getCookie("temp_report_id");
       let temp_patient_id = this.getCookie("temp_patient_id");
@@ -189,6 +195,7 @@ class Routes extends Component {
           loading: false,
           loggedIn: true,
           token: token,
+          isTutorialCompleted:isTutorialCompleted,
           type: type,
           user_id: user_id,
           user_email: user_email,
@@ -208,8 +215,7 @@ class Routes extends Component {
 
         else if(tutorial_rem==41)
         {
-          console.log('this')
-          history.push('/evaluation/welcome'); 
+          history.push('/tutorials/resume-tutorial'); 
         }
        
         else  history.push("/tutorials/sbs/welcome");

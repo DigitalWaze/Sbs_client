@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
+import NoMatching from '../../assets/no_matching.png'
+import NotesIcon from '../../assets/notes.png'
 
 
 import './matching.css'
@@ -78,7 +80,7 @@ class Matching extends Component {
                         {
                             this.state.Active &&
                             <div className="Evaluaion_XrayMatching_Matching_AddNotes_Button_Div">
-                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleModalOpen}> Add Notes </Button>
+                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.handleModalOpen}> Add Notes <img style={{marginLeft:'15px'}} src={NotesIcon}/> </Button>
                             </div>
                         }
                         
@@ -87,18 +89,28 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP':this.props.ActiveType.toUpperCase() + ' ' + this.props.ActiveXray}
+                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
                     </div>
-                   
-                    <div style={{width:'100%',height:'calc(50% - 30px)'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
+
+                    <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
+                            <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
+                                YOUR PATIENT
+                            </div>
                     </div>
+
                     {
                     this.state.Active!=null?
-                        <div style={{width:'100%',height:'calc(50% - 30px)'}}>
-                            <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
+                        <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                         </div>
-                    :   <div style={{width:'100%',height:'calc(50% - 30px)'}}>
+                       
+                    :   
+                        <div className="matching-down" >
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={NoMatching}/>
+                            <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
+                                COMPARISION X-RAYS
+                            </div>
                         </div>
 
                     }

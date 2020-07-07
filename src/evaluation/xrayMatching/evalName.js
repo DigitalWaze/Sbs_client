@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 
-import RightHipIcon from '../../assets/right-hip-icon.png'
+import RightHipIconRed from '../../assets/right-knee-icon-red.png'
+import LeftHipIconRed from '../../assets/left-knee-icon-red.png'
+
 import BoneImage from '../../assets/bone3_Bitmap.png'
 import BoneImage1 from '../../assets/bone4_Bitmap.png'
 
@@ -45,7 +47,7 @@ class EvalName extends Component {
                                             <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                                 RIGHT KNEE
                                             </div>
-                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIconRed}/>
                                     </div>
                                     
                                 </div>
@@ -64,7 +66,7 @@ class EvalName extends Component {
                                             <div style={{color:'white',marginBottom:'10px',fontSize:'18px'}}>
                                                 LEFT KNEE
                                             </div>
-                                        <img style={{width:'40px',marginBottom:'20px'}} src={RightHipIcon}/>
+                                        <img style={{width:'40px',marginBottom:'20px'}} src={LeftHipIconRed}/>
                                     </div>
                                     <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down_Content1">
                                         <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 

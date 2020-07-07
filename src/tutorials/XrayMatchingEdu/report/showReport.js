@@ -13,6 +13,8 @@ import Xray3 from '../../../assets/xray3.jpeg';
 import Xray4 from '../../../assets/xray4.jpeg';
 import Tick from '../../../assets/tick-black.png';
 import Search from '../../../assets/search.png';
+import Notes from '../../../assets/notes.png';
+
 import html2canvas from 'html2canvas'
 import Bone1Image from '../../../assets/bone3_Bitmap.png'
 
@@ -35,8 +37,8 @@ const height='60px';
 let Evaluation= 
     {name:'Right Knee',image:Bone1Image  , joint_id:'3',
         Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:true,state:3,state_id:4,notes:null,thumbnail:MFV,up:MFVUP,answer:'2'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:3,state_id:4,notes:null,thumbnail:MNFV,up:MNFVUP,answer:'2'}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'FlexionView',id:1,image:null,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LFV,up:LFVUP,answer:'1'},{name:'Non-FlexionView',image:null,id:2,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LNFV,up:LNFVUP,answer:'1'}]},
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:3,state_id:4,notes:null,thumbnail:MFV,up:MFVUP,answer:'2'},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:3,state_id:4,notes:null,thumbnail:MNFV,up:MNFVUP,answer:'2'}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LFV,up:LFVUP,answer:'1'},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:1,state_id:1,notes:null,thumbnail:LNFV,up:LNFVUP,answer:'1'}]},
             {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:4,state_id:2,notes:null,thumbnail:KV,up:KVUP,answer:'4'}]},
 
         ] 
@@ -45,7 +47,7 @@ let Evaluation=
 class ShowReport extends Component {
     constructor(props) {
         super(props);
-        this.state = {  Evaluation:{} ,modal:false, total:0}
+        this.state = {  Evaluation:{} ,modal:false, total:0 , openModal:false}
     }
 
 
@@ -76,6 +78,36 @@ class ShowReport extends Component {
     {
         this.context.setCookie("tutorial-" + this.context.state.user_id,38);
         this.context.history.push('/tutorials/matching-training/welcome')
+    }
+
+    handleModalClose = () =>
+    {
+        this.setState({openModal:false})
+    }
+
+    handleModalOpen= () =>
+    {
+        this.setState({openModal:true})
+    }
+
+    handleNotesClick = (id) =>
+    {   
+        let notes="";
+        if(id==1)
+        {
+            notes=this.context.state.TMFVNotes + ' ' + this.context.state.TLFVNotes;
+        }
+        else if(id==2)
+        {
+            notes=this.context.state.TMNFVNotes + ' ' + this.context.state.TLNFVNotes;
+        }
+
+        else if(id==3)
+        {
+            notes=this.context.state.TKCVNotes;
+        }
+       
+        this.setState({Notes:notes,openModal:true})
     }
 
     
@@ -220,30 +252,39 @@ class ShowReport extends Component {
                                 </div>
                                 
                             </Modal>
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}  onClick={()=>{this.handleSearchClick(Xray1)}}>
-                                <img src={Xray1} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}>
+                                <img src={Xray1} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}} />
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray1)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
-                                </div>    
+                                </div>   
+                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(1)}}>
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
+                                </div> 
                             </div>
 
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} onClick={()=>{this.handleSearchClick(Xray2)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
                                 <img src={Xray2} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray2)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
+                                </div>
+                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(2)}} >
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
                                 </div>
                             </div>
 
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} onClick={()=>{this.handleSearchClick(Xray3)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
                                 <img src={Xray3} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray3)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
+                                </div>
+                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(3)}}>
+                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
                                 </div>
                             </div>
 
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} onClick={()=>{this.handleSearchClick(Xray4)}}>
+                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
                                 <img src={Xray4} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box">
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray4)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
                                 </div>
                             </div>
@@ -255,8 +296,34 @@ class ShowReport extends Component {
                     </div>
                 </div>
                 <div id="Evaluaion_Report_Next_Button_Div">
-                        <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> Xray Matching Training  </Button>
+                    <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> Xray Matching Training  </Button>
                 </div>
+                <Modal
+                open={this.state.openModal}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                style={{position:'absolute',left:'calc(50vw - 250px)',top:'calc(50vh - 250px)'}}
+                >
+                    <div className="Evaluaion_XrayMatching_Matching_Modal_Div">
+
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Heading">
+                            Notes
+                        </div>
+                        <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
+                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.Notes}>
+
+                            </textarea>
+                        </div>
+                        <div style={{marginTop:'20px',marginLeft:'50px'}}>
+                            
+                            <div className="Evaluaion_XrayMatching_Matching_Modal2_Button_Div">
+                                    <Button className="Evaluaion_XrayMatching_Matching_Modal2_Button" variant="outlined" onClick={this.handleModalClose}> Close </Button>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                </Modal>
                 
             </div> 
         );

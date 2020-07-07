@@ -238,8 +238,8 @@ class NewEvaluation extends Component {
                         
                             <div className="Evaluaion_NewEvaluation_Image_Left_Inner_Up" >
                                 <div className="Evaluaion_NewEvaluation_Image_Left_Inner_Up_Content1">
-                                    <FormControl  variant="outlined" style={{color:'white'}}>
-                                        {/* <InputLabel  htmlFor="outlined-priority1-native-simple" style={{color:'white'}}>Priority</InputLabel> */}
+                                    <TextField value={"Priority: No Pain"}  className="Evaluaion_NewEvaluation_Disabled_TextBox" variant="outlined" inputProps = { {className:"textbox-height"} }/>
+                                    {/* <FormControl  variant="outlined" style={{color:'white'}}>
                                         <Select
                                         
                                         MenuProps={{
@@ -259,16 +259,14 @@ class NewEvaluation extends Component {
                                         
                                         value={this.state.priority1}
                                         onChange={this.handleChange}
-                                        // label="Priority"
                                         inputProps={{
                                             name: 'priority1',
                                             className:"input-class-height"
                                             
                                         }}
                                         >
-                                            {/* {MenuItems.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)} */}
                                         </Select>
-                                    </FormControl>
+                                    </FormControl> */}
         
                                 </div>  
                                 <div className="Evaluaion_NewEvaluation_Image_Left_Inner_Up_Content2">
@@ -342,8 +340,8 @@ class NewEvaluation extends Component {
                                     <img style={{width:'40px',marginBottom:'20px'}} src={LeftHipIcon}/>
                                 </div>
                                 <div className="Evaluaion_NewEvaluation_Image_Right_Inner_Up_Content1">
-                                    <FormControl  variant="outlined" style={{color:'white'}}>
-                                        {/* <InputLabel  htmlFor="outlined-priority1-native-simple" style={{color:'white'}}>Priority</InputLabel> */}
+                                    <TextField value={"Priority: No Pain"}  className="Evaluaion_NewEvaluation_Disabled_TextBox" variant="outlined" inputProps = { {className:"textbox-height"} }/>
+                                    {/* <FormControl  variant="outlined" style={{color:'white'}}>
                                         <Select
                                         
                                         MenuProps={{
@@ -362,16 +360,14 @@ class NewEvaluation extends Component {
                                         
                                         value={this.state.priority3}
                                         onChange={this.handleChange}
-                                        // label="Priority"
                                         inputProps={{
                                             name: 'priority3',
                                             className:"input-class-height"
                                             
                                         }}
                                         >
-                                            {/* {MenuItems.map((option,id)=> <MenuItem key={id} className="Evaluaion_NewEvaluation_MenuItem" value={option.id}>{option.name}</MenuItem>)} */}
                                         </Select>
-                                    </FormControl>
+                                    </FormControl> */}
         
                                 </div>  
                                 

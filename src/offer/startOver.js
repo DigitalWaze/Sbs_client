@@ -21,9 +21,15 @@ class StartOver extends Component {
             <div className="Evaluation_ResumeEvaluation_Button_Div">
                 <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=> {this.context.setCookie('tutorial-'+this.context.state.user_id,41); this.props.history.push('/tutorials/sbs/welcome')} }> Review the Education </Button>
             </div>
-            <div className="Evaluation_ResumeEvaluation_Button_Div">
-                <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=> {this.context.setCookie('tutorial-'+this.context.state.user_id,41); this.props.history.push('/evaluation/welcome')} }> Evaluate a Patient </Button>
-            </div>
+            {/*  */}
+            {
+                this.context.state.isTutorialCompleted.toString()==='true'?
+                    <div className="Evaluation_ResumeEvaluation_Button_Div">
+                        <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=> {this.context.setCookie('tutorial-'+this.context.state.user_id,41); this.props.history.push('/evaluation/welcome')} }> Evaluate a Patient </Button>
+                    </div>
+                :null
+            }
+            
 
         </div>
 

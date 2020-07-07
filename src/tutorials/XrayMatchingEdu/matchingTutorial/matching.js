@@ -15,7 +15,7 @@ import './matching.css'
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { Active:null , Notes:null,error:false,next:false,openModal:false}
+        this.state = { Active:null , Notes:'',error:false,next:false,openModal:false}
     }
 
    
@@ -57,12 +57,17 @@ class Matching extends Component {
     }
     handleModalOpen = () =>
     {
-        this.setState({openModal:true})
+        this.setState({openModal:true,tempNotes:this.state.Notes})
     }
 
     Submit =() =>
     {
-        this.handleModalClose();
+        this.setState({Notes:this.state.tempNotes,openModal:false});
+    }
+    textAreaChange = (e) =>
+    {
+        this.setState({tempNotes:e.target.value})
+        
     }
 
 
@@ -112,26 +117,24 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP':this.props.ActiveType.toUpperCase() + ' ' + this.props.ActiveXray.toUpperCase()}
+                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
                     </div>
                    
-                    <div style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center',position:'relative'}}>
-                        <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
+                    <div  className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                        <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/>
                         <div className="Evaluaion_XrayMatching_Matching_Image_Label1">
                             YOUR PATIENT
                         </div>
                     </div>
                     {
                     this.state.Active!=null?
-                        <div style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center'}}>
-                            <img style={{maxWidth:'100%',maxHeight:'100%'}} src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
+                        <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper" >
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                         </div>
                     :   <div className="matching-down" >
-                            <div style={{height:'100%',width:'100%'}}>
-                                <img style={{maxWidth:'100%',maxHeight:'100%',height:'auto',width:'auto',position:'relative'}} src={NoMatching}/>
-                                <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
-                                   COMPARISION X-RAYS
-                                </div>
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={NoMatching}/>
+                            <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
+                                COMPARISION X-RAYS
                             </div>
                         </div>
 
@@ -150,16 +153,16 @@ class Matching extends Component {
                             Notes
                         </div>
                         <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
-                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea">
+                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.tempNotes} onChange={this.textAreaChange}>
 
                             </textarea>
                         </div>
                         <div style={{marginTop:'20px',marginLeft:'50px'}}>
                             <div className="Evaluaion_XrayMatching_Matching_Modal1_Button_Div">
-                                    <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.Submit}> Submit </Button>
+                                <Button className="Evaluaion_XrayMatching_Matching_AddNotes_Button" variant="contained" onClick={this.Submit}> Submit </Button>
                             </div>
                             <div className="Evaluaion_XrayMatching_Matching_Modal2_Button_Div">
-                                    <Button className="Evaluaion_XrayMatching_Matching_Modal2_Button" variant="outlined" onClick={this.handleModalClose}> Cancel </Button>
+                                <Button className="Evaluaion_XrayMatching_Matching_Modal2_Button" variant="outlined" onClick={this.handleModalClose}> Cancel </Button>
                             </div>
 
                         </div>
