@@ -25,6 +25,7 @@ class WXRWYR extends Component {
       IMG4: "white",
       IMG5: "white",
       IMG6: "white",
+      disableBtn: true,
     };
   }
 
@@ -201,6 +202,22 @@ class WXRWYR extends Component {
                     "./evaluating-knee-degeneration-with-x-rays"
                   );
                 }}
+                disabled={
+                  this.state.IMG1 === "green" &&
+                  this.state.IMG4 === "green" &&
+                  this.state.IMG5 === "green" &&
+                  this.state.IMG6 === "green"
+                    ? false
+                    : true
+                }
+                style={
+                  this.state.IMG1 === "green" &&
+                  this.state.IMG4 === "green" &&
+                  this.state.IMG5 === "green" &&
+                  this.state.IMG6 === "green"
+                    ? { opacity: 1 }
+                    : { opacity: 0.5 }
+                }
               >
                 {" "}
                 Continue{" "}
