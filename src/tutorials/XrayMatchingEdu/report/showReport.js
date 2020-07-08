@@ -95,16 +95,21 @@ class ShowReport extends Component {
         let notes="";
         if(id==1)
         {
-            notes=this.context.state.TMFVNotes + ' ' + this.context.state.TLFVNotes;
+            notes="Right " + "Flexion " + "Medial : "
+            notes= notes + this.context.state.TMFVNotes + '\n' 
+            notes= notes + "Right " + "Flexion " + "Lateral : " + this.context.state.TLFVNotes;
         }
         else if(id==2)
         {
-            notes=this.context.state.TMNFVNotes + ' ' + this.context.state.TLNFVNotes;
+            notes="Right " + "Non-Flexion " + "Medial : "
+            notes=this.context.state.TMNFVNotes + '\n' 
+            notes= notes + "Right " + "Non-Flexion " + "Lateral : " +  this.context.state.TLNFVNotes;
         }
 
         else if(id==3)
         {
-            notes=this.context.state.TKCVNotes;
+            notes="Right " + "Kneecap : "
+            notes= notes + this.context.state.TKCVNotes;
         }
        
         this.setState({Notes:notes,openModal:true})

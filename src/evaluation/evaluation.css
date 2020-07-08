@@ -25,3 +25,11 @@
     z-index: 4;
     text-align: center;
 }
+
+@media only screen and (max-width:1630px)  and (max-height: 950px)
+{
+    #Evaluation_Main_Div_Top_Name
+    {
+        right:0px;
+    }
+}

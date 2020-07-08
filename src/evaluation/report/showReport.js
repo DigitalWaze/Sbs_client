@@ -67,20 +67,34 @@ class ShowReport extends Component {
     handleNotesClick = (id) =>
     {   
         let notes="";
+        let Joint="Right ";
+        if(this.context.state.joint_id.toString()==='4')
+        {
+            Joint="Left ";
+        }
         if(id==1)
         {
-            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Flexion View").notes 
+            notes=Joint + "Flexion " + "Medial : "
+            notes=notes + this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Flexion View").notes;
+            notes=notes +'\n';
+
+            notes=notes + Joint + "Flexion " + "Lateral : "
             notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Flexion View").notes  
         }
         else if(id==2)
         {
-            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Non-Flexion View").notes 
-            notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Non-Flexion View").notes  
+            notes=Joint + "Non-Flexion " + "Medial : "
+            notes=notes + this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Non-Flexion View").notes 
+            notes=notes +'\n';
+
+            notes=notes + Joint + "Non-Flexion " + "Lateral : "
+            notes=notes +" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Non-Flexion View").notes  
         }
 
         else if(id==3)
         {
-            notes=this.state.Evaluation.Xrays.find(x =>x.name==='Kneecap').xrays.find(y => y.name==="Kneecap").notes 
+            notes=Joint + "Kneecap : "
+            notes=notes + this.state.Evaluation.Xrays.find(x =>x.name==='Kneecap').xrays.find(y => y.name==="Kneecap").notes 
         }
         console.log(notes);
        

@@ -15,7 +15,22 @@ import './matching.css'
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { Active:null , Notes:'',error:false,next:false,openModal:false}
+        this.state = { Active:null , Notes:'',error:false,next:false,openModal:false,textIndent:'0px'}
+    }
+
+    componentDidMount()
+    {
+        
+        if(this.props.ActiveXray==="Flexion View")
+        {
+            this.setState({textIndent:'200px'})
+        }
+        else if(this.props.ActiveXray==="Non-Flexion View")
+        {
+            this.setState({textIndent:'250px'})
+        }
+        else this.setState({textIndent:'150px'})
+
     }
 
    
@@ -153,7 +168,9 @@ class Matching extends Component {
                             Notes
                         </div>
                         <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
-                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.tempNotes} onChange={this.textAreaChange}>
+                            <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Heading">{"RIGHT " + (this.props.ActiveXray==="Flexion View"?"Flexion "  + this.props.ActiveType + " : " :this.props.ActiveXray==="Non-Flexion View" ?"Non-Flexion " + this.props.ActiveType +" : " : "Kneecap : ")}</div> 
+
+                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" style={{textIndent:this.state.textIndent}} value={this.state.tempNotes} onChange={this.textAreaChange}>
 
                             </textarea>
                         </div>

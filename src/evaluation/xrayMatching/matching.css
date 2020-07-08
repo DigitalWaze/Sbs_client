@@ -214,6 +214,7 @@
   width:400px;
   height:300px;
   border-radius: 10px;
+  position: relative;
 }
 
 .Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea
@@ -289,4 +290,12 @@
 {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Notes_Heading
+{
+  position: absolute;
+  top:10px;
+  font-size: 20px;
+  left:5px;
 }

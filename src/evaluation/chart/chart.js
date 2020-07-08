@@ -10,7 +10,25 @@ import Arrow from '@elsdoerfer/react-arrow';
 class Chart extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {  date:'0'}
+    }
+
+    componentDidMount()
+    {
+        var d = new Date;
+            let date="";
+            if(d.getMonth().toString().length==1)
+            {
+                date='0';
+            }
+            date=date+(d.getMonth()+1)+'-';
+            if(d.getDate().toString().length==1)
+            {
+                date=date+'0';
+            }
+            date=date+d.getDate()+'-'+d.getFullYear();
+            console.log(date)
+            this.setState({date})
     }
      
     render() { 
@@ -22,7 +40,7 @@ class Chart extends Component {
                     </div>
                    
                     <div id="Evaluaion_Chart_Text_Div">
-                        Date of Pro Intake: 10/22/2020
+                        Date of Pro Intake: {this.state.date}
                     </div>
                    
                     <div style={{display:'inline-block',width:'fit-content',marginRight:'20px',background:'',height:'350px',background:'white'}}>

@@ -12,14 +12,43 @@ import MyContext from '../../helper/themeContext';
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { Active:null , Notes:'',openModal:false,tempNotes:null }
+        this.state = { Active:null , Notes:'',openModal:false,tempNotes:null,textIndent:'0px'}
     }
 
     componentDidMount()
     {
-        if(this.context.state.joint_id=='4')
+        if(this.context.state.joint_id.toString()=='4')
         {
-            document.getElementById('Evaluaion_XrayMatching_Matching_Content2_Wrapper').classList.add('flipme');
+            document.getElementById('Evaluaion_XrayMatching_Matching_Content2_Wrapper').classList.add('flipme');        
+        }
+
+        if(this.context.state.joint_id.toString()=='3')
+        {
+            if(this.props.ActiveXray==="Flexion View")
+            {
+                this.setState({textIndent:'200px'})
+            }
+            else if(this.props.ActiveXray==="Non-Flexion View")
+            {
+                this.setState({textIndent:'250px'})
+            }
+            else this.setState({textIndent:'150px'})
+
+        }
+        
+        else if(this.context.state.joint_id.toString()=='4')
+        {
+            if(this.props.ActiveXray==="Flexion View")
+            {
+                this.setState({textIndent:'180px'})
+            }
+            else if(this.props.ActiveXray==="Non-Flexion View")
+            {
+                this.setState({textIndent:'230px'})
+            }
+
+            else this.setState({textIndent:'130px'})
+
         }
     }
 
@@ -30,8 +59,7 @@ class Matching extends Component {
 
     textAreaChange = (e) =>
     {
-        this.setState({tempNotes:e.target.value})
-        
+        this.setState({tempNotes:e.target.value});
     }
 
 
@@ -89,7 +117,7 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
+                        {this.context.state.joint_id=='3'?"RIGHT KNEE":"LEFT KNEE"} - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
                     </div>
 
                     <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
@@ -129,8 +157,9 @@ class Matching extends Component {
                             Notes
                         </div>
                         <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
-                            <textarea className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.tempNotes} onChange={this.textAreaChange}>
-
+                            <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Heading">{(this.context.state.joint_id.toString()=='3'?"Right ":"Left ") + (this.props.ActiveXray==="Flexion View"?"Flexion "  + this.props.ActiveType + " : " :this.props.ActiveXray==="Non-Flexion View" ?"Non-Flexion " + this.props.ActiveType +" : " : "Kneecap : ")}</div> 
+                            
+                            <textarea style={{textIndent:this.state.textIndent}} className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.tempNotes} onChange={this.textAreaChange}>
                             </textarea>
                         </div>
                         <div style={{marginTop:'20px',marginLeft:'50px'}}>
