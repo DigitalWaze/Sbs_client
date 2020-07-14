@@ -102,7 +102,7 @@ class ShowReport extends Component {
         else if(id==2)
         {
             notes="Right " + "Non-Flexion " + "Medial : "
-            notes=this.context.state.TMNFVNotes + '\n' 
+            notes= notes + this.context.state.TMNFVNotes + '\n' 
             notes= notes + "Right " + "Non-Flexion " + "Lateral : " +  this.context.state.TLNFVNotes;
         }
 
