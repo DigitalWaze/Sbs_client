@@ -34,13 +34,13 @@ class OTCXR extends Component {
               <div id="OTCXR_Images_Container">
                 <div id="OTCXR_Inner_Image_Container">
                   <div id="OTCXR_Image_heading">Standing Bilateral Flexion</div>
-                  <img src={Img1} alt="OTCXR1" />
+                  <img src={Img2} alt="OTCXR1" />
                 </div>
                 <div id="OTCXR_Inner_Image_Container">
                   <div id="OTCXR_Image_heading">
                     Standing Bilateral Non-Flexion
                   </div>
-                  <img src={Img2} alt="OTCXR1" />
+                  <img src={Img1} alt="OTCXR1" />
                 </div>
               </div>
 
