@@ -132,7 +132,7 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
+                        RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
                     </div>
                    
                     <div  className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">

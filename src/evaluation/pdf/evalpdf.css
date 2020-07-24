@@ -23,16 +23,21 @@
 .report-canvas-div
 {
     /* margin:auto; */
-    height:861px;
-    max-height: 80vh;
-    overflow: auto;
-    max-width: 612px;
+  height:861px;
+  max-height: 80vh;
+  overflow: auto;
+  /* max-width: 612px; */
+  width:calc(100vw - 500px);
+  max-width:calc(100vw - 500px);
+  margin-left: 120px;
 }
 
 .report-navbar-wrapper
 {
  background: black;
  width:595px;
+ margin-left: 120px !important;
+
 
 }
 

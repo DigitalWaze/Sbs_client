@@ -30,6 +30,13 @@ import LFVUP from '../assets/lateral-flexion-up.png'
 import LNFVUP from '../assets/lateral-nonflexion-up.png'
 import KVUP from '../assets/kneecap-up.png'
 
+
+import LMFVUP from '../assets/left-medial-flexion-up.png'
+import LMNFVUP from '../assets/left-medial-nonflexion-up.png'
+import LLFVUP from '../assets/left-lateral-flexion-up.png'
+import LLNFVUP from '../assets/left-lateral-nonflexion-up.png'
+import LKVUP from '../assets/left-kneecap-up.png'
+
 import MFVUP1 from '../assets/medial-flexion-up-1.png'
 import MNFVUP1 from '../assets/medial-nonflexion-up-1.png'
 import LFVUP1 from '../assets/lateral-flexion-up-1.png'
@@ -370,9 +377,9 @@ class Evaluation extends Component {
 
                 {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
                     Xrays:[ 
-                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
                     ] 
                 }
 

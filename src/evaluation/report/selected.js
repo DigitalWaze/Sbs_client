@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import './selected.css'
 
 import MEDFLXDOWN1 from '../../assets/medial-flexion-up-1.png'
+import MyContext from '../../helper/themeContext';
 
 
 
@@ -49,7 +50,7 @@ class Selected extends Component {
                     <div id="Evaluaion_Report_Selected_Heading3_Div">
                     {/* RIGHT KNEE - {this.props.ActiveType=="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span style={{marginLeft:this.props.ActiveXray==="Flexion View"?'92px':'18px'}}> {this.props.ActiveXray.toUpperCase()} </span>  </span> } */}
 
-                        RIGHT KNEE - {this.props.Type=="Kneecap"?"KNEECAP": <span> { this.props.Type.toUpperCase()}  <br/> { this.props.Xray.toUpperCase()} </span> }
+                    {this.context.state.joint_id=='3'?"RIGHT KNEE":"LEFT KNEE"} - {this.props.Type=="Kneecap"?"KNEECAP": <span> { this.props.Type.toUpperCase()}  <br/> { this.props.Xray.toUpperCase()} </span> }
                     </div>
                     <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
                         <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.XrayImage}/>
@@ -72,5 +73,6 @@ class Selected extends Component {
         );
     }
 }
- 
+
+Selected.contextType=MyContext;
 export default Selected;

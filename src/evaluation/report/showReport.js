@@ -8,9 +8,11 @@ import Modal from '@material-ui/core/Modal';
 import MyContext from '../../helper/themeContext';
 
 import Xray1 from '../../assets/xray1.jpg';
-import Xray2 from '../../assets/xray2.jpeg';
-import Xray3 from '../../assets/xray3.jpeg';
-import Xray4 from '../../assets/xray4.jpeg';
+import Xray2 from '../../assets/xray2.jpg';
+import Xray3 from '../../assets/xray3.jpg';
+import Xray4Right from '../../assets/xray4Right.jpg';
+import Xray4Left from '../../assets/xray4Left.jpg';
+
 import Tick from '../../assets/tick-black.png';
 import Search from '../../assets/search.png';
 import Notes from '../../assets/notes.png';
@@ -334,8 +336,8 @@ class ShowReport extends Component {
                             </div>
 
                             <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
-                                <img src={Xray4} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray4)}}>
+                                <img src={this.context.state.joint_id.toString()==='4'?Xray4Left:Xray4Right} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
+                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(this.context.state.joint_id.toString()==='4'?Xray4Left:Xray4Right)}}>
                                     <img src={Search} alt="Search" style={{width:'20px'}} />
                                 </div>
                                 {/* <div className="Evaluaion_Report_Box_Notes_Box">

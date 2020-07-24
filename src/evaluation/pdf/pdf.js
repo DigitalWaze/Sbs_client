@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 class Pdf extends Component {
     constructor(props) {
         super(props);
-        this.state = { loading:true,base64:""  }
+        this.state = { loading:true,base64:"",blobUrl:'' }
     }
 
 
@@ -31,9 +31,24 @@ class Pdf extends Component {
     setMe= (response) =>
     {
         console.log(response)
+
         if(response.base64pdf)
         {
-            this.setState({loading:false,base64:response.base64pdf})
+            const byteCharacters = atob(response.base64pdf);
+            const byteNumbers = new Array(byteCharacters.length);
+            console.log('length:' + byteCharacters.length)
+            
+            for (let i = 0; i < byteCharacters.length; i++) 
+            {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], {type: 'application/pdf'});
+            const blobUrl = URL.createObjectURL(blob);
+
+
+
+            this.setState({loading:false,base64:response.base64pdf,blobUrl})
         }
 
         else alert("Pdf not found")
@@ -41,18 +56,7 @@ class Pdf extends Component {
 
     handleDownload = () =>
     {
-        var bin = atob(this.state.base64);
-        var obj = document.createElement('object');
-        obj.style.width = '100%';
-        obj.style.height = '842pt';
-
-        obj.style.position='absolute';
-        obj.style.top='-16384px';
-        obj.style.display='none';
-
-        obj.type = 'application/pdf';
-        obj.data = 'data:application/pdf;base64,' + this.state.base64;
-        document.body.appendChild(obj);
+       
 
         var link = document.createElement('a');
         link.innerHTML = 'Download PDF file';
@@ -73,7 +77,7 @@ class Pdf extends Component {
                     <div id="Evaluaion_pdf_Heading1_Div">
                         Patient Summary
                     </div>
-                    <PDFViewer
+                    {/* <PDFViewer
                 
                     document={{
                     base64:this.state.base64 }}
@@ -92,13 +96,15 @@ class Pdf extends Component {
                     loader={this.state.loading}
                     navigation={{ css:{navbarWrapper:'report-navbar-wrapper'}} }
         
-                />
-                  <div id="Evaluaion_PDF_Next_Button_Div">
-                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.handleDownload}> Download </Button>
-                </div>
-                <div id="Evaluaion_PatientReport_Next_Button_Div">
-                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={()=>{ this.context.history.push('./evaluation-history')}}> View Evaluation History </Button>
-                </div>
+                /> */}
+
+                <iframe src={ this.state.blobUrl} height="100%" style={{width:'calc(100vw - 500px)',marginLeft:'150px'}} ></iframe>
+                    <div id="Evaluaion_PDF_Next_Button_Div">
+                        <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.handleDownload}> Download </Button>
+                    </div>
+                    <div id="Evaluaion_PatientReport_Next_Button_Div">
+                        <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={()=>{ this.context.history.push('./evaluation-history')}}> View Evaluation History </Button>
+                    </div>
             </div>:
             <SemipolarLoading size={"large"} color={'#b4ec51'}/>
             }

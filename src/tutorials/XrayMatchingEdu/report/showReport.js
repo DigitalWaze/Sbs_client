@@ -7,10 +7,10 @@ import Modal from '@material-ui/core/Modal';
 
 import MyContext from '../../../helper/themeContext';
 
-import Xray1 from '../../../assets/xray1.jpg';
-import Xray2 from '../../../assets/xray2.jpeg';
-import Xray3 from '../../../assets/xray3.jpeg';
-import Xray4 from '../../../assets/xray4.jpeg';
+import Xray1 from '../../../assets/matchingReportxray1.jpg';
+import Xray2 from '../../../assets/matchingReportxray2.jpg';
+import Xray3 from '../../../assets/matchingReportxray3.jpg';
+import Xray4 from '../../../assets/matchingReportxray4.jpg';
 import Tick from '../../../assets/tick-black.png';
 import Search from '../../../assets/search.png';
 import Notes from '../../../assets/notes.png';

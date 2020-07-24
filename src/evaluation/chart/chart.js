@@ -211,7 +211,7 @@ class Chart extends Component {
                                 <div style={{position:'absolute',zIndex:'2',borderRadius:'50%',width:'1px',background:'#221E20',top:[text+11+'px'],left:'130px',height:'10px'}}>
                                 </div>
                                 <div style={{color:'#000',fontSize:'14px',fontWeight:'bold',position:'absolute',zIndex:'2',top:[text+20+'px'],left:key==0?'122px':'122px'}}>
-                                    {key==0?63:39}
+                                    {key==0?70:65}
                                 </div>
 
                             </div>
