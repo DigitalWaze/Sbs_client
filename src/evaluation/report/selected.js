@@ -58,7 +58,7 @@ class Selected extends Component {
                             YOUR PATIENT
                         </div>
                     </div>
-                    <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
+                    <div className={`Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper ${this.context.state.joint_id.toString()=='4'?'flipme':''}`}>
                         <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.Type=='Lateral'?this.props.Xray=="Flexion View"?require(`../../assets/lateral-flexion-up-${this.props.State}.png`):require(`../../assets/lateral-nonflexion-up-${this.props.State}.png`):this.props.Type=='Medial'?this.props.Xray=="Flexion View"?require(`../../assets/medial-flexion-up-${this.props.State}.png`):require(`../../assets/medial-nonflexion-up-${this.props.State}.png`):this.props.Type=='Kneecap'?require(`../../assets/kneecap-up-${this.props.State}.png`):null} />
                     </div>
 

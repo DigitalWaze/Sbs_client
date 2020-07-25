@@ -18,14 +18,21 @@ import Notes from '../../../assets/notes.png';
 import html2canvas from 'html2canvas'
 import Bone1Image from '../../../assets/bone3_Bitmap.png'
 
+//thumbnails
+
 import MFV from '../../../assets/medial-flexion-traaining-up.png'
 import MNFV from '../../../assets/medial-nonflexion.png'
 import LFV from '../../../assets/lateral-flexion.png'
 import LNFV from '../../../assets/lateral-nonflexion.png'
 import KV from '../../../assets/kneecapview.jpg'
 
-import MFVUP from '../../../assets/medial-flexion-up.png'
-import MNFVUP from '../../../assets/medial-nonflexion-up.png'
+//
+
+
+
+
+import MFVUP from '../../../assets/matching-education-medial-flexion-up.png'
+import MNFVUP from '../../../assets/matching-education-medial-nonflexion-up.png'
 import LFVUP from '../../../assets/lateral-flexion-up.png'
 import LNFVUP from '../../../assets/lateral-nonflexion-up.png'
 import KVUP from '../../../assets/matching_tutorial_keencap_up.png'
