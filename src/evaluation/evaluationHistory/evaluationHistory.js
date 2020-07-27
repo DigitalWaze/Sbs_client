@@ -108,7 +108,7 @@ class EvaluationHistory extends Component {
                         </div>
 
                         <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                            <Button className="Evaluaion_History_Button"  variant="contained"> Suggested Care Pathway </Button>
+                            <Button className="Evaluaion_History_Button"  variant="contained" onClick={()=>{this.context.history.push('/recommended-care-pathway/welcome')}} > Suggested Care Pathway </Button>
                         </div>
 
 

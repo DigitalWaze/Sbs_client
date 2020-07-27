@@ -50,6 +50,7 @@ import Login from "./login/login";
 import CreateUser from "./admin/createUser/createUser";
 import Home from "./home/home";
 import StartOver from "./offer/startOver";
+import RecomCarePath from "./recomCarePath/recomCarePath";
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
 
 const baseUrlH = "https://sbs-server-adonis.herokuapp.com";
@@ -434,6 +435,8 @@ class Routes extends Component {
           <Route path="/Learn-more" component={LearnMore} />
           <Route path="/evaluation" component={Evaluation}/> {/* CHECKER */} {/* ROUTER */}
           <Route path="/admin/create-user" component={CreateUser} />{" "}
+          <Route path="/recommended-care-pathway/" component={RecomCarePath}/> {/* ROUTER */}
+          
           {/* CHECKER */} {/* ROUTER */}
           {/* CHECKER */} {/* ROUTER */}
           {/* <Route path="/Evaluation/forms" component={Forms}/> */}

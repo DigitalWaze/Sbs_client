@@ -1,0 +1,17 @@
+[debug] [2020-07-27T23:49:25.368Z] ----------------------------------------------------------------------
+[debug] [2020-07-27T23:49:25.375Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Pcw\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-07-27T23:49:25.375Z] CLI Version:   7.13.1
+[debug] [2020-07-27T23:49:25.375Z] Platform:      win32
+[debug] [2020-07-27T23:49:25.375Z] Node Version:  v12.16.1
+[debug] [2020-07-27T23:49:25.377Z] Time:          Tue Jul 28 2020 04:49:25 GMT+0500 (Pakistan Standard Time)
+[debug] [2020-07-27T23:49:25.377Z] ----------------------------------------------------------------------
+[debug] [2020-07-27T23:49:25.378Z] 
+[debug] [2020-07-27T23:49:25.393Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-07-27T23:49:25.393Z] > authorizing via signed-in user
+[debug] [2020-07-27T23:49:25.394Z] [iam] checking project sbs-evaluation for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-07-27T23:49:25.397Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-07-27T23:49:25.399Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-07-27T23:49:25.877Z] <<< HTTP RESPONSE 200
+[debug] [2020-07-27T23:49:25.963Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/sbs-evaluation:testIamPermissions  
+

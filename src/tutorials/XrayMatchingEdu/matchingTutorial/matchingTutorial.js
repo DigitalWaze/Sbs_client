@@ -13,8 +13,8 @@ import KV from '../../../assets/kneecapview.jpg'
 
 import MFVUP from '../../../assets/matching-education-medial-flexion-up.png'
 import MNFVUP from '../../../assets/matching-education-medial-nonflexion-up.png'
-import LFVUP from '../../../assets/lateral-flexion-up.png'
-import LNFVUP from '../../../assets/lateral-nonflexion-up.png'
+import LFVUP from '../../../assets/matching-education-lateral-flexion-up.png'
+import LNFVUP from '../../../assets/matching-education-lateral-nonflexion-up.png'
 import KVUP from '../../../assets/matching_tutorial_keencap_up.png'
 
 import MFVUP1 from '../../../assets/medial-flexion-up-1.png'

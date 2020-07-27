@@ -167,7 +167,7 @@ class Chart extends Component {
 
                    
                     {
-                        [65,80].map((text,key)=>
+                        [55,70].map((text,key)=>
                             <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack

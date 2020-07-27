@@ -72,6 +72,7 @@ import ResumeEvaluationSelect from './resumeEvaluation/resumeEvalutionSelect';
 import Pdf from './pdf/pdf';
 import EvaluationHistory from './evaluationHistory/evaluationHistory';
 import BeforeReport from './beforeReport/beforeReport';
+import WelcomeRecom from '../recomCarePath/page1';
 
 
 
@@ -379,16 +380,16 @@ class Evaluation extends Component {
                     Xrays:[ 
                         {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
                         {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
                     ] 
                 }
 
             ]
         let form=[];
-        if(this.context.state.evaluation_stage==null || this.context.state.evaluation_stage<1 || !this.context.state.evaluation_stage)
-        {
-            this.context.history.push('/evaluation/welcome')
-        }
+        // if(this.context.state.evaluation_stage==null || this.context.state.evaluation_stage<1 || !this.context.state.evaluation_stage)
+        // {
+        //     this.context.history.push('/evaluation/welcome')
+        // }
 
 
         //-------------------Dummy Data---------------------
@@ -450,9 +451,8 @@ class Evaluation extends Component {
                         <Route path="/Evaluation/pdf" component={Pdf} />
                         <Route path="/Evaluation/evaluation-history" component={EvaluationHistory} />
                         <Route path="/Evaluation/selected-patient-report" component={RandomPdf} />
-
-                        
-
+                                               
+                      
                     </Router>
                 </div>
             }
