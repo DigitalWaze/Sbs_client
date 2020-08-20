@@ -1,0 +1,109 @@
+
+.chart-head-1
+{
+    position:absolute;
+    top:60px;
+    left:85px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.chart-head-2
+{
+    position:absolute;
+    top:60px;
+    left:340px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.chart-head-3
+{
+    position:absolute;
+    top:60px;
+    left:593px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.chart-head-4
+{
+    position:absolute;
+    top:60px;
+    left:840px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.chart-notation-text
+{
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 2;
+    left: 106.3px;
+    text-align: center;
+    width: 49px;
+}
+
+.chart-notation-line
+{
+    position: absolute;
+    z-index: 2;
+    border-radius: 50%;
+    width: 1px;
+    background: rgb(34, 30, 32);
+    left: 130px;
+    height: 10px;
+}
+
+.chart-notation-dot
+{
+    position: absolute;
+    z-index: 2;
+    border-radius: 50%;
+    width: 11px;
+    background: rgb(34, 30, 32);
+    left: 125px;
+    height: 11px;
+}
+
+.chart-joint-outer-wrapper
+{
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    transform: scale(0.7) translateX(-200px) ;
+    margin-top: 20px;
+}
+
+.chart-joint-inner-wrapper
+{
+    border: 1px solid black;
+    margin-left: 170px;
+    display: inline-block;
+    width: fit-content;
+    margin-right: 20px;
+    background: white;
+    height: 350px;
+    padding-bottom: 5px;
+}
+
+.chart-joint-outer-text
+{
+    display: inline-block;
+    position: absolute;
+    top: 170px;
+    left: 30px;
+    font-size: 24px;
+}
+

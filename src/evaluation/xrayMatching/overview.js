@@ -14,7 +14,7 @@ class Overview extends Component {
     }
     render() { 
         return (
-            <div>
+            <div style={{zIndex:2}}>
                 <div  id="Evaluaion_XrayMatching_OverView_Content1_Wrapper">
                     <div id="Evaluaion_XrayMatching_OverView_Heading1_Div">
                         X-ray Evaluation

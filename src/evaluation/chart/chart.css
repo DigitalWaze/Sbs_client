@@ -20,7 +20,7 @@
   justify-content: center;
   flex-direction: column;
   justify-content: center;
-  margin-top:calc(50vh - 300px)
+  margin-top:calc(50vh - 340px)
   
   /* justify-content: center;
   align-items: center; */
@@ -56,7 +56,6 @@
 {
   font-family: Lato, sans-serif;
   color: #fff;
-  font-weight: 700;
   display: block;
   margin-bottom: 5px;
   font-size: 36px;
@@ -85,19 +84,34 @@
 {
   color:#231F20;
   position: absolute;
-  top:220px;
+  top:210px;
   left:5px;
-  transform:rotate(270deg) translateY(-56px);
+  transform:rotate(270deg) translateY(-86px);
   font-family:Lato;
   font: weight 700;
   font-size:17px;
-  width:137px;
+  width:196px;
 }
 
 #arrow-div
 {
   margin-left:10px;
 }
+
+#Evaluaion_Chart_Footer_Div
+{
+  width: 1060px;
+  background: #fff;
+  text-align: center;
+}
+
+#Evaluaion_Chart_Footer_Image
+{
+  width: 1060px;
+  background: #fff;
+  text-align: center;
+}
+
 
 
 

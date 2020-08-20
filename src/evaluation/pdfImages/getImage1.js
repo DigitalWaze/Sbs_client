@@ -15,7 +15,7 @@ import './getImage.css';
 
 const height='60px';
 
-class GetImage extends Component {
+class GetImage1 extends Component {
     constructor(props) {
         super(props);
         this.state = { Evaluations:[]  }
@@ -29,92 +29,15 @@ class GetImage extends Component {
 
     render() { 
         return ( 
-            <div className="GetImage" style={{width:"900px",height:"1200px",backgroundColor:"white",position:'absolute',top:'-16384px'}}>
+            <div className="GetImage1" style={{width:"900px",height:"1300px",backgroundColor:"white",position:'absolute',top:'-16384px'}}>
                 <div  id="ImageReportMainDiv">
-                    <div className="xray-report-card-header" style={{marginBottom:'20px'}}>
-                       <span className="bold"> Patient Information </span> 
-                    </div>
-                    
-                    <div className="report-image-patient-info-div  GetImage_Report_Box_Text3">
-                        <div className="report-image-patient-info-box">
-                            <div className="report-image-patient-info-left">
-                                <span className="bold">Name: </span> {this.context.state.patient.name}
-                            </div>
-                            <div className="report-image-patient-info-right">
-                                <span className="bold">Birthdate: </span> {this.context.state.patient.birth_date}
-                            </div>
-
-                        </div>
-                        <br/>
-                        <div className="report-image-patient-info-box">
-                            <div className="report-image-patient-info-left">
-                                <span className="bold">ID: </span> {this.context.state.patient_id}
-                            </div>
-                            <div className="report-image-patient-info-right">
-                            <span className="bold">Height: </span> {this.context.state.patient.height}
-                            </div>
-
-                        </div>
-                        <br/>
-                        <div className="report-image-patient-info-box GetImage_Report_Box_Text3">
-                            <div className="report-image-patient-info-left">
-                            <span className="bold">Age: </span>  {this.context.state.patient.age}
-                            </div>
-                            <div className="report-image-patient-info-right">
-                            <span className="bold">Weight: </span>  {this.context.state.patient.weight}
-                            </div>
-
-                        </div>
-                        <br/>
-                        <div className="report-image-patient-info-box  GetImage_Report_Box_Text3">
-                            <div className="report-image-patient-info-left">
-                            <span className="bold">Gender: </span>  {this.context.state.patient.gender}
-                            </div>
-                            <div className="report-image-patient-info-right">
-                            <span className="bold">Email: </span>    {this.context.state.patient.email}
-                            </div>
-
-                        </div>
-                        <br/>
-                        <div className="report-image-patient-info-box">
-                            <div className="report-image-patient-info-left">
-                            <span className="bold">Cell Phone: </span>  {this.context.state.patient.cell_phone}
-                            </div>
-                            <div className="report-image-patient-info-right">
-
-                            </div>
-
-                        </div>
-                        <br/>
-                        <div className="report-image-patient-info-box">
-                            <div className="report-image-patient-info-left">
-                            <span className="bold">Home Phone: </span>  {this.context.state.patient.home_phone}
-                            </div>
-                            <div className="report-image-patient-info-right">
-
-                            </div>
-
-                        </div>
-                        <br/>
-                        <div className="report-image-patient-info-box">
-                            <div className="report-image-patient-info-left">
-                                <span className="bold">Home Adress: </span> {this.context.state.patient.home_address}
-                            </div>
-                            <div className="report-image-patient-info-right">
-
-                            </div>
-
-                        </div>
-                       
-
-                    </div>
-                    <div className="xray-report-card-header">
-                        Xray Report Card: {this.state.Evaluations.find(eva=>eva.joint_id==this.props.EvaluationId).name}
-                    </div>
+                <div className="xray-report-card-header">
+                    Xray Report Card: {this.state.Evaluations.find(eva=>eva.joint_id==this.props.EvaluationId).name}
+                </div>
                 <Grid container>
                    
 
-                    <Grid container item xs={6} spacing={0} style={{height:'160px'}}>
+                    <Grid container item xs={6} spacing={0} style={{height:'140px'}}>
                         <React.Fragment>
                     
                             <Grid item xs={12}>
@@ -127,32 +50,32 @@ class GetImage extends Component {
                             </Grid>
                         </React.Fragment>
                     </Grid>
-                    <Grid container item xs={6} spacing={0} style={{height:'160px'}}>
+                    <Grid container item xs={6} spacing={0} style={{height:'140px'}}>
                         <React.Fragment>
                     
                             <Grid item xs={3} >
-                                <div style={{width:'2px' ,height:'160px' , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
+                                <div style={{width:'2px' ,height:'140px' , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
                                 </div>
                                 <div className="GetImage_Report_Box_Text4">
                                     Normal/Slight
                                 </div>
                             </Grid>
                             <Grid item xs={3}>
-                                <div style={{width:'2px' ,height:'160px' , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
+                                <div style={{width:'2px' ,height:'140px' , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
                                 </div>
                                 <div className="GetImage_Report_Box_Text4">
                                     Moderate
                                 </div>
                             </Grid>
                             <Grid item xs={3}>
-                                <div style={{width:'2px' , height:'160px' , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
+                                <div style={{width:'2px' , height:'140px' , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
                                 </div>
                                 <div className="GetImage_Report_Box_Text4">
                                     Near End Stage
                                 </div>
                             </Grid>
                             <Grid item xs={3}>
-                                <div style={{width:'2px' ,height:'160px'  , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
+                                <div style={{width:'2px' ,height:'140px'  , background:'black', transform: 'rotate(45deg) translateY(-18px) translateX(49px)',}}>
                                 </div>
                                 <div className="GetImage_Report_Box_Text4">
                                     End Stage
@@ -217,5 +140,5 @@ class GetImage extends Component {
         </div> );
     }
 }
-GetImage.contextType=MyContext;
-export default GetImage;
+GetImage1.contextType=MyContext;
+export default GetImage1;

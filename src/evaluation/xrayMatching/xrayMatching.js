@@ -19,10 +19,11 @@ import { SemipolarLoading } from 'react-loadingg';
 import PostData from '../../Fetch/postData4';
 import PostData1 from '../../Fetch/postData5';
 
-import GetImage from '../report/getImage';
+import GetImage from '../pdfImages/getImage';
 import html2canvas from 'html2canvas'
-import ReportPage1 from '../report/reportPage1';
-import GetImage1 from '../report/getImage1';
+import ReportPage1 from '../pdfImages/reportPage1';
+import GetImage1 from '../pdfImages/getImage1';
+import ChartImage from '../pdfImages/chartImage';
 
 
 let Next=false;
@@ -38,24 +39,33 @@ class XrayMatching extends Component {
             ActiveType:null,
             ActiveXray:null,
             Next:false,
-            req:[]
+            req:[],
+            mountImages:false,
+            uploaded:false,
          }
+         this.reportRef = React.createRef();
+         this.chartRef = React.createRef();
+
+
     }
 
     componentWillMount()
     {
         if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
         {
-            console.log(this.context.state.joint_id)
+            // console.log(this.context.state.joint_id)
             let req={
                 visitor_id:this.context.state.report_id,
                 joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
             }
-            console.log(req);
-            console.log(this.context.state.Evaluations,'Evaluations')
-            console.log(this.context.state.joint_id,'joint_id')
+            // console.log(req);
+            // console.log(this.context.state.Evaluations,'Evaluations')
+            // console.log(this.context.state.joint_id,'joint_id')
+
             this.setState({loading:true,Evaluations:this.context.state.Evaluations,Matching:null});
             GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe)
+            // this.setState({Evaluations:this.context.state.Evaluations,Matching:null});
+
         }
         else this.setState({Evaluations:this.context.state.Evaluations,loading:false,Matching:this.context.state.Matching})
     }
@@ -72,58 +82,174 @@ class XrayMatching extends Component {
         
     }
 
+    
+
+    uploadpage2 = async () =>
+    {
+        console.log('in uploadpage2')
+        let upload=1;
+        const global=this;
+        var storage = firebase.storage();
+        var storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page2");
+        let pagetwo=document.getElementsByClassName("chart-image-wrapper")[0];
+            await new html2canvas(pagetwo,{
+                useCORS: true,
+                allowTaint: false,
+                letterRendering: true,
+                logging:true,
+                }).then( async function(canvas2) {
+             storageRef.putString(canvas2.toDataURL("image/png"), 'data_url').then( async function(snapshot) {
+                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    console.log('File available at ', downloadURL);
+                    upload=upload+1;
+                    global.handleAllCheckUpload(upload,downloadURL,global.context.state.Eval.length+2)
+                });
+                
+            });
+            return;
+        })
+        console.log('page 2 uploaded');
+        return;
+    }
+
+    uploadpage3 = async(number) =>
+    {
+        const global=this;
+        var storage = firebase.storage();
+        if(this.context.state.Eval.length.toString()===number.toString())
+        {
+            let upload=2;
+            var storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page3");
+
+            await new html2canvas(document.getElementsByClassName("GetImage")[0],{
+                useCORS: true,
+                allowTaint: false,
+                letterRendering: true,
+                logging:true,
+                }).then(async function(canvas3) {
+                     storageRef.putString(canvas3.toDataURL("image/png"), 'data_url').then(async function(snapshot) {
+                         snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                            console.log('File available at ', downloadURL);
+                            upload=upload+1;
+                            global.handleAllCheckUpload(upload,downloadURL,global.context.state.Eval.length - number+3)
+                            });
+                        
+                    });
+                    return;
+                });
+
+            return this.uploadpage3(number-1)
+        }
+
+        else if(number > 0)
+        {
+            
+        }
+
+        else return;
+
+        
+    }
+
      handleReportUpload = async () =>
     {
         const global=this;
         var storage = firebase.storage();
         let upload=0;
-
-
-        let newelement = document.createElement("div");
         var storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page1");
-        newelement=document.getElementsByClassName("Report-Page1")[0];
-        
-        await html2canvas(newelement).then(function(canvas) {
-            console.log( canvas.toDataURL("image/png"));
-            storageRef.putString(canvas.toDataURL("image/png"), 'data_url').then(function(snapshot) {
-                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        await new html2canvas(document.getElementsByClassName("Report-Page1")[0],{
+            useCORS: true,
+            allowTaint: false,
+            letterRendering: true,
+            logging:true,
+            }).then( async function(canvas) {
+             storageRef.putString(canvas.toDataURL("image/png"), 'data_url').then( async function(snapshot) {
+                 snapshot.ref.getDownloadURL().then( function(downloadURL) {
                     console.log('File available at ', downloadURL);
                     upload=upload+1;
                     global.handleAllCheckUpload(upload,downloadURL,1)
                 });
-              
-          });
-          return;
-      });
+                return;
+            })
+            console.log('uploaded page 1')
+            return;
+      })
+
+      console.log('after function 1')
 
 
 
+    //   await this.uploadpage2();
 
-        // newelement=document.getElementById("GetImage").cloneNode(true);
+      console.log('after function 2')
+
+    //   await this.uploadpage3(this.context.state.Eval.length);
+
+
+
         for(let i=0;i<this.context.state.Eval.length;i++)
         {
-            let newelement = document.createElement("div");
             var storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page"+(i+2));
+            
             if(i==0)
             {
-                newelement=document.getElementsByClassName("GetImage")[0];
+                await new html2canvas(document.getElementsByClassName("GetImage")[0],{
+                    useCORS: true,
+                    allowTaint: false,
+                    letterRendering: true,
+                    logging:true,
+                    }).then( function(canvas) {
+                            storageRef.putString(canvas.toDataURL("image/png"), 'data_url').then( async function(snapshot) {
+                                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                                    console.log('File available at ', downloadURL);
+                                    upload=upload+1;
+                                    global.handleAllCheckUpload(upload,downloadURL,2)
+                                });
+                    });
+                    return;
+                })
             }
-            else newelement=document.getElementsByClassName("GetImage1")[i-1];
-            
-            await html2canvas(newelement).then(function(canvas) {
-                console.log( canvas.toDataURL("image/png"));
-                storageRef.putString(canvas.toDataURL("image/png"), 'data_url').then(function(snapshot) {
-                    snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                        console.log('File available at ', downloadURL);
-                        upload=upload+1;
-                        global.handleAllCheckUpload(upload,downloadURL,i+2)
-                      });
-                    
-                });
-                return;
-            });
 
+            else
+            {
+                await new html2canvas(document.getElementsByClassName("GetImage1")[i-1],{
+                    useCORS: true,
+                    allowTaint: false,
+                    letterRendering: true,
+                    logging:true,
+                    }).then(function(canvas4) {
+                    storageRef.putString(canvas4.toDataURL("image/png"), 'data_url').then(function(snapshot) {
+                        snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                            console.log('File available at ', downloadURL);
+                            upload=upload+1;
+                            global.handleAllCheckUpload(upload,downloadURL,i+2)
+                          });
+                        
+                    });
+                    return;
+                })
+            }
         }
+
+        let page4storageRef = storage.ref().child('report-images/'+this.context.state.report_id+ " page"+this.context.state.Eval.length+2);
+        let pagetwo=document.getElementsByClassName("chart-image-wrapper")[0];
+        await new html2canvas(pagetwo,{
+            useCORS: true,
+            allowTaint: false,
+            letterRendering: true,
+            logging:true,
+            }).then( async function(canvas2) {
+                page4storageRef.putString(canvas2.toDataURL("image/png"), 'data_url').then( async function(snapshot) {
+                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    console.log('File available at ', downloadURL);
+                    upload=upload+1;
+                    global.handleAllCheckUpload(upload,downloadURL,global.context.state.Eval.length+2)
+                });
+                
+            });
+            return;
+        })
+       
         return ;
         
     }
@@ -133,7 +259,7 @@ class XrayMatching extends Component {
         req.push({visitor_id:this.context.state.report_id,imageURL:url,page_no:pageNumber})
         console.log(uploaded)
         console.log(this.context.state.Eval.length)
-        if(uploaded==this.context.state.Eval.length+1)
+        if(uploaded==this.context.state.Eval.length+2)
         {
             PostData1(this.context.baseUrl+'/api/v1/report/image',201,req,this.context.state.token,this.setMeThree)
         }
@@ -185,7 +311,7 @@ class XrayMatching extends Component {
         console.log(ActiveXrayIndex,'ActiveXrayIndex')
         this.setState({ActivePage:'Matching',ActiveType,ActiveXray,ActiveXrayIndex,ActiveTypeIndex})
     }
-    handleMatchingClick = (state,notes) =>
+    handleMatchingClick = async (state,notes) =>
     {
         let Evaluations=this.state.Evaluations;
         let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
@@ -212,6 +338,8 @@ class XrayMatching extends Component {
 
             else 
             {
+                // this.setState({mountImages:true,loading:true})
+
                 let req=[];
                 let Evaluation=this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
                 Evaluation.Xrays.forEach(element => {
@@ -222,20 +350,30 @@ class XrayMatching extends Component {
                         req.push(reqObject);
                     });
                     
-                    // let reqObject={processed_xray_id=}
                 });
+
                 this.setState({loading:true})
+
                 PostData(this.context.baseUrl+'/api/v1/evaluate/xrays',201,req,this.context.state.token,this.setMeTwo)
 
                 console.log(req);
-                // this.setState({Next:true})
+
             }
             
 
         }
-        // console.log(Evaluation);
 
         this.setState({ActivePage:'Overview'})
+    }
+
+    componentDidUpdate()
+    {
+        if(this.state.mountImages===true && this.state.uploaded===false)
+        {
+            this.setState({uploaded:true});
+            this.handleReportUpload()
+        }                
+
     }
 
     setMeTwo = async (response) =>
@@ -254,50 +392,19 @@ class XrayMatching extends Component {
                 //load new matching;
                 Next=true;
                 this.setState({Next:true,Matching:null,loading:false});
-                
-                // let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
-                // if(joint_idall.length>0)
-                // {joint_id=joint_idall[0].joint_id;}
-                // let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
-                // if(priority_idall.length>0)
-                // {priority_id=priority_idall[0].priority_id;}
             }
 
             else
             {
                 console.log('SINGLE EVAL');
                 this.context.evalDone();
-                await this.handleReportUpload();
+                this.setState({mountImages:true})  //this call to handleReportUpload function in componentDidUpdate
             }
-
-            // console.log(joint_id,'joint_id')
-            // if(!joint_id || joint_id==null)
-            // {
-            //     console.log('SINGLE EVAL');
-            //     this.context.evalDone();
-            //     await this.handleReportUpload();
-            // }
-
-            // else
-            // {
-            //     console.log('SECOND EVAL');
-            //     console.log(joint_id,'joint_id')
-            //     //load new matching;
-
-            //     this.setState({Next:true,Matching:null,loading:false});
-
-            //     this.context.multipleUpdateValue([{key:'noOfEvalRemainToUpload',value:1},{key:'joint_id',value:joint_id},{key:'activePriority',value:priority_id}])
-            //     this.setState({Next:true,Matching:null,loading:false});
-                
-            // }
         }
         else {alert('Error! Please try again later.')}
     }
     handleNextClick = async () =>
     {
-        // this.context.updateValue('Evaluations',this.state.Evaluations)
-        // this.context.history.push('./report')
-        // await this.handleReportUpload();
         this.context.updateSession();
         this.context.multipleUpdateValueWithHistory([{key:'Evaluations',value:this.state.Evaluations}],'./report')
     }
@@ -305,7 +412,7 @@ class XrayMatching extends Component {
     render() { 
         return ( 
             <div id="Evaluaion_XrayMatching_Intro_Main_Div">
-                {this.state.loading===true?<SemipolarLoading size={"large"} color={'#b4ec51'}/>
+                {this.state.loading===true?<div style={{height:'100vh',width:'100vw'}}> <SemipolarLoading size={"large"} color={'#b4ec51'}/> </div>
             
             
                 :   <div>
@@ -324,20 +431,32 @@ class XrayMatching extends Component {
                         }
                     </div>
                 }
-               
-               {
-                   this.context.state.Eval.map((eva,id)=>{
-                    if(id==0)
-                    { console.log('here')
-                        return <GetImage EvaluationId={eva.joint_id.toString()}/>;
-                    }
-                    return <GetImage1 EvaluationId={eva.joint_id.toString()}/>
 
-                   }
-                       
-                   )
-               }
-               <ReportPage1/>
+                {
+                    this.state.mountImages===true?
+                    this.context.state.Eval.map((eva,id)=>{
+                        if(id==0)
+                        { console.log('here')
+                            return <GetImage EvaluationId={eva.joint_id.toString()}/>;
+                        }
+                        return <GetImage1 EvaluationId={eva.joint_id.toString()}/>
+    
+                        }
+                            
+                        )
+                    :null
+                }
+               
+                
+                {
+                    this.state.mountImages===true?<ReportPage1 ref={this.reportRef}/>:null
+                }
+                {
+                    this.state.mountImages===true?<ChartImage ref={this.chartRef}/>:null
+                }
+
+
+               
             </div>
         );
     }

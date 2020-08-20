@@ -1,0 +1,65 @@
+.chart-image-wrapper
+{
+    width:900px;
+    height:1300px;
+    position: relative;;
+    top:0px;
+    left:0px;
+    z-index: 1;
+    padding-top:40px;
+    padding-bottom:20px;
+
+}
+
+.chart-pdf-header
+{
+    width: calc(100% - 60px);
+    margin:auto;   
+    height:60px;
+    background-image:linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+    color: white;
+    font-size: 34px;
+    line-height: 50px;
+    padding-left:20px;
+    font-weight: bold;
+}
+
+.chart-pdf-patient-header
+{   
+    width: calc(100% - 60px);
+    border-bottom:1px solid black;
+    font-size: 26px;
+    /* padding-left:20px; */
+    font-weight: bold;
+    margin:auto;
+    height: 40px;
+    margin-top:20px;
+    position: relative;
+}
+
+.chart-patient-header-middle
+{
+    position: absolute;
+    left:calc(50% - 110px);
+    display: inline-block
+}
+
+
+.chart-patient-header-right
+{
+    position: absolute;
+    right:calc(0px);
+    display: inline-block
+}
+
+.chart-pdf-image-footer-wrapper
+{
+    width:calc(100%);
+    margin-left:150px;
+    transform: translateY(-100px)
+}
+
+.chart-pdf-image-footer-1
+{
+    transform: translateX(-35px)
+}

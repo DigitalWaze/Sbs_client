@@ -38,7 +38,7 @@ class NewEvaluation extends Component {
 
     componentDidMount()
     {
-        console.log(this.context.state.report_id)
+        this.ResetMe();
         if(this.context.state.Eval.length>0)
         {
             let priority2=0,priority4=0;

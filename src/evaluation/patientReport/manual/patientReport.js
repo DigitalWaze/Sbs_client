@@ -12,6 +12,7 @@ import Page2Left from './leftPages/page2';
 import Page3Left from './leftPages/page3';
 import RightIntroPage from './rightIntroPage';
 import LeftIntroPage from './leftPages/introPage';
+import Forms from '../../form/forms';
 
 class PatientReport extends Component {
     constructor(props) {
@@ -24,12 +25,14 @@ class PatientReport extends Component {
         if(this.context.state.Eval.length>1)
         {
             // this.setState({tempLeft:true})
-            this.setState({totalLeft:2,active:this.context.state.joint_id})
+            this.setState({totalLeft:2,active:null,formLoad:{total:2,active:this.context.state.joint_id,firstDone:false} })
+
         }
 
-        else {
+        else
+        {
             // this.setState({tempLeft:true})
-            this.setState({totalLeft:1,active:this.context.state.joint_id})
+            this.setState({totalLeft:1,active:null,formLoad:{total:1,active:this.context.state.joint_id,firstDone:false}} )
         }
     }
 
@@ -138,7 +141,16 @@ class PatientReport extends Component {
     next = () =>
     {
         console.log(this.state.form)
-        if(this.state.totalLeft==2)
+
+        if(this.state.totalLeft==2 && this.state.active !=null)
+        {
+            let formLoad=this.state.formLoad;
+            formLoad.firstDone=true;
+            this.setState({active:null,formLoad})
+        }
+
+
+        else if(this.state.totalLeft==2 && this.state.active == null)
         {
             let joint_id=null;
             if(this.context.state.joint_id=='3')
@@ -153,7 +165,9 @@ class PatientReport extends Component {
 
         else if(this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2)
         {
-            this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true}],'./forms')
+            // this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true}],'./forms')
+            this.context.multipleUpdateValue([{key:'Pro',value:true}]);
+            this.setState({active:null})
         }
         
         else
@@ -169,13 +183,22 @@ class PatientReport extends Component {
     {
         if(response.length>0)
         {
-            this.setState({loading:false})
             this.context.updateSession();
             this.context.setCookie('evaluation_stage',3,30);
-            this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true},{key:'form',value:this.state.form}],'./forms')
+            // this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true},{key:'form',value:this.state.form}],'./forms')
+            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form}]);
+            this.setState({loading:false,active:null})
+
+
 
         }
     }
+
+    setActive = (id) =>
+    {
+        this.setState({active:id})
+    }
+
     render() { 
 
         return ( 
@@ -184,6 +207,8 @@ class PatientReport extends Component {
                  {/* {console.log(this.context.state)} */}
                 {this.state.loading==true?
                     <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
+                    
+                : this.state.active===null? <Forms formLoad={this.state.formLoad} next={this.next} setActive = { (id) =>this.setActive(id)} />
                 : this.state.active.toString()=='3'?
                     this.getPage():this.getPageLeft()
                     }

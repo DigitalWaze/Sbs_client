@@ -13,6 +13,9 @@ class OverallCare extends Component {
     render() { 
         return ( <div id="Evaluaion_Welcome_Main_Div">
         <div id="Recom_Welcome_Text_Wrapper">
+        <div id="Evaluaion_Welcome_Heading1_Div" style={{fontSize:'50px'}}>
+           OVERALL CARE PATHWAY 
+          </div>
             <div id="Recom_Overall_Image_Wrapper">
                 <img src={Image} alt="SBS" id="Recom_Overall_Image" />
             </div>

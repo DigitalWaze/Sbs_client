@@ -10,7 +10,7 @@ import Arrow from '@elsdoerfer/react-arrow';
 class Chart extends Component {
     constructor(props) {
         super(props);
-        this.state = {  date:'0'}
+        this.state = {  date:'0' }
     }
 
     componentDidMount()
@@ -167,7 +167,7 @@ class Chart extends Component {
 
                    
                     {
-                        [55,70].map((text,key)=>
+                        [81,91].map((text,key)=>
                             <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack

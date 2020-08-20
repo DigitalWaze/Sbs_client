@@ -114,10 +114,10 @@ class ShowReport extends Component {
         {
             let joint_id=null;
             let priority_id=null
-            let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+            let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated.toString()=='false');
             if(joint_idall.length>0)
             {joint_id=joint_idall[0].joint_id;}
-            let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated==false);
+            let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated.toString()=='false');
             if(priority_idall.length>0)
             {priority_id=priority_idall[0].priority_id;}
             

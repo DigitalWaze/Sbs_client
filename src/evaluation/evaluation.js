@@ -73,6 +73,8 @@ import Pdf from './pdf/pdf';
 import EvaluationHistory from './evaluationHistory/evaluationHistory';
 import BeforeReport from './beforeReport/beforeReport';
 import WelcomeRecom from '../recomCarePath/page1';
+import ChartJs from './chart/newChart';
+import ChartImage from './pdfImages/chartImage';
 
 
 
@@ -81,283 +83,7 @@ class Evaluation extends Component {
     super(props);
     this.state = {};
   }
-  // componentWillMount() {
-  //   //Api call to get Stage
-  //   // this.context.history.push('/Evaluation/Welcome')
-
-  //   // let Pro=false,UXray=false,XrayMatch=false;
-
-  //   let Evaluations = [
-  //     {
-  //       name: "Right Knee",
-  //       image: Bone1Image,
-  //       joint_id: "3",
-  //       Xrays: [
-  //         {
-  //           name: "Medial",
-  //           id: 1,
-  //           isDone: false,
-  //           enable: true,
-  //           xrays: [
-  //             {
-  //               name: "FlexionView",
-  //               id: 1,
-  //               image: null,
-  //               isDone: false,
-  //               enable: true,
-  //               state: null,
-  //               state_id: null,
-  //               notes: null,
-  //               thumbnail: MFV,
-  //               up: MFVUP,
-  //               up1: MFVUP1,
-  //               up2: MFVUP2,
-  //               up3: MFVUP3,
-  //               up4: MFVUP4,
-  //             },
-  //             {
-  //               name: "Non-FlexionView",
-  //               image: null,
-  //               id: 2,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               state_id: null,
-  //               notes: null,
-  //               thumbnail: MNFV,
-  //               up: MNFVUP,
-  //               up1: MNFVUP1,
-  //               up2: MNFVUP2,
-  //               up3: MNFVUP3,
-  //               up4: MNFVUP4,
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           name: "Lateral",
-  //           id: 2,
-  //           isDone: false,
-  //           enable: false,
-  //           xrays: [
-  //             {
-  //               name: "FlexionView",
-  //               id: 1,
-  //               image: null,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               state_id: null,
-  //               notes: null,
-  //               thumbnail: LFV,
-  //               up: LFVUP,
-  //               up1: LFVUP1,
-  //               up2: LFVUP2,
-  //               up3: LFVUP3,
-  //               up4: LFVUP4,
-  //             },
-  //             {
-  //               name: "Non-FlexionView",
-  //               image: null,
-  //               id: 2,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               state_id: null,
-  //               notes: null,
-  //               thumbnail: LNFV,
-  //               up: LNFVUP,
-  //               up1: LNFVUP1,
-  //               up2: LNFVUP2,
-  //               up3: LNFVUP3,
-  //               up4: LNFVUP4,
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           name: "Kneecap",
-  //           id: 3,
-  //           isDone: false,
-  //           enable: false,
-  //           xrays: [
-  //             {
-  //               name: "Kneecap",
-  //               id: 3,
-  //               image: null,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               state_id: null,
-  //               notes: null,
-  //               thumbnail: KV,
-  //               up: KVUP,
-  //               up1: KVUP2,
-  //               up2: KVUP2,
-  //               up3: KVUP3,
-  //               up4: KVUP4,
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       name: "Left Knee",
-  //       image: Bone1Image,
-  //       joint_id: "4",
-  //       Xrays: [
-  //         {
-  //           name: "Medial",
-  //           id: 1,
-  //           isDone: false,
-  //           enable: true,
-  //           xrays: [
-  //             {
-  //               name: "FlexionView",
-  //               id: 1,
-  //               image: null,
-  //               isDone: false,
-  //               enable: true,
-  //               state: null,
-  //               notes: null,
-  //               thumbnail: null,
-  //               up: MFVUP,
-  //               up1: MFVUP1,
-  //               up2: MFVUP2,
-  //               up3: MFVUP3,
-  //               up4: MFVUP4,
-  //             },
-  //             {
-  //               name: "Non-FlexionView",
-  //               image: null,
-  //               id: 2,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               notes: null,
-  //               thumbnail: null,
-  //               up: MNFVUP,
-  //               up1: MNFVUP1,
-  //               up2: MNFVUP2,
-  //               up3: MNFVUP3,
-  //               up4: MNFVUP4,
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           name: "Lateral",
-  //           id: 2,
-  //           isDone: false,
-  //           enable: false,
-  //           xrays: [
-  //             {
-  //               name: "FlexionView",
-  //               id: 1,
-  //               image: null,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               notes: null,
-  //               thumbnail: null,
-  //               up: LFVUP,
-  //               up1: LFVUP1,
-  //               up2: LFVUP2,
-  //               up3: LFVUP3,
-  //               up4: LFVUP4,
-  //             },
-  //             {
-  //               name: "Non-FlexionView",
-  //               image: null,
-  //               id: 2,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               notes: null,
-  //               thumbnail: null,
-  //               up: LNFVUP,
-  //               up1: LNFVUP1,
-  //               up2: LNFVUP2,
-  //               up3: LNFVUP3,
-  //               up4: LNFVUP4,
-  //             },
-  //           ],
-  //         },
-  //         {
-  //           name: "Kneecap",
-  //           id: 3,
-  //           isDone: false,
-  //           enable: false,
-  //           xrays: [
-  //             {
-  //               name: "Kneecap",
-  //               id: 3,
-  //               image: null,
-  //               isDone: false,
-  //               enable: false,
-  //               state: null,
-  //               notes: null,
-  //               thumbnail: null,
-  //               up: KVUP,
-  //               up1: KVUP2,
-  //               up2: KVUP2,
-  //               up3: KVUP3,
-  //               up4: KVUP4,
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //   ];
-  //   let form = [
-  //     {
-  //       name: "Question1",
-  //       question_id: 1,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //     {
-  //       name: "Question2",
-  //       question_id: 2,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //     {
-  //       name: "Question3",
-  //       question_id: 3,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //     {
-  //       name: "Question4",
-  //       question_id: 4,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //     {
-  //       name: "Question5",
-  //       question_id: 5,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //     {
-  //       name: "Question6",
-  //       question_id: 6,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //     {
-  //       name: "Question7",
-  //       question_id: 7,
-  //       pro_severity_id: null,
-  //       visitor_id: null,
-  //     },
-  //   ];
-  //   if (
-  //     this.context.state.evaluation_stage == null ||
-  //     this.context.state.evaluation_stage < 1 ||
-  //     !this.context.state.evaluation_stage
-  //   ) {
-  //     this.context.history.push("/evaluation/welcome");
-  //   }
+  
     componentWillMount()
     {
         //Api call to get Stage
@@ -371,7 +97,7 @@ class Evaluation extends Component {
                     Xrays:[ 
                         {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
                         {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP2,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
 
                     ] 
                 },
@@ -385,23 +111,48 @@ class Evaluation extends Component {
                 }
 
             ]
-        let form=[];
+            
         // if(this.context.state.evaluation_stage==null || this.context.state.evaluation_stage<1 || !this.context.state.evaluation_stage)
         // {
         //     this.context.history.push('/evaluation/welcome')
         // }
 
-
-        //-------------------Dummy Data---------------------
-        // let Eval=[];
-        // Eval.push({joint_hurt_id:'11',visitor_id:'39',joint_id:'3',name:'Right Knee',priority_id:this.state.priority2,isEvaluated:false})   // Right Knee
-
-        // this.context.multipleUpdateValue([{key:'joint_id',value:'3'},{key:'Eval',value:Eval},{key:'form',value:form},{key:'patient',value:{}},{key:'report_id',value:39},{key:'token',value:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU4OTIwNTk4N30.k8ywG7mAJjyGq3lCmCwY-VVBzqvyP_9kmIKufZYIghs'} ])
-        
-        //---------Dummy Data End---------------------------------
-
         //Initializing Evaluation State
-        this.context.multipleUpdateValue([{key:'Xrays',value:[]},{key:'XrayMatch',value:false},{key:'UXray',value:false},{key:'Pro',value:false},{key:'Evaluations',value:Evaluations},{key:'Eval',value:[]},{key:'form',value:form},{key:'patient',value:{}},{key:'report_id',value:null} ])
+        this.context.multipleUpdateValue([{key:'Xrays',value:[]},{key:'XrayMatch',value:false},{key:'UXray',value:false},{key:'Pro',value:false},{key:'Evaluations',value:Evaluations},{key:'Eval',value:[]},{key:'form',value:[]},{key:'patient',value:{}},{key:'report_id',value:null} ])
+       
+        // -------------------Dummy Data---------------------
+
+
+        // let form = [
+        //   { name: "Question1",question_id: 1, joint_id:3, pro_severity_id: 4, visitor_id: null, },
+        //   { name: "Question2", question_id: 2, joint_id:3, pro_severity_id: null,visitor_id: null,},
+        //   { name: "Question3", question_id: 3, joint_id:3, pro_severity_id: 2, visitor_id: null, },
+        //   { name: "Question4", joint_id:3, question_id: 4, pro_severity_id: 2, visitor_id: null, },
+        //   { name: "Question5", question_id: 5, joint_id:3, pro_severity_id: null,visitor_id: null, },
+        //   { name: "Question6", joint_id:3, question_id: 6, pro_severity_id: null, visitor_id: null, },
+        //   { name: "Question7", question_id: 7, joint_id:3, pro_severity_id: null, visitor_id: null, },
+
+        //   { name: "Question1",question_id: 1, joint_id:4, pro_severity_id: 4, visitor_id: null, },
+        //   { name: "Question2", question_id: 2, joint_id:4, pro_severity_id: 4,visitor_id: null,},
+        //   { name: "Question3", question_id: 3, joint_id:4, pro_severity_id: 2, visitor_id: null, },
+        //   { name: "Question4", joint_id:4, question_id: 4, pro_severity_id: 2, visitor_id: null, },
+        //   { name: "Question5", question_id: 5, joint_id:4, pro_severity_id: null,visitor_id: null, },
+        //   { name: "Question6", joint_id:4, question_id: 6, pro_severity_id: null, visitor_id: null, },
+        //   { name: "Question7", question_id: 7, joint_id:4, pro_severity_id: null, visitor_id: null, },
+          
+        // ];
+        // let patient={};
+        // patient.name="Muhammad Ammar";
+        // patient.date="08-15-2020"
+        // let Eval=[];
+        // Eval.push({joint_hurt_id:'11',visitor_id:'39',joint_id:'3',name:'Right Knee',priority_id:2,isEvaluated:false})   // Right Knee
+        // Eval.push({joint_hurt_id:'12',visitor_id:'39',joint_id:'4',name:'Left Knee',priority_id:1,isEvaluated:false})   // Left Knee
+
+        // this.context.multipleUpdateValue([{key:'patient_id',value:'4948'},{key:'joint_id',value:'3'},{key:'Eval',value:Eval},{key:'form',value:form},{key:'patient',value:patient},{key:'report_id',value:39},{key:'token',value:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU4OTIwNTk4N30.k8ywG7mAJjyGq3lCmCwY-VVBzqvyP_9kmIKufZYIghs'} ])
+        
+        // ---------Dummy Data End---------------------------------
+
+       
 
 
         
@@ -437,7 +188,7 @@ class Evaluation extends Component {
 
                         <Route exact path="/Evaluation/patient-profile" component={PatientProfile} />
 
-                        <Route path="/Evaluation/forms" component={Forms}/>
+                        <Route path="/Evaluation/forms" component={PatientReport}/>
                         
                         <Route path="/Evaluation/patient-report" component={PatientReport}/>
 
@@ -447,7 +198,7 @@ class Evaluation extends Component {
                         <Route path="/Evaluation/report-card-summary" component={BeforeReport}/>
                         <Route path="/Evaluation/report" component={Report}/>
 
-                        <Route path="/Evaluation/chart" component={Chart} />
+                        <Route path="/Evaluation/chart" component={ChartJs} />
                         <Route path="/Evaluation/pdf" component={Pdf} />
                         <Route path="/Evaluation/evaluation-history" component={EvaluationHistory} />
                         <Route path="/Evaluation/selected-patient-report" component={RandomPdf} />

@@ -14,7 +14,7 @@ class ReportPage1 extends Component {
     }
     render() { 
         return ( 
-        <div  className="Report-Page1" style={{width:"476px",height:"617px",backgroundImage:`url(${Page1})`,position:'absolute',top:'-16384px'}}>
+        <div  className="Report-Page1" style={{width:"476px",height:"617px",backgroundImage:`url(${Page1})`,position:'absolute',top:'-16384px',zIndex:'3'}}>
             <div style={{position: 'absolute',left:'80px', width:'476px',bottom:'130px'}}> 
                 <div id="patient-name" style={{marginBottom:'10px',color:'white',fontWeight:'600', fontFamily:'Google Sans,Roboto, arial,sans-serif',  fontSize:'22px',fontStyle:'italic'}}>
                     {this.context.state.patient.name}
