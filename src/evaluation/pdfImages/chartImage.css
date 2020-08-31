@@ -54,12 +54,41 @@
 
 .chart-pdf-image-footer-wrapper
 {
-    width:calc(100%);
-    margin-left:150px;
-    transform: translateY(-100px)
+    margin-top: 50px;
+    width: calc(100%);
+    margin-left: 150px;
+    transform: translateY(-233px);
 }
 
 .chart-pdf-image-footer-1
 {
     transform: translateX(-35px)
+}
+
+#arrow-image-div
+{
+   position: relative;
+   top:100px; 
+    left: 27px;
+    /* transform: sca
+   /* transform: scale(1.5) */
+}
+
+#arrow-image-tag
+{
+    width: 30px;
+    height: 200px;
+}
+
+.arrow-text-span-image
+{
+    color: #231F20;
+    position: absolute;
+    top: 215px;
+    left: 5px;
+    transform: rotate(270deg) translateY(-86px);
+    font-family: Lato;
+    font-weight: 700;
+    font-size: 17px;
+    width: 196px;
 }

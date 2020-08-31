@@ -32,12 +32,11 @@ class ChartJs extends Component {
 
         this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 1 && parseInt(ques.question_id) < 6) && ques.joint_id.toString()===this.context.state.Eval[0].joint_id.toString() )  {  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ SumPain=SumPain+parseInt(ques.pro_severity_id) -1 } } });
         this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 5 && parseInt(ques.question_id) < 8) && ques.joint_id.toString()===this.context.state.Eval[0].joint_id.toString() ){  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ SumFunction=SumFunction+parseInt(ques.pro_severity_id) -1 } } });
- 
-
-        let PainInterval =  (1 - SumPain/16) *100;
-        let StiffInterval =  (1 - SumStiff/4) *100;
-        let FunctionInterval = (1 - SumFunction/8) *100;
-        let OverallInterval = OverAll[SumPain+SumStiff+SumFunction] 
+       
+        let PainInterval = Math.round(( (1 - SumPain/16) *100) * 10) /10;
+        let StiffInterval =  Math.round(((1 - SumStiff/4) *100) * 10) /10;
+        let FunctionInterval = Math.round( ( (1 - SumFunction/8) *100 ) * 10)/10;
+        let OverallInterval = Math.round( ( OverAll[SumPain+SumStiff+SumFunction]) * 10)/10; 
 
         JointMapArray=[{joint_id:this.context.state.Eval[0].joint_id,PainInterval,StiffInterval,FunctionInterval,OverallInterval}];
         
@@ -62,10 +61,10 @@ class ChartJs extends Component {
             this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 5 && parseInt(ques.question_id) < 8) && ques.joint_id.toString()===this.context.state.Eval[i].joint_id.toString() )  {  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ NewSumFunction=NewSumFunction+parseInt(ques.pro_severity_id) - 1 } } });
  
 
-            let NewPainInterval =  (1 - NewSumPain/16) *100;
-            let NewStiffInterval =  (1 - NewSumStiff/4) *100;
-            let NewFunctionInterval = (1 - NewSumFunction/8) *100;
-            let NewOverallInterval = OverAll[NewSumPain+NewSumStiff+NewSumFunction] 
+            let NewPainInterval =  Math.round( ((1 - NewSumPain/16) *100 ) *10 ) / 10;
+            let NewStiffInterval =  Math.round( ((1 - NewSumStiff/4) *100 ) * 10)/10;
+            let NewFunctionInterval = Math.round( ((1 - NewSumFunction/8) *100) * 10) /10;
+            let NewOverallInterval = Math.round( (OverAll[NewSumPain+NewSumStiff+NewSumFunction]) *10)/10; 
             let NewJointObject={joint_id:this.context.state.Eval[i].joint_id,PainInterval:NewPainInterval,StiffInterval:NewStiffInterval,FunctionInterval:NewFunctionInterval,OverallInterval:NewOverallInterval};
             if(this.context.state.Eval[i].priority_id<this.context.state.Eval.find(evalu=> evalu.joint_id==priorityJoin).priority_id)
             {

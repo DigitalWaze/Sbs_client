@@ -70,7 +70,7 @@ class PatientProfile extends Component {
                                         <div className="Evaluaion_Forms_Box_DisbaleText2"> <img src={Tick} alt="Completed"/> &nbsp; Complete </div>
                                     </div>
                                 :
-                                    <Button className="Evaluaion_PatientProfile_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./forms')}}> PRO: KOOS </Button>
+                                    <Button className="Evaluaion_PatientProfile_Box_Button"  variant="contained" onClick={()=>{this.context.history.push('./form-type')}}> PRO: KOOS </Button>
                                 }
                                 
                             </div>

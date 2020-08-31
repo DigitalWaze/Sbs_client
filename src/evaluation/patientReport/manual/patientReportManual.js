@@ -12,9 +12,9 @@ import Page2Left from './leftPages/page2';
 import Page3Left from './leftPages/page3';
 import RightIntroPage from './rightIntroPage';
 import LeftIntroPage from './leftPages/introPage';
-import Forms from '../../form/forms';
+import Forms from '../../form/formsNew';
 
-class PatientReport extends Component {
+class PatientReportManual extends Component {
     constructor(props) {
         super(props);
         this.state = { page:0,form:null,loading:true,tempLeft:false }
@@ -217,5 +217,5 @@ class PatientReport extends Component {
         );
     }
 }
-PatientReport.contextType=MyContext;
-export default PatientReport;
+PatientReportManual.contextType=MyContext;
+export default PatientReportManual;

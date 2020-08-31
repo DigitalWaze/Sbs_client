@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './evaluation.css'
 import MyContext from '../helper/themeContext';
 
-import Forms from './form/forms'
-import PatientReport from './patientReport/manual/patientReport'
+import Forms from './form/formsNew'
+import PatientReport from './patientReport/manual/patientReportManual'
 import { Route, Router } from 'react-router-dom';
 import Welcome from './welcome/welcome';
 import PatientDemoGraphics from './patientDemographics/patientDemoGraphics';
@@ -75,6 +75,8 @@ import BeforeReport from './beforeReport/beforeReport';
 import WelcomeRecom from '../recomCarePath/page1';
 import ChartJs from './chart/newChart';
 import ChartImage from './pdfImages/chartImage';
+import FormType from './form/formType';
+import PatientReportManual from './patientReport/manual/patientReportManual';
 
 
 
@@ -188,9 +190,12 @@ class Evaluation extends Component {
 
                         <Route exact path="/Evaluation/patient-profile" component={PatientProfile} />
 
-                        <Route path="/Evaluation/forms" component={PatientReport}/>
+                        <Route path="/Evaluation/form-type" component={FormType}/>
+
+
+                        <Route path="/Evaluation/forms" component={PatientReportManual}/>
                         
-                        <Route path="/Evaluation/patient-report" component={PatientReport}/>
+                        {/* <Route path="/Evaluation/patient-report" component={PatientReport}/> */}
 
                         <Route path="/Evaluation/upload-xrays" component={UploadXray}/>
                         <Route path="/Evaluation/x-ray-matching" component={XrayMatching}/>

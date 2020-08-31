@@ -6,7 +6,7 @@ import FooterImage from '../../assets/charts-pdf-footer-image.PNG'
 import FooterImage1 from '../../assets/charts-pdf-footer-image1.PNG'
 import FooterImage2 from '../../assets/charts-pdf-footer-image2.PNG'
 import FooterImage3 from '../../assets/charts-pdf-footer-image3.PNG'
-
+import ArrowImage from '../../assets/chart-pdf-arrow.jpg'
 
 import './chartImage.css'
 
@@ -42,10 +42,10 @@ class ChartImage extends Component {
         this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 5 && parseInt(ques.question_id) < 8) && ques.joint_id.toString()===this.context.state.Eval[0].joint_id.toString() ){  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ SumFunction=SumFunction+parseInt(ques.pro_severity_id) -1} } });
  
 
-        let PainInterval =  (1 - SumPain/16) *100;
-        let StiffInterval =  (1 - SumStiff/4) *100;
-        let FunctionInterval = (1 - SumFunction/8) *100;
-        let OverallInterval = OverAll[SumPain+SumStiff+SumFunction] 
+        let PainInterval = Math.round(( (1 - SumPain/16) *100) * 10) /10;
+        let StiffInterval =  Math.round(((1 - SumStiff/4) *100) * 10) /10;
+        let FunctionInterval = Math.round( ( (1 - SumFunction/8) *100 ) * 10)/10;
+        let OverallInterval = Math.round( ( OverAll[SumPain+SumStiff+SumFunction]) * 10)/10; 
 
         JointMapArray=[{joint_id:this.context.state.Eval[0].joint_id,PainInterval,StiffInterval,FunctionInterval,OverallInterval}];
 
@@ -75,10 +75,10 @@ class ChartImage extends Component {
             this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 5 && parseInt(ques.question_id) < 8) && ques.joint_id.toString()===this.context.state.Eval[i].joint_id.toString() )  {  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ NewSumFunction=NewSumFunction+parseInt(ques.pro_severity_id) - 1 } } });
  
 
-            let NewPainInterval =  (1 - NewSumPain/16) *100;
-            let NewStiffInterval =  (1 - NewSumStiff/4) *100;
-            let NewFunctionInterval = (1 - NewSumFunction/8) *100;
-            let NewOverallInterval = OverAll[NewSumPain+NewSumStiff+NewSumFunction] 
+            let NewPainInterval =  Math.round( ((1 - NewSumPain/16) *100 ) *10 ) / 10;
+            let NewStiffInterval =  Math.round( ((1 - NewSumStiff/4) *100 ) * 10)/10;
+            let NewFunctionInterval = Math.round( ((1 - NewSumFunction/8) *100) * 10) /10;
+            let NewOverallInterval = Math.round( (OverAll[NewSumPain+NewSumStiff+NewSumFunction]) *10)/10; 
             let NewJointObject={joint_id:this.context.state.Eval[i].joint_id,PainInterval:NewPainInterval,StiffInterval:NewStiffInterval,FunctionInterval:NewFunctionInterval,OverallInterval:NewOverallInterval};
             if(this.context.state.Eval[i].priority_id<this.context.state.Eval.find(evalu=> evalu.joint_id==priorityJoin).priority_id)
             {
@@ -108,24 +108,25 @@ class ChartImage extends Component {
             </div>
         
             {this.state.JointMapArray.map((joint,id) =>
-                <div className="chart-joint-outer-wrapper" style={{transform:id==1?'scale(0.7) translate(-200px,-120px)':'scale(0.7) translateX(-200px)'}}>
+                <div className="chart-joint-outer-wrapper" style={{transform:`scale(0.7) translate(-200px,${((id+1)*-90)- ((id>0)?76:0)}px)`}}>
                     <div className="chart-joint-outer-text" > 
                         {joint.joint_id.toString()==="3"?"RIGHT KNEE":"LEFT KNEE"}
                     </div>
-                    <div className="chart-joint-inner-wrapper">
+                    <div className="chart-joint-inner-wrapper" style={{width:'1050px'}}>
                     <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
-                    <span className="arrow-text-span">
+                    <span className="arrow-text-span-image">
                         BETTER &nbsp; JOINT &nbsp; HEALTH
                     </span>
-                    <span id="arrow-div">
-                        <Arrow
+                    <span id="arrow-image-div">
+                        {/* <Arrow
                                 angle={0}
                                 length={90}
                                 style={{
                                 width: '50px',
                                 height:'375px'
                                 }}
-                            />
+                            /> */}
+                            <img src={ArrowImage} id="arrow-image-tag" />
                     </span>
 
                     
@@ -147,7 +148,7 @@ class ChartImage extends Component {
                 
                     {
                         [joint.OverallInterval,joint.PainInterval,joint.FunctionInterval,joint.StiffInterval].map((text,key)=>
-                            <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
+                            <div  style={{display:'inline-block',marginLeft:key===0?'30px':'',verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
                                 
                                 <VictoryStack
                                     animate={{
@@ -201,7 +202,7 @@ class ChartImage extends Component {
                 </div>
             </div>)}
 
-            <div className="chart-pdf-image-footer-wrapper">
+            <div className="chart-pdf-image-footer-wrapper" style={{transform:`translateY( ${-116 * this.state.JointMapArray.length}px)`}}>
                 {/* <img src={FooterImage} alt="Chart - Definitions"/> */}
                 <img src={FooterImage3} alt="Chart - Definitions" className="chart-pdf-image-footer-1"/>
                 <img src={FooterImage1} alt="Chart - Definitions"/>
