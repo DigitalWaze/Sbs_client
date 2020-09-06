@@ -59,11 +59,23 @@ class Drawer extends Component {
         }
     }
     render() { 
+        const path = this.context.history.location.pathname;
+
+        const route1Enable = (path === "/evaluation/welcome" || path==="/evaluation/Video" || path==="/evaluation/Demographics")?false:true;
+        const route1name = path.toString().includes("evaluation")?'Start Another Evaluation':'Start An Evaluation';
+        
+        const route2Enable = (path === "/tutorials/sbs/welcome") ?false:true;
+        const route2name = path.toString().includes("tutorials") ? 'Start Education from start':'Start Education';
+        
+        const route3Enable = ( (path==="/tutorials/resume-tutorial") || (path.toString().includes("evaluation")) || (!this.context.state.report_id) || (this.context.state.report_id==null) ) ? false:true;
+        
         return ( 
+
             !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
 
         <div id="Main_Drawer">
-
+ {        console.log(this.context.state.report_id)
+}
 
         <div id="Main_Drawer_Menu_Image_Div"   onClick={this.toggleMenu} >
             <img src={MenuImage}  alt="Menu"  id="Main_Drawer_Menu_Image" />
@@ -89,8 +101,32 @@ class Drawer extends Component {
 
                 {
                     !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
-                    <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
-                        Log out
+                    <div>
+                        {route1Enable?
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                                {route1name}
+                            </div>
+                        :null
+                        }
+
+                        {route2Enable?
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                                {route2name}
+                            </div>
+                        :null
+                        }
+
+                        {route3Enable?
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                                Resume Evaluation
+                            </div>
+                        :null
+                        }
+                         
+                        
+                        <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                            Log out
+                        </div>
                     </div>
                     :null
 

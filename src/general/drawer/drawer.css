@@ -48,7 +48,7 @@
 #Main_Drawer_Menu_Div
 {
     transition: all 0.5s ease;
-    height: 345px;
+    height: 440px;
     background: #fff;
     position: absolute;
     width: 200px;
@@ -60,7 +60,7 @@
 
 .Main_Drawer_Menu_Div_Close
 {
-    top:-360px;
+    top:-445px;
 }
 
 .Main_Drawer_Menu_Div_Open
