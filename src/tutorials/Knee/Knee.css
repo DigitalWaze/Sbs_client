@@ -1,0 +1,49 @@
+#Knee_Main_Div
+{
+  background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+
+#Knee_Content1_Wrapper
+{
+  vertical-align: top;
+  min-height:100vh;
+  margin-left: 10vw;
+}
+
+#Knee_Heading1_Div
+{
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 75px;
+  margin-bottom: 0px;
+  display: block;
+}
+
+.image-grid
+{
+    align-content: center;
+    text-align: center;
+    align-items: center;
+
+    
+}
+
+
+@media only screen and (min-width:959px)
+{
+    #Knee_Content1_Wrapper
+    {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .image-grid
+    {
+        transform:translateY(-60px)
+    }
+}

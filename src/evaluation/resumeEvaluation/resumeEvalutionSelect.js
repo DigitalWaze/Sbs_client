@@ -11,6 +11,55 @@ import Xray2 from '../../assets/xray2.jpeg';
 import Xray3 from '../../assets/xray3.jpeg';
 import Xray4 from '../../assets/xray4.png';
 
+import Bone1Image from '../../assets/bone3_Bitmap.png'
+import MFV from '../../assets/medial-flexion.png'
+import MNFV from '../../assets/medial-nonflexion.png'
+import LFV from '../../assets/lateral-flexion.png'
+import LNFV from '../../assets/lateral-nonflexion.png'
+import KV from '../../assets/kneecapview.jpg'
+
+import MFVUP from '../../assets/medial-flexion-up.png'
+import MNFVUP from '../../assets/medial-nonflexion-up.png'
+import LFVUP from '../../assets/lateral-flexion-up.png'
+import LNFVUP from '../../assets/lateral-nonflexion-up.png'
+import KVUP from '../../assets/kneecap-up.png'
+
+
+import LMFVUP from '../../assets/left-medial-flexion-up.png'
+import LMNFVUP from '../../assets/left-medial-nonflexion-up.png'
+import LLFVUP from '../../assets/left-lateral-flexion-up.png'
+import LLNFVUP from '../../assets/left-lateral-nonflexion-up.png'
+import LKVUP from '../../assets/left-kneecap-up.png'
+
+import MFVUP1 from '../../assets/medial-flexion-up-1.png'
+import MNFVUP1 from '../../assets/medial-nonflexion-up-1.png'
+import LFVUP1 from '../../assets/lateral-flexion-up-1.png'
+import LNFVUP1 from '../../assets/lateral-nonflexion-up-1.png'
+import KVUP1 from '../../assets/kneecap-up-1.png'
+
+import MFVUP2 from '../../assets/medial-flexion-up-2.png'
+import MNFVUP2 from '../../assets/medial-nonflexion-up-2.png'
+import LFVUP2 from '../../assets/lateral-flexion-up-2.png'
+import LNFVUP2 from '../../assets/lateral-nonflexion-up-2.png'
+import KVUP2 from '../../assets/kneecap-up-2.png'
+
+import MFVUP3 from '../../assets/medial-flexion-up-3.png'
+import MNFVUP3 from '../../assets/medial-nonflexion-up-3.png'
+import LFVUP3 from '../../assets/lateral-flexion-up-3.png'
+import LNFVUP3 from '../../assets/lateral-nonflexion-up-3.png'
+import KVUP3 from '../../assets/kneecap-up-3.png'
+
+import MFVUP4 from '../../assets/medial-flexion-up-4.png'
+import MNFVUP4 from '../../assets/medial-nonflexion-up-4.png'
+import LFVUP4 from '../../assets/lateral-flexion-up-4.png'
+import LNFVUP4 from '../../assets/lateral-nonflexion-up-4.png'
+import KVUP4 from '../../assets/kneecap-up-4.png'
+
+import LMFV from '../../assets/left-medial-flexion.png'
+import LMNFV from '../../assets/left-medial-nonflexion.png'
+import LLFV from '../../assets/left-lateral-flexion.png'
+import LLNFV from '../../assets/left-lateral-nonflexion.png'
+
 class ResumeEvaluationSelect extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +77,7 @@ class ResumeEvaluationSelect extends Component {
     handleRefresh = () =>
     {
         this.setState({loading:true})
-        GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
+        GetData(this.context.baseUrl+'/api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
 
         // this.context.discardLeft();
         // this.props.history.push('/evaluation/welcome')
@@ -37,8 +86,8 @@ class ResumeEvaluationSelect extends Component {
     setMeTwo = () =>
     {
         this.context.setCookie('evaluation_stage','',0);
-        this.context.setCookie('temp_report_id','',0);
-        this.context.setCookie('temp_patient_id','',0);
+        this.context.setCookie('temp_report_id','',null);
+        this.context.setCookie('temp_patient_id','',null);
         this.context.multipleUpdateValueWithHistory([{key:'evaluation_stage',value:null},{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'old',value:false}],'/evaluation/welcome');
     }
     
@@ -91,6 +140,26 @@ class ResumeEvaluationSelect extends Component {
             console.log(temp_patient_id)
             
             let Eval=[];
+            let Evaluations=
+            [   
+                {name:'Right Knee',image:Bone1Image  , joint_id:'3',
+                    Xrays:[ 
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+
+                    ] 
+                },
+
+                {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
+                    Xrays:[ 
+                        {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                        {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                        {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+                    ] 
+                }
+
+            ]
             let active=0;
             let activePriority=5;
             //populating forms
@@ -143,7 +212,7 @@ class ResumeEvaluationSelect extends Component {
                             activePriority=element.priority_id;
                             active=element.joint_id;
                         }
-                        Eval.push({visitor_id:element.visitor_id,joint_id:element.joint_id,name:name,priority_id:element.priority_id,isEvaluated:true,joint_hurt_id:element.id})
+                        Eval.push({visitor_id:element.visitor_id,joint_id:element.joint_id,name:name,priority_id:element.priority_id,isEvaluated:false,joint_hurt_id:element.id})
                         
                     });
 
@@ -222,8 +291,14 @@ class ResumeEvaluationSelect extends Component {
                 }
             }
 
+            if(parseInt(this.context.state.evaluation_stage)>4)
+            {
+                
+                
+            }
+
             console.log(newForm)
-            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
+            this.context.multipleUpdateValueWithHistory([{key:'Evaluations',value:Evaluations},{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
         }
 
         

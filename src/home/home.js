@@ -1,19 +1,24 @@
 import React, { Component } from "react";
-
 import Button from "@material-ui/core/Button";
-
 import Bone1Image from "../assets/bone1_Bitmap.png";
 
+import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
+
 import "./home.css";
+
 import MyContext from "../helper/themeContext";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {loading:true};
   }
+
+
   render() {
     return (
+
+      
       <div id="Home_Main_Div">
         <div id="Home_Content1_Wrapper">
           <div id="Home_Heading1_Div">

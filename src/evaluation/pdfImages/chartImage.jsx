@@ -22,7 +22,7 @@ class ChartImage extends Component {
         this.state = { JointMapArray:[] }
     }
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         let JointMapArray;
         

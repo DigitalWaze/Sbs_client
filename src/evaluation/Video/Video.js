@@ -37,7 +37,7 @@ class Video extends Component {
                     "tutorial-" + this.context.state.user_id,
                     3
                   );
-                  this.context.history.push("./Demographics");
+                  this.context.history.push("./demographics");
                 }}
               >
                 {" "}

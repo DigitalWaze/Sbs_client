@@ -117,23 +117,37 @@ class Login extends Component {
                 
             }
 
-            if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
-            {
-              this.context.history.push("/tutorials/resume-tutorial");
-            }
 
-            else if(temp_stage_id!=null)
-            {
-                this.context.history.push('/evaluation/resume-evaluation');
-            }
+            // ------------------ redirection after loading previous session----------------------------------
+
+                //----------- start --------- new setup after login session from cookie
+
+                    this.context.history.push("/home");   // ------ home will cater resume and tutorials
             
-            else if(tutorial_rem==41)
-            {
-                this.context.history.push('/tutorials/resume-tutorial');
-            }
+                //----------- end --------- new setup after login session from cookie
+
+            //----------- start --------- old setup after login session from cookie
+
+            // if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
+            // {
+            //   this.context.history.push("/tutorials/resume-tutorial");
+            // }
+
+            // else if(temp_stage_id!=null)
+            // {
+            //     this.context.history.push('/evaluation/resume-evaluation');
+            // }
+            
+            // else if(tutorial_rem==41)
+            // {
+            //     this.context.history.push('/tutorials/resume-tutorial');
+            // }
                 
 
-            else  this.context.history.push('/tutorials/sbs/welcome');
+            // else  this.context.history.push('/tutorials/sbs/welcome');
+            
+            //----------- end --------- old setup after login session from cookie
+
 
 
             

@@ -29,7 +29,7 @@ class ShowReport extends Component {
     }
 
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         let priority_id=this.context.state.Eval.filter(eva=>eva.joint_id==this.context.state.joint_id)[0].priority_id;
         let Evaluation = this.context.state.Evaluations.filter(eva=> eva.joint_id==this.context.state.joint_id)[0];
@@ -114,9 +114,11 @@ class ShowReport extends Component {
         {
             let joint_id=null;
             let priority_id=null
+            console.log(this.context.state.Eval)
             let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated.toString()=='false');
             if(joint_idall.length>0)
             {joint_id=joint_idall[0].joint_id;}
+            console.log(joint_idall)
             let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated.toString()=='false');
             if(priority_idall.length>0)
             {priority_id=priority_idall[0].priority_id;}

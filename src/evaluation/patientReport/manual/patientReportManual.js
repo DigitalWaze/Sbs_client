@@ -20,7 +20,7 @@ class PatientReportManual extends Component {
         this.state = { page:0,form:null,loading:true,tempLeft:false }
     }
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         if(this.context.state.Eval.length>1)
         {
@@ -186,7 +186,7 @@ class PatientReportManual extends Component {
             this.context.updateSession();
             this.context.setCookie('evaluation_stage',3,30);
             // this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true},{key:'form',value:this.state.form}],'./forms')
-            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form}]);
+            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form},{key:'evaluation_stage',value:3}]);
             this.setState({loading:false,active:null})
 
 

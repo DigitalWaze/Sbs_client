@@ -29,7 +29,7 @@ class PatientProfile extends Component {
         this.state = {  }
     }
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         if(!this.context.state.patient)
         {

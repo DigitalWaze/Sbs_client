@@ -18,6 +18,11 @@ req.forEach(element => {
     {
       return "";
     }
+
+    if(key==="updateState")
+    {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(element[key]);
+    }
     let keys='evaluation['+arrayKey+'].'+key;
     return encodeURIComponent(keys) + '=' + encodeURIComponent(element[key]);
   }).join('&');

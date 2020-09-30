@@ -49,7 +49,7 @@ class XrayMatching extends Component {
 
     }
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
         {
@@ -348,11 +348,22 @@ class XrayMatching extends Component {
                         let id=this.state.Matching.filter(match=>match.Xray_type.id==element.id && match.view.id==ele.id)[0].id;
                         let reqObject={processed_xray_id:id,xray_matching_id:ele.state,notes:ele.notes};
                         req.push(reqObject);
+                       
                     });
                     
                 });
 
+                if(this.context.state.noOfEvalRemainToUpload>1)
+                {
+                    req.push({updateState:false})
+                }
+                else
+                {
+                    req.push({updateState:true})
+                }
+
                 this.setState({loading:true})
+                
 
                 PostData(this.context.baseUrl+'/api/v1/evaluate/xrays',201,req,this.context.state.token,this.setMeTwo)
 

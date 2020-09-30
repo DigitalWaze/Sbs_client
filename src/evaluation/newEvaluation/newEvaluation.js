@@ -39,6 +39,7 @@ class NewEvaluation extends Component {
     componentDidMount()
     {
         this.ResetMe();
+        console.log(this.context.state.Eval)
         if(this.context.state.Eval.length>0)
         {
             let priority2=0,priority4=0;
@@ -160,6 +161,7 @@ class NewEvaluation extends Component {
         if(response.res && response.res.length>0)
         {
             let Eval=this.state.Eval;
+            let SettingEval = this.state.Eval;
             response.res.forEach(element => {
 
                 Eval.filter(eva => eva.joint_id==element.joint_id)[0].joint_hurt_id=element.id;
@@ -168,9 +170,10 @@ class NewEvaluation extends Component {
             });
             console.log(Eval);
             console.log(this.state.Eval.length)
+            console.log(SettingEval)
             this.context.updateSession();
             this.context.setCookie('evaluation_stage',2,30);
-            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:Eval}],'./patient-profile')
+            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:SettingEval},{key:'evaluation_stage',value:2}],'./patient-profile')
             // this.setState({loading:false})
         }
 

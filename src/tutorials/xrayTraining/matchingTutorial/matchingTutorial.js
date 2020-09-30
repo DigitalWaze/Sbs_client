@@ -79,7 +79,7 @@ class MatchingTutorial extends Component {
          }
     }
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         let Evaluation= 
         {name:'Right Knee',image:Bone1Image  , joint_id:'3',

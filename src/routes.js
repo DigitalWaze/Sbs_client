@@ -61,7 +61,9 @@ import KVUP4 from "./assets/kneecap-up-4.png";
 
 import Login from "./login/login";
 import CreateUser from "./admin/createUser/createUser";
-import Home from "./home/home";
+// import Home from "./home/home";
+import Home from "./home/homeNew";
+
 import StartOver from "./offer/startOver";
 import RecomCarePath from "./recomCarePath/recomCarePath";
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
@@ -150,13 +152,9 @@ class Routes extends Component {
     this.setCookie("temp_patient_id", this.state.temp_patient_id, 30);
   };
 
-  componentWillMount() {
-    if (
-      this.state.token == null ||
-      !this.state.token ||
-      this.state.token == "" ||
-      this.state.token == " "
-    ) {
+  UNSAFE_componentWillMount() {
+    if (this.state.token == null ||!this.state.token ||this.state.token == "" ||this.state.token == " ") // will always be true
+    {
       let token = this.getCookie("token");
       let type = this.getCookie("type");
       let user_id = this.getCookie("user_id");
@@ -173,34 +171,19 @@ class Routes extends Component {
 
       console.log(tutorial_rem);
 
-      if (
-        token == undefined ||
-        token == "" ||
-        token == " " ||
-        type == undefined ||
-        type == "" ||
-        type == " " ||
-        user_id == undefined ||
-        user_id == "" ||
-        user_id == " " ||
-        user_email == undefined ||
-        user_email == "" ||
-        user_email == " " ||
-        user_type_id == undefined ||
-        user_type_id == "" ||
-        user_type_id == " " ||
-        user_type_name == undefined ||
-        user_type_name == "" ||
-        user_type_name == " " ||
-        organization == undefined ||
-        organization == "" ||
-        organization == " "
-      ) {
+      if ( token == undefined || token == "" || token == " " || type == undefined ||type == "" || type == " " ||user_id == undefined ||user_id == "" ||        user_id == " " ||      user_email == undefined ||     user_email == "" ||      user_email == " " ||      user_type_id == undefined ||      user_type_id == "" ||       user_type_id == " " ||       user_type_name == undefined ||user_type_name == "" ||user_type_name == " " ||organization == undefined ||organization == "" || organization == " ")
+      { //on No previous session from cookie
         console.log("No Login Session");
         this.setState({ loading: false });
         history.push("/login");
-      } else {
-        console.log(evaluation_stage);
+      }
+      else
+      {
+
+        // ------------------ redirection after loading previous session----------------------------------
+        
+        
+        // console.log('evaluation_stage: ',evaluation_stage);
         this.setState({
           old: false,
           evaluation_stage: evaluation_stage,
@@ -217,22 +200,37 @@ class Routes extends Component {
           organization: organization,
         });
 
-        if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
-        {
-          history.push("/tutorials/resume-tutorial");
-        }
-        else if (parseInt(evaluation_stage) > 0) {
-          
-          history.push("/evaluation/resume-evaluation");
-          
-        }
 
-        else if(tutorial_rem==41)
-        {
-          history.push('/tutorials/resume-tutorial'); 
-        }
+
+
+        //----------- start --------- new setup after login session from cookie
+
+          history.push("/home");   // ------ home will cater resume and tutorials
+          
+        //----------- end --------- new setup after login session from cookie
+
+
+        //----------- start --------- old setup after login session from cookie
+
+        // if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
+        // {
+        //   history.push("/tutorials/resume-tutorial");
+        // }
+        // else if (parseInt(evaluation_stage) > 0) {
+          
+        //   history.push("/evaluation/resume-evaluation");
+          
+        // }
+
+        // else if(tutorial_rem==41)
+        // {
+        //   history.push('/tutorials/resume-tutorial'); 
+        // }
        
-        else  history.push("/tutorials/sbs/welcome");
+        // else  history.push("/tutorials/sbs/welcome");
+
+        //----------- end --------- old setup after login session from cookie
+
       }
     }
   }
@@ -390,7 +388,7 @@ class Routes extends Component {
           ) : null}{" "}
           {/* WIDTH 70 PX */}
           <Route path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} /> {/* DEFAULT */}
           <Route path="/start-over" component={StartOver} />
           <Route path="/tutorials" component={Tutorials} />

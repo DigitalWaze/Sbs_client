@@ -5,7 +5,7 @@
     width:70px;
     /* background: yellow; */
     min-height:100vh;
-    z-index: 1;
+    z-index: 3;
 }
 
 #Main_Drawer_Copyright_Text

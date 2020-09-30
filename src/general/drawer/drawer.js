@@ -5,6 +5,7 @@ import MenuCloseImage from  '../../assets/cross.png';
 
 import './drawer.css';
 import MyContext from '../../helper/themeContext';
+import GetData from '../../Fetch/getDataUniversal';
 
 
 class Drawer extends Component {
@@ -58,11 +59,48 @@ class Drawer extends Component {
             }
         }
     }
+
+    startEvaluation = () =>
+    {
+        if(parseInt(this.context.state.evaluation_stage)>0)  
+        {
+            GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
+        }
+
+        else 
+        {
+            this.context.setCookie('evaluation_stage','',0);
+            this.context.setCookie('temp_report_id','',null);
+            this.context.setCookie('temp_patient_id','',null);
+            this.context.multipleUpdateValueWithHistory([{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'evaluation_stage',value:null},{key:'noOfEvalRemainToUpload',value:null},{key:'Xrays',value:[]},{key:'form',value:[]},{key:'Eval',value:[]},{key:'joint_id',value:0},{key:'activePriority',value:5},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'old',value:false},{key:'patient',value:{}}],'/evaluation/welcome')
+        }
+    }
+
+    startEducation = () =>
+    {
+        this.context.history.push('/tutorials/sbs/welcome')
+    }
+
+    resumeEvaluation = () =>
+    {
+        this.context.multipleUpdateValueWithHistory([{key:'old',value:true}],'/evaluation/demographics')
+    }
+
+
+    setMeTwo = () =>
+    {
+        this.context.setCookie('evaluation_stage','',0);
+        this.context.setCookie('temp_report_id','',0);
+        this.context.setCookie('temp_patient_id','',0);
+        this.context.multipleUpdateValueWithHistory([{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'evaluation_stage',value:null},{key:'noOfEvalRemainToUpload',value:null},{key:'Xrays',value:[]},{key:'form',value:[]},{key:'Eval',value:[]},{key:'joint_id',value:0},{key:'activePriority',value:5},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'old',value:false},{key:'patient',value:{}}],'/evaluation/welcome')
+    }
+
+
     render() { 
         const path = this.context.history.location.pathname;
 
         const route1Enable = (path === "/evaluation/welcome" || path==="/evaluation/Video" || path==="/evaluation/Demographics")?false:true;
-        const route1name = path.toString().includes("evaluation")?'Start Another Evaluation':'Start An Evaluation';
+        const route1name = path.toString().includes("evaluation")?'Start another Evaluation':'Start an Evaluation';
         
         const route2Enable = (path === "/tutorials/sbs/welcome") ?false:true;
         const route2name = path.toString().includes("tutorials") ? 'Start Education from start':'Start Education';
@@ -102,22 +140,23 @@ class Drawer extends Component {
                 {
                     !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
                     <div>
-                        {route1Enable?
-                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
-                                {route1name}
-                            </div>
-                        :null
-                        }
 
                         {route2Enable?
-                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.startEducation}>
                                 {route2name}
                             </div>
                         :null
                         }
 
+                        {route1Enable?
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.startEvaluation}>
+                                {route1name}
+                            </div>
+                        :null
+                        }
+
                         {route3Enable?
-                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.resumeEvaluation}>
                                 Resume Evaluation
                             </div>
                         :null

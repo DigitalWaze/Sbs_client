@@ -16,7 +16,7 @@ class ChartJs extends Component {
 
     
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         let JointMapArray;        
         let SumPain=0;

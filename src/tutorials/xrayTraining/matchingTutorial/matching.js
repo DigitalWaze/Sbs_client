@@ -57,7 +57,7 @@ class Matching extends Component {
     }
 
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {   
         console.log(this.props.ActiveType+''+this.props.ActiveXray)
         if(this.props.ActiveType+this.props.ActiveXray=='MedialFlexion View')

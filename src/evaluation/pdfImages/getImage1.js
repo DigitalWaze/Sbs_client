@@ -21,7 +21,7 @@ class GetImage1 extends Component {
         this.state = { Evaluations:[]  }
     }
 
-    componentWillMount()
+    UNSAFE_componentWillMount()
     {
         this.setState({Evaluations:this.context.state.Evaluations})
     }

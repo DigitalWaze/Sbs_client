@@ -57,8 +57,10 @@ class PatientDemoGraphics extends Component {
     {
         // document.getElementById('')
         console.log(this.context.state.patient)
+        console.log()
         if(this.context.state.patient.name!=undefined && this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>0)
         {
+
             let oldPatient = this.context.state.patient;
             this.setState({patient_name:oldPatient.name,birth_date:oldPatient.birth_date,age:oldPatient.age,gender:oldPatient.gender,height:oldPatient.height,
             home_phone:oldPatient.home_phone,cell_phone:oldPatient.cell_phone,weight:oldPatient.weight,home_address:oldPatient.home_address,
@@ -228,7 +230,7 @@ class PatientDemoGraphics extends Component {
         patient["date"]=this.state.date;
 
 
-        this.context.multipleUpdateValueWithHistory([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id}],'./new-evaluation')
+        this.context.multipleUpdateValueWithHistory([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id},{key:'evaluation_stage',value:1}],'./new-evaluation')
 
     } 
 
@@ -309,12 +311,12 @@ class PatientDemoGraphics extends Component {
                     <div id="Evaluaion_PatientDemoGraphics_Heading2_Div">
                         Patient Demographics
                     </div>
-                    <FormControl component="fieldset">
+                    {/* <FormControl component="fieldset">
                         <RadioGroup row aria-label="new or old patient" name="new or old patient" defaultValue={"false"}>
                             <FormControlLabel disabled={false}  value={"false"} style={{color:"white"}} control={<Radio style={{color:"white"}} />} label="New Patient" />
                             <FormControlLabel disabled={true} value={"true"}  style={{color:"white"}} control={<Radio style={{color:"white"}} />} label="Return Patient" />
                         </RadioGroup>
-                    </FormControl>
+                    </FormControl> */}
                     <div id="Evaluaion_PatientDemoGraphics_Form_Div">
                         <span className="Evaluaion_PatientDemoGraphics_Form_Span1">
                             <span style={{display:'inline-block',width:'70px',marginBottom:'5px'}}> Name:</span>
@@ -324,9 +326,7 @@ class PatientDemoGraphics extends Component {
                                     id="patient_name"
                                     value={this.state.patient_name}
                                     onChange={this.handleChange}
-                                    
-                                    // error={true}
-                                    //startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                   
                                 />
                             </FormControl>
                         </span> 
