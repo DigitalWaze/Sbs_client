@@ -1,0 +1,122 @@
+#WIACP_Main_Div {
+  background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+  min-height: 100vh;
+  padding: 0px;
+  position: relative;
+  overflow: hidden;
+}
+
+#WIACP_Content_Wrapper {
+  margin: auto;
+  min-width: 700px;
+  width: 58%;
+  /* max-width: 830px; */
+  height: 100vh;
+  padding: 0rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#WIACP_Heading1_Div {
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-size: 2vw;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+#WIACP_Text_Div,
+#WIACP_Image_Heading {
+  font-size: 1.3vw;
+  font-family: Lato, sans-serif;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+#WIACP_Text_Div_list {
+  font-size: 23px;
+  margin-left: 15px;
+}
+
+#WIACP_Image_Wrapper {
+  margin-top: 15px;
+  /* padding: 15px; */
+}
+
+#WIACP_Image_Container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+#WIACP_Inner_Image_Container img {
+  width: 100%;
+}
+
+#WIACP_Next_Button_Div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* @media screen and (max-width: 935px) {
+  #WIACP_Content_Wrapper {
+    padding: 0rem 1rem 0rem 1rem;
+    max-width: 750px;
+  }
+
+  #WIACP_Heading1_Div {
+    font-size: 24px;
+  }
+
+  #WIACP_Text_Div,
+  #WIACP_Image_Heading {
+    font-size: 15px;
+  }
+} */
+/* 
+@media screen and (min-height: 700px) {
+  #WIACP_Content_Wrapper {
+    padding: 0rem 1rem 0rem 1rem;
+    max-width: 830px;
+  }
+
+  #WIACP_Heading1_Div {
+    font-size: 26px;
+  }
+
+  #WIACP_Text_Div,
+  #WIACP_Image_Heading {
+    font-size: 16px;
+  }
+} */
+
+#WIACP_Next_Button {
+  display: block;
+  width: auto;
+  min-width: 220px;
+  padding: 16px 6px;
+  font-size: 1.3vw;
+  line-height: 1.4vw;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  font-family: Lato, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  #WIACP_Heading1_Div {
+    font-size: 2.8vw;
+  }
+
+  #WIACP_Text_Div {
+    font-size: 1.9vw;
+  }
+  #WIACP_Next_Button {
+    font-size: 1.9vw;
+  }
+}
