@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Button } from "@material-ui/core";
-import Bone1Image from "../../assets/bone1_Bitmap.png";
+import Image1 from "../../assets/Patient_Evaluation_home.png";
 // import "./Knee.css";
 import MyContext from "../../helper/themeContext";
 
@@ -69,8 +69,8 @@ class PatientEvaluation extends Component {
 
             <Grid item xs={12} md={4} lg={4} xl={4} className="image-grid">
               <div id="Home_Image_div_wrapper">
-                <div id="Home_Image_div">
-                  <img src={Bone1Image} alt="SBS" id="Home_Image_Bone" />
+                <div id="Home_Image_div_patient_evaluation_home">
+                  <img src={Image1} alt="SBS" id="Home_Image_Bone" />
                 </div>
                 <div className="Home_Button_Div">
                   <Button
