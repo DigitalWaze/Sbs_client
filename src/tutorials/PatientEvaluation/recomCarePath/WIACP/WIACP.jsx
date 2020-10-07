@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../../helper/themeContext";
 
-import Img1 from "../../../assets/WIACPss.JPG";
+import Img1 from "../../../assets/WIACP.png";
 
 import "./WIACP.css";
 

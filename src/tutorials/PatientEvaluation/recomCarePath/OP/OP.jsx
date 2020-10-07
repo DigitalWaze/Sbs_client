@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../../helper/themeContext";
 
-import Img1 from "../../../assets/OPss.JPG";
+import Img1 from "../../../assets/OP.png";
 
 import "./OP.css";
 
@@ -27,7 +27,7 @@ class OP extends Component {
             </div>
             <div id="OP_Image_Wrapper">
               <div id="OP_Image_Container">
-                <img src={Img1} alt="OP1" />
+                <img style={{ maxWidth: "85%" }} src={Img1} alt="OP1" />
               </div>
             </div>
             <div id="OP_Next_Button_Div">

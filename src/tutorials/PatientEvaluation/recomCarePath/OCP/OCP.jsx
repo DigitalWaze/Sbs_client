@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../../helper/themeContext";
 
-import Img1 from "../../../assets/OCPss.JPG";
+import Img1 from "../../../assets/OCP.png";
 
 import "./OCP.css";
 

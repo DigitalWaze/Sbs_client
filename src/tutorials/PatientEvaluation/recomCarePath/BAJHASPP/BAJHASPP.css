@@ -41,12 +41,11 @@
 }
 
 #BAJHASPP_Image_Wrapper {
-  margin-tbajhaspp: 15px;
+  margin: 10px 0;
   /* padding: 15px; */
 }
 
 #BAJHASPP_Image_Container {
-  background-color: white;
   display: flex;
   justify-content: center;
   flex-direction: row;

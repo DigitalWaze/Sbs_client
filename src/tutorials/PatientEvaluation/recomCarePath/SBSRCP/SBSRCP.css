@@ -37,7 +37,7 @@
 }
 
 #SBSRCP_Text_Div li {
-  margin: 5px 0;
+  margin: 5px 15px;
 }
 
 #SBSRCP_Image_Wrapper {
@@ -46,7 +46,6 @@
 }
 
 #SBSRCP_Image_Container {
-  background-color: white;
   display: flex;
   justify-content: center;
   flex-direction: row;

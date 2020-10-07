@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../../helper/themeContext";
 
-import Img1 from "../../../assets/BAJHASPPss.JPG";
+import Img1 from "../../../assets/BAJHASPP.png";
 
 import "./BAJHASPP.css";
 
@@ -29,7 +29,7 @@ class BAJHASPP extends Component {
             </div>
             <div id="BAJHASPP_Image_Wrapper">
               <div id="BAJHASPP_Image_Container">
-                <img src={Img1} alt="BAJHASPP1" />
+                <img style={{ maxWidth: "78%" }} src={Img1} alt="BAJHASPP1" />
               </div>
             </div>
             <div id="BAJHASPP_Next_Button_Div">

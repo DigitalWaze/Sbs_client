@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import MyContext from "../../../../helper/themeContext";
 
-import Img1 from "../../../assets/SBSRCPss.JPG";
+import Img1 from "../../../assets/SBSRCP.png";
 
 import "./SBSRCP.css";
 
@@ -30,7 +30,7 @@ class SBSRCP extends Component {
             </div>
             <div id="SBSRCP_Image_Wrapper">
               <div id="SBSRCP_Image_Container">
-                <img src={Img1} alt="SBSRCP1" />
+                <img style={{ maxWidth: "95%" }} src={Img1} alt="SBSRCP1" />
               </div>
             </div>
             <div id="SBSRCP_Next_Button_Div">
