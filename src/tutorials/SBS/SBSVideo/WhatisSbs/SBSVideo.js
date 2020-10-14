@@ -2,11 +2,24 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import "../SBSVideo.css";
 import MyContext from "../../../../helper/themeContext";
+import ReactPlayer from 'react-player'
+import SemipolarLoading from "react-loadingg/lib/SemipolarLoading";
+
 
 class SBSVideo extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {light:false,loading:true};
+  }
+
+  onVideoEnd = () =>
+  {
+    this.setState({light:true})
+  }
+
+  onVideoReady = () =>
+  {
+    this.setState({loading:false})
   }
 
   render() {
@@ -20,12 +33,20 @@ class SBSVideo extends Component {
                   What is Hip & Knee Step by Step
                 </div>
               </div>
-              <video video controls autoplay className="sbs-video-wrapper">
+
+              {this.state.loading == true ? (
+                <SemipolarLoading size={"large"} color={"#b4ec51"} />
+                )
+              :null}
+              <ReactPlayer onReady={this.onVideoReady} url='https://vimeo.com/466659009'controls={true} playing={true} onEnded={this.onVideoEnd} light={this.state.light} />
+
+              {/* <video video controls autoPlay className="sbs-video-wrapper">
+              
                 <source
-                  src="https://drive.google.com/uc?id=18dRIg0cCSDN7741mv-PjO-x7Kcs-mwqd"
+                  src="https://vimeo.com/466659009"
                   type="video/mp4"
                 />
-              </video>
+              </video> */}
             </div>
             <div id="SBSVideo_Next_Button_Div">
               <Button

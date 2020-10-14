@@ -128,7 +128,9 @@ class EvaluationHistory extends Component {
                 </div>
 
                 <div id="Evaluaion_PatientReport_Next_Button_Div">
-                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.handleClick}> New Evaluation </Button>
+                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={() => {this.context.history.push("/home");}}>
+                        {" "}Back to Home{" "}
+                    </Button>
                 </div>
                
 

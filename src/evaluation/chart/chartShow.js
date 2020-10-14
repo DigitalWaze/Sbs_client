@@ -139,7 +139,7 @@ class ChartShow extends Component {
                     </div>
                     
                     <div id="Evaluaion_Welcome_Next_Button_Div">
-                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.next}> {this.props.totalLeft==2?joint.joint_id.toString()==='3'?'View Left PRO Report Card':"View Right PRO Report Card":"View Patient Summary"} </Button>
+                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.next}> {this.props.totalLeft==2?joint.joint_id.toString()==='3'?'View Left PRO Report Card':"View Right PRO Report Card":"Next"} </Button>
                     </div>
                 </div>
                 

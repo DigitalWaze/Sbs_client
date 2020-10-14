@@ -124,7 +124,7 @@ class BeforeReport extends Component {
                             )
                         }
                          <div id="Evaluaion_Report_Next_Button_Div">
-                            <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> View Patient Summary  </Button>
+                            <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> Next  </Button>
                         </div>
                     </div>
                 </div>

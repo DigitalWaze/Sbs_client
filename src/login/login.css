@@ -1,122 +1,116 @@
-#Login_Main_Div
-{
+#Login_Main_Div {
   background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
   position: relative;
   overflow: hidden;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.MuiButton-contained
-{
-  color:#000 !important;
+.MuiButton-contained {
+  color: #000 !important;
 }
 
-#Login_Content1_Wrapper
-{
- 
-  width:60vw;
-  height:100vh;
+#Login_Content1_Wrapper {
+  width: 60vw;
+  height: 100vh;
   display: inline-flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
   vertical-align: top;
-  
+
   /* justify-content: center;
   align-items: center; */
 }
 
-#Login_Content2_Wrapper
-{
+#Login_Content2_Wrapper {
   display: inline-flex;
   justify-content: center;
   flex-direction: column;
   justify-content: center;
-  height:100vh;
-  width:400px;
-  max-width:40vh;
-
+  height: 100vh;
+  width: 400px;
+  max-width: 40vh;
 }
 
-#Login_Content2_Wrapper_Text
-{
+#Login_Content2_Wrapper_Text {
   transform: translateY(-80px);
   font-family: Lato, sans-serif;
   color: #fff;
   font-size: 28px;
   line-height: 36px;
   font-weight: 400;
-  text-align: center
-  
+  text-align: center;
 }
 
-#Login_Heading1_Div
-{
-    font-family: Lato, sans-serif;
-    color: #fff;
-    font-weight: 400;
-    font-size: 75px;
-    line-height: 75px;
-    margin-bottom: 40px;
-    display: block;
-    margin-left: 110px;
-}
-
-.Login_Box1_Div
-{
-    display: block;
-    height:60px;
-    margin-top:10px; 
-
-    /* background: #b4ec51 */
-}
-
-.Login_Box1_Div_Content1
-{
-    display: inline-block;
-    font-size: 28px;
-    vertical-align:top;
-    height:60px;
-    line-height: 60px;
-    color: #fff;
-    width:140px;
-    /* background: #3023ae */
-
-}
-
-.Login_Box1_Div_Content2
-{
-    display: inline-block;
-    height:60px;
-    /* background: #270c41; */
-    /* height: 80px; */
-    vertical-align: top;
-    margin-left:10px;
-}
-
-.MuiOutlinedInput-notchedOutline
-{
-    border-color:#fff !important;
-    border-width: 2px !important;
-}
-
-.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline
-{
-    border-width:3px !important;
-}
-
-#Login_Button_Div
-{
+#Login_Heading1_Div {
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  font-size: 75px;
+  line-height: 75px;
+  margin-bottom: 40px;
   display: block;
-  margin-top: 80px;
-  margin-left: 200px;
+  /* margin-left: 110px; */
+  width: 60%;
 }
 
-#Login_Button
-{
+.Login_Box1_Div {
   display: block;
-  width:auto;
+  height: 60px;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background: #b4ec51 */
+}
+
+.Login_Box1_Div_Content1 {
+  display: inline-block;
+  font-size: 28px;
+  vertical-align: top;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  width: 20%;
+  /* background: #3023ae */
+}
+
+.Login_Box1_Div_Content2 {
+  display: inline-block;
+  height: 60px;
+  /* background: #270c41; */
+  /* height: 80px; */
+  vertical-align: top;
+  margin-left: 10px;
+  width: 60%;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #fff !important;
+  border-width: 2px !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-width: 3px !important;
+}
+
+#Login_Button_Div {
+  display: block;
+  margin-top: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#Login_Button {
+  display: block;
+  width: auto;
   min-width: 300px;
   padding: 15px 25px;
   float: left;
@@ -127,8 +121,40 @@
   font-family: Lato, sans-serif;
 }
 
-#Login_Image_Bone
-{
-  width: 100%;
+#Login_Image_Bone {
+  width: 300px;
   margin-top: 50px;
+}
+
+#Login-BoneImage {
+  /* width: 400px; */
+}
+
+@media only screen and (max-width: 960px) {
+  #Login-BoneImage {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #Login_Heading1_Div {
+    font-size: 60px;
+    line-height: 60px;
+    margin-left: unset;
+    width: 80%;
+  }
+  .Login_Box1_Div_Content1 {
+    font-size: 23px;
+    width: 30%;
+  }
+  #Login_Button_Div {
+    margin-left: unset;
+  }
+}
+
+#Login-Grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

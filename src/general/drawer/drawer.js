@@ -100,13 +100,14 @@ class Drawer extends Component {
         const path = this.context.history.location.pathname;
 
         const route1Enable = (path === "/evaluation/welcome" || path==="/evaluation/Video" || path==="/evaluation/Demographics")?false:true;
-        const route1name = path.toString().includes("evaluation")?'Start another Evaluation':'Start an Evaluation';
+        const route1name = path.toString().includes("evaluation")?'New Evaluation':'New Evaluation';
         
         const route2Enable = (path === "/tutorials/sbs/welcome") ?false:true;
         const route2name = path.toString().includes("tutorials") ? 'Start Education from start':'Start Education';
         
-        const route3Enable = ( (path==="/tutorials/resume-tutorial") || (path.toString().includes("evaluation")) || (!this.context.state.report_id) || (this.context.state.report_id==null) ) ? false:true;
-        
+        const route3Enable = (  (path.toString().includes("evaluation")) || (!this.context.state.evaluation_stage) ) ? false:true;
+        const route4Enable = ( (path==="/home")  ) ? false:true;
+
         return ( 
 
             !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
@@ -129,17 +130,26 @@ class Drawer extends Component {
                 <img src={MenuCloseImage} onClick={this.toggleMenu} alt="Close"  id="Main_Drawer_Menu_Close_Image"/>
                 <div id="Main_Drawer_Menu_Text_Wrapper">
                 {console.log( this.context.state.user_type)}
-                {
-                    this.context.state.user_type?this.context.state.user_type.id==1?
-                        <div  onClick ={()=>{this.context.history.push('/admin/create-user')}} className="Main_Drawer_Menu_Text">
-                            Create User
-                        </div> 
-                    :   null  :null
-                }
 
                 {
                     !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
                     <div>
+                        {/* click away listner on id  Drawer_Logout_Div */}
+                        {/* to be done on refactoring code */}
+                        {route4Enable?
+                            <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>{this.context.history.push('/home')}}>
+                                Home
+                            </div>
+                        :null
+                        }
+
+                        {
+                            this.context.state.user_type?this.context.state.user_type.id==1?
+                                <div  onClick ={()=>{this.context.history.push('/admin/create-user')}} className="Main_Drawer_Menu_Text">
+                                    Create User
+                                </div> 
+                            :   null  :null
+                        }
 
                         {route2Enable?
                             <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.startEducation}>
@@ -164,7 +174,7 @@ class Drawer extends Component {
                          
                         
                         <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
-                            Log out
+                            Log Off
                         </div>
                     </div>
                     :null

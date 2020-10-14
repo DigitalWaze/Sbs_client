@@ -351,7 +351,9 @@ class ShowReport extends Component {
                     </div>
                 </div>
                 <div id="Evaluaion_Report_Next_Button_Div">
-                    <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'View Report Summary'}  </Button>
+                    {/* <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'View Report Summary'}  </Button> */}
+                    <Button id="Evaluaion_Report_Next_Button" variant="contained" onClick={this.handleNextClick}> {this.state.total>1?'Next Report':'Next'}  </Button>
+
                 </div>
                 <Modal
                 open={this.state.openModal}

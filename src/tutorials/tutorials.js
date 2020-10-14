@@ -18,6 +18,7 @@ import Knee from "./Knee/Knee";
 import Hip from "./Hip/Hip";
 import PatientEvaluation from "./PatientEvaluation/PatientEvaluation";
 import PatientSM from "./PatientEvaluation/PatientSM/PatientSM";
+import RecomPathway from "./PatientEvaluation/recomCarePath/recomendedcarepathway";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -28,39 +29,31 @@ class Tutorials extends Component {
   render() {
     return (
       <Router history={this.context.history}>
-       
         {/* WHAT IS SBS ROUTES STARTS HERE */}
-          <Route exact path="/tutorials/sbs/welcome" component={SBSWelcome} />
-          <Route exact path="/tutorials/sbs/video" component={SBSVideo} />
-          <Route exact path="/tutorials/sbs/navigation-video" component={NavigationVideo} />
+        <Route exact path="/tutorials/sbs/welcome" component={SBSWelcome} />
+        <Route exact path="/tutorials/sbs/video" component={SBSVideo} />
+        <Route exact path="/tutorials/sbs/navigation-video" component={NavigationVideo} />
         {/* WHAT IS SBS ROUTES ENDS HERE */}
-
         {/* KNEE ROUTES STARTS HERE */}
-          <Route exact path="/tutorials/knee/options" component={Knee} />
-            { /* Contains INNER ROUTES FOR KNEE  */}
-            <Route path="/tutorials/knee-Arthiritis" component={KneeArthiritis} />  {/* Router */}
-            <Route path="/tutorials/matching-education" component={MatchingEducation} />
-            <Route path="/tutorials/matching-training" component={XrayTraining} />
+        <Route exact path="/tutorials/knee/options" component={Knee} />
+        {/* Contains INNER ROUTES FOR KNEE  */}
+        <Route path="/tutorials/knee-Arthiritis" component={KneeArthiritis} /> {/* Router */}
+        <Route path="/tutorials/matching-education" component={MatchingEducation} />
+        <Route path="/tutorials/matching-training" component={XrayTraining} />
         {/* KNEE ROUTES ENDS HERE */}
-
         {/* HIP ROUTES STARTS HERE */}
-          <Route exact path="/tutorials/hip/options" component={Hip} />
-          { /* Contains INNER ROUTES FOR Hip  */}
+        <Route exact path="/tutorials/hip/options" component={Hip} />
+        {/* Contains INNER ROUTES FOR Hip  */}
         {/* HIP ROUTES ENDS HERE */}
-
         {/* Patient Evaluation Education ROUTES STARTS HERE */}
-          <Route exact path="/tutorials/patient-evaluation-education/options" component={PatientEvaluation} />
-          { /* Contains INNER ROUTES FOR Pa  */}
-          <Route path="/tutorials/patient-evaluation-education/patient-specific" component={PatientSM} />
-
+        <Route exact path="/tutorials/patient-evaluation-education/options" component={PatientEvaluation} />
+        {/* Contains INNER ROUTES FOR Pa  */}
+        <Route path="/tutorials/patient-evaluation-education/patient-specific" component={PatientSM} />
+        {/* Contains ROUTES FOR recommended Care Pathway */}
+        <Route path="/tutorials/patient-evaluation-education/recommended-carepathway" component={RecomPathway} />
         {/* Patient Evaluation Education ROUTES ENDS HERE */}
-
-
         {/* <Route exact path="/tutorials/resume-tutorial" component={ResumeTutorial} />
         <Route exact path="/tutorials/resume-tutorial/recover" component={ResumeTutorialSelect} /> */}
-
-
-
         {/* <Route exact path="/tutorials/sbs/video2" component={SBSVideo2} /> */}
       </Router>
     );

@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-
 import Button from "@material-ui/core/Button";
 
-import MyContext from "../helper/themeContext";
+import MyContext from "../../../../helper/themeContext";
 
-import Bone1Image from "../assets/bone1_Bitmap.png";
-
-// import "./welcome.css";
-
-class WelcomeRecom extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import Bone1Image from "../../../../assets/bone1_Bitmap.png";
+class Welcome extends Component {
   render() {
     return (
       <div id="Evaluaion_Welcome_Main_Div">
@@ -22,20 +14,15 @@ class WelcomeRecom extends Component {
             Step by Step
           </div>
           <div id="Evaluaion_Welcome_Neon_Line"></div>
-          <div id="Evaluaion_Welcome_Heading2_Div">
-            Recommended Care Pathway           
-          </div>
-          <div id="Evaluaion_Welcome_Text_Div">
-            Hip & Knee Step by Step will recommend the individualized care pathway for this patient.
-          </div>
+          <div id="Evaluaion_Welcome_Heading2_Div">Care Pathway Education</div>
+          <div id="Evaluaion_Welcome_Text_Div">Learn about Step by Step treatment pathways</div>
           <div id="Evaluaion_Welcome_Next_Button_Div">
             <Button
               id="Evaluaion_Welcome_Next_Button"
               variant="contained"
               onClick={() => {
-                this.context.history.push("./overall-care-pathway");
-              }}
-            >
+                this.context.history.push("./what-is-care-pathway");
+              }}>
               {" "}
               Continue{" "}
             </Button>
@@ -48,5 +35,5 @@ class WelcomeRecom extends Component {
     );
   }
 }
-WelcomeRecom.contextType = MyContext;
-export default WelcomeRecom;
+Welcome.contextType = MyContext;
+export default Welcome;
