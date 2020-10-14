@@ -50,7 +50,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
 }
 
 #WIACP_Inner_Image_Container img {
