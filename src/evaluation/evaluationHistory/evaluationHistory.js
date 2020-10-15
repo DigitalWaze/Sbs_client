@@ -64,81 +64,93 @@ class EvaluationHistory extends Component {
 
     
     render() { 
-        return ( 
-        
-        <div id="Evaluaion_PatientReport_Main_Div">
-            {this.state.loading==true?
-            <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
-            :
-            <div  id="Evaluaion_PatientReport_Content_Wrapper" style={{justifyContent:'flex-start'}}>
-                <div id="Evaluaion_PatientReport_Heading1_Div">
-                   Select a Report to View
-                </div>
-                
-                <div id="Evalution_History_Table_Wrapper" style={{width:'80vw'}}>
-                
-                <div id="Evalution_History_Table_Head">
-                    <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                        Patient Name
+        return (
+          <div id="Evaluaion_PatientReport_Main_Div">
+            {this.state.loading == true ? (
+              <SemipolarLoading size={"large"} color={"#b4ec51"} />
+            ) : (
+              <div id="Evaluaion_PatientReport_Content_Wrapper" style={{ justifyContent: "flex-start" }}>
+                <div id="Evaluaion_PatientReport_Heading1_Div">Select a Report to View</div>
+
+                <div id="Evalution_History_Table_Wrapper" style={{ width: "80vw" }}>
+                  <div id="Evalution_History_Table_Head">
+                    <div style={{ width: "200px", display: "inline-block", marginRight: "20px" }}>Patient Name</div>
+                    <div style={{ width: "200px", display: "inline-block", marginRight: "20px" }}>
+                      Date of Evaluation
                     </div>
-                    <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                        Date of Evaluation
-                    </div>
-                    <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                    </div>
+                    <div style={{ width: "200px", display: "inline-block", marginRight: "20px" }}></div>
+                  </div>
 
-                </div>
+                  <div
+                    id="Evalution_History_Table_Line"
+                    style={{ width: "100%", height: "2px", background: "#ffffff" }}></div>
 
-                <div id="Evalution_History_Table_Line" style={{width:'100%',height:'2px',background:'#ffffff'}}>
-                    
-                </div>
-
-                <div id="Evalution_History_Table_Body">
-                {
-                    this.state.rows.map((row,id)=>
-                    <div className="Evalution_History_Table_Body_Row">
-                        <div className="Evalution_History_Table_Body_Text" style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                            {row.patient_name}
+                  <div id="Evalution_History_Table_Body">
+                    {this.state.rows.map((row, id) => (
+                      <div className="Evalution_History_Table_Body_Row">
+                        <div
+                          className="Evalution_History_Table_Body_Text"
+                          style={{ width: "200px", display: "inline-block", marginRight: "20px" }}>
+                          {row.patient_name}
                         </div>
-                        <div className="Evalution_History_Table_Body_Text" style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                            {row.evaluation_date}
+                        <div
+                          className="Evalution_History_Table_Body_Text"
+                          style={{ width: "200px", display: "inline-block", marginRight: "20px" }}>
+                          {row.evaluation_date}
                         </div>
-                        <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                            <Button className="Evaluaion_History_Button"  variant="contained" onClick={()=>{this.handleViewReport(row.report_id)}}> View Report </Button>
+                        <div style={{ width: "200px", display: "inline-block", marginRight: "20px" }}>
+                          <Button
+                            className="Evaluaion_History_Button"
+                            variant="contained"
+                            onClick={() => {
+                              this.handleViewReport(row.report_id);
+                            }}>
+                            {" "}
+                            View Report{" "}
+                          </Button>
                         </div>
 
-                        <div style={{width:'200px',display:'inline-block',marginRight:'20px'}}>
-                            <Button className="Evaluaion_History_Button"  variant="contained" onClick={()=>{this.context.history.push('/recommended-care-pathway/welcome')}} > Suggested Care Pathway </Button>
+                        <div style={{ width: "200px", display: "inline-block", marginRight: "20px" }}>
+                          <Button
+                            className="Evaluaion_History_Button"
+                            variant="contained"
+                            onClick={() => {
+                              this.context.history.push("/recommended-care-pathway/welcome");
+                            }}>
+                            {" "}
+                            Suggested Care Pathway{" "}
+                          </Button>
                         </div>
-
-
-                    </div>)
-                }
-                   
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                
-
-                   
-                </div>
-                
-                
 
                 <div id="Evaluaion_PatientReport_Back_Button_Div">
-                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={()=>this.context.history.goBack()}> Back </Button>
+                  <Button
+                    id="Evaluaion_PatientReport_Next_Button"
+                    variant="contained"
+                    onClick={() => this.context.history.goBack()}>
+                    {" "}
+                    Back{" "}
+                  </Button>
                 </div>
 
                 <div id="Evaluaion_PatientReport_Next_Button_Div">
-                    <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={() => {this.context.history.push("/home");}}>
-                        {" "}Back to Home{" "}
-                    </Button>
+                  <Button
+                    id="Evaluaion_PatientReport_Next_Button"
+                    variant="contained"
+                    onClick={() => {
+                      this.context.history.push("/home");
+                    }}>
+                    {" "}
+                    BACK TO HOME{" "}
+                  </Button>
                 </div>
-               
-
-            </div>
-            }
-        
-
-        </div> );
+              </div>
+            )}
+          </div>
+        );
     }
 }
 EvaluationHistory.contextType=MyContext;

@@ -383,7 +383,7 @@ class Home extends Component {
 
                                     <div className="Home_Button_Div">
                                         <Button id="Home_Button" variant="contained" style={{opacity:'0.5'}} disabled={true} >
-                                            {" "} Automation X-ray Evaluation {" "}
+                                            {" "} Automatic X-ray Evaluation {" "}
                                         </Button>
                                     </div>
 

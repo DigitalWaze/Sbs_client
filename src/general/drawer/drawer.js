@@ -102,7 +102,7 @@ class Drawer extends Component {
         const route1Enable = (path === "/evaluation/welcome" || path==="/evaluation/Video" || path==="/evaluation/Demographics")?false:true;
         const route1name = path.toString().includes("evaluation")?'New Evaluation':'New Evaluation';
         
-        const route2Enable = (path === "/tutorials/sbs/welcome") ?false:true;
+        const route2Enable = path === "/tutorials/sbs/welcome" || path === "/home" ? false : true;
         const route2name = path.toString().includes("tutorials") ? 'Start Education from start':'Start Education';
         
         const route3Enable = (  (path.toString().includes("evaluation")) || (!this.context.state.evaluation_stage) ) ? false:true;

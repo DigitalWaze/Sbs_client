@@ -31,16 +31,18 @@ class NavigationVideo extends Component {
           <div id="SBSVideo_Center_Wrapper">
             <div id="SBSVideo_Image_Wrapper">
               <div className="sbs-video-text-wrapper">
-                <div id="SBSVideo_Heading1_Div">
-                 Navigation Video
-                </div>  
+                <div id="SBSVideo_Heading1_Div">Navigating the Step by Step System</div>
               </div>
 
-              {this.state.loading == true ? (
-                <SemipolarLoading size={"large"} color={"#b4ec51"} />
-                )
-              :null}
-              <ReactPlayer onReady={this.onVideoReady}  url='https://vimeo.com/465868104'controls={true} playing={true} onEnded={this.onVideoEnd} light={this.state.light} />
+              {this.state.loading == true ? <SemipolarLoading size={"large"} color={"#b4ec51"} /> : null}
+              <ReactPlayer
+                onReady={this.onVideoReady}
+                url="https://vimeo.com/465868104"
+                controls={true}
+                playing={true}
+                onEnded={this.onVideoEnd}
+                light={this.state.light}
+              />
 
               {/* <video video controls autoPlay className="sbs-video-wrapper">
                 <source
@@ -54,17 +56,11 @@ class NavigationVideo extends Component {
                 id="SBSVideo_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.setCookie(
-                    "tutorial-" + this.context.state.user_id,
-                    2
-                  );
-                  this.context.history.push(
-                    "/home"
-                  );
-                }}
-              >
+                  this.context.setCookie("tutorial-" + this.context.state.user_id, 2);
+                  this.context.history.push("/home");
+                }}>
                 {" "}
-                Back to Home{" "}
+                BACK TO HOME{" "}
               </Button>
             </div>
           </div>

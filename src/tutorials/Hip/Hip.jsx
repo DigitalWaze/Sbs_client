@@ -66,7 +66,7 @@ class Hip extends Component {
                       this.context.history.push("/home");
                     }}>
                     {" "}
-                    Back to Home{" "}
+                    BACK TO HOME{" "}
                   </Button>
                 </div>
               </div>
