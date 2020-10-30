@@ -138,14 +138,14 @@ class Routes extends Component {
       let isTutorialCompleted = this.getCookie("isTutorialCompleted");
 
       let oldEvaluations = this.getCookie("oldEvaluations");
-      if(oldEvaluations)
+      console.log(oldEvaluations)
+
+      
+      if(oldEvaluations && oldEvaluations.toString() !== 'undefined')
       {
         oldEvaluations = JSON.parse(oldEvaluations);
       }
-      // let evaluation_stage = this.getCookie("evaluation_stage");
-      // let temp_report_id = this.getCookie("temp_report_id");
-      // let temp_patient_id = this.getCookie("temp_patient_id");
-      
+         
       let tutorial_rem = this.getCookie("tutorial-" + user_id);
       if( 
           token == undefined || token == "" || token == " " ||
@@ -231,24 +231,6 @@ class Routes extends Component {
     history.push(url);
   };
 
-  // clearLeft = () => {
-  //   //delete old education;
-  //   this.setState({
-  //     old: null,
-  //     tutorial: null,
-  //     evaluation_stage: null,
-  //     temp_report_id: null,
-  //     temp_patient_id: null,
-  //   });
-  // };
-
-  loadEval = () =>
-  {
-    
-  }
-
-
-
   newEval = () =>
   {
     let Evaluations=
@@ -270,13 +252,34 @@ class Routes extends Component {
         ] 
       }
     ]
-    this.context.multipleUpdateValue([{key:'old',value:false},{key:'Xrays',value:[]},{key:'evaluation_stage',value:0},{key:'noOfEvalRemainToUpload',value:null},{key:'XrayMatch',value:false},{key:'UXray',value:false},{key:'Pro',value:false},{key:'Evaluations',value:Evaluations},{key:'Eval',value:[]},{key:'form',value:[]},{key:'patient',value:{}},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'activePriority',value:5},{key:'joint_id',value:0} ])
+    this.setState({old:false,Xrays:[],evaluation_stage:0,noOfEvalRemainToUpload:null,XrayMatch:false,UXray:false,Pro:false,Evaluations:Evaluations,Eval:[],form:[],patient:{},report_id:null,patient_id:null,activePriority:5,joint_id:0})
   }
 
   evalDone = () => {
-    this.setCookie("evaluation_stage", "", 0);
-    this.setCookie("temp_report_id", "", 0);
-    this.setCookie("temp_patient_id", "", 0);
+    let oldEvaluations = this.state.oldEvaluations;
+    if(oldEvaluations)
+    {
+      // if(oldEvaluations.length > 1)
+      // {
+        console.log('i ran')
+
+        let oldEvaluationNew = oldEvaluations.filter(evalution => evalution.visitor.id.toString() !== this.state.report_id.toString() );
+
+        console.log('evalution.visitor.id.toString() ')
+        console.log('this.state.report_id.toString() ',this.state.report_id.toString())
+
+        console.log('oldEvaluationNew) ',oldEvaluationNew)
+
+
+        this.setCookie("oldEvaluations", JSON.stringify(oldEvaluationNew), 30);
+        this.setState({oldEvaluations:oldEvaluationNew})
+      // }
+
+      // else 
+      // {
+
+      // }
+    }
   };
 
   clearEvalState = () => {

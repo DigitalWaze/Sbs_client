@@ -79,20 +79,19 @@ class Login extends Component {
 
       this.context.updateSession();
 
-      let temp_stage_id = null;
+      let oldEvaluations=[];
+
       if (response.state) {
         if (response.state.length > 0) {
           if (response.state[0].stage.id > 0) {
-            // let temp_patient_id = response.state[0].visitor.patient_id;
-            // let temp_report_id = response.state[0].visitor.id;
-            // temp_stage_id = response.state[0].stage.id; 
-
-            this.context.multipleUpdateValue([{ key: "oldEvaluations", value: response.state }]);
-            let oldEvaluations = JSON.stringify(response.state);
-            this.context.setCookie("oldEvaluations", oldEvaluations, 30);
-           }
+            oldEvaluations = response.state;
+          }
         }
       }
+      console.log(oldEvaluations)
+      this.context.multipleUpdateValue([{ key: "oldEvaluations", value: response.state }]);
+      this.context.setCookie("oldEvaluations",  JSON.stringify(oldEvaluations), 30);
+
 
       // ------------------ redirection after loading previous session----------------------------------
 
