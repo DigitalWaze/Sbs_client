@@ -59,7 +59,7 @@ class Login extends Component {
   };
 
   loggedMe = (response) => {
-    console.log(response);
+    // console.log(response);
     if (response.id !== null && response.id) {
       let isTutorialCompleted = null;
       if (response.isTutorialCompleted == 1) {
@@ -83,20 +83,14 @@ class Login extends Component {
       if (response.state) {
         if (response.state.length > 0) {
           if (response.state[0].stage.id > 0) {
-            let temp_patient_id = response.state[0].visitor.patient_id;
-            let temp_report_id = response.state[0].visitor.id;
-            temp_stage_id = response.state[0].stage.id;
-            this.context.setCookie("evaluation_stage", temp_stage_id, 30);
-            this.context.setCookie("temp_report_id", temp_report_id, 30);
-            this.context.setCookie("temp_patient_id", temp_patient_id, 30);
+            // let temp_patient_id = response.state[0].visitor.patient_id;
+            // let temp_report_id = response.state[0].visitor.id;
+            // temp_stage_id = response.state[0].stage.id; 
 
-            this.context.multipleUpdateValue([
-              { key: "evaluation_stage", value: temp_stage_id },
-              { key: "temp_report_id", value: temp_report_id },
-              { key: "temp_patient_id", value: temp_patient_id },
-            ]);
-            // this.context.history.push('/evaluation/resume-evaluation');
-          }
+            this.context.multipleUpdateValue([{ key: "oldEvaluations", value: response.state }]);
+            let oldEvaluations = JSON.stringify(response.state);
+            this.context.setCookie("oldEvaluations", oldEvaluations, 30);
+           }
         }
       }
 

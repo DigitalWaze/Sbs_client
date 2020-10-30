@@ -55,11 +55,9 @@ import LFVUP4 from "./assets/lateral-flexion-up-4.png";
 import LNFVUP4 from "./assets/lateral-nonflexion-up-4.png";
 import KVUP4 from "./assets/kneecap-up-4.png";
 
-// import Chart from './'
 
 import Login from "./login/login";
 import CreateUser from "./admin/createUser/createUser";
-// import Home from "./home/home";
 import Home from "./home/homeNew";
 
 import StartOver from "./offer/startOver";
@@ -99,39 +97,14 @@ class Routes extends Component {
 
   Logout = () => {
     //this.clearLeft();  -> done in setState Below
-    this.setState({
-      old: false,
-      tutorial: null,
-      evaluation_stage: null,
-      temp_report_id: null,
-      temp_patient_id: null,
-      joint_id: null,
-      activePriority: null,
-      isTutorialCompleted: 0,
-      Evaluations: [],
-      Eval: [],
-      Xrays: [],
-      loggedIn: false,
-      token: null,
-      type: null,
-      user_id: null,
-      user_email: null,
-      user_type: null,
-      organization: null,
+    this.setState({old: false,tutorial: null,evaluation_stage: null,temp_report_id: null,temp_patient_id: null,
+      joint_id: null,activePriority: null,isTutorialCompleted: 0,Evaluations: [],Eval: [],Xrays: [],
+      loggedIn: false,token: null,type: null,user_id: null,user_email: null,user_type: null,organization: null,
     });
-    this.setCookie("token", "", 0);
-    this.setCookie("type", "", 0);
-    this.setCookie("user_id", "", 0);
-    this.setCookie("user_email", "", 0);
-    this.setCookie("user_type_id", "", 0);
-    this.setCookie("user_type_name", "", 0);
-    this.setCookie("isTutorialCompleted", "", 0);
-    this.setCookie("organization", "", 0);
-
-    this.setCookie("tutorial", "", 0);
-    this.setCookie("evaluation_stage", "", 0);
-    this.setCookie("temp_report_id", "", 0);
-    this.setCookie("temp_patient_id", "", 0);
+    this.setCookie("token", "", 0);    this.setCookie("type", "", 0);        this.setCookie("user_id", "", 0);
+    this.setCookie("user_email", "", 0); this.setCookie("user_type_id", "", 0); this.setCookie("user_type_name", "", 0);
+    this.setCookie("isTutorialCompleted", "", 0);  this.setCookie("organization", "", 0);  this.setCookie("tutorial", "", 0);
+    this.setCookie("oldEvaluations", "", 0); this.setCookie("temp_report_id", "", 0); this.setCookie("temp_patient_id", "", 0);
 
     history.push("/login");
   };
@@ -144,15 +117,17 @@ class Routes extends Component {
     this.setCookie("user_type_id", this.state.user_type.id, 30);
     this.setCookie("user_type_name", this.state.user_type.type, 30);
     this.setCookie("isTutorialCompleted", this.state.isTutorialCompleted, 30);
+    this.setCookie("oldEvaluations", this.state.oldEvaluations, 30);
     this.setCookie("organization", this.state.organization, 30);
     this.setCookie("tutorial", this.state.tutorial, 30);
-    this.setCookie("temp_report_id", this.state.temp_report_id, 30);
-    this.setCookie("temp_patient_id", this.state.temp_patient_id, 30);
+
   };
 
   UNSAFE_componentWillMount() {
-    if (this.state.token == null || !this.state.token || this.state.token == "" || this.state.token == " ") {
+    if (this.state.token == null || !this.state.token || this.state.token == "" || this.state.token == " ")
+    {
       // will always be true
+
       let token = this.getCookie("token");
       let type = this.getCookie("type");
       let user_id = this.getCookie("user_id");
@@ -162,49 +137,34 @@ class Routes extends Component {
       let organization = this.getCookie("organization");
       let isTutorialCompleted = this.getCookie("isTutorialCompleted");
 
-      let evaluation_stage = this.getCookie("evaluation_stage");
-      let temp_report_id = this.getCookie("temp_report_id");
-      let temp_patient_id = this.getCookie("temp_patient_id");
+      let oldEvaluations = this.getCookie("oldEvaluations");
+      if(oldEvaluations)
+      {
+        oldEvaluations = JSON.parse(oldEvaluations);
+      }
+      // let evaluation_stage = this.getCookie("evaluation_stage");
+      // let temp_report_id = this.getCookie("temp_report_id");
+      // let temp_patient_id = this.getCookie("temp_patient_id");
+      
       let tutorial_rem = this.getCookie("tutorial-" + user_id);
-
-      console.log(tutorial_rem);
-
-      if (
-        token == undefined ||
-        token == "" ||
-        token == " " ||
-        type == undefined ||
-        type == "" ||
-        type == " " ||
-        user_id == undefined ||
-        user_id == "" ||
-        user_id == " " ||
-        user_email == undefined ||
-        user_email == "" ||
-        user_email == " " ||
-        user_type_id == undefined ||
-        user_type_id == "" ||
-        user_type_id == " " ||
-        user_type_name == undefined ||
-        user_type_name == "" ||
-        user_type_name == " " ||
-        organization == undefined ||
-        organization == "" ||
-        organization == " "
-      ) {
+      if( 
+          token == undefined || token == "" || token == " " ||
+          type == undefined || type == "" || type == " " ||
+          user_id == undefined || user_id == "" || user_id == " " ||
+          user_email == undefined || user_email == "" || user_email == " " ||
+          user_type_id == undefined || user_type_id == "" || user_type_id == " " ||
+          user_type_name == undefined || user_type_name == "" || user_type_name == " " ||
+          organization == undefined || organization == "" || organization == " "
+        ){
         //on No previous session from cookie
-        console.log("No Login Session");
+        // console.log("No Login Session");
         this.setState({ loading: false });
         history.push("/login");
       } else {
         // ------------------ redirection after loading previous session----------------------------------
 
-        // console.log('evaluation_stage: ',evaluation_stage);
         this.setState({
-          old: false,
-          evaluation_stage: evaluation_stage,
-          temp_report_id: temp_report_id,
-          temp_patient_id,
+          oldEvaluations:oldEvaluations,
           loading: false,
           loggedIn: true,
           token: token,
@@ -214,6 +174,7 @@ class Routes extends Component {
           user_email: user_email,
           user_type: { id: user_type_id, type: user_type_name },
           organization: organization,
+          tutorial_rem:tutorial_rem,
         });
 
         //----------- start --------- new setup after login session from cookie
@@ -221,6 +182,8 @@ class Routes extends Component {
         history.push("/home"); // ------ home will cater resume and tutorials
 
         //----------- end --------- new setup after login session from cookie
+
+        
 
         //----------- start --------- old setup after login session from cookie
 
@@ -268,16 +231,47 @@ class Routes extends Component {
     history.push(url);
   };
 
-  clearLeft = () => {
-    //delete old education;
-    this.setState({
-      old: null,
-      tutorial: null,
-      evaluation_stage: null,
-      temp_report_id: null,
-      temp_patient_id: null,
-    });
-  };
+  // clearLeft = () => {
+  //   //delete old education;
+  //   this.setState({
+  //     old: null,
+  //     tutorial: null,
+  //     evaluation_stage: null,
+  //     temp_report_id: null,
+  //     temp_patient_id: null,
+  //   });
+  // };
+
+  loadEval = () =>
+  {
+    
+  }
+
+
+
+  newEval = () =>
+  {
+    let Evaluations=
+    [   
+      {name:'Right Knee',image:Bone1Image  , joint_id:'3',
+        Xrays:[ 
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+
+        ] 
+      },
+
+      {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
+        Xrays:[ 
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+        ] 
+      }
+    ]
+    this.context.multipleUpdateValue([{key:'old',value:false},{key:'Xrays',value:[]},{key:'evaluation_stage',value:0},{key:'noOfEvalRemainToUpload',value:null},{key:'XrayMatch',value:false},{key:'UXray',value:false},{key:'Pro',value:false},{key:'Evaluations',value:Evaluations},{key:'Eval',value:[]},{key:'form',value:[]},{key:'patient',value:{}},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'activePriority',value:5},{key:'joint_id',value:0} ])
+  }
 
   evalDone = () => {
     this.setCookie("evaluation_stage", "", 0);
@@ -286,229 +280,27 @@ class Routes extends Component {
   };
 
   clearEvalState = () => {
-    let Evaluations = [
-      {
-        name: "Right Knee",
-        image: Bone1Image,
-        joint_id: "3",
-        Xrays: [
-          {
-            name: "Medial",
-            id: 1,
-            isDone: false,
-            enable: true,
-            xrays: [
-              {
-                name: "Flexion View",
-                id: 1,
-                image: null,
-                isDone: false,
-                enable: true,
-                state: null,
-                state_id: null,
-                notes: null,
-                thumbnail: MFV,
-                up: MFVUP,
-                up1: MFVUP1,
-                up2: MFVUP2,
-                up3: MFVUP3,
-                up4: MFVUP4,
-              },
-              {
-                name: "Non-Flexion View",
-                image: null,
-                id: 2,
-                isDone: false,
-                enable: false,
-                state: null,
-                state_id: null,
-                notes: "",
-                thumbnail: MNFV,
-                up: MNFVUP,
-                up1: MNFVUP1,
-                up2: MNFVUP2,
-                up3: MNFVUP3,
-                up4: MNFVUP4,
-              },
-            ],
-          },
-          {
-            name: "Lateral",
-            id: 2,
-            isDone: false,
-            enable: false,
-            xrays: [
-              {
-                name: "Flexion View",
-                id: 1,
-                image: null,
-                isDone: false,
-                enable: false,
-                state: null,
-                state_id: null,
-                notes: null,
-                thumbnail: LFV,
-                up: LFVUP,
-                up1: LFVUP1,
-                up2: LFVUP2,
-                up3: LFVUP3,
-                up4: LFVUP4,
-              },
-              {
-                name: "Non-Flexion View",
-                image: null,
-                id: 2,
-                isDone: false,
-                enable: false,
-                state: null,
-                state_id: null,
-                notes: "",
-                thumbnail: LNFV,
-                up: LNFVUP,
-                up1: LNFVUP1,
-                up2: LNFVUP2,
-                up3: LNFVUP3,
-                up4: LNFVUP4,
-              },
-            ],
-          },
-          {
-            name: "Kneecap",
-            id: 3,
-            isDone: false,
-            enable: false,
-            xrays: [
-              {
-                name: "Kneecap",
-                id: 3,
-                image: null,
-                isDone: false,
-                enable: false,
-                state: null,
-                state_id: null,
-                notes: null,
-                thumbnail: KV,
-                up: KVUP,
-                up1: KVUP2,
-                up2: KVUP2,
-                up3: KVUP3,
-                up4: KVUP4,
-              },
-            ],
-          },
-        ],
+    let Evaluations=
+    [   
+      {name:'Right Knee',image:Bone1Image  , joint_id:'3',
+        Xrays:[ 
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+
+        ] 
       },
 
-      {
-        name: "Left Knee",
-        image: Bone1Image,
-        joint_id: "4",
-        Xrays: [
-          {
-            name: "Medial",
-            id: 1,
-            isDone: false,
-            enable: true,
-            xrays: [
-              {
-                name: "Flexion View",
-                id: 1,
-                image: null,
-                isDone: false,
-                enable: true,
-                state: null,
-                notes: null,
-                thumbnail: LMFV,
-                up: LMFVUP,
-                up1: MFVUP1,
-                up2: MFVUP2,
-                up3: MFVUP3,
-                up4: MFVUP4,
-              },
-              {
-                name: "Non-Flexion View",
-                image: null,
-                id: 2,
-                isDone: false,
-                enable: false,
-                state: null,
-                notes: "",
-                thumbnail: LMNFV,
-                up: LMNFVUP,
-                up1: MNFVUP1,
-                up2: MNFVUP2,
-                up3: MNFVUP3,
-                up4: MNFVUP4,
-              },
-            ],
-          },
-          {
-            name: "Lateral",
-            id: 2,
-            isDone: false,
-            enable: false,
-            xrays: [
-              {
-                name: "Flexion View",
-                id: 1,
-                image: null,
-                isDone: false,
-                enable: false,
-                state: null,
-                notes: null,
-                thumbnail: LLFV,
-                up: LLFVUP,
-                up1: LFVUP1,
-                up2: LFVUP2,
-                up3: LFVUP3,
-                up4: LFVUP4,
-              },
-              {
-                name: "Non-Flexion View",
-                image: null,
-                id: 2,
-                isDone: false,
-                enable: false,
-                state: null,
-                notes: "",
-                thumbnail: LLNFV,
-                up: LLNFVUP,
-                up1: LNFVUP1,
-                up2: LNFVUP2,
-                up3: LNFVUP3,
-                up4: LNFVUP4,
-              },
-            ],
-          },
-          {
-            name: "Kneecap",
-            id: 3,
-            isDone: false,
-            enable: false,
-            xrays: [
-              {
-                name: "Kneecap",
-                id: 3,
-                image: null,
-                isDone: false,
-                enable: false,
-                state: null,
-                notes: "",
-                thumbnail: KV,
-                up: LKVUP,
-                up1: KVUP1,
-                up2: KVUP2,
-                up3: KVUP3,
-                up4: KVUP4,
-              },
-            ],
-          },
-        ],
-      },
-    ];
+      {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
+        Xrays:[ 
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+        ] 
+      }
+    ]
     let form = [
-      {
-        name: "Question1",
+      { name: "Question1",
         question_id: 1,
         pro_severity_id: null,
         visitor_id: null,
@@ -586,16 +378,14 @@ class Routes extends Component {
     });
   };
 
-  // updatePatient = (key,value) =>
-  // {
-  //     this.setState({[key]:value})
-  // }
+
   render() {
     return this.state.loading == false ? (
       <Router history={history}>
         <MyContext.Provider
           value={{
-            clearEvalState: this.clearEvalState,
+            // clearEvalState: this.clearEvalState,
+            newEval: this.newEval,
             evalDone: this.evalDone,
             setCookie: this.setCookie,
             getCookie: this.getCookie,

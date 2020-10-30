@@ -95,7 +95,7 @@ class Home extends Component {
 
     startEvaluation = () =>
     {
-      if(parseInt(this.context.state.evaluation_stage)>0)  
+      if(parseInt(this.context.state.oldEvaluations)>0)  
       {
         // GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
         this.setState({resumeWarningModal:true})
@@ -103,10 +103,8 @@ class Home extends Component {
   
       else 
       {
-        this.context.setCookie('evaluation_stage','',0);
-        this.context.setCookie('temp_report_id','',null);
-        this.context.setCookie('temp_patient_id','',null);
-        this.context.multipleUpdateValueWithHistory([{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'evaluation_stage',value:null},{key:'noOfEvalRemainToUpload',value:null},{key:'Xrays',value:[]},{key:'form',value:[]},{key:'Eval',value:[]},{key:'joint_id',value:0},{key:'activePriority',value:5},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'old',value:false},{key:'patient',value:{}}],'/evaluation/welcome')
+        this.context.newEval();
+        this.context.history.push('/evaluation/welcome');
       }
     }
 
@@ -116,6 +114,7 @@ class Home extends Component {
         {
            //populate all data
             let patient = {};
+            let evaluation_stage =  this.context.state.oldEvaluations[0].stage.id; 
             patient["name"]=response.patient[0].name;
             patient["birth_date"]=response.patient[0].birthday;
             
@@ -188,7 +187,7 @@ class Home extends Component {
             let Xrays=[];
             let noOfEvalRemainToUpload=null;
 
-            if(parseInt(this.context.state.evaluation_stage)>1)
+            if(parseInt(evaluation_stage)>1)
             {
                 if(response.joint_hurt_priority.length>0)
                 {
@@ -239,7 +238,7 @@ class Home extends Component {
                 }
             }
 
-            if(parseInt(this.context.state.evaluation_stage)>2)
+            if(parseInt(evaluation_stage)>2)
             {
                 if(response.form.length>0)
                 {
@@ -254,7 +253,7 @@ class Home extends Component {
 
             }
 
-            if(parseInt(this.context.state.evaluation_stage)>3)
+            if(parseInt(evaluation_stage)>3)
             {
                 if(response.Uploaded_xrays.length>0)
                 {
@@ -310,25 +309,24 @@ class Home extends Component {
                 }
             }
 
-            if(parseInt(this.context.state.evaluation_stage)>4)
+            if(parseInt(evaluation_stage)>4)
             {
                 
                 
             }
 
-            console.log(newForm)
-            this.context.multipleUpdateValueWithHistory([{key:'Evaluations',value:Evaluations},{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
+            // console.log(newForm)
+            this.context.multipleUpdateValueWithHistory([{key:'evaluation_stage',value:evaluation_stage},{key:'Evaluations',value:Evaluations},{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
         }
 
         
     }
+    
 
     setMeTwo = () =>
     {
-        this.context.setCookie('evaluation_stage','',0);
-        this.context.setCookie('temp_report_id','',0);
-        this.context.setCookie('temp_patient_id','',0);
-        this.context.multipleUpdateValueWithHistory([{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'evaluation_stage',value:null},{key:'noOfEvalRemainToUpload',value:null},{key:'Xrays',value:[]},{key:'form',value:[]},{key:'Eval',value:[]},{key:'joint_id',value:0},{key:'activePriority',value:5},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'old',value:false},{key:'patient',value:{}}],'/evaluation/welcome')
+        this.context.newEval();
+        this.context.multipleUpdateValueWithHistory([{key:'oldEvaluations',value:[]}],'/evaluation/welcome')
     }
 
 
@@ -336,6 +334,8 @@ class Home extends Component {
         return ( 
 
             <div id="Home_Main_Div">
+             {console.log(this.context.state.oldEvaluations)}
+            {console.log(this.context.state.oldEvaluations.length)}
                 { this.state.loading==true?
                     <SemipolarLoading size={"large"} color={'#b4ec51'}/>
                 :
@@ -419,7 +419,7 @@ class Home extends Component {
                                     </div>
 
                                     <div className="Home_Button_Div">
-                                        <Button id="Home_Button" variant="contained" disabled={!this.context.state.evaluation_stage} style={{opacity:this.context.state.evaluation_stage?'1':'0.5'}}
+                                        <Button id="Home_Button" variant="contained" disabled={!this.context.state.oldEvaluations.length>0} style={{opacity:this.context.state.oldEvaluations.length>0?'1':'0.5'}}
                                             onClick={this.handleRecover} >
                                             {" "} Resume Last Evaluation {" "}
                                         </Button>
