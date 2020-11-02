@@ -53,18 +53,13 @@ class XrayMatching extends Component {
     {
         if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
         {
-            // console.log(this.context.state.joint_id)
             let req={
                 visitor_id:this.context.state.report_id,
                 joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
             }
-            // console.log(req);
-            // console.log(this.context.state.Evaluations,'Evaluations')
-            // console.log(this.context.state.joint_id,'joint_id')
-
+       
             this.setState({loading:true,Evaluations:this.context.state.Evaluations,Matching:null});
             GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe)
-            // this.setState({Evaluations:this.context.state.Evaluations,Matching:null});
 
         }
         else this.setState({Evaluations:this.context.state.Evaluations,loading:false,Matching:this.context.state.Matching})
@@ -183,7 +178,6 @@ class XrayMatching extends Component {
 
       console.log('after function 2')
 
-    //   await this.uploadpage3(this.context.state.Eval.length);
 
 
 

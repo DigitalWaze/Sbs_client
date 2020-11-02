@@ -65,6 +65,7 @@ import RecomCarePath from "./tutorials/PatientEvaluation/recomCarePath/recomende
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
 
 const baseUrlH = "https://sbs-server-adonis.herokuapp.com";
+const baseUrlA = "https://sbs-backend-dw.herokuapp.com"
 
 class Routes extends Component {
   constructor(props) {
@@ -138,7 +139,6 @@ class Routes extends Component {
       let isTutorialCompleted = this.getCookie("isTutorialCompleted");
 
       let oldEvaluations = this.getCookie("oldEvaluations");
-      console.log(oldEvaluations)
 
       
       if(oldEvaluations && oldEvaluations.toString() !== 'undefined')
@@ -396,7 +396,7 @@ class Routes extends Component {
             updateSession: this.updateSession,
             multipleUpdateValueWithHistory: this.multipleUpdateValueWithHistory,
             multipleUpdateValue: this.multipleUpdateValue,
-            baseUrl: baseUrlH,
+            baseUrl: baseUrlA,
             state: this.state,
             updateValue: this.updateValue,
             history: history,
