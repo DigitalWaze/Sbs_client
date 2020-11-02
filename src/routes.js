@@ -62,6 +62,7 @@ import Home from "./home/homeNew";
 
 import StartOver from "./offer/startOver";
 import RecomCarePath from "./tutorials/PatientEvaluation/recomCarePath/recomendedcarepathway";
+import EditProfile from "./editprofile/EditProfile";
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
 
 const baseUrlH = "https://sbs-server-adonis.herokuapp.com";
@@ -401,13 +402,14 @@ class Routes extends Component {
             updateValue: this.updateValue,
             history: history,
           }}>
-          {this.state.loggedIn == true ? <Route path="/" component={Drawer} /> : null} {/* WIDTH 70 PX */}
+          {this.state.loggedIn == true ? <Route path="/" component={Drawer} /> : null}
           <Route path="/login" component={Login} />
           <Route exact path="/" component={Login} />
-          <Route path="/home" component={Home} /> {/* DEFAULT */}
+          <Route path="/home" component={EditProfile} /> {/* DEFAULT */}
           <Route path="/start-over" component={StartOver} />
           <Route path="/tutorials" component={Tutorials} />
           <Route path="/Learn-more" component={LearnMore} />
+          <Route path="/edit-profile" component={EditProfile} />
           <Route path="/evaluation" component={Evaluation} /> {/* CHECKER */} {/* ROUTER */}
           <Route path="/admin/create-user" component={CreateUser} />{" "}
           {/* <Route path="/recommended-care-pathway/" component={RecomCarePath} /> ROUTER */}

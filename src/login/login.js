@@ -59,7 +59,7 @@ class Login extends Component {
   };
 
   loggedMe = (response) => {
-    // console.log(response);
+    console.log(response);
     if (response.id !== null && response.id) {
       let isTutorialCompleted = null;
       if (response.isTutorialCompleted == 1) {
@@ -79,7 +79,7 @@ class Login extends Component {
 
       this.context.updateSession();
 
-      let oldEvaluations=[];
+      let oldEvaluations = [];
 
       if (response.state) {
         if (response.state.length > 0) {
@@ -88,10 +88,9 @@ class Login extends Component {
           }
         }
       }
-      console.log(oldEvaluations)
+      console.log(oldEvaluations);
       this.context.multipleUpdateValue([{ key: "oldEvaluations", value: response.state }]);
-      this.context.setCookie("oldEvaluations",  JSON.stringify(oldEvaluations), 30);
-
+      this.context.setCookie("oldEvaluations", JSON.stringify(oldEvaluations), 30);
 
       // ------------------ redirection after loading previous session----------------------------------
 

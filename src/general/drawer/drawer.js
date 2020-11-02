@@ -86,6 +86,11 @@ class Drawer extends Component {
         this.context.multipleUpdateValueWithHistory([{key:'old',value:true}],'/evaluation/demographics')
     }
 
+    editProfile = () => 
+    {
+        this.context.history.push('/edit-profile')
+    }
+
 
     setMeTwo = () =>
     {
@@ -171,6 +176,10 @@ class Drawer extends Component {
                             </div>
                         :null
                         }
+
+                        <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.editProfile}>
+                            Edit Profile
+                        </div>
                          
                         
                         <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={()=>this.context.logout()}>
