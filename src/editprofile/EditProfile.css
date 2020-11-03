@@ -15,13 +15,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   border: none;
   box-shadow: none;
 }
 
 .EditProfile_Heading {
   color: white;
+  margin-bottom: 60px !important;
+}
+
+#EditProfile_Rodal_Heading_Div
+{
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 28px;
+  color:white;
 }
 
 .EditProfile_Email_Div,
@@ -40,17 +49,51 @@
   margin-left: 10px;
 }
 
+.EditProfile_OldPassword_Text
+{
+  width: 50%;
+}
+
+.EditProfile_Rodal_Row_Div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.EditProfile_OldPassword_Input_Div
+{
+  width: 40%;
+}
+
+#password-update-error-message
+{
+  color:red;
+  font-size: 18px;
+}
+
+#password-update-success-message
+{
+  margin-top:20px;
+  color:green;
+  font-size: 22px;
+}
+
+
+
 .EditProfile_Input_Texts {
   color: white;
 }
 
-#Login_Button {
+#Change_Password_Button {
   display: block;
   width: auto;
+  margin-top: 40px;
   min-width: 300px;
+  max-width: 250px;
   padding: 15px 25px;
   float: left;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 32px;
   border-radius: 25px;
   background-color: #b4ec51;
