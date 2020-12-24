@@ -22,11 +22,12 @@ import './patientProfile.css'
 
 import MyContext from '../../helper/themeContext';
 import { TextField } from '@material-ui/core';
+import GetData from '../../Fetch/getDataJson';
 
 class PatientProfile extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { pocessedXrayLoading:false }
     }
 
     UNSAFE_componentWillMount()
@@ -35,7 +36,119 @@ class PatientProfile extends Component {
         {
             this.context.history.push('./demographics')
         }
+
+        else if(this.context.state.UXray.toString()==="true")
+        {
+            this.getProcessedXray();
+        }
+
+        console.log('on will mount');
     }
+
+    getProcessedXray = () =>
+    {
+        this.setState({pocessedXrayLoading:true})
+        let req = {
+            visitor_id:this.context.state.report_id
+        }
+        GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe,this.getProcessedXray)
+    }
+
+    setMe = (response) =>
+    {
+        if(response.ResponseCode==="Success")
+        {
+            let updatedEvaluations = this.context.state.Evaluations;
+            updatedEvaluations['apiKey']=response.apiKey;
+            updatedEvaluations['Nonce']=response.Nonce;
+            updatedEvaluations['baseUrl']=response.baseUrl;
+
+
+            if(response.ProcessedXrays.length>0)
+            {
+                console.log('here')
+
+                let proXrays = response.ProcessedXrays;
+
+                for (let evalu of this.context.state.Eval)
+                {
+                    if(evalu.joint_id.toString()==="3")  //for right
+                    {
+                        let flexMedial=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='1' && proXray.processed_xray_type_id.toString()==='1');
+                        let flexLateral=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='1' && proXray.processed_xray_type_id.toString()==='2');
+                        let nonFlexMedial=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='2' && proXray.processed_xray_type_id.toString()==='1');
+                        let nonFlexLateral=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='2' && proXray.processed_xray_type_id.toString()==='2');
+                        let Kneecap=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='3' && proXray.processed_xray_type_id.toString()==='3');
+
+                        
+
+                        let updatedEvaluationsIndex = updatedEvaluations.findIndex((processed_xrays) => processed_xrays.joint_id==="3" );
+                        console.log('flexMedial=> ', flexMedial);
+                        console.log('updatedEvaluationsIndex=> ', updatedEvaluationsIndex);
+                        console.log('updatedEvaluations[updatedEvaluationsIndex]=> ', updatedEvaluations[updatedEvaluationsIndex]);
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0].prediction=flexMedial.prediction; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1].prediction=nonFlexMedial.prediction; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0].prediction=flexLateral.prediction; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1].prediction=nonFlexLateral.prediction; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0].prediction=Kneecap.prediction; //kneecap prediction
+
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0].image=flexMedial.image_url; //medial flexion image
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1].image=nonFlexMedial.image_url; //medial non flexion image
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0].image=flexLateral.image_url; //lateral flexion image
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1].image=nonFlexLateral.image_url; // lateral non flexion image
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0].image=Kneecap.image_url; //kneecap image
+
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0]['processed_xray_id']=flexMedial.id; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1]['processed_xray_id']=nonFlexMedial.id; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['processed_xray_id']=flexLateral.id; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['processed_xray_id']=nonFlexLateral.id; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['processed_xray_id']=Kneecap.id; //kneecap prediction
+                    }
+                    
+                    if(evalu.joint_id.toString()==="4")  //for right
+                    {
+                        let flexMedial=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='1' && proXray.processed_xray_type_id.toString()==='1');
+                        let flexLateral=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='1' && proXray.processed_xray_type_id.toString()==='2');
+                        let nonFlexMedial=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='2' && proXray.processed_xray_type_id.toString()==='1');
+                        let nonFlexLateral=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='2' && proXray.processed_xray_type_id.toString()==='2');
+                        let Kneecap=proXrays.find((proXray) => proXray.joint_hurt_id.toString()===evalu.joint_hurt_id.toString() && proXray.view_id.toString()==='3' && proXray.processed_xray_type_id.toString()==='3');
+
+                        let updatedEvaluationsIndex = updatedEvaluations.findIndex((processed_xrays) => processed_xrays.joint_id==="4" );
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0].prediction=flexMedial.prediction; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1].prediction=nonFlexMedial.prediction; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0].prediction=flexLateral.prediction; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1].prediction=nonFlexLateral.prediction; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0].prediction=Kneecap.prediction; //kneecap prediction
+
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0].image=flexMedial.image_url; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1].image=nonFlexMedial.image_url; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0].image=flexLateral.image_url; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1].image=nonFlexLateral.image_url; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0].image=Kneecap.image_url; //kneecap 
+                        
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0]['processed_xray_id']=flexMedial.id; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1]['processed_xray_id']=nonFlexMedial.id; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['processed_xray_id']=flexLateral.id; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['processed_xray_id']=nonFlexLateral.id; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['processed_xray_id']=Kneecap.id; //kneecap prediction
+                    } 
+                    
+                }
+
+                
+                this.context.multipleUpdateValue([{key:'Evaluations',value:updatedEvaluations}])
+
+            }
+            this.setState({pocessedXrayLoading:false})
+        }
+
+        else
+        {
+            console.log('failed!!! ',response)
+        } 
+    }
+
+
     render() { 
         return ( 
             <div id="Evaluaion_PatientProfile_Main_Div">
@@ -97,9 +210,18 @@ class PatientProfile extends Component {
                             </div>
                             <div  className="Evaluaion_PatientProfile_Box1_Content2">
                                 {this.context.state.UXray===false ? 
-                                    <div className="Evaluaion_PatientProfile_Box_DisbaleText"> X-ray Mataching </div>
+                                    <div className="Evaluaion_PatientProfile_Box_DisbaleText"> Confirm Evaluations </div>
+                                
                                 :
-                                    <Button className="Evaluaion_PatientProfile_Box_Button" variant="contained" onClick={()=>{this.context.history.push('./x-ray-matching')}}> X-ray Matching </Button>
+                                    this.state.pocessedXrayLoading===true
+                                
+                                ?
+                                    <div className='Evaluaion_PatientProfile_Disable_Box'>
+                                        <Button className="Evaluaion_PatientProfile_Box_Button Evaluaion_PatientProfile_Box_DisbaleButton" variant="contained" disabled={true}> Confirm Evaluations </Button>
+                                        <div className="Evaluaion_PatientProfile_Box_DisbaleText3"> Processing X-rays... </div>
+                                    </div>
+                                :   
+                                    <Button className="Evaluaion_PatientProfile_Box_Button" variant="contained" onClick={()=>{this.context.history.push('./x-ray-matching')}}> Confirm Evaluations </Button>
                                 }
                             </div>
 

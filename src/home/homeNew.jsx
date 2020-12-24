@@ -11,12 +11,15 @@ import MyContext from '../helper/themeContext';
 
 import GetData from '../Fetch/getDataUniversal';
 
-import Xray1 from '../assets/xray1.jpeg';
-import Xray2 from '../assets/xray2.jpeg';
-import Xray3 from '../assets/xray3.jpeg';
-import Xray4 from '../assets/xray4.png';
+import Xray1 from '../assets/uploadBoxThumb/xray1.jpg';
+import Xray2 from '../assets/uploadBoxThumb/xray2.jpg';
+import Xray3 from '../assets/uploadBoxThumb/xray3.jpg';
+import Xray4Left from '../assets/uploadBoxThumb/xray4Left.jpg';
+import Xray4Right from '../assets/uploadBoxThumb/xray4Right.jpg';
 
 import { SemipolarLoading } from 'react-loadingg';
+
+import GetDataJson from '../Fetch/getDataJson';
 
 
 
@@ -34,22 +37,22 @@ class Home extends Component {
     handleRecover = () =>
     {
         // console.log(this.context.state.temp_patient_id)
-        this.setState({loading:true})
+        this.setState({loading:true,resumeOldEval:0})
+        let report_id =  this.context.state.oldEvaluations[0].id; 
         this.context.newEval();
-        GetData(this.context.baseUrl+'/api/v1/get/report',200,this.context.state.token,this.setMe)
+        GetData(this.context.baseUrl+`/api/v1/get/report?report_id=${report_id}`,200,this.context.state.token,this.setMe)
     }
 
     deleteReportAndStartNew = () =>
     {
         this.setState({loading:true,resumeWarningModal:false})
-        GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
+        GetData(this.context.baseUrl+'/api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
     }
 
     startEvaluation = () =>
     {
-      if(parseInt(this.context.state.oldEvaluations)>0)  
+      if(parseInt(this.context.state.oldEvaluations.length)>0)  
       {
-        // GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
         this.setState({resumeWarningModal:true})
       }
   
@@ -66,7 +69,8 @@ class Home extends Component {
         {
            //populate all data
             let patient = {};
-            let evaluation_stage =  this.context.state.oldEvaluations[0].stage.id; 
+            let evaluation_stage =  this.context.state.oldEvaluations[this.state.resumeOldEval].stage.id; 
+            let currEvaluation =  this.context.state.oldEvaluations[this.state.resumeOldEval]; 
             patient["name"]=response.patient[0].name;
             patient["birth_date"]=response.patient[0].birthday;
             
@@ -211,11 +215,11 @@ class Home extends Component {
                     {
                         
                         Xrays=[
-                            {id:12,name:'PA Standing Bilateral Flexion',isDone:true,image:null,thumbnail:Xray1,enable:true},
-                            {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:true,image:null,thumbnail:Xray2,enable:true},
-                            {id:6,name:'Bilateral Kneecap',isDone:true,image:null,thumbnail:Xray3,enable:true},
-                            {id:3,name:'Right Lateral',isDone:true,image:null,thumbnail:Xray3,enable:true},
-                            {id:5,name:'Left Lateral',isDone:true,image:null,thumbnail:Xray4,enable:true},
+                            {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
+                            {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:null,thumbnail:Xray2,enable:false},
+                            {id:6,name:'Bilateral Kneecap',isDone:false,image:null,thumbnail:Xray3,enable:false},
+                            {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4Right,enable:false},
+                            {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                         ] 
                     }
@@ -223,10 +227,10 @@ class Home extends Component {
                     else if(RightKnee==true)
                     {
                         Xrays=[
-                            {id:12,name:'PA Standing Bilateral Flexion',isDone:true,image:null,thumbnail:Xray1,enable:true},
-                            {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:true,image:null,thumbnail:Xray2,enable:true},
-                            {id:2,name:'Right Kneecap',isDone:true,image:null,thumbnail:Xray3,enable:true},
-                            {id:3,name:'Right Lateral',isDone:true,image:null,thumbnail:Xray4,enable:true},
+                            {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
+                            {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:null,thumbnail:Xray2,enable:false},
+                            {id:2,name:'Right Kneecap',isDone:false,image:null,thumbnail:Xray3,enable:false},
+                            {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4Right,enable:false},
 
                         ] 
                     }
@@ -234,14 +238,18 @@ class Home extends Component {
                     else if(LeftKnee==true)
                     {
                         Xrays=[
-                            {id:12,name:'PA Standing Bilateral Flexion',isDone:true,image:null,thumbnail:Xray1,enable:true},
-                            {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:true,image:null,thumbnail:Xray2,enable:true},
-                            {id:4,name:'Left Kneecap',isDone:true,image:null,thumbnail:Xray3,enable:true},
-                            {id:5,name:'Left Lateral',isDone:true,image:null,thumbnail:Xray4,enable:true},
+                            {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
+                            {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:null,thumbnail:Xray2,enable:false},
+                            {id:4,name:'Left Kneecap',isDone:false,image:null,thumbnail:Xray3,enable:false},
+                            {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                         ] 
                     }
                 }
+
+                this.CheckXrays(Xrays,temp_report_id)
+
+                
             }
 
             if(parseInt(evaluation_stage)>4)
@@ -250,8 +258,18 @@ class Home extends Component {
                 
             }
 
-            // console.log(newForm)
-            this.context.multipleUpdateValueWithHistory([{key:'evaluation_stage',value:evaluation_stage},{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient}],'/evaluation/demographics')
+            
+
+
+            if(evaluation_stage>3)    //get xrays images and move on
+            {
+                let stateArray = [{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient},{key:'activeEvaluation',value:currEvaluation}]
+                this.context.multipleUpdateValue(stateArray);
+                this.CheckXrays(Xrays,temp_report_id)
+            }
+
+          //move on
+            else this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient},{key:'activeEvaluation',value:currEvaluation}],'/evaluation/demographics')
         }
 
         
@@ -262,6 +280,67 @@ class Home extends Component {
     {
         this.context.newEval();
         this.context.multipleUpdateValueWithHistory([{key:'oldEvaluations',value:[]}],'/evaluation/welcome')
+    }
+
+
+    CheckXrays = (Xrays,report_id) =>
+    {
+        let xrayExist = true;
+
+        console.log('checking xrays => ',Xrays)
+        Xrays.forEach((xray)=>
+        { 
+            if(xray.image)
+            {
+                if(xray.image.toString()==="null" || xray.image.toStrimg()==="" || xray.image.toString()===" ")
+                {
+                    xrayExist=false;
+                }
+            }
+
+            else xrayExist=false;
+            
+        })
+
+        if(xrayExist===false)
+        {
+            this.getXrays(report_id);
+        }
+
+        else
+        {
+            this.context.history.push('/evaluation/demographics');
+        }
+    }
+
+    getXrays  = (report_id) =>
+    {
+        console.log('on get xray');
+        let req = 
+        {
+            visitor_id:report_id
+        }
+        GetDataJson(this.context.baseUrl+'/api/v1/xrays',200,req,this.context.state.token,this.setXrays);
+    }
+
+    setXrays = ( response ) =>
+    {
+        console.log('in set xrays => ',response);
+        console.log('context xrays =>',this.context.state.Xrays);
+        let contextXrays = this.context.state.Xrays;
+        if(response.ResponseCode==="Success")
+        {
+            response.Xrays.forEach((xray)=>
+            {
+                let row = contextXrays.find((x)=> x.id.toString()===xray.xray_type_id.toString());
+                if(row)
+                {
+                    row.image=xray.url;
+                }
+            })
+        }
+
+        this.context.multipleUpdateValueWithHistory([{key:'Xrays',value:contextXrays}],'/evaluation/demographics')
     }
 
 

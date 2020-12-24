@@ -14,7 +14,8 @@ class OverviewBox extends Component {
         this.state = {  }
     }
     render() { 
-        const old = this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>3?true:false;
+        const old = parseInt(this.context.state.activeEvaluation.stage.id)>3?true:false;
+        
         return ( 
                 <div id="Evaluaion_UploadXray_OverView_Box1_Div" style={{height:this.context.state.Eval.length<2?this.context.state.old==true?'510px':'440px':this.context.state.old==true?'560px':'560px'}}>
                     {
@@ -42,6 +43,14 @@ class OverviewBox extends Component {
                             </div>
                         )
                     }
+
+                    {
+                    this.props.uploadButton==true?
+                        <Button className="Evaluaion_UploadXray_OverView_Old_Box_Button"  variant="contained" onClick={this.props.handleUpload}> Upload Xrays </Button>
+                    :null
+                    }
+
+
                     {
                     old==true?
                         <Button className="Evaluaion_UploadXray_OverView_Old_Box_Button"  variant="contained" onClick={this.props.Old}> Next </Button>

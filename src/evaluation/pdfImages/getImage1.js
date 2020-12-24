@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 
-import Xray1 from '../../assets/xray1.jpg';
-import Xray2 from '../../assets/xray2.jpeg';
-import Xray3 from '../../assets/xray3.jpeg';
-import Xray4 from '../../assets/xray4.jpeg';
 import Tick from '../../assets/tick-black.png';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-
-import Search from '../../assets/search.png';
 import MyContext from '../../helper/themeContext';
 
 import './getImage.css';

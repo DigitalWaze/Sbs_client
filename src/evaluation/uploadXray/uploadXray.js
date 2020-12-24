@@ -5,11 +5,13 @@ import firebase from '../../helper/firebase';
 
 import './uploadXray.css';
 
-import Xray1 from '../../assets/xray1.jpeg';
-import Xray2 from '../../assets/xray2.jpeg';
-import Xray3 from '../../assets/xray3.jpeg';
-import Xray4 from '../../assets/xray4.png';
-import OverviewBox from './overview';
+import Xray1 from '../../assets/uploadBoxThumb/xray1.jpg';
+import Xray2 from '../../assets/uploadBoxThumb/xray2.jpg';
+import Xray3 from '../../assets/uploadBoxThumb/xray3.jpg';
+import Xray4Left from '../../assets/uploadBoxThumb/xray4Left.jpg';
+import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
+
+import OverviewBox from './overview'; 
 import UploadBox from './upload';
 
 import { SemipolarLoading } from 'react-loadingg';
@@ -30,6 +32,7 @@ class UploadXray extends Component {
             files:[],
             req:[],
             loading:false,
+            uploadButton:false
         }
     }
 
@@ -61,11 +64,11 @@ class UploadXray extends Component {
             {
                 
                 let Xrays=[
-                    {id:12,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
+                    {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
                     {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:null,thumbnail:Xray2,enable:false},
                     {id:6,name:'Bilateral Kneecap',isDone:false,image:null,thumbnail:Xray3,enable:false},
-                    {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray3,enable:false},
-                    {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4,enable:false},
+                    {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4Right,enable:false},
+                    {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                 ] 
                 this.setState({Xrays,OverView:true,
@@ -75,13 +78,13 @@ class UploadXray extends Component {
                 loading:false,})
             }
 
-            else if(RightKnee==true)
+            else if(RightKnee===true)
             {
                 let Xrays=[
-                    {id:12,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
+                    {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
                     {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:null,thumbnail:Xray2,enable:false},
                     {id:2,name:'Right Kneecap',isDone:false,image:null,thumbnail:Xray3,enable:false},
-                    {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4,enable:false},
+                    {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4Right,enable:false},
 
                 ] 
                 this.setState({Xrays,OverView:true,
@@ -92,13 +95,13 @@ class UploadXray extends Component {
 
             }
 
-            else if(LeftKnee==true)
+            else if(LeftKnee===true)
             {
                 let Xrays=[
-                    {id:12,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
+                    {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:null,thumbnail:Xray1,enable:true},
                     {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:null,thumbnail:Xray2,enable:false},
                     {id:4,name:'Left Kneecap',isDone:false,image:null,thumbnail:Xray3,enable:false},
-                    {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4,enable:false},
+                    {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                 ] 
                 this.setState({Xrays,OverView:true,
@@ -115,7 +118,24 @@ class UploadXray extends Component {
         let files=this.state.files;
         let fileObj={visitor_id:this.context.state.report_id,xray_type_id:xrayid,file:file,name:xrayname};
         files.push(fileObj);
-        this.setState({file})
+
+        let Xrays=this.state.Xrays;
+        Xrays[this.state.activeId].isDone=true;
+        Xrays[this.state.activeId].image=URL.createObjectURL(file);
+
+        if(this.state.activeId===this.state.Xrays.length-1) //last one for upload
+        {
+            this.setState({Xrays,OverView:true,file,uploadButton:true})
+        }
+
+        else
+        {
+            Xrays[this.state.activeId+1].enable=true;
+            this.setState({Xrays,OverView:true,file})
+        }
+       
+
+       
 
     }
 
@@ -131,118 +151,65 @@ class UploadXray extends Component {
         this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true}],'./patient-profile')
     }
 
-    // handleUploadClick = () =>
-    // {
-    //     if(this.state.activeId===this.state.Xrays.length-1)
-    //     {
-    //         //all done
-    //         if(this.state.files.length==0)
-    //         {
-    //             this.context.history.push('./patient-profile')
-    //             return;
-    //         }
-    //         let global =this;
-    //         var storage = firebase.storage();
-    //         console.log(this.state.files);
-    //         this.setState({loading:true})
-
-    //         let uploaded=0;
-    //         let i=0;
-
-    //         console.log(this.state.files)
-    //         for(i=0;i<this.state.files.length;i++)
-    //         {
-    //             let file=this.state.files[i];
-    //             var storageRef = storage.ref().child('xray-images/'+file.visitor_id+ " "+file.name);
-    //             storageRef.put(file.file).then(function(snapshot) {
-    //                 snapshot.ref.getDownloadURL().then(function(downloadURL) {
-    //                     console.log('File available at ', downloadURL);
-    //                     uploaded=uploaded+1;
-    //                     global.checkAllUploaded(uploaded,downloadURL,file.visitor_id,file.xray_type_id);
-    //                   });
-                    
-    //             });
-    //         }
-
-            
-    //     }
-
-    //     else
-    //     {
-    //         let Xrays=this.state.Xrays;
-    //         Xrays[this.state.activeId].isDone=true;
-    //         Xrays[this.state.activeId+1].enable=true;
-    //         this.setState({Xrays,OverView:true})
-    //     }
-        
-    // }
   handleUploadClick = () =>
     {
-        if(this.state.activeId===this.state.Xrays.length-1)
+        if(this.state.activeId===this.state.Xrays.length-1) // always true because button appear on this condition - reference *appendFile function 
         {
-            //all done
-            if(this.state.files.length==0)
+            if(this.state.files.length===0)
             {
+                alert('error');
                 this.context.history.push('./patient-profile')
                 return;
             }
-            let global =this;
-            var storage = firebase.storage();
+
+          
             console.log(this.state.files);
             this.setState({loading:true})
 
             let i=0;
 
             console.log(this.state.files)
+
+            let form_data = new FormData();
+            form_data.append('visitor_id',this.context.state.report_id)
+
             for(i=0;i<this.state.files.length;i++)
             {
                 let file=this.state.files[i];
-                let form_data = new FormData();
-                form_data.append('image',file.file)
-                form_data.append('visitor_id',file.visitor_id)
-                form_data.append('xray_type_id',file.xray_type_id)
-
-
-                if(i==this.state.files.length-1)
-                {
-                    form_data.append('update_state',true)
-                }
-
-                else form_data.append('update_state',false)
-
-                for (var value of form_data.values()) {
-                    console.log(value); 
-                 }
-
-                PostFormData(this.context.baseUrl+'/api/v1/upload/xray',201,form_data,this.context.state.token,this.newSetMe)
-
+                form_data.append(file.xray_type_id,file.file)
             }
+
+            PostFormData(this.context.baseUrl+'/api/v1/upload/xray',200,form_data,this.context.state.token,this.newSetMe)
+
 
             
         }
 
-        else
-        {
-            let Xrays=this.state.Xrays;
-            Xrays[this.state.activeId].isDone=true;
-            Xrays[this.state.activeId+1].enable=true;
-            this.setState({Xrays,OverView:true})
-        }
+       
         
     }
+
+    
   
 
 
     newSetMe = (response) =>
     {
         console.log(response);
-        uploaded = uploaded + 1
-        if(uploaded==this.state.files.length)
+        if(response.responseCode==="Success")
         {
-            this.setState({loading:false});
+            let oldEvaluations = this.context.state.oldEvaluations;
+            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
+
+            oldEvaluations[currEvaIndex].stage.id=4;
+            oldEvaluations[currEvaIndex].stage.stage="All Xrays Uploaded";
+
+            let currentEvaluation = oldEvaluations[currEvaIndex];
+            
+            this.context.multipleUpdateValue([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
             this.context.updateSession();
-            this.context.setCookie('evaluation_stage',4,30);
-            this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays}],'./patient-profile')
+            this.context.history.push('./patient-profile')
+                // this.setState({loading:false});
         }
     }
 
@@ -250,7 +217,7 @@ class UploadXray extends Component {
     {
         let req=this.state.req;
         req.push({visitor_id:visitor_id,xray_type_id:xray_type_id,image_url:url})
-        if(uploaded==this.state.files.length)
+        if(uploaded===this.state.files.length)
         {
             // this.setState({loading:false});
             // PostData =   (url,statusCode,req,token,callback) 
@@ -262,10 +229,22 @@ class UploadXray extends Component {
     {
         if(response.length>0)
         {
-            this.setState({loading:false});
+
+            let oldEvaluations = this.context.state.oldEvaluations;
+            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
+
+            oldEvaluations[currEvaIndex].stage.id=4;
+            oldEvaluations[currEvaIndex].stage.stage="All Xrays Uploaded";
+
+            let currentEvaluation = oldEvaluations[currEvaIndex];
+            
+            this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
+
             this.context.updateSession();
-            this.context.setCookie('evaluation_stage',4,30);
-            this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays}],'./patient-profile')
+            this.context.history.push('./patient-profile')
+
+            // this.setState({loading:false});
+
         }
     }
 
@@ -273,7 +252,7 @@ class UploadXray extends Component {
         return ( 
         
             <div id="Evaluaion_UploadXray_Main_Div">
-            {this.state.loading==true?
+            {this.state.loading===true?
 
                 <SemipolarLoading size={"large"} color={'#b4ec51'}/>
 
@@ -284,9 +263,9 @@ class UploadXray extends Component {
                     </div>
                     {
                         this.state.OverView===true?
-                            <OverviewBox Old={this.Old}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)}/>
+                            <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />
                         :
-                            <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} handleClick={this.handleUploadClick}/>
+                            <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
 
 
                     }

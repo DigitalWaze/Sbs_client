@@ -4,8 +4,8 @@ import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 
 
-import './patientReport.css';
-import MyContext from '../../../helper/themeContext';
+import '../patientReport.css';
+import MyContext from '../../../../helper/themeContext';
 class Page1 extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +33,7 @@ class Page1 extends Component {
     }
     render() { 
         const options=[{value:'None',id:1},{value:'Mild',id:2},{value:'Moderate',id:3},{value:'Severe',id:4},{value:'Extreme',id:5}];
-        const old= this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2?true:false;
+        const old= parseInt(this.context.state.activeEvaluation.stage.id)>2?true:false;
         return ( 
         
         <div>

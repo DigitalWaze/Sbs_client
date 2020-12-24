@@ -174,7 +174,7 @@ class EditProfile extends Component {
                 </Typography>
               </div>
               <div className="EditProfile_OldPassword_Input_Div" >
-                <TextField id="oldpassword" inputProps={{ style:{color:"white"} }} fullWidth value={this.state.oldpassword} onChange={this.updateFormValue}/>
+                <TextField id="oldpassword"  autoComplete='old-password' inputProps={{ style:{color:"white"} }} fullWidth value={this.state.oldpassword} onChange={this.updateFormValue}/>
               </div>
             </div>
 
@@ -185,18 +185,18 @@ class EditProfile extends Component {
                 </Typography>
               </div>
               <div className="EditProfile_OldPassword_Input_Div" >
-                <TextField id="newpassword" inputProps={{ style:{color:"white"} }}  type="password" fullWidth value={this.state.newpassword} onChange={this.updateFormValue} />
+                <TextField id="newpassword" autoComplete='new-password' inputProps={{ style:{color:"white"} }}  type="password" fullWidth value={this.state.newpassword} onChange={this.updateFormValue} />
               </div>
             </div>
 
             <div className="EditProfile_Rodal_Row_Div">
               <div className="EditProfile_OldPassword_Text">
-                <Typography variant="h5" type="password" className="EditProfile_Input_Texts" >
+                <Typography variant="h5" className="EditProfile_Input_Texts" >
                   Confirm Password:
                 </Typography>
               </div>
               <div className="EditProfile_OldPassword_Input_Div" >
-                <TextField id="cpassword"  type="password" inputProps={{ style:{color:"white"} }} fullWidth value={this.state.cpassword} onChange={this.updateFormValue} />
+                <TextField id="cpassword"  type="password" autoComplete='confirm-password' inputProps={{ style:{color:"white"} }} fullWidth value={this.state.cpassword} onChange={this.updateFormValue} />
               </div>
             </div>
 

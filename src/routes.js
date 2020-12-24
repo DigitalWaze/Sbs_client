@@ -31,47 +31,49 @@ import LLFVUP from "./assets/left-lateral-flexion-up.png";
 import LLNFVUP from "./assets/left-lateral-nonflexion-up.png";
 import LKVUP from "./assets/left-kneecap-up.png";
 
-import MFVUP1 from "./assets/medial-flexion-up-1.png";
-import MNFVUP1 from "./assets/medial-nonflexion-up-1.png";
-import LFVUP1 from "./assets/lateral-flexion-up-1.png";
-import LNFVUP1 from "./assets/lateral-nonflexion-up-1.png";
-import KVUP1 from "./assets/kneecap-up-1.png";
+import MFVUP1 from "./assets/eval-comp-xrays/medial-flexion-up-1.png";
+import MNFVUP1 from "./assets/eval-comp-xrays/medial-nonflexion-up-1.png";
+import LFVUP1 from "./assets/eval-comp-xrays/lateral-flexion-up-1.png";
+import LNFVUP1 from "./assets/eval-comp-xrays/lateral-nonflexion-up-1.png";
+import KVUP1 from "./assets/eval-comp-xrays/kneecap-up-1.png";
 
-import MFVUP2 from "./assets/medial-flexion-up-2.png";
-import MNFVUP2 from "./assets/medial-nonflexion-up-2.png";
-import LFVUP2 from "./assets/lateral-flexion-up-2.png";
-import LNFVUP2 from "./assets/lateral-nonflexion-up-2.png";
-import KVUP2 from "./assets/kneecap-up-2.png";
+import MFVUP2 from "./assets/eval-comp-xrays/medial-flexion-up-2.png";
+import MNFVUP2 from "./assets/eval-comp-xrays/medial-nonflexion-up-2.png";
+import LFVUP2 from "./assets/eval-comp-xrays/lateral-flexion-up-2.png";
+import LNFVUP2 from "./assets/eval-comp-xrays/lateral-nonflexion-up-2.png";
+import KVUP2 from "./assets/eval-comp-xrays/kneecap-up-2.png";
 
-import MFVUP3 from "./assets/medial-flexion-up-3.png";
-import MNFVUP3 from "./assets/medial-nonflexion-up-3.png";
-import LFVUP3 from "./assets/lateral-flexion-up-3.png";
-import LNFVUP3 from "./assets/lateral-nonflexion-up-3.png";
-import KVUP3 from "./assets/kneecap-up-3.png";
+import MFVUP3 from "./assets/eval-comp-xrays/medial-flexion-up-3.png";
+import MNFVUP3 from "./assets/eval-comp-xrays/medial-nonflexion-up-3.png";
+import LFVUP3 from "./assets/eval-comp-xrays/lateral-flexion-up-3.png";
+import LNFVUP3 from "./assets/eval-comp-xrays/lateral-nonflexion-up-3.png";
+import KVUP3 from "./assets/eval-comp-xrays/kneecap-up-3.png";
 
-import MFVUP4 from "./assets/medial-flexion-up-4.png";
-import MNFVUP4 from "./assets/medial-nonflexion-up-4.png";
-import LFVUP4 from "./assets/lateral-flexion-up-4.png";
-import LNFVUP4 from "./assets/lateral-nonflexion-up-4.png";
-import KVUP4 from "./assets/kneecap-up-4.png";
+import MFVUP4 from "./assets/eval-comp-xrays/medial-flexion-up-4.png";
+import MNFVUP4 from "./assets/eval-comp-xrays/medial-nonflexion-up-4.png";
+import LFVUP4 from "./assets/eval-comp-xrays/lateral-flexion-up-4.png";
+import LNFVUP4 from "./assets/eval-comp-xrays/lateral-nonflexion-up-4.png";
+import KVUP4 from "./assets/eval-comp-xrays/kneecap-up-4.png";
 
+import CEimage from "./assets/eval-comp-xrays/cannotEval.jpg";
 
 import Login from "./login/login";
 import CreateUser from "./admin/createUser/createUser";
 import Home from "./home/homeNew";
 
 import StartOver from "./offer/startOver";
-import RecomCarePath from "./tutorials/PatientEvaluation/recomCarePath/recomendedcarepathway";
+// import RecomCarePath from "./tutorials/PatientEvaluation/recomCarePath/recomendedcarepathway";
 import EditProfile from "./editprofile/EditProfile";
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
 
-const baseUrlH = "https://sbs-server-adonis.herokuapp.com";
+const baseUrlH = "https://sbs-server-adonis.herokuapp.com"; //old Env
 const baseUrlA = "https://sbs-backend-dw.herokuapp.com"
+const baseUrlL = "http://127.0.0.1:3333"
 
 class Routes extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true };
+    this.state = { loading: true,oldEvaluations:[] };
   }
 
   getCookie(cname) {
@@ -112,6 +114,8 @@ class Routes extends Component {
   };
 
   updateSession = () => {
+
+    let oldEvaluations=[];
     this.setCookie("token", this.state.token, 30);
     this.setCookie("type", this.state.type, 30);
     this.setCookie("user_id", this.state.user_id, 30);
@@ -119,7 +123,16 @@ class Routes extends Component {
     this.setCookie("user_type_id", this.state.user_type.id, 30);
     this.setCookie("user_type_name", this.state.user_type.type, 30);
     this.setCookie("isTutorialCompleted", this.state.isTutorialCompleted, 30);
-    this.setCookie("oldEvaluations", this.state.oldEvaluations, 30);
+    if(this.state.oldEvaluations)
+    {
+      oldEvaluations =  JSON.stringify(this.state.oldEvaluations)
+    }
+
+    else 
+    {
+      oldEvaluations =  JSON.stringify(oldEvaluations)
+    }
+    this.setCookie("oldEvaluations", oldEvaluations, 30);
     this.setCookie("organization", this.state.organization, 30);
     this.setCookie("tutorial", this.state.tutorial, 30);
 
@@ -142,10 +155,12 @@ class Routes extends Component {
       let oldEvaluations = this.getCookie("oldEvaluations");
 
       
-      if(oldEvaluations && oldEvaluations.toString() !== 'undefined')
+      if(oldEvaluations && oldEvaluations.toString() !== 'undefined' && oldEvaluations.toString() !== 'null' )
       {
         oldEvaluations = JSON.parse(oldEvaluations);
       }
+
+      else oldEvaluations=[];
          
       let tutorial_rem = this.getCookie("tutorial-" + user_id);
       if( 
@@ -225,10 +240,20 @@ class Routes extends Component {
 
   multipleUpdateValueWithHistory = (objects, url) => {
     let newState = {};
+    let updateSession = false;
     for (var obj in objects) {
       newState[objects[obj].key] = objects[obj].value;
+      if(objects[obj].key==="oldEvaluations")
+      {
+        updateSession=true;
+      }
     }
-    this.setState(newState);
+
+    if(updateSession===true)
+    {
+      this.setState(newState,()=>{this.updateSession()});
+    }
+    else this.setState(newState);
     history.push(url);
   };
 
@@ -238,18 +263,18 @@ class Routes extends Component {
     [   
       {name:'Right Knee',image:Bone1Image  , joint_id:'3',
         Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,up5:CEimage,prediction:''}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,up5:CEimage,prediction:''}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,up5:CEimage,prediction:''}]},
 
         ] 
       },
 
       {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
         Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,up5:CEimage,prediction:''}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,up5:CEimage,prediction:''}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,up5:CEimage,prediction:''}]},
         ] 
       }
     ]
@@ -405,7 +430,7 @@ class Routes extends Component {
           {this.state.loggedIn == true ? <Route path="/" component={Drawer} /> : null}
           <Route path="/login" component={Login} />
           <Route exact path="/" component={Login} />
-          <Route path="/home" component={EditProfile} /> {/* DEFAULT */}
+          <Route path="/home" component={Home} /> {/* DEFAULT */}
           <Route path="/start-over" component={StartOver} />
           <Route path="/tutorials" component={Tutorials} />
           <Route path="/Learn-more" component={LearnMore} />

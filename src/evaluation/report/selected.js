@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-
 import Button from '@material-ui/core/Button';
-
-
 import './selected.css'
-
-import MEDFLXDOWN1 from '../../assets/medial-flexion-up-1.png'
 import MyContext from '../../helper/themeContext';
 
 

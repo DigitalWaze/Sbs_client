@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 
-import MEDFLXDOWN from '../../../../assets/medial-flexion-up-4.png'
-import MEDNONFLXDOWN from '../../../../assets/medial-nonflexion-up-4.png'
-import LATFLXDOWN from '../../../../assets/lateral-flexion-up-1.png'
-import LATNONFLXDOWN from '../../../../assets/lateral-nonflexion-up-1.png'
-import KNEEDOWN from '../../../../assets/kneecap-up-4.png'
+import MEDFLXDOWN from '../../../../assets/eval-comp-xrays/medial-flexion-up-4.png'
+import MEDNONFLXDOWN from '../../../../assets/eval-comp-xrays/medial-nonflexion-up-4.png'
+import LATFLXDOWN from '../../../../assets/eval-comp-xrays/lateral-flexion-up-1.png'
+import LATNONFLXDOWN from '../../../../assets/eval-comp-xrays/lateral-nonflexion-up-1.png'
+import KNEEDOWN from '../../../../assets/eval-comp-xrays/kneecap-up-4.png'
+
+
 
 
 

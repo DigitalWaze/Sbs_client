@@ -56,6 +56,7 @@
 {
   display: block;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .Evaluaion_XrayMatching_Matching_State_Button
@@ -65,8 +66,8 @@
     padding: 5px 15px !important;
     font-size: 32px !important;
     border-radius: 25px !important;
-    border-width: 1px !important;
-    border-color: hsla(0, 0%, 100%, 0.34) !important;
+    /* border-width: 1px !important;
+    border-color: hsla(0, 0%, 100%, 0.34) !important; */
     font-family: 'Lato', sans-serif !important;
     text-transform: none !important;
 }
@@ -121,6 +122,58 @@
   text-transform: none !important;
 }
 
+.Evaluaion_XrayMatching_Matching_View_FullXray_Button_Div
+{
+  position: absolute;
+  bottom:10px;
+  right:10px;
+}
+
+#Evaluaion_XrayMatching_Matching_View_FullXray_Button
+{
+  display: inline-block;
+  width:100% !important;
+  padding: 5px 5px !important;
+  font-size: 15px !important;
+  line-height: 30px !important;
+  border-radius: 15px !important;
+  background: #b4ec51 !important;
+  font-family: 'Lato', sans-serif !important;
+  text-transform: none !important;
+}
+
+
+.Evaluaion_XrayMatching_Matching_View_NoImage_FullXray_Text_Div
+{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 50%;
+}
+
+.Evaluaion_XrayMatching_Matching_View_NoImage_FullXray_Button_Div
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+}
+
+#Evaluaion_XrayMatching_Matching_View_NoImage_FullXray_Button
+{
+  display: inline-block;
+  width:100% !important;
+  padding: 5px 5px !important;
+  font-size: 15px !important;
+  line-height: 30px !important;
+  /* border-radius: 15px !important; */
+  /* background: #b4ec51 !important; */
+  font-family: 'Lato', sans-serif !important;
+  text-transform: none !important;
+  max-width: 300px !important;
+}
+
 .Evaluaion_XrayMatching_Matching_Modal2_Button
 {
   display: inline-block;
@@ -166,6 +219,26 @@
   max-height: calc(50vh - 50px);
 }
 
+.Evaluaion_XrayMatching_Matching_NoXray_Box
+{
+  /* style={{maxWidth:'100%',maxHeight:'100%'}} */
+  /* position: relative; */
+  max-width: calc(500px - 20px);    /* 20px padding */
+  
+  max-height: calc(50vh - 70px);  /* 20px padding */
+  background: grey;
+  height:370px;
+  text-align: center;
+  justify-content: center;
+  font-size:38px;
+  padding:10px;
+  line-height: 45px;
+  color:white;
+  display:flex;
+  flex-direction: column;
+  
+}
+
 #Evaluaion_XrayMatching_Matching_Heading3_Div
 {
   font-family: 'Lato', sans-serif;
@@ -198,6 +271,16 @@
   outline:none !important;
 }
 
+.Evaluaion_XrayMatching_Matching_Modal_Div1
+{
+  background:#3023AE;
+  width:500px;
+  height:520px;
+  padding-top:15px;
+  border-radius: 0px;
+  outline:none !important;
+}
+
 .Evaluaion_XrayMatching_Matching_Modal_Heading
 {
   margin-left:50px;
@@ -205,6 +288,34 @@
   font-size: 36px;
   font-family: Lato, sans-serif;
   color: #fff;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Heading1
+{
+  text-align: center;
+  margin-bottom:10px;
+  font-size: 36px;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+
+.Evaluaion_XrayMatching_Matching_Modal_Description
+{
+  text-align: center;
+  margin-bottom:10px;
+  font-size: 20px;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+.Evaluaion_XrayMatching_Matching_Modal_Sub_Head
+{
+  margin-left:50px;
+  margin-bottom:5px;
+  font-size: 18px;
+  font-family: Lato, sans-serif;
+  color: rgb(153, 138, 138);
 }
 
 .Evaluaion_XrayMatching_Matching_Modal_Notes_Div
@@ -298,4 +409,16 @@
   top:10px;
   font-size: 20px;
   left:5px;
+}
+
+.Evaluaion_XrayMatching_Matching_State_Button_Prediction_Box
+{
+  position: absolute;
+  left:-80px;
+  width: 47px;
+  background-color: orange;
+  padding: 15px;
+  top:8px;
+  color:black;
+  font-weight: 640;
 }

@@ -58,7 +58,7 @@ class PatientDemoGraphics extends Component {
         // document.getElementById('')
         console.log(this.context.state.patient)
         console.log()
-        if(this.context.state.patient.name!=undefined && this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>0)
+        if(this.context.state.patient.name!=undefined && parseInt(this.context.state.activeEvaluation.stage.id)>0)
         {
 
             let oldPatient = this.context.state.patient;
@@ -207,13 +207,10 @@ class PatientDemoGraphics extends Component {
             return false;
         }
         
-
-            
-
         return true;
     }
 
-    updateContext = (report_id,patient_id) =>
+    updateContext = (report_id,patient_id,oldEvaluations,currEvaluation) =>
     {
         let patient={};
         patient["name"]=this.state.patient_name;
@@ -230,16 +227,20 @@ class PatientDemoGraphics extends Component {
         patient["date"]=this.state.date;
 
 
-        this.context.multipleUpdateValueWithHistory([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id},{key:'evaluation_stage',value:1}],'./new-evaluation')
-
+        this.context.multipleUpdateValue([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currEvaluation}])
+        this.context.updateSession();
+        this.context.history.push('./new-evaluation')
     } 
 
     handleClick = () =>
     {
-        if(this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>0 )
+        if(this.context.state.activeEvaluation)
         {
-            this.context.history.push('./new-evaluation');
-            console.log('old')
+            if(parseInt(this.context.state.activeEvaluation.stage.id)>0)
+            {
+                this.context.history.push('./new-evaluation');
+            }
+            // console.log('old')
         }
         else 
         {
@@ -281,12 +282,12 @@ class PatientDemoGraphics extends Component {
         console.log(response)
         if(response._visitor)
         {
-            this.context.updateSession();
-            this.context.setCookie('evaluation_stage',1,30);
-            this.context.setCookie('temp_report_id',response._visitor.id,30);
-            this.context.setCookie('temp_patient_id',response._visitor.patient_id,30);
+            let oldEvaluations = this.context.state.oldEvaluations;
 
-            this.updateContext(response._visitor.id,response._visitor.patient_id);
+            let currEvaluation = { id:response._visitor.id , stage:{id:1 , stage:'Patient Demographics Submitted'},visitor:{id:response._visitor.id,patient_id:response._visitor.patient_id} }
+            oldEvaluations.push(currEvaluation);
+
+            this.updateContext(response._visitor.id,response._visitor.patient_id,oldEvaluations,currEvaluation);
             // this.setState({loading:false})
         }
         else

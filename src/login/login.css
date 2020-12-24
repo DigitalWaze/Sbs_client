@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.MuiButton-contained {
+#Login_Main_Div .MuiButton-contained {
   color: #000 !important;
 }
 

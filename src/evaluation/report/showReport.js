@@ -7,11 +7,11 @@ import Modal from '@material-ui/core/Modal';
 
 import MyContext from '../../helper/themeContext';
 
-import Xray1 from '../../assets/xray1.jpg';
-import Xray2 from '../../assets/xray2.jpg';
-import Xray3 from '../../assets/xray3.jpg';
-import Xray4Right from '../../assets/xray4Right.jpg';
-import Xray4Left from '../../assets/xray4Left.jpg';
+import Xray1 from '../../assets/uploadBoxThumb/xray1.jpg';
+import Xray2 from '../../assets/uploadBoxThumb/xray2.jpg';
+import Xray3 from '../../assets/uploadBoxThumb/xray3.jpg';
+import Xray4Left from '../../assets/uploadBoxThumb/xray4Left.jpg';
+import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
 
 import Tick from '../../assets/tick-black.png';
 import Search from '../../assets/search.png';
@@ -19,6 +19,7 @@ import Notes from '../../assets/notes.png';
 
 import html2canvas from 'html2canvas'
 import './report.css'
+import ImageViewModalWithZoom from '../../components/ImageViewModal/ImageViewModalWithZoom';
 
 const height='60px';
 
@@ -74,7 +75,7 @@ class ShowReport extends Component {
         {
             Joint="Left ";
         }
-        if(id==1)
+        if(id.toString()==='7')
         {
             notes=Joint + "Flexion " + "Medial : "
             notes=notes + this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Flexion View").notes;
@@ -83,7 +84,7 @@ class ShowReport extends Component {
             notes=notes + Joint + "Flexion " + "Lateral : "
             notes=notes+" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Flexion View").notes  
         }
-        else if(id==2)
+        else if(id.toString()==='1')
         {
             notes=Joint + "Non-Flexion " + "Medial : "
             notes=notes + this.state.Evaluation.Xrays.find(x =>x.name==='Medial').xrays.find(y => y.name==="Non-Flexion View").notes 
@@ -93,7 +94,7 @@ class ShowReport extends Component {
             notes=notes +" "+this.state.Evaluation.Xrays.find(x =>x.name==='Lateral').xrays.find(y => y.name==="Non-Flexion View").notes  
         }
 
-        else if(id==3)
+        else if(id.toString()==='6' || id.toString()==='2' || id.toString()==='4')
         {
             notes=Joint + "Kneecap : "
             notes=notes + this.state.Evaluation.Xrays.find(x =>x.name==='Kneecap').xrays.find(y => y.name==="Kneecap").notes 
@@ -143,17 +144,8 @@ class ShowReport extends Component {
         const global=this;
         let newelement = document.createElement("div");
         
-        // newelement=document.getElementById("GetImage").cloneNode(true);
         newelement=document.getElementById("GetImage")
-        // newelement.style.width="900px";
-        // newelement.style.height="700px";
-        // newelement.style.backgroundColor="white";
-        // newelement.style.position='absolute';
-        // newelement.style.top='-16384px';
-        // newelement.style.display=;
-        // document.getElementsByTagName('BODY')[0].append(newelement);
         html2canvas(newelement).then(function(canvas) {
-           
             global.downloadURI( canvas.toDataURL("image/png"),'picture')
         });
     }
@@ -270,18 +262,30 @@ class ShowReport extends Component {
                                                     <Button className="Evaluaion_Report_Box_Button"  variant="contained" onClick={()=>this.handleSelect(type.name,xray.name,xray.state,xray.up)}> {xray.name} </Button>
                                                 </div>
                                             </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state==1?'#6C8D31':''}}>
-                                                <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==1 && <img src={Tick} alt="Ticked" /> } </div> 
-                                            </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==2?'yellow':''}}>
-                                                <div className="Evaluaion_Report_Box_Selected_Box"  > {xray.state==2 && <img src={Tick} alt="Ticked" /> }  </div> 
-                                            </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==3?'#fa9e2d':''}}>
-                                                <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==3 && <img src={Tick} alt="Ticked" /> } </div> 
-                                            </Grid>
-                                            <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state==4?'#C50000':''}}>
-                                                <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state==4 && <img src={Tick} alt="Ticked" /> } </div> 
-                                            </Grid>
+
+                                            {
+                                                xray.state.toString()==='5'?
+
+                                                <Grid item xs={8} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:'#A7A9AC'}}>
+                                                    <div className="Evaluaion_Report_Box_Selected_Box"> Cannot Evaluate </div> 
+                                                </Grid>
+                                                :
+                                                <React.Fragment>
+                                                    <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state.toString()==='1'?'#6C8D31':''}}>
+                                                        <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state.toString()==='1' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='normal' ? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null} </div> 
+                                                    </Grid>
+                                                    <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state.toString()==='2'?'yellow':''}}>
+                                                        <div className="Evaluaion_Report_Box_Selected_Box"  > {xray.state.toString()==='2' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='moderate'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null}  </div> 
+                                                    </Grid>
+                                                    <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state.toString()==='3'?'#fa9e2d':''}}>
+                                                        <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state.toString()==='3' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='nearendstage'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null} </div> 
+                                                    </Grid>
+                                                    <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state.toString()==='4'?'#C50000':''}}>
+                                                        <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state.toString()==='4' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='endstage'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null} </div> 
+                                                    </Grid>
+                                                </React.Fragment>
+                                            }
+                                            
                                         </React.Fragment>
                                         
                                     ) 
@@ -294,60 +298,28 @@ class ShowReport extends Component {
 
 
                         <div style={{paddingTop:'10px'}}>
-                            <Modal
-                                open={this.state.modal}
-                                onClose={this.modalClose}
-                            >
-                                <div className="Evaluation_Report_XrayImage_Modal_Wrapper">
-                                    <div className="Evaluation_Report_XrayImage_Modal">
-                                        <img src={this.state.ActiveImage} alt="Xray" style={{display:'block',maxHeight:'60vh'}} />
-                                        <Button onClick={this.modalClose} variant="contained" id="Evaluaion_Report_Modal_Close_Button"> Close </Button>
+                            <ImageViewModalWithZoom modalState={this.state.modal}  modalClose={this.modalClose} ActiveImage={this.state.ActiveImage} />
+                            {
+                                this.context.state.Xrays.map((xray)=>
+                                <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative',maxWidth:'25%'}}  >
+                                    <img src={xray.image} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
+                                    <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(xray.image)}}>
+                                        <img src={Search} alt="Search" style={{width:'20px'}} />
                                     </div>
+                                    {
+                                    xray.id.toString()==="3" || xray.id.toString()==="5"
+                                    ? 
+                                        null
+                                    :    
+                                        <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(xray.id)}}>
+                                            <img src={Notes} alt="Notes" style={{width:'20px'}} />
+                                        </div> 
+                                    }
                                 </div>
-
-                                
-                            </Modal>
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}}  >
-                                <img src={Xray1} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray1)}}>
-                                    <img src={Search} alt="Search" style={{width:'20px'}} />
-                                </div>  
-                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(1)}}>
-                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
-                                </div>  
-                            </div>
-
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
-                                <img src={Xray2} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray2)}}>
-                                    <img src={Search} alt="Search" style={{width:'20px'}} />
-                                </div>
-                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(2)}} >
-                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
-                                </div>
-                            </div>
-
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
-                                <img src={Xray3} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(Xray3)}}>
-                                    <img src={Search} alt="Search" style={{width:'20px'}} />
-                                </div>
-                                <div className="Evaluaion_Report_Box_Notes_Box" onClick={()=>{this.handleNotesClick(3)}}>
-                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
-                                </div>
-                            </div>
-
-                            <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative'}} >
-                                <img src={this.context.state.joint_id.toString()==='4'?Xray4Left:Xray4Right} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
-                                <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(this.context.state.joint_id.toString()==='4'?Xray4Left:Xray4Right)}}>
-                                    <img src={Search} alt="Search" style={{width:'20px'}} />
-                                </div>
-                                {/* <div className="Evaluaion_Report_Box_Notes_Box">
-                                    <img src={Notes} alt="Notes" style={{width:'20px'}} />
-                                </div> */}
-                            </div>
-                        
+                                )
+                            }
                         </div>
+
                     </div>
                 </div>
                 <div id="Evaluaion_Report_Next_Button_Div">

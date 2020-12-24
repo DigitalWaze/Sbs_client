@@ -22,7 +22,7 @@ class UploadBox extends Component {
         if(acceptedFiles.length>0)
         {
             this.setState({uploaded:true,file:acceptedFiles[0]})
-            this.props.appendFile(acceptedFiles[0],this.props.Xray.name,this.props.Xray.id)
+            // this.props.appendFile(acceptedFiles[0],this.props.Xray.name,this.props.Xray.id)
         }
     }
     render() { 
@@ -58,7 +58,7 @@ class UploadBox extends Component {
                     
                     {this.state.uploaded===true ?
                         <div id="Evaluaion_UploadXray_Upload_Next_Button_Div">
-                            <Button id="Evaluaion_UploadXray_Upload_Next_Button" variant="contained" onClick={this.props.handleClick}> Next </Button>
+                            <Button id="Evaluaion_UploadXray_Upload_Next_Button" variant="contained" onClick={()=>this.props.appendFile(this.state.file,this.props.Xray.name,this.props.Xray.id)}> Next </Button>
                         </div>
                     :   null
                     }

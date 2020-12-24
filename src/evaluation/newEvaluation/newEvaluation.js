@@ -74,10 +74,17 @@ class NewEvaluation extends Component {
     // }
     handleClick = () =>
     {
-        if(this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>1)
+
+        if(this.context.state.old==true && this.context.state.activeEvaluation)
         {
-            this.context.history.push('./patient-profile');
+            if(parseInt(this.context.state.activeEvaluation.stage.id)>1)
+            {
+                this.context.history.push('./patient-profile');
+            }
+            // console.log('old')
         }
+
+
         else 
         {
             let Eval=[];
@@ -163,17 +170,26 @@ class NewEvaluation extends Component {
             let Eval=this.state.Eval;
             let SettingEval = this.state.Eval;
             response.res.forEach(element => {
-
-                Eval.filter(eva => eva.joint_id==element.joint_id)[0].joint_hurt_id=element.id;
-                
-                
+                Eval.filter(eva => eva.joint_id==element.joint_id)[0].joint_hurt_id=element.id;    
             });
             console.log(Eval);
             console.log(this.state.Eval.length)
             console.log(SettingEval)
+
+
+            let oldEvaluations = this.context.state.oldEvaluations;
+            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
+
+            oldEvaluations[currEvaIndex].stage.id=2;
+            oldEvaluations[currEvaIndex].stage.stage="Joints Priority Selected";
+
+            let currentEvaluation = oldEvaluations[currEvaIndex];
+
+
+            this.context.multipleUpdateValue([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:SettingEval},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
             this.context.updateSession();
-            this.context.setCookie('evaluation_stage',2,30);
-            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:SettingEval},{key:'evaluation_stage',value:2}],'./patient-profile')
+            this.context.history.push('./patient-profile')
+
             // this.setState({loading:false})
         }
 
@@ -217,7 +233,7 @@ class NewEvaluation extends Component {
     }
     
     render() { 
-        const old = this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>1?true:false;
+        const old = parseInt(this.context.state.activeEvaluation.stage.id)>1?true:false;
         return ( 
         <div id="Evaluaion_NewEvaluation_Main_Div">
             {this.state.loading==true?<SemipolarLoading size={"large"} color={'#b4ec51'}/>

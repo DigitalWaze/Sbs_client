@@ -6,17 +6,33 @@ import MenuCloseImage from  '../../assets/cross.png';
 import './drawer.css';
 import MyContext from '../../helper/themeContext';
 import GetData from '../../Fetch/getDataUniversal';
+import { Button } from '@material-ui/core';
 
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { withStyles } from '@material-ui/core/styles';
+
+
+import Rodal from 'rodal';
+import 'rodal/lib/rodal.css';
+
+const style = (theme) => ({
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+    },
+});
+  
 
 class Drawer extends Component {
     constructor(props) {
         super(props);
-        this.state = { open:false }
+        this.state = { open:false,resumeWarningModal:false }
     }
 
     componentDidMount()
     {
-        if(!(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined))
+        if(!(this.context.state.token==undefined || this.context.state.token.toString() ==="" || this.context.state.token.toString() === " " || this.context.state.type==undefined || this.context.state.type.toString() ==="" || this.context.state.type.toString() === " " || this.context.state.user_id==undefined || this.context.state.user_id.toString() ==="" || this.context.state.user_id.toString() === " " || this.context.state.user_email==undefined || this.context.state.user_email.toString() ==="" || this.context.state.user_email.toString() === " " || this.context.state.user_type==undefined))
         {document.getElementById('Main_Drawer_Menu_Div').classList.add('Main_Drawer_Menu_Div_Close')
         document.addEventListener('click',this.handleClickAway);}
     }
@@ -62,18 +78,16 @@ class Drawer extends Component {
 
     startEvaluation = () =>
     {
-        if(parseInt(this.context.state.evaluation_stage)>0)  
-        {
-            GetData(this.context.baseUrl+'./api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
-        }
-
-        else 
-        {
-            this.context.setCookie('evaluation_stage','',0);
-            this.context.setCookie('temp_report_id','',null);
-            this.context.setCookie('temp_patient_id','',null);
-            this.context.multipleUpdateValueWithHistory([{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'evaluation_stage',value:null},{key:'noOfEvalRemainToUpload',value:null},{key:'Xrays',value:[]},{key:'form',value:[]},{key:'Eval',value:[]},{key:'joint_id',value:0},{key:'activePriority',value:5},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'old',value:false},{key:'patient',value:{}}],'/evaluation/welcome')
-        }
+      if(parseInt(this.context.state.oldEvaluations.length)>0)  
+      {
+        this.setState({resumeWarningModal:true})
+      }
+  
+      else 
+      {
+        this.context.newEval();
+        this.context.history.push('/evaluation/welcome');
+      }
     }
 
     startEducation = () =>
@@ -92,22 +106,35 @@ class Drawer extends Component {
     }
 
 
+    closeResumeWarningModal = () =>
+    {
+        this.setState({resumeWarningModal:false})
+    }
+
+    deleteReportAndStartNew = () =>
+    {
+        this.setState({loading:true,resumeWarningModal:false})
+        GetData(this.context.baseUrl+'/api/v1/delete/report',200,this.context.state.token,this.setMeTwo)
+    }
+
     setMeTwo = () =>
     {
-        this.context.setCookie('evaluation_stage','',0);
-        this.context.setCookie('temp_report_id','',0);
-        this.context.setCookie('temp_patient_id','',0);
-        this.context.multipleUpdateValueWithHistory([{key:'temp_report_id',value:null},{key:'temp_patient_id',value:null},{key:'evaluation_stage',value:null},{key:'noOfEvalRemainToUpload',value:null},{key:'Xrays',value:[]},{key:'form',value:[]},{key:'Eval',value:[]},{key:'joint_id',value:0},{key:'activePriority',value:5},{key:'report_id',value:null},{key:'patient_id',value:null},{key:'old',value:false},{key:'patient',value:{}}],'/evaluation/welcome')
+        this.context.multipleUpdateValueWithHistory([{key:'oldEvaluations',value:[]}],'/evaluation/welcome')
+        this.context.newEval();
+        this.setState({loading:false})
     }
 
 
     render() { 
+
+        const {classes}=this.props;
         const path = this.context.history.location.pathname;
 
         const route1Enable = (path === "/evaluation/welcome" || path==="/evaluation/Video" || path==="/evaluation/Demographics")?false:true;
         const route1name = path.toString().includes("evaluation")?'New Evaluation':'New Evaluation';
         
-        const route2Enable = (path === "/tutorials/sbs/welcome") ?false:true;
+        const route2Enable = false;
+        // const route2Enable = (path === "/tutorials/sbs/welcome") ?false:true;
         const route2name = path.toString().includes("tutorials") ? 'Start Education from start':'Start Education';
         
         const route3Enable = (  (path.toString().includes("evaluation")) || (!this.context.state.evaluation_stage) ) ? false:true;
@@ -115,11 +142,13 @@ class Drawer extends Component {
 
         return ( 
 
-            !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
+            !(this.context.state.token==undefined || this.context.state.token.toString() ==="" || this.context.state.token.toString() === " " || this.context.state.type==undefined || this.context.state.type.toString() ==="" || this.context.state.type.toString() === " " || this.context.state.user_id==undefined || this.context.state.user_id.toString() ==="" || this.context.state.user_id.toString() === " " || this.context.state.user_email==undefined || this.context.state.user_email.toString() ==="" || this.context.state.user_email.toString() === " " || this.context.state.user_type==undefined)?
 
         <div id="Main_Drawer">
- {        console.log(this.context.state.report_id)
-}
+
+        <Backdrop className={classes.backdrop} open={this.state.loading}>
+            <CircularProgress color="inherit" />
+        </Backdrop>
 
         <div id="Main_Drawer_Menu_Image_Div"   onClick={this.toggleMenu} >
             <img src={MenuImage}  alt="Menu"  id="Main_Drawer_Menu_Image" />
@@ -137,7 +166,7 @@ class Drawer extends Component {
                 {console.log( this.context.state.user_type)}
 
                 {
-                    !(this.context.state.token==undefined || this.context.state.token =="" || this.context.state.token == " " || this.context.state.type==undefined || this.context.state.type =="" || this.context.state.type == " " || this.context.state.user_id==undefined || this.context.state.user_id =="" || this.context.state.user_id == " " || this.context.state.user_email==undefined || this.context.state.user_email =="" || this.context.state.user_email == " " || this.context.state.user_type==undefined)?
+                    !(this.context.state.token==undefined || this.context.state.token.toString() ==="" || this.context.state.token.toString() === " " || this.context.state.type==undefined || this.context.state.type.toString() ==="" || this.context.state.type.toString() === " " || this.context.state.user_id==undefined || this.context.state.user_id.toString() ==="" || this.context.state.user_id.toString() === " " || this.context.state.user_email==undefined || this.context.state.user_email.toString() ==="" || this.context.state.user_email.toString() === " " || this.context.state.user_type==undefined)?
                     <div>
                         {/* click away listner on id  Drawer_Logout_Div */}
                         {/* to be done on refactoring code */}
@@ -149,7 +178,7 @@ class Drawer extends Component {
                         }
 
                         {
-                            this.context.state.user_type?this.context.state.user_type.id==1?
+                            this.context.state.user_type?this.context.state.user_type.id.toString()==="1"?
                                 <div  onClick ={()=>{this.context.history.push('/admin/create-user')}} className="Main_Drawer_Menu_Text">
                                     Create User
                                 </div> 
@@ -170,12 +199,12 @@ class Drawer extends Component {
                         :null
                         }
 
-                        {route3Enable?
+                        {/* {route3Enable?
                             <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.resumeEvaluation}>
                                 Resume Evaluation
                             </div>
                         :null
-                        }
+                        } */}
 
                         <div id="Drawer_Logout_Div" className="Main_Drawer_Menu_Text" onClick ={this.editProfile}>
                             Edit Profile
@@ -203,6 +232,18 @@ class Drawer extends Component {
                     </div> */}
                 </div>    
             </div>
+
+            <Rodal visible={this.state.resumeWarningModal} onClose={this.closeResumeWarningModal}>
+                <div>
+                    <div className="Evaluation_Home_ResumeEvaluationWarningModal_Text_Div">
+                        This will delete your on-going evaluation. Would you like to continue?
+                    </div>
+
+                    <div className="Evaluation_ResumeEvaluation_Button_Div">
+                        <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={this.deleteReportAndStartNew}> Yes </Button>
+                    </div>
+                </div>
+            </Rodal>
        
         
 
@@ -216,4 +257,4 @@ class Drawer extends Component {
 }
 
 Drawer.contextType=MyContext;
-export default Drawer;
+export default withStyles(style)(Drawer);

@@ -51,18 +51,22 @@ class XrayMatching extends Component {
 
     UNSAFE_componentWillMount()
     {
-        if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
-        {
-            let req={
-                visitor_id:this.context.state.report_id,
-                joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
-            }
-       
-            this.setState({loading:true,Evaluations:this.context.state.Evaluations,Matching:null});
-            GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe)
 
-        }
-        else this.setState({Evaluations:this.context.state.Evaluations,loading:false,Matching:this.context.state.Matching})
+        console.log(this.context.state.Evaluations);
+        this.setState({Evaluations:this.context.state.Evaluations});
+
+        // if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
+        // {
+        //     let req={
+        //         visitor_id:this.context.state.report_id,
+        //         joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
+        //     }
+       
+        //     this.setState({loading:true,Evaluations:this.context.state.Evaluations,Matching:null});
+        //     GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe)
+
+        // }
+        // else this.setState({Evaluations:this.context.state.Evaluations,loading:false,Matching:this.context.state.Matching})
     }
 
     setMe = (response) =>
@@ -339,8 +343,8 @@ class XrayMatching extends Component {
                 Evaluation.Xrays.forEach(element => {
 
                     element.xrays.forEach(ele => {
-                        let id=this.state.Matching.filter(match=>match.Xray_type.id==element.id && match.view.id==ele.id)[0].id;
-                        let reqObject={processed_xray_id:id,xray_matching_id:ele.state,notes:ele.notes};
+                        // let id=this.state.Matching.filter(match=>match.Xray_type.id==element.id && match.view.id==ele.id)[0].id;
+                        let reqObject={processed_xray_id:ele.processed_xray_id,xray_matching_id:ele.state,notes:ele.notes};
                         req.push(reqObject);
                        
                     });
@@ -432,7 +436,7 @@ class XrayMatching extends Component {
                             this.state.ActivePage==='Overview' && <Overview Next={Next} Evaluation={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
                         }
                         {
-                            this.state.ActivePage==='Matching' && <Matching   eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>
+                            this.state.ActivePage==='Matching' && <Matching  apiKey={this.state.Evaluations.apiKey} Nonce={this.state.Evaluations.Nonce} baseUrl={this.state.Evaluations.baseUrl}  eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>
                         }
                     </div>
                 }

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import MyContext from '../../../helper/themeContext';
 
 import './patientReport.css';
-import Page1 from './page1';
-import Page2 from './page2';
-import Page3 from './page3';
+import Page1 from './rightPages/page1';
+import Page2 from './rightPages/page2';
+import Page3 from './rightPages/page3';
 import PostData from '../../../Fetch/postData2';
 import { SemipolarLoading } from 'react-loadingg';
 import Page1Left from './leftPages/page1';
 import Page2Left from './leftPages/page2';
 import Page3Left from './leftPages/page3';
-import RightIntroPage from './rightIntroPage';
+import RightIntroPage from './rightPages/rightIntroPage';
 import LeftIntroPage from './leftPages/introPage';
 import Forms from '../../form/formsNew';
 
@@ -163,10 +163,10 @@ class PatientReportManual extends Component {
         }
 
 
-        else if(this.context.state.old==true && parseInt(this.context.state.evaluation_stage)>2)
+        else if(parseInt(this.context.state.activeEvaluation.stage.id)>2)
         {
             // this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true}],'./forms')
-            this.context.multipleUpdateValue([{key:'Pro',value:true}]);
+            this.context.multipleUpdateValue([{key:'Pro',value:true}]); //it enables next button navigation functionality
             this.setState({active:null})
         }
         
@@ -183,13 +183,19 @@ class PatientReportManual extends Component {
     {
         if(response.length>0)
         {
+
+            let oldEvaluations = this.context.state.oldEvaluations;
+            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
+
+            oldEvaluations[currEvaIndex].stage.id=3;
+            oldEvaluations[currEvaIndex].stage.stage="Question Form Submitted";
+
+            let currentEvaluation = oldEvaluations[currEvaIndex];
+            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}]);
+
+
             this.context.updateSession();
-            this.context.setCookie('evaluation_stage',3,30);
-            // this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true},{key:'form',value:this.state.form}],'./forms')
-            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form},{key:'evaluation_stage',value:3}]);
             this.setState({loading:false,active:null})
-
-
 
         }
     }
