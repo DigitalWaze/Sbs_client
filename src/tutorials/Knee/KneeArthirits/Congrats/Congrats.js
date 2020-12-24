@@ -21,25 +21,16 @@ class Congrats extends Component {
             <div id="Tutorials_Congrats_Inner_Content_Wrapper">
               <div id="Tutorials_Congrats_Text_Wrapper">
                 <div>
-                  <div id="Tutorials_Congrats_Heading1_Div">
-                    Congratulations
-                  </div>
+                  <div id="Tutorials_Congrats_Heading1_Div">Congratulations</div>
                   <div id="Tutorials_Congrats_Neon_Line"></div>
+                  <div id="Tutorials_Congrats_Heading2_Div">You have finished the Knee Arthritis Education Module.</div>
                   <div id="Tutorials_Congrats_Heading2_Div">
-                    You have finished the Knee Arthritis Education Module.
-                  </div>
-                  <div id="Tutorials_Congrats_Heading2_Div">
-                    You are now ready to start the X-ray Matching Education
-                    Module.
+                    You are now ready to start the X-ray Matching Education Module.
                   </div>
                 </div>
               </div>
               <div id="Tutorials_Congrats_Image_div">
-                <img
-                  src={Bone1Image}
-                  alt="SBS"
-                  id="Tutorials_Congrats_Image_Bone"
-                />
+                <img src={Bone1Image} alt="SBS" id="Tutorials_Congrats_Image_Bone" />
               </div>
             </div>
             <div id="Tutorials_Congrats_Next_Button_Div">
@@ -47,11 +38,8 @@ class Congrats extends Component {
                 id="Tutorials_Congrats_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.history.push(
-                    "./x-ray-matching-moderate-selected"
-                  );
-                }}
-              >
+                  this.context.history.push("./x-ray-matching-moderate-selected");
+                }}>
                 {" "}
                 back{" "}
               </Button>
@@ -59,17 +47,11 @@ class Congrats extends Component {
                 id="Tutorials_Congrats_Next_Button"
                 variant="contained"
                 onClick={() => {
-                  this.context.setCookie(
-                    "tutorial-" + this.context.state.user_id,
-                    32
-                  );
-                  this.context.history.push(
-                    "/tutorials/knee/options"
-                  );
-                }}
-              >
+                  this.context.setCookie("tutorial-" + this.context.state.user_id, 32);
+                  this.context.history.push("/tutorials/knee/options");
+                }}>
                 {" "}
-                Back to Home{" "}
+                BACK TO HOME{" "}
               </Button>
             </div>
           </div>

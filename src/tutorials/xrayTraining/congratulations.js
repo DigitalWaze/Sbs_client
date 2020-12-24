@@ -35,51 +35,56 @@ class Congratulations extends Component {
 
     
     render() { 
-        return ( 
-        
-        <div id="Evaluaion_Welcome_Main_Div">
-            {this.state.loading==true?
-                <SemipolarLoading size={"large"} color={'#b4ec51'}/>
-            :
-            <div>
-                <div  id="Evaluaion_Welcome_Text_Wrapper">
-                    <div id="Evaluaion_Welcome_Heading1_Div">
-                        Congratulations
-                    </div>
-                    <div id="Evaluaion_Welcome_Neon_Line"></div>
-                    <div id="Evaluaion_Welcome_Heading2_Div">
-                        You have passed the X-ray Training Module.
-                        Here is how you scored:
-
-                        {/* <br/>
+        return (
+          <div id="Evaluaion_Welcome_Main_Div">
+            {this.state.loading == true ? (
+              <SemipolarLoading size={"large"} color={"#b4ec51"} />
+            ) : (
+              <div>
+                <div id="Evaluaion_Welcome_Text_Wrapper">
+                  <div id="Evaluaion_Welcome_Heading1_Div">Congratulations</div>
+                  <div id="Evaluaion_Welcome_Neon_Line"></div>
+                  <div id="Evaluaion_Welcome_Heading2_Div">
+                    You have passed the X-ray Training Module. Here is how you scored:
+                    {/* <br/>
                         and Diagnosis */}
-                    </div>
-                    <div id="Evaluaion_Welcome_Text_Div">
-                        <span style={{display:'block',marginBottom:'10px',marginTop:'10px',marginLeft:'20px'}}>
-                            Medial Compartment: 8/8 <br/>
-                            Lateral Compartment: 8/8 <br/>
-                            Kneecap Compartment: 4/4
-                        </span>
-                        
-                        Now you are ready to evaluate your own patient! <br/> <br/>
-
-                        If you would like to more practice, click on
-                        “Try Training Again.”                </div>
-                    <div id="Evaluaion_Welcome_Next_Button_Div">
-                        <Button id="Evaluaion_Welcome_Next_Button" style={{marginRight:'20px'}} variant="contained" onClick={this.handleComplete}> Back to Home </Button>
-                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={()=>{ this.context.history.push('./matching-tutorial')}}> Try Training Again </Button>
-
-                    </div>
-
+                  </div>
+                  <div id="Evaluaion_Welcome_Text_Div">
+                    <span style={{ display: "block", marginBottom: "10px", marginTop: "10px", marginLeft: "20px" }}>
+                      Medial Compartment: 8/8 <br />
+                      Lateral Compartment: 8/8 <br />
+                      Kneecap Compartment: 4/4
+                    </span>
+                    Now you are ready to evaluate your own patient! <br /> <br />
+                    If you would like to more practice, click on “Try Training Again.”{" "}
+                  </div>
+                  <div id="Evaluaion_Welcome_Next_Button_Div">
+                    <Button
+                      id="Evaluaion_Welcome_Next_Button"
+                      style={{ marginRight: "20px" }}
+                      variant="contained"
+                      onClick={this.handleComplete}>
+                      {" "}
+                      BACK TO HOME{" "}
+                    </Button>
+                    <Button
+                      id="Evaluaion_Welcome_Next_Button"
+                      variant="contained"
+                      onClick={() => {
+                        this.context.history.push("./matching-tutorial");
+                      }}>
+                      {" "}
+                      Try Training Again{" "}
+                    </Button>
+                  </div>
                 </div>
                 <div id="Evaluaion_Welcome_Image_div">
-                    <img src={Bone1Image} alt="SBS" id="Evaluaion_Welcome_Image_Bone"/>   
+                  <img src={Bone1Image} alt="SBS" id="Evaluaion_Welcome_Image_Bone" />
                 </div>
-            </div>
-            }
-            
-
-        </div> );
+              </div>
+            )}
+          </div>
+        );
     }
 }
 Congratulations.contextType=MyContext;

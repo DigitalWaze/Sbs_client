@@ -395,8 +395,8 @@ class Home extends Component {
                                     </div>
 
                                     <div className="Home_Button_Div">
-                                        <Button id="Home_Button" variant="contained" style={{opacity:'0.5'}} disabled={true} >
-                                            {" "} Automation X-ray Evaluation {" "}
+                                        <Button id="Home_Button" variant="contained" onClick={() => { this.context.history.push("./tutorials/automatic-xray-evaluation"); }}   >
+                                            {" "} Automatic X-ray Evaluation {" "}
                                         </Button>
                                     </div>
 

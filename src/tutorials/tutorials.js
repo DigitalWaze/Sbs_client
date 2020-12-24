@@ -19,6 +19,7 @@ import Hip from "./Hip/Hip";
 import PatientEvaluation from "./PatientEvaluation/PatientEvaluation";
 import PatientSM from "./PatientEvaluation/PatientSM/PatientSM";
 import RecomPathway from "./PatientEvaluation/recomCarePath/recomendedcarepathway";
+import AutoXrayEval from "./AutoXrayEval/AutoXrayEval";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -51,6 +52,8 @@ class Tutorials extends Component {
         <Route path="/tutorials/patient-evaluation-education/patient-specific" component={PatientSM} />
         {/* Contains ROUTES FOR recommended Care Pathway */}
         <Route path="/tutorials/patient-evaluation-education/recommended-carepathway" component={RecomPathway} />
+        {/* Contains ROUTES FOR automatic xray evaluation */}
+        <Route path="/tutorials/automatic-xray-evaluation" component={AutoXrayEval} />
         {/* Patient Evaluation Education ROUTES ENDS HERE */}
         {/* <Route exact path="/tutorials/resume-tutorial" component={ResumeTutorial} />
         <Route exact path="/tutorials/resume-tutorial/recover" component={ResumeTutorialSelect} /> */}

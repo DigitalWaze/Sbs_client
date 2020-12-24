@@ -29,7 +29,7 @@ class PatientSM extends Component {
             <div id="SBSVideo_Image_Wrapper">
               <div className="sbs-video-text-wrapper">
                 <div id="SBSVideo_Heading1_Div">
-                    Patient specific matching video
+                    Completing a Patient Evaluation
                 </div>
               </div>
               {this.state.loading == true ? (
