@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import "./evaluation.css";
 import MyContext from "../helper/themeContext";
 
-import Forms from "./form/formsNew";
 import PatientReport from "./patientReport/manual/patientReportManual";
 import { Route, Router } from "react-router-dom";
 import Welcome from "./welcome/welcome";
@@ -12,7 +11,6 @@ import NewEvaluation from "./newEvaluation/newEvaluation";
 import PatientProfile from "./patientProfile/patientProfile";
 import UploadXray from "./uploadXray/uploadXray";
 import XrayMatching from "./xrayMatching/xrayMatching";
-import Chart from "./chart/chart";
 import Report from "./report/report";
 import RandomPdf from "./randomPdf/pdf";
 import Video from "./Video/Video";
@@ -21,11 +19,11 @@ import ResumeEvaluation from "./resumeEvaluation/resumeEvaluation";
 import ResumeEvaluationSelect from "./resumeEvaluation/resumeEvalutionSelect";
 import Pdf from "./pdf/pdf";
 import EvaluationHistory from "./evaluationHistory/evaluationHistory";
-import BeforeReport from "./beforeReport/beforeReport";
+import ReportCardSummary from "./reportCardSummary/reportCardSummary";
 // import WelcomeRecom from '../recomCarePath/page1';
 import ChartJs from "./chart/newChart";
 import ChartImage from "./pdfImages/chartImage";
-import FormType from "./form/formType";
+import FormType from "./ProEntry/formType";
 import PatientReportManual from "./patientReport/manual/patientReportManual";
 import NewOrExis from "./newOrExis/NewOrExis";
 
@@ -124,14 +122,14 @@ class Evaluation extends Component {
 
             <Route path="/Evaluation/form-type" component={FormType} />
 
-            <Route path="/Evaluation/forms" component={PatientReportManual} />
+            <Route path="/Evaluation/manual-form" component={PatientReportManual} />
 
             {/* <Route path="/Evaluation/patient-report" component={PatientReport}/> */}
 
             <Route path="/Evaluation/upload-xrays" component={UploadXray} />
             <Route path="/Evaluation/x-ray-matching" component={XrayMatching} />
 
-            <Route path="/Evaluation/report-card-summary" component={BeforeReport} />
+            <Route path="/Evaluation/report-card-summary" component={ReportCardSummary} />
             <Route path="/Evaluation/report" component={Report} />
 
             <Route path="/Evaluation/chart" component={ChartJs} />

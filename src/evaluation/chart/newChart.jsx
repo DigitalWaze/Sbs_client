@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import ChartShow from './chartShow';
+import ChartShow from '../../components/chartShow/chartShow';
 import MyContext from '../../helper/themeContext';
-
-let OverAll=
-    [100,91.975,84.600,79.914,76.332,73.342,70.704,68.284,65.994,63.776,61.583,
-     59.381,57.140,54.840,52.465,50.012,47.487,44.905,42.281,39.625,36.931,
-     34.174,31.307,28.251,24.875,20.941,15.939,8.291,0.000        ]
-
 
 class ChartJs extends Component {
     constructor(props) {
@@ -23,6 +17,8 @@ class ChartJs extends Component {
         let SumStiff=0;
         let SumFunction=0;
 
+        const OverAll = this.context.ChartOverAll();
+
         let Question1Answer = parseInt(this.context.state.form.find(ques => ques.question_id.toString()=="1" && ques.joint_id.toString()===this.context.state.Eval[0].joint_id.toString()).pro_severity_id);
         if(Question1Answer.toString()!=="NaN")
         {
@@ -36,6 +32,7 @@ class ChartJs extends Component {
         let PainInterval = Math.round(( (1 - SumPain/16) *100) * 10) /10;
         let StiffInterval =  Math.round(((1 - SumStiff/4) *100) * 10) /10;
         let FunctionInterval = Math.round( ( (1 - SumFunction/8) *100 ) * 10)/10;
+
         let OverallInterval = Math.round( ( OverAll[SumPain+SumStiff+SumFunction]) * 10)/10; 
 
         JointMapArray=[{joint_id:this.context.state.Eval[0].joint_id,PainInterval,StiffInterval,FunctionInterval,OverallInterval}];
@@ -66,7 +63,7 @@ class ChartJs extends Component {
             let NewFunctionInterval = Math.round( ((1 - NewSumFunction/8) *100) * 10) /10;
             let NewOverallInterval = Math.round( (OverAll[NewSumPain+NewSumStiff+NewSumFunction]) *10)/10; 
             let NewJointObject={joint_id:this.context.state.Eval[i].joint_id,PainInterval:NewPainInterval,StiffInterval:NewStiffInterval,FunctionInterval:NewFunctionInterval,OverallInterval:NewOverallInterval};
-            if(this.context.state.Eval[i].priority_id<this.context.state.Eval.find(evalu=> evalu.joint_id==priorityJoin).priority_id)
+            if(this.context.state.Eval[i].priority_id<this.context.state.Eval.find(evalu=> evalu.joint_id==priorityJoin).priority_id)  //push in a ascending order
             {
 
                 TempJointMapArray.push(NewJointObject,...JointMapArray);
@@ -75,16 +72,20 @@ class ChartJs extends Component {
             else JointMapArray.push(NewJointObject);
         }
 
-        console.log(JointMapArray)
-        if(this.context.state.Eval.length>1)
-        {
-            this.setState({totalLeft:2,JointMapArray })
-        }
+        let NextButtonText = "";
 
-        else
+        if(this.context.state.Eval.length > 1)
         {
-            this.setState({totalLeft:1,JointMapArray})
+            if(JointMapArray[0].joint_id.toString()==='3')
+                NextButtonText = 'View Left PRO Report Card'
+
+            else NextButtonText = "View Right PRO Report Card";
+
         }
+ 
+        else NextButtonText = "Next";
+
+        this.setState({totalLeft:this.context.state.Eval.length,JointMapArray,NextButtonText })
     }
     
 
@@ -99,7 +100,7 @@ class ChartJs extends Component {
             }
 
             else  joint_id='3'
-            this.setState({totalLeft:1,active:joint_id})
+            this.setState({totalLeft:1,active:joint_id,NextButtonText:"Next"})
         }
 
         else this.context.history.push('./pdf')
@@ -112,7 +113,7 @@ class ChartJs extends Component {
         <div>
 
 
-            <ChartShow JointMapObject={this.state.JointMapArray[this.state.JointMapArray.length - this.state.totalLeft]} next={this.next} totalLeft={this.state.totalLeft}/>
+            <ChartShow ButtonText={this.state.NextButtonText} JointMapObject={this.state.JointMapArray[this.state.JointMapArray.length - this.state.totalLeft]} next={this.next}/>
 
         </div> );
     }

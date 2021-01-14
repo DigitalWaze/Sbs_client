@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import GetData from '../../Fetch/getDataUniversal';
 import MyContext from '../../helper/themeContext';
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
+
 class ResumeEvaluation extends Component {
     constructor(props) {
         super(props);

@@ -72,8 +72,75 @@ class NewEvaluation extends Component {
     // {
     //     this.context.multipleUpdateValue([{key:'name',value:'ammar'},{key:'sukoon',value:'sukn'}])
     // }
+
+
+    setPriority = () =>
+    {
+        let Eval=[];
+        // let visitor_id=this.context.state.user_id;
+        let visitor_id=this.context.state.report_id;
+        console.log(visitor_id);
+        if(this.state.priority1!='0')
+        {
+            Eval.push({visitor_id:visitor_id,joint_id:'1',name:'Right Hip',priority_id:this.state.priority1,isEvaluated:false,joint_hurt_id:null})   // Right Hip
+        }
+        if(this.state.priority3!='0')
+        {
+            Eval.push({visitor_id:visitor_id,joint_id:'2',name:'Left Hip',priority_id:this.state.priority3,isEvaluated:false,joint_hurt_id:null})   // Left Hip
+        }
+
+        if(this.state.priority2!='0')
+        {
+            Eval.push({visitor_id:visitor_id,joint_id:'3',name:'Right Knee',priority_id:this.state.priority2,isEvaluated:false,joint_hurt_id:null})   // Right Knee
+        }
+
+        if(this.state.priority4!='0')
+        {
+            Eval.push({visitor_id:visitor_id,joint_id:'4',name:'Left Knee',priority_id:this.state.priority4,isEvaluated:false,joint_hurt_id:null})   // Left Knee
+        }
+
+        let active=0;
+        let activePriority=6;
+        let id=0;
+
+        if(Eval.length>0)
+        {
+            while(Eval.length>id)
+            {
+                if(Eval[id].priority_id<activePriority)
+                {
+                    activePriority=Eval[id].priority_id;
+                    active=Eval[id].joint_id;
+                }
+                id++;
+            }
+        }
+
+        if(active==0)
+        {
+            alert('Please select a joint');
+            return;
+        }
+
+        else
+        { 
+            console.log(active,'active')
+            console.log(activePriority,'activePriority')
+            console.log(Eval,'Eval')
+        
+            this.setState({loading:true,active:active,activePriority:activePriority,Eval:Eval})
+            PostData(this.context.baseUrl+'/api/v1/joint/priority',200,Eval,this.context.state.token,this.setMe)
+
+        // this.context.multipleUpdateValueWithHistory([{key:'activePriority',value:activePriority},{key:'joint_id',active},{key:'Eval',Eval}],'./patient-profile')
+      
+        }
+    }
+
+    
     handleClick = () =>
     {
+
+        console.log('here')
 
         if(this.context.state.old==true && this.context.state.activeEvaluation)
         {
@@ -82,68 +149,14 @@ class NewEvaluation extends Component {
                 this.context.history.push('./patient-profile');
             }
             // console.log('old')
+
+            else this.setPriority();
         }
 
 
         else 
         {
-            let Eval=[];
-            // let visitor_id=this.context.state.user_id;
-            let visitor_id=this.context.state.report_id;
-            console.log(visitor_id);
-            if(this.state.priority1!='0')
-            {
-                Eval.push({visitor_id:visitor_id,joint_id:'1',name:'Right Hip',priority_id:this.state.priority1,isEvaluated:false,joint_hurt_id:null})   // Right Hip
-            }
-            if(this.state.priority3!='0')
-            {
-                Eval.push({visitor_id:visitor_id,joint_id:'2',name:'Left Hip',priority_id:this.state.priority3,isEvaluated:false,joint_hurt_id:null})   // Left Hip
-            }
-
-            if(this.state.priority2!='0')
-            {
-                Eval.push({visitor_id:visitor_id,joint_id:'3',name:'Right Knee',priority_id:this.state.priority2,isEvaluated:false,joint_hurt_id:null})   // Right Knee
-            }
-
-            if(this.state.priority4!='0')
-            {
-                Eval.push({visitor_id:visitor_id,joint_id:'4',name:'Left Knee',priority_id:this.state.priority4,isEvaluated:false,joint_hurt_id:null})   // Left Knee
-            }
-
-            let active=0;
-            let activePriority=6;
-            let id=0;
-            if(Eval.length>0)
-            {
-                while(Eval.length>id)
-                {
-                    if(Eval[id].priority_id<activePriority)
-                    {
-                        activePriority=Eval[id].priority_id;
-                        active=Eval[id].joint_id;
-                    }
-                    id++;
-                }
-            }
-
-            if(active==0)
-            {
-                alert('Please select a joint');
-                return;
-            }
-
-            else
-            { 
-                console.log(active,'active')
-                console.log(activePriority,'activePriority')
-                console.log(Eval,'Eval')
-            
-                this.setState({loading:true,active:active,activePriority:activePriority,Eval:Eval})
-                PostData(this.context.baseUrl+'/api/v1/joint/priority',200,Eval,this.context.state.token,this.setMe)
-
-            // this.context.multipleUpdateValueWithHistory([{key:'activePriority',value:activePriority},{key:'joint_id',active},{key:'Eval',Eval}],'./patient-profile')
-          
-            }
+            this.setPriority();
         }
     }
 
@@ -233,7 +246,9 @@ class NewEvaluation extends Component {
     }
     
     render() { 
-        const old = parseInt(this.context.state.activeEvaluation.stage.id)>1?true:false;
+        const old = parseInt(this.context.state.evaluation_stage)>1?true:false;
+
+        console.log(old);
         return ( 
         <div id="Evaluaion_NewEvaluation_Main_Div">
             {this.state.loading==true?<SemipolarLoading size={"large"} color={'#b4ec51'}/>

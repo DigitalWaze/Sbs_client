@@ -15,7 +15,8 @@ import ImageViewModalWithZoom from '../../components/ImageViewModal/ImageViewMod
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { image:null,Active:null , Notes:'',openModal:false,openModal1:false,fullXrayModalState:false,tempNotes:null,textIndent:'0px',Aiprediction:5,loadingImage:true}
+        this.state = { image:null,            
+             Notes:'',openModal:false,openModal1:false,fullXrayModalState:false,tempNotes:null,textIndent:'0px',Aiprediction:5,loadingImage:true}
     }
 
     componentDidMount()
@@ -106,7 +107,7 @@ class Matching extends Component {
             Aiprediction=5;
         }
 
-        this.setState({Aiprediction:Aiprediction,imageExist:imageExist,xrayImage:xrayImage})
+        this.setState({Active:Aiprediction.toString(),Aiprediction:Aiprediction,imageExist:imageExist,xrayImage:xrayImage})
         this.GetImage();        
     }
 
@@ -262,11 +263,11 @@ class Matching extends Component {
                             {
                                 this.state.Aiprediction.toString()===text.id?
                                 <div className="Evaluaion_XrayMatching_Matching_State_Button_Prediction_Box">
-                                    <span> SBS AI </span> Result
+                                    <span> SBS AI Prediction </span> 
                                 </div>
                                 :null
                             }
-                            <Button className="Evaluaion_XrayMatching_Matching_State_Button" style={{border:text.id===this.state.Aiprediction.toString()?'4px orange solid':'1px hsla(0, 0%, 100%, 0.34) solid',color:this.state.Active===text.id?text.id.toString()==="5"?'white':'':'#fff', background:this.state.Active===text.id?text.id.toString()==="5"?'red':'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained" onClick={()=>this.handleClick(text.id)}> {text.name} </Button>
+                            <Button className="Evaluaion_XrayMatching_Matching_State_Button" style={{border:text.id.toString()===this.state.Aiprediction.toString()?'4px orange solid':'1px hsla(0, 0%, 100%, 0.34) solid',color:this.state.Active===text.id.toString()?text.id.toString()==="5"?'white':'':'#fff', background:this.state.Active===text.id.toString()?text.id.toString()==="5"?'red':'#fffb00':'hsla(0, 0%, 100%, 0.08)'}} variant="contained" onClick={()=>this.handleClick(text.id)}> {text.name} </Button>
                         </div>
                         )
                     }
@@ -292,7 +293,10 @@ class Matching extends Component {
                             {
                                 this.state.imageExist?
                                     <React.Fragment>
-                                        <img alt="Patient Xray" className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.state.image}/>
+                                        <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Cropper" style={{background:`url(${this.state.image})`}}>
+                                            {/* <img alt="Patient Xray" className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.state.image}/> */}
+
+                                        </div>
                                         <div className="Evaluaion_XrayMatching_Matching_View_FullXray_Button_Div">
                                             <Button id="Evaluaion_XrayMatching_Matching_View_FullXray_Button" variant="contained" onClick={this.fullXrayModalOpen}> View Full Xray </Button>
                                         </div>
@@ -317,12 +321,13 @@ class Matching extends Component {
 
                     {
                     this.state.Active!=null?
-                        <div className={`Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper  ${this.context.state.joint_id.toString()==='4'?'flipme':''}`}>
-                            <img alt="Comparing Xray" className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
+                        // <div className={`Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper  ${this.context.state.joint_id.toString()==='4'?'flipme':''}`}>
+                        <div className={`Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper`} >
+                            <img alt="Comparing Xray" className="Evaluaion_XrayMatching_Matching_Xray_Image_Compairing" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex][`up${this.state.Active}`] }/>
                         </div>
                     :   
                         <div className="matching-down" >
-                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image" alt="Select A Comparision" src={NoMatching}/>
+                            <img className="Evaluaion_XrayMatching_Matching_Xray_Image_Compairing" alt="Select A Comparision" src={NoMatching}/>
                             <div className="Evaluaion_XrayMatching_Matching_Image_Label2">
                                 COMPARISION X-RAYS
                             </div>

@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 
-import './forms.css';
+import MyContext from '../../../helper/themeContext';
 
-import MyContext from '../../helper/themeContext';
+import Tick from '../../../assets/button-tick.png';
 
-import Tick from '../../assets/button-tick.png';
-
-class Forms extends Component {
+class ManualFormWrapper extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -102,5 +100,5 @@ class Forms extends Component {
         </div> );
     }
 }
-Forms.contextType=MyContext;
-export default Forms;
+ManualFormWrapper.contextType=MyContext;
+export default ManualFormWrapper;

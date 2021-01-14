@@ -9,7 +9,7 @@ import Tick from '../../assets/tick-black.png';
 const height='60px';
 const xray={state:1}
 
-class BeforeReport extends Component {
+class ReportCardSummary extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -19,6 +19,36 @@ class BeforeReport extends Component {
     {
         this.context.history.push('./chart')
     }
+
+    checkState(expected,curr1,curr2)
+    {
+        if(curr1 && curr2)
+        {
+            if(curr1>0 && curr2>0)
+            {
+                if(curr1.toString()===expected.toString() && curr2.toString()===expected.toString())
+                {
+                    return true
+                }
+
+                else if(curr1.toString()===expected.toString() || curr2.toString()===expected.toString())
+                {
+                    if(curr1.toString()==='5' || curr2.toString() ==='5')
+                    {
+                        return true;
+                    }
+
+                    else return false;
+                }
+
+                else return false;
+
+            }
+
+            else return false;
+        }
+    }
+
     render() { 
         return ( 
         
@@ -102,17 +132,17 @@ class BeforeReport extends Component {
                                                         <Button className="Evaluaion_Report_Box_Button"  variant="contained" onClick={()=>this.handleSelect(type.name,xray.name,xray.state,xray.up)}> {xray.name} </Button>
                                                     </div>
                                                 </Grid> */}
-                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:type.xrays.length>1?(type.xrays[0].state==1 && type.xrays[1].state==1)?'#6C8D31':'':type.xrays[0].state==1?'#6C8D31':''}}>
-                                                    <div className="Evaluaion_Report_Box_Selected_Box"> {(type.xrays.length>1?(type.xrays[0].state==1 && type.xrays[1].state==1)?true:false:type.xrays[0].state==1?true:false) && <img src={Tick} alt="Ticked" /> } </div> 
+                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:type.xrays.length>1?this.checkState(1,type.xrays[0].state,type.xrays[1].state)?'#6C8D31':'':type.xrays[0].state==1?'#6C8D31':''}}>
+                                                    <div className="Evaluaion_Report_Box_Selected_Box"> {(type.xrays.length>1?(this.checkState(1,type.xrays[0].state,type.xrays[1].state)):(type.xrays[0].state==1?true:false)) && <img src={Tick} alt="Ticked" /> } </div> 
                                                 </Grid>
-                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:type.xrays.length>1?(type.xrays[0].state==2 && type.xrays[1].state<=2) || (type.xrays[0].state<=2 && type.xrays[1].state==2)?'yellow':'':type.xrays[0].state==2?'yellow':''}}>
-                                                    <div className="Evaluaion_Report_Box_Selected_Box"  > {(type.xrays.length>1?(type.xrays[0].state==2 && type.xrays[1].state<=2) || (type.xrays[0].state<=2 && type.xrays[1].state==2)?true:false:type.xrays[0].state==2?true:false) && <img src={Tick} alt="Ticked" /> }  </div> 
+                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:type.xrays.length>1?this.checkState(2,type.xrays[0].state,type.xrays[1].state)?'yellow':'':type.xrays[0].state==2?'yellow':''}}>
+                                                    <div className="Evaluaion_Report_Box_Selected_Box"  > {(type.xrays.length>1?(this.checkState(2,type.xrays[0].state,type.xrays[1].state)):(type.xrays[0].state==2?true:false)) && <img src={Tick} alt="Ticked" /> }  </div> 
                                                 </Grid>
-                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:type.xrays.length>1?(type.xrays[0].state==3 && type.xrays[1].state<=3) || (type.xrays[0].state<=3 && type.xrays[1].state==3)?'#fa9e2d':'':type.xrays[0].state==3?'#fa9e2d':''}}>
-                                                    <div className="Evaluaion_Report_Box_Selected_Box"> {(type.xrays.length>1?(type.xrays[0].state==3 && type.xrays[1].state<=3) || (type.xrays[0].state<=3 && type.xrays[1].state==3)?true:false:type.xrays[0].state==3?true:false) && <img src={Tick} alt="Ticked" /> } </div> 
+                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:type.xrays.length>1?this.checkState(3,type.xrays[0].state,type.xrays[1].state)?'#fa9e2d':'':type.xrays[0].state==3?'#fa9e2d':''}}>
+                                                    <div className="Evaluaion_Report_Box_Selected_Box"> {(type.xrays.length>1?(this.checkState(3,type.xrays[0].state,type.xrays[1].state)):(type.xrays[0].state==3?true:false)) && <img src={Tick} alt="Ticked" /> } </div> 
                                                 </Grid>
-                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:type.xrays.length>1?(type.xrays[0].state==4 && type.xrays[1].state<=4) || (type.xrays[0].state<=4 && type.xrays[1].state==4)?'#C50000':'':type.xrays[0].state==4?'#C50000':''}}>
-                                                    <div className="Evaluaion_Report_Box_Selected_Box"> {(type.xrays.length>1?(type.xrays[0].state==4 && type.xrays[1].state<=4) || (type.xrays[0].state<=4 && type.xrays[1].state==4)?true:false:type.xrays[0].state==4?true:false) && <img src={Tick} alt="Ticked" /> } </div> 
+                                                <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:type.xrays.length>1?this.checkState(4,type.xrays[0].state,type.xrays[1].state)?'#C50000':'':type.xrays[0].state==4?'#C50000':''}}>
+                                                    <div className="Evaluaion_Report_Box_Selected_Box"> {(type.xrays.length>1?(this.checkState(4,type.xrays[0].state,type.xrays[1].state)):(type.xrays[0].state==4?true:false)) && <img src={Tick} alt="Ticked" /> } </div> 
                                                 </Grid>
                                             </React.Fragment>
                                         </Grid>
@@ -133,5 +163,5 @@ class BeforeReport extends Component {
     }
 }
  
-BeforeReport.contextType=MyContext;
-export default BeforeReport;
+ReportCardSummary.contextType=MyContext;
+export default ReportCardSummary;

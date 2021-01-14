@@ -13,6 +13,8 @@ import Xray3 from '../../assets/uploadBoxThumb/xray3.jpg';
 import Xray4Left from '../../assets/uploadBoxThumb/xray4Left.jpg';
 import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
 
+import boxBg from '../../assets/boxbg3.png'
+
 import Tick from '../../assets/tick-black.png';
 import Search from '../../assets/search.png';
 import Notes from '../../assets/notes.png';
@@ -272,16 +274,16 @@ class ShowReport extends Component {
                                                 :
                                                 <React.Fragment>
                                                     <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)` , background:xray.state.toString()==='1'?'#6C8D31':''}}>
-                                                        <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state.toString()==='1' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='normal' ? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null} </div> 
+                                                        <div className="Evaluaion_Report_Box_Selected_Box" style={{background:(xray.state.toString()!=='1' && xray.prediction==="normal")?`url(${boxBg})`:''}}> {xray.state.toString()==='1' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='normal' ? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change">  </span>: null} </div> 
                                                     </Grid>
                                                     <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state.toString()==='2'?'yellow':''}}>
-                                                        <div className="Evaluaion_Report_Box_Selected_Box"  > {xray.state.toString()==='2' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='moderate'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null}  </div> 
+                                                        <div className="Evaluaion_Report_Box_Selected_Box" style={{background:(xray.state.toString()!=='2' && xray.prediction==="moderate")?`url(${boxBg})`:''}} > {xray.state.toString()==='2' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='moderate'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change">   </span>: null}  </div> 
                                                     </Grid>
                                                     <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state.toString()==='3'?'#fa9e2d':''}}>
-                                                        <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state.toString()==='3' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='nearendstage'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null} </div> 
+                                                        <div className="Evaluaion_Report_Box_Selected_Box" style={{background:(xray.state.toString()!=='3' && xray.prediction==="nearendstage")?`url(${boxBg})`:''}}> {xray.state.toString()==='3' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='nearendstage'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change">  </span>: null} </div> 
                                                     </Grid>
                                                     <Grid item xs={2} style={{border:'1px solid #fff',height:`calc(${height} - 2px)`,background:xray.state.toString()==='4'?'#C50000':''}}>
-                                                        <div className="Evaluaion_Report_Box_Selected_Box"> {xray.state.toString()==='4' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='endstage'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change"> Eval Changed </span>: null} </div> 
+                                                        <div className="Evaluaion_Report_Box_Selected_Box" style={{background:(xray.state.toString()!=='4' && xray.prediction==="endstage")?`url(${boxBg})`:''}}> {xray.state.toString()==='4' ? <img src={Tick} alt="Ticked" /> : xray.prediction==='endstage'? <span className="Evaluaion_Report_Box_Selected_Box_Eval_Change">  </span>: null} </div> 
                                                     </Grid>
                                                 </React.Fragment>
                                             }

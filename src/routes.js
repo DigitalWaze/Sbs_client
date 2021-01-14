@@ -407,6 +407,10 @@ class Routes extends Component {
     });
   };
 
+  ChartOverAll = () => [100,91.975,84.600,79.914,76.332,73.342,70.704,68.284,65.994,63.776,61.583,
+    59.381,57.140,54.840,52.465,50.012,47.487,44.905,42.281,39.625,36.931,
+    34.174,31.307,28.251,24.875,20.941,15.939,8.291,0.000]
+
 
   render() {
     return this.state.loading == false ? (
@@ -418,6 +422,7 @@ class Routes extends Component {
             evalDone: this.evalDone,
             setCookie: this.setCookie,
             getCookie: this.getCookie,
+            ChartOverAll:this.ChartOverAll,
             logout: this.Logout,
             updateSession: this.updateSession,
             multipleUpdateValueWithHistory: this.multipleUpdateValueWithHistory,

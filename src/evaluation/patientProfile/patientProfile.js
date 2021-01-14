@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
+
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
+
+
 import BoneImage from '../../assets/bone3_Bitmap.png'
 import BoneImage1 from '../../assets/bone4_Bitmap.png'
 import BoneImage2 from '../../assets/bone5_Bitmap.png'
@@ -10,9 +15,6 @@ import BoneImage2 from '../../assets/bone5_Bitmap.png'
 
 import Tick from '../../assets/button-tick.png';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
-
-
 
 import RightKneeIconRed from '../../assets/right-knee-icon-red.png'
 import LeftKneeIconRed from '../../assets/left-knee-icon-red.png'
@@ -218,7 +220,15 @@ class PatientProfile extends Component {
                                 ?
                                     <div className='Evaluaion_PatientProfile_Disable_Box'>
                                         <Button className="Evaluaion_PatientProfile_Box_Button Evaluaion_PatientProfile_Box_DisbaleButton" variant="contained" disabled={true}> Confirm Evaluations </Button>
-                                        <div className="Evaluaion_PatientProfile_Box_DisbaleText3"> Processing X-rays... </div>
+                                        <div className="Evaluaion_PatientProfile_Box_DisbaleText3">
+                                            <Loader
+                                            type="Rings"
+                                            color="#B4EC51"
+                                            height={60}
+                                            width={60}   
+                                            style={{display:'inline-block',verticalAlign:'middle',opacity:'1'}}                                 
+                                            /> Processing X-rays...
+                                        </div>
                                     </div>
                                 :   
                                     <Button className="Evaluaion_PatientProfile_Box_Button" variant="contained" onClick={()=>{this.context.history.push('./x-ray-matching')}}> Confirm Evaluations </Button>

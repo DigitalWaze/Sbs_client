@@ -33,7 +33,7 @@ class Page1 extends Component {
     }
     render() { 
         const options=[{value:'None',id:1},{value:'Mild',id:2},{value:'Moderate',id:3},{value:'Severe',id:4},{value:'Extreme',id:5}];
-        const old= parseInt(this.context.state.activeEvaluation.stage.id)>2?true:false;
+        const old=  parseInt(this.context.state.evaluation_stage)>2?true:false;
         return ( 
         
         <div>

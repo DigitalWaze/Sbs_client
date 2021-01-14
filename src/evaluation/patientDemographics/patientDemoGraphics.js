@@ -55,18 +55,15 @@ class PatientDemoGraphics extends Component {
 
     componentDidMount()
     {
-        // document.getElementById('')
-        console.log(this.context.state.patient)
-        console.log()
-<<<<<<< HEAD
-        if(this.context.state.patient.name!=undefined && parseInt(this.context.state.activeEvaluation.stage.id)>0)
+        // console.log(this.context.state.patient)
+        // console.log(this.context.state.evaluation_stage)
+        if(this.context.state.patient.name!=undefined && parseInt(this.context.state.evaluation_stage)>0)
         {
-
+            console.log('old pateint loaded')
             let oldPatient = this.context.state.patient;
             this.setState({patient_name:oldPatient.name,birth_date:oldPatient.birth_date,age:oldPatient.age,gender:oldPatient.gender,height:oldPatient.height,
             home_phone:oldPatient.home_phone,cell_phone:oldPatient.cell_phone,weight:oldPatient.weight,home_address:oldPatient.home_address,
             email:oldPatient.email,martial_status:oldPatient.marital_status,date:oldPatient.date})
-
         }
         else 
         {  var d = new Date;
@@ -83,41 +80,6 @@ class PatientDemoGraphics extends Component {
             date=date+d.getDate()+'-'+d.getFullYear();
             console.log(date)
             this.setState({date})
-=======
-        if (
-          this.context.state.patient.name != undefined &&
-          this.context.state.old == true &&
-          parseInt(this.context.state.evaluation_stage) > 0
-        ) {
-          let oldPatient = this.context.state.patient;
-          this.setState({
-            patient_name: oldPatient.name,
-            birth_date: oldPatient.birth_date,
-            age: oldPatient.age,
-            gender: oldPatient.gender,
-            height: oldPatient.height,
-            home_phone: oldPatient.home_phone,
-            cell_phone: oldPatient.cell_phone,
-            weight: oldPatient.weight,
-            home_address: oldPatient.home_address,
-            email: oldPatient.email,
-            martial_status: oldPatient.marital_status,
-            date: oldPatient.date,
-          });
-        } else {
-          var d = new Date();
-          let date = "";
-          if ((d.getMonth() + 1).toString().length == 1) {
-            date = "0";
-          }
-          date = date + (d.getMonth() + 1) + "-";
-          if (d.getDate().toString().length == 1) {
-            date = date + "0";
-          }
-          date = date + d.getDate() + "-" + d.getFullYear();
-          console.log(date);
-          this.setState({  date  });
->>>>>>> 3848e6a764e8ad53760bd89486ba3b64246d55f2
         }
     }
 

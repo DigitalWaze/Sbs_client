@@ -34,7 +34,7 @@ class Page2Left extends Component {
 
    
     render() { 
-        const old= parseInt(this.context.state.activeEvaluation.stage.id)>2?true:false;
+        const old=  parseInt(this.context.state.evaluation_stage)>2?true:false;
 
         return ( 
         

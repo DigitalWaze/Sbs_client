@@ -70,6 +70,7 @@ class Home extends Component {
            //populate all data
             let patient = {};
             let evaluation_stage =  this.context.state.oldEvaluations[this.state.resumeOldEval].stage.id; 
+            console.log(evaluation_stage)
             let currEvaluation =  this.context.state.oldEvaluations[this.state.resumeOldEval]; 
             patient["name"]=response.patient[0].name;
             patient["birth_date"]=response.patient[0].birthday;
@@ -246,9 +247,6 @@ class Home extends Component {
                         ] 
                     }
                 }
-
-                this.CheckXrays(Xrays,temp_report_id)
-
                 
             }
 
@@ -263,13 +261,13 @@ class Home extends Component {
 
             if(evaluation_stage>3)    //get xrays images and move on
             {
-                let stateArray = [{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient},{key:'activeEvaluation',value:currEvaluation}]
+                let stateArray = [{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'evaluation_stage',value:evaluation_stage},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient},{key:'activeEvaluation',value:currEvaluation}]
                 this.context.multipleUpdateValue(stateArray);
                 this.CheckXrays(Xrays,temp_report_id)
             }
 
           //move on
-            else this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient},{key:'activeEvaluation',value:currEvaluation}],'/evaluation/demographics')
+            else this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'evaluation_stage',value:evaluation_stage},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'joint_id',value:active},{key:'activePriority',value:activePriority},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'old',value:true},{key:'patient',value:patient},{key:'activeEvaluation',value:currEvaluation}],'/evaluation/demographics')
         }
 
         

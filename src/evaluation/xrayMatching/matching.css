@@ -209,12 +209,36 @@
 {
   /* style={{maxWidth:'500px',maxHeight:'calc(50% - 50px)',textAlign:'center',position:'relative'}} */
   position: relative;
+  max-height: calc(50vh - 50px);
+
+ 
+}
+
+.Evaluaion_XrayMatching_Matching_Xray_Image_Cropper
+{
+  max-height: calc(50vh - 50px);
+  max-width: 500px;
+  height: calc(50vh - 50px);
+  width: auto;
+
+  background-repeat: no-repeat !important;
+  background-position: center !important ;
+  background-size: cover !important;
+
+
 }
 
 .Evaluaion_XrayMatching_Matching_Xray_Image
 {
-  /* style={{maxWidth:'100%',maxHeight:'100%'}} */
-  /* position: relative; */
+
+  max-width: 500px;
+  margin-top: -70px;
+  /* max-height: calc(50vh - 50px); */
+}
+
+.Evaluaion_XrayMatching_Matching_Xray_Image_Compairing
+{
+
   max-width: 500px;
   max-height: calc(50vh - 50px);
 }
@@ -414,11 +438,14 @@
 .Evaluaion_XrayMatching_Matching_State_Button_Prediction_Box
 {
   position: absolute;
-  left:-80px;
-  width: 47px;
+  left: -120px;
+  width: 80px;
   background-color: orange;
-  padding: 15px;
-  top:8px;
-  color:black;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  top: 0px;
+  color: black;
   font-weight: 640;
+  text-align: center;
 }

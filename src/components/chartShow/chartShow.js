@@ -4,6 +4,8 @@ import Arrow from '@elsdoerfer/react-arrow'
 import Button from '@material-ui/core/Button';
 import MyContext from '../../helper/themeContext';
 import './chartShow.css';
+import './chart.css'
+
 
 import FooterImage from '../../assets/charts-footer-image.PNG'
 
@@ -109,13 +111,13 @@ class ChartShow extends Component {
                                         <div style={{position:'relative',left:'0px'}}>
                                             100
                                         </div> 
-                                        <div style={{position:'relative',top:'41px',left:'9px'}}>
+                                        <div style={{position:'relative',top:'31px',left:'9px'}}>
                                             70
                                         </div> 
-                                        <div style={{position:'relative',top:'85px',left:'9px'}}>
+                                        <div style={{position:'relative',top:'65px',left:'9px'}}>
                                             40
                                         </div> 
-                                        <div style={{position:'relative',top:'145px',left:'19px'}}>
+                                        <div style={{position:'relative',top:'115px',left:'19px'}}>
                                             0
                                         </div> 
                                     </div>
@@ -139,7 +141,7 @@ class ChartShow extends Component {
                     </div>
                     
                     <div id="Evaluaion_Welcome_Next_Button_Div">
-                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.next}> {this.props.totalLeft==2?joint.joint_id.toString()==='3'?'View Left PRO Report Card':"View Right PRO Report Card":"Next"} </Button>
+                        <Button id="Evaluaion_Welcome_Next_Button" variant="contained" onClick={this.props.next}> {this.props.ButtonText}  </Button>
                     </div>
                 </div>
                 
