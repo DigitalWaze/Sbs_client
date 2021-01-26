@@ -50,7 +50,7 @@ class ChartShowMulti extends Component {
                     </div> */}
 
                     {
-                        this.props.Joint.map((joint,id)=>
+                        this.props.JointMapArray.map((joint,id)=>
                     
                         <div style={{display:'inline-block',width:'fit-content',marginRight:'20px',height:'350px',background:'white'}}>
                             <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
