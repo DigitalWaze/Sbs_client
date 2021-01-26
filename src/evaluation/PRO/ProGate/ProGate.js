@@ -1,24 +1,31 @@
 import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import "./ProGate.css";
-import Button from "@material-ui/core/Button";
 
 class ProGate extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
-    render() { 
-        return ( <div>
-        <h1> Hello </h1>
+    render() {
+        return (
+            <div id="Pro-gate-main-box">
+                <div id="Pro-gate-first-box">
+                    <h1 id="Pro-gate-heading"> Have you collected PROs for this evaluation? </h1>
 
-            {/* <Button onClick={this.props.handleYesClick} variant="contained"> Yes </Button>
-            <Button onClick={this.props.handleNoClick} variant="contained"> No </Button>
+                    <div id="Pro-gate-btn-container">
+                        <Button id="Pro-gate-yes-btn" onClick={this.props.handleYesClick} variant="contained"> Yes </Button>
+                        <Button id="Pro-gate-no-btn" onClick={this.props.handleNoClick} variant="contained"> No </Button>
+                    </div>
 
-            <Button onClick={this.props.handleBackClick} variant="contained"> Back  </Button> */}
+                </div>
 
-        </div> );
+                <div id="Pro-gate-second-box">
+                    <Button id="Pro-gate-back-btn" onClick={this.props.handleBackClick} variant="contained"> Back  </Button>
+                </div>
+            </div>
+        );
     }
 }
- 
+
 export default ProGate;

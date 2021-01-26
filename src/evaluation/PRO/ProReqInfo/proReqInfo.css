@@ -1,0 +1,108 @@
+#Evaluation-PRO-Required-main-container {
+    background-image: linear-gradient(
+      119deg,
+      #3023ae,
+      #53a0fd 47%,
+      #6eb6cc 81%,
+      #b4ec51
+    );
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#Evaluation-PRO-Required-box_1 {
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#Evaluation-PRO-Required-box_2 {
+    height: 10vh;
+}
+
+#Evaluation-PRO-Required-heading {
+    color: white;
+    font-family: Lato, sans-serif;
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.Evaluation-PRO-Required-seconds_last_box {
+    border: 3px solid white;
+    width: 50%;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    font-family: Lato, sans-serif;
+    padding: 5px;
+}
+
+#Evaluation-PRO-Required_Next_Button_Div {
+    display: block;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #Evaluation-PRO-Required_Next_Button_Div1 {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#Evaluation-PRO-Required_Next_Button {
+    display: block;
+    min-width: 300px;
+    padding: 10px 20px;
+    font-size: 22px;
+    line-height: 32px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: Lato, sans-serif;
+    text-transform: none;
+  }
+
+  .Evaluation-PRO-Required_Next_Button_Final {
+      min-width:  200px !important;
+  }
+
+  #Evaluation-PRO-Required_Next_Button1 {
+    display: block;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 22px;
+    line-height: 32px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: Lato, sans-serif;
+    text-transform: none;
+  }
+
+.Evaluation-PRO-Required-btn-layer1 {
+    flex-grow: 1;
+    margin-left: 45px;
+}
+
+.Evaluation-PRO-Required-btn-layer2 {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 45px;
+}
+
+  @media screen and ( max-width: 800px ) {
+    #Tutorials_Welcome_Next_Button {
+        min-width: 200px;
+        font-size: 20px;
+    }
+}
+
+@media screen and ( max-width : 500px ) {
+    #Tutorials_Welcome_Next_Button {
+        min-width: 100px;
+        font-size: 24px;
+    }
+}
