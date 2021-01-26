@@ -253,8 +253,8 @@ class UploadXray extends Component {
         switch(this.state.page)
         {
             case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('./patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(OverviewPage)} handleNoClick={()=>this.handlePageChange(ExportScriptPage)} />;
-            case 1: return <ExportScript Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
-            case 2: return <OverviewPage Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
+            case 1: return <ExportScript Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} handleEntryClick={()=>this.handlePageChange(OverviewPage)} handleBackClick={()=>this.handlePageChange(AcknowledgePage)} />;
+            case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
             default: return <div> Unreachable step</div>;
         }

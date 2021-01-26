@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 import './forms.css';
 
-import MyContext from '../../helper/themeContext';
+import MyContext from '../../../helper/themeContext';
 
 
 class FormType extends Component {

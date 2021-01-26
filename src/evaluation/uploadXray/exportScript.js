@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './acknowledge.css';
 import "./exportScript.css";
 import { Button } from '@material-ui/core';
+import MyContext from '../../helper/themeContext';
 
 class ExportScript extends Component {
     constructor(props) {
@@ -20,8 +21,8 @@ class ExportScript extends Component {
                     </div>
                     <div className="Evaluation_Acknowledge_Text_Div">
 
-                        <div id="inner-box-1">
-                            <div id="child_1">
+                        <div id="Export-Script-inner-box-1">
+                            <div id="Export-Script-child_1">
                                 {
                                     this.props.Xrays ?
                                         this.props.Xrays.map((xray, id) => {
@@ -30,37 +31,40 @@ class ExportScript extends Component {
                                 }
                             </div>
 
-                            <div id="child_2">
-                                <div id="Evaluaion_NewEvaluation_Next_Button_Div2">
+                            <div id="Export-Script-child_2">
+                                <div id="Evaluaion_Export-Script_Next_Button_Div2">
                                     <Button id="Evaluaion_NewEvaluation_Next_Button" variant="contained"> Export Script </Button>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="last-header">
+                        <div id="Export-Script-last-header">
                             You may resume the evaluation when you have the <br /> required X-rays.
                         </div>
 
-                        <div id="Evaluaion_NewEvaluation_Next_Button_Div1">
-                            <Button id="Evaluaion_NewEvaluation_Next_Button1" variant="contained">
+                        <div id="Evaluaion_ExportScript_Next_Button_Div1">
+                            <Button id="Evaluaion_ExportScript_Next_Button1" variant="contained"
+                                onClick={()=>this.context.history.push('/home')}>
                                 Save evaluation <br /> and return home
                             </Button>
                         </div>
                     </div>
 
-                    <div id="Tutorials_Welcome_Next_Button_Div">
-                        <div className="btn-layer1">
+                    <div id="Medent_Welcome_Next_Button_Div">
+                        <div className="Export-Script-btn-layer1">
                             <Button
-                                id="Tutorials_Welcome_Next_Button1"
+                                id="ExportScript_Welcome_Next_Button1"
                                 variant="contained"
+                                onClick={this.props.handleBackClick}
                             >
                                 {" "} Back {" "}
                             </Button>
                         </div>
-                        <div className="btn-layer2">
+                        <div className="Export-Script-btn-layer2">
                             <Button
-                                id="Tutorials_Welcome_Next_Button2"
+                                id="ExportScript_Welcome_Next_Button2"
                                 variant="contained"
+                                onClick={this.props.handleEntryClick}
                             >
                                 {" "} Return to X-ray Entry {" "}
                             </Button>
@@ -70,4 +74,5 @@ class ExportScript extends Component {
             </React.Fragment>);
     }
 }
+ExportScript.contextType=MyContext
 export default ExportScript;

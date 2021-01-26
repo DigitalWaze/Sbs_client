@@ -19,7 +19,7 @@ import Tick from '../../assets/tick-black.png';
 import Search from '../../assets/search.png';
 import Notes from '../../assets/notes.png';
 
-import html2canvas from 'html2canvas'
+// import html2canvas from 'html2canvas'
 import './report.css'
 import ImageViewModalWithZoom from '../../components/ImageViewModal/ImageViewModalWithZoom';
 
@@ -141,13 +141,13 @@ class ShowReport extends Component {
 
     handleNextClicks = () =>
     {
-        const global=this;
-        let newelement = document.createElement("div");
+        // const global=this;
+        // let newelement = document.createElement("div");
         
-        newelement=document.getElementById("GetImage")
-        html2canvas(newelement).then(function(canvas) {
-            global.downloadURI( canvas.toDataURL("image/png"),'picture')
-        });
+        // newelement=document.getElementById("GetImage")
+        // html2canvas(newelement).then(function(canvas) {
+        //     global.downloadURI( canvas.toDataURL("image/png"),'picture')
+        // });
     }
     downloadURI(uri, name) {
         var link = document.createElement("a");

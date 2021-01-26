@@ -15,7 +15,6 @@ import Tick from '../../../../assets/tick-black.png';
 import Search from '../../../../assets/search.png';
 import Notes from '../../../../assets/notes.png';
 
-import html2canvas from 'html2canvas'
 import Bone1Image from '../../../../assets/bone3_Bitmap.png'
 
 //thumbnails

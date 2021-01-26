@@ -10,11 +10,6 @@ import ArrowImage from '../../assets/chart-pdf-arrow.jpg'
 
 import './chartImage.css'
 
-let OverAll=
-    [100,91.975,84.600,79.914,76.332,73.342,70.704,68.284,65.994,63.776,61.583,
-     59.381,57.140,54.840,52.465,50.012,47.487,44.905,42.281,39.625,36.931,
-     34.174,31.307,28.251,24.875,20.941,15.939,8.291,0.000        ]
-
 
 class ChartImage extends Component {
     constructor(props) {
@@ -24,6 +19,7 @@ class ChartImage extends Component {
 
     UNSAFE_componentWillMount()
     {
+        let OverAll = this.context.ChartOverAll
         let JointMapArray;
         
         let SumPain=0;
@@ -118,14 +114,14 @@ class ChartImage extends Component {
                         BETTER &nbsp; JOINT &nbsp; HEALTH
                     </span>
                     <span id="arrow-image-div">
-                        {/* <Arrow
+                        <Arrow
                                 angle={0}
                                 length={90}
                                 style={{
                                 width: '50px',
                                 height:'375px'
                                 }}
-                            /> */}
+                            />
                             <img src={ArrowImage} id="arrow-image-tag" />
                     </span>
 

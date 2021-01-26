@@ -6,7 +6,7 @@ import GetData from '../../Fetch/getDataUniversal';
 import MyContext from '../../helper/themeContext';
 import './NewOrExis.css'
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
-
+ 
 
 class NewOrExis extends Component {
     constructor(props) {
@@ -44,7 +44,7 @@ class NewOrExis extends Component {
                 </div>
 
                 <div className="Evaluation_ResumeEvaluation_Button_Div">
-                    <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('./demographics')}> New Patient </Button>
+                    <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" onClick={()=>this.props.history.push('./required-info')}> New Patient </Button>
                 </div>
                 <div className="Evaluation_ResumeEvaluation_Button_Div">
                     <Button className="Evaluation_ResumeEvaluation_Button" variant="contained" disabled={true} style={{opacity:'0.5'}}> Existing Patient </Button>

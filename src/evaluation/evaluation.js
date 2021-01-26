@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./evaluation.css";
 import MyContext from "../helper/themeContext";
 
-import PatientReport from "./patientReport/manual/patientReportManual";
+// import PatientReport from "./patientReport/manual/patientReportManual";
 import { Route, Router } from "react-router-dom";
 import Welcome from "./welcome/welcome";
 import PatientDemoGraphics from "./patientDemographics/patientDemoGraphics";
@@ -20,12 +20,13 @@ import ResumeEvaluationSelect from "./resumeEvaluation/resumeEvalutionSelect";
 import Pdf from "./pdf/pdf";
 import EvaluationHistory from "./evaluationHistory/evaluationHistory";
 import ReportCardSummary from "./reportCardSummary/reportCardSummary";
-// import WelcomeRecom from '../recomCarePath/page1';
-import ChartJs from "./chart/newChart";
-import ChartImage from "./pdfImages/chartImage";
-import FormType from "./ProEntry/formType";
-import PatientReportManual from "./patientReport/manual/patientReportManual";
+import RequiredReminder from "./requiredReminder/requiredReminder"; 
+import ChartJs from "./chart/newChart"; 
+import FormType from "./PRO/ProEntry/formType";
+import PatientReportManual from "./PRO/manual/patientReportManual";
 import NewOrExis from "./newOrExis/NewOrExis";
+import MedentIntro from "./medent/medentIntro";
+import MedentForm from "./medent/medentForm";
 
 class Evaluation extends Component {
   constructor(props) {
@@ -113,10 +114,14 @@ class Evaluation extends Component {
 
             <Route exact path="/evaluation/welcome" component={Welcome} />
             <Route exact path="/evaluation/new-or-existing" component={NewOrExis} />
+            <Route exact path="/evaluation/required-info" component={RequiredReminder} />
 
-            {/* <Route exact path='/Evaluation/Video' component={Video} /> */}
             <Route exact path="/Evaluation/Demographics" component={PatientDemoGraphics} />
             <Route exact path="/Evaluation/new-evaluation" component={NewEvaluation} />
+
+            <Route exact path="/Evaluation/medent-welcome" component={MedentIntro} />
+            <Route exact path="/Evaluation/medent-form" component={MedentForm} />
+
 
             <Route exact path="/Evaluation/patient-profile" component={PatientProfile} />
 
@@ -124,7 +129,6 @@ class Evaluation extends Component {
 
             <Route path="/Evaluation/manual-form" component={PatientReportManual} />
 
-            {/* <Route path="/Evaluation/patient-report" component={PatientReport}/> */}
 
             <Route path="/Evaluation/upload-xrays" component={UploadXray} />
             <Route path="/Evaluation/x-ray-matching" component={XrayMatching} />

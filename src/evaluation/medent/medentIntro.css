@@ -1,0 +1,66 @@
+
+  
+
+  #Medent_Welcome_Next_Button_Div {
+    display: block;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .btn-layer1 {
+    flex-grow: 1;
+  }
+
+  .btn-layer2 {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+  
+  @media only screen and (min-height: 700px) {
+    #Medent_Welcome_Next_Button_Div {
+      margin-top: 60px;
+    }
+  }
+  
+  @media only screen and (min-height: 750px) {
+    #Medent_Welcome_Next_Button_Div {
+      margin-top: 80px;
+    }
+  }
+  
+  @media only screen and (min-height: 800px) {
+    #Medent_Welcome_Next_Button_Div {
+      margin-top: 100px;
+    }
+  }
+  
+  #Medent_Welcome_Next_Button {
+    display: block;
+    width: auto;
+    min-width: 300px;
+    padding: 15px 25px;
+    float: left;
+    font-size: 28px;
+    line-height: 32px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: Lato, sans-serif;
+  }
+
+  @media screen and ( max-width: 800px ) {
+    #Medent_Welcome_Next_Button {
+        min-width: 200px;
+    }
+}
+
+@media screen and ( max-width : 500px ) {
+    #Medent_Welcome_Next_Button {
+        min-width: 100px;
+    }
+}
+
+#box_1 {
+    height: 90vh;
+}

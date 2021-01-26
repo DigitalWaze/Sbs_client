@@ -143,7 +143,7 @@ class NewEvaluation extends Component {
         {
             if(parseInt(this.context.state.evaluation_stage)>1)
             {
-                this.context.history.push('./patient-profile');
+                this.context.history.push('./medent-welcome');
             }
             // console.log('old')
 
@@ -180,7 +180,7 @@ class NewEvaluation extends Component {
             });
 
             SettingEval.sort(function(a, b){ return a.priority_id-b.priority_id});
-            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activeJointIndex',value:0},{key:'Eval',value:SettingEval},{key:'evaluation_stage',value:'2'}],'./patient-profile')
+            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activeJointIndex',value:0},{key:'Eval',value:SettingEval},{key:'evaluation_stage',value:'2'}],'./medent-welcome')
             // this.setState({loading:false})
         }
 
