@@ -18,7 +18,7 @@ import ChartShow from '../../../components/chartShow/chartShow';
 class PatientReportManual extends Component {
     constructor(props) {
         super(props);
-        this.state = { page:0,form:null,loading:true}
+        this.state = { page:0,form:null,loading:true,MultiChart:false,AllJoints:[]}
     }
 
     UNSAFE_componentWillMount()
@@ -81,7 +81,9 @@ class PatientReportManual extends Component {
         let OverallInterval = Math.round( ( OverAll[SumPain+SumStiff+SumFunction]) * 10)/10; 
 
         let JointMapObject = { PainInterval, StiffInterval, FunctionInterval, OverallInterval, joint_id:this.state.active}
-        this.setState({page:this.state.page+1 ,JointMapObject});   
+        let AllJoints = this.state.AllJoints;
+        AllJoints.push(JointMapObject)
+        this.setState({page:this.state.page+1 ,JointMapObject,AllJoints});   
     }
 
     handlePageChange = () =>
@@ -93,6 +95,9 @@ class PatientReportManual extends Component {
 
         else this.setState({page:this.state.page+1})   
     }
+
+
+    handleMulti
 
     getPageRight = () =>
     {
@@ -200,7 +205,8 @@ class PatientReportManual extends Component {
                  {/* {console.log(this.context.state)} */}
                 {this.state.loading==true?
                     <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
-                    
+
+                :this.state.MultiChart===true? <ChartShowMulti  ButtonText = {"NEXT"} JointMapArray={ this.state.AllJoints } next={this.next}/>
                 : this.state.active===null? <ManualFormWrapper formLoad={this.state.formLoad} next={this.next} setActive = { (id) =>this.setActive(id)} />
                 : this.state.active.toString()=='3'?
                     this.getPageRight():this.getPageLeft()

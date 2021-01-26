@@ -27,6 +27,8 @@ import PatientReportManual from "./PRO/manual/patientReportManual";
 import NewOrExis from "./newOrExis/NewOrExis";
 import MedentIntro from "./medent/medentIntro";
 import MedentForm from "./medent/medentForm";
+import PRO from "./PRO/ProWrapper";
+
 
 class Evaluation extends Component {
   constructor(props) {
@@ -124,6 +126,9 @@ class Evaluation extends Component {
 
 
             <Route exact path="/Evaluation/patient-profile" component={PatientProfile} />
+
+            <Route exact path="/Evaluation/pro" component={PRO} />
+
 
             <Route path="/Evaluation/form-type" component={FormType} />
 

@@ -80,7 +80,7 @@ class MedentForm extends Component {
                             <Button
                                 id="Evaluaion_RequiredReminder_Next_Button"
                                 variant="contained"
-                            >
+                                onClick={()=>{this.context.history.push('./new-evaluation')}}                            >
                                 {" "} Back {" "}
                             </Button>
                         </div>
@@ -89,7 +89,7 @@ class MedentForm extends Component {
                             <Button
                                 id="Evaluaion_RequiredReminder_Next_Button_1"
                                 variant="contained"
-                            >
+                                onClick={()=>{this.context.history.push('./patient-profile')}}                            >
                                 {" "} Next {" "}
                             </Button>
                         </div>

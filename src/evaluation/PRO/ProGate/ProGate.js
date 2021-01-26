@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import "./ProGate.css";
 import Button from "@material-ui/core/Button";
