@@ -78,7 +78,7 @@ class MedentForm extends Component {
                     <div id="Evaluaion_RequiredReminder_Next_Button_Div">
                         <div className="Medent-Form-btn-layer1">
                             <Button
-                                id="Evaluaion_RequiredReminder_Next_Button"
+                                id="Evaluaion_MedentForm_Next_Button"
                                 variant="contained"
                                 onClick={()=>{this.context.history.push('./new-evaluation')}}                            >
                                 {" "} Back {" "}
@@ -87,7 +87,7 @@ class MedentForm extends Component {
 
                         <div className="Medent-Form-btn-layer2">
                             <Button
-                                id="Evaluaion_RequiredReminder_Next_Button_1"
+                                id="Evaluaion_MedentForm_Next_Button_1"
                                 variant="contained"
                                 onClick={()=>{this.context.history.push('./patient-profile')}}                            >
                                 {" "} Next {" "}

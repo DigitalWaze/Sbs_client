@@ -5,9 +5,11 @@ import Button from '@material-ui/core/Button';
 import MyContext from '../../helper/themeContext';
 import './chartShow.css';
 import './chart.css'
-
-
 import FooterImage from '../../assets/charts-footer-image.PNG'
+
+
+const ChartHeight = 350;
+const FooterWidth = 1190;
 
 class ChartShowMulti extends Component {
     constructor(props) {
@@ -52,8 +54,15 @@ class ChartShowMulti extends Component {
                     {
                         this.props.JointMapArray.map((joint,id)=>
                     
-                        <div style={{display:'inline-block',width:'fit-content',marginRight:'20px',height:'350px',background:'white'}}>
-                            <div  style={{display:'inline-block',height:'330px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
+                        <div style={{display:'inline-block',width:'fit-content',marginRight:'20px',height:ChartHeight+'px',background:'white'}}>
+                            
+                            <div style={{height:ChartHeight+'px'}} className="Chart-Joint-Name-Header-Wrapper">
+                                <div style={{marginTop:ChartHeight/2+'px'}}className="Chart-Joint-Name-Header">
+                                    {joint.joint_id.toString()==="3"?'Right Knee':'Left Knee'}
+                                </div>
+                            </div>
+
+                            <div  style={{display:'inline-block',height:ChartHeight-20+'px',verticalAlign:'top',position:'relative',background:'white',paddingTop:'20px'}}>
                                 <span className="arrow-text-span">
                                     BETTER &nbsp; JOINT &nbsp; HEALTH
                                 </span>
@@ -63,7 +72,7 @@ class ChartShowMulti extends Component {
                                             length={90}
                                             style={{
                                             width: '50px',
-                                            height:'380px'
+                                            height:ChartHeight+30+'px'
                                             }}
                                         />
                                 </span>
@@ -87,14 +96,14 @@ class ChartShowMulti extends Component {
                             </div>
                             {
                                 [joint.OverallInterval,joint.PainInterval,joint.FunctionInterval,joint.StiffInterval].map((text,key)=>
-                                    <div  style={{display:'inline-block', verticalAlign:'bottom',height:'250px',background:'',width:'250px',position:'relative'}}>
+                                    <div  style={{display:'inline-block', verticalAlign:'bottom',height:ChartHeight-100+'px',background:'',width:'250px',position:'relative'}}>
                                         
                                         <VictoryStack
                                             animate={{
                                                 duration: 2000,
                                                 onLoad: { duration: 1000 }
                                             }}
-                                        height={450}
+                                        height={ChartHeight+100}
                                         //   width={100}
                                         colorScale={["#F56C7A", "#F7A11A", "#B9DBA7"]}>
                                     
@@ -141,7 +150,7 @@ class ChartShowMulti extends Component {
                         </div>
                     )}
 
-                    <div id="Evaluaion_Chart_Footer_Div">
+                    <div id="Evaluaion_Chart_Footer_Div" style={{width:FooterWidth+'px'}}>
                         <img src={FooterImage} alt="chart-definition-footer"/>
                     </div>
                     

@@ -99,7 +99,10 @@ class PatientReportManual extends Component {
     }
 
 
-    handleMulti
+    handleShowMultiChart = () =>
+    {
+        this.setState({MultiChart:true})
+    }
 
     getPageRight = () =>
     {
@@ -185,6 +188,11 @@ class PatientReportManual extends Component {
         //updateContext and call Api
     }
 
+    handleDone = () =>
+    {
+        this.context.history.push('./patient-profile')
+    }
+
     setMe = (response) =>
     {
         if(response.length>0)
@@ -208,8 +216,8 @@ class PatientReportManual extends Component {
                 {this.state.loading==true?
                     <SemipolarLoading size={'large'}  color={'#b4ec51'}/>
 
-                :this.state.MultiChart===true? <ChartShowMulti  ButtonText = {"NEXT"} JointMapArray={ this.state.AllJoints } next={this.next}/>
-                : this.state.active===null? <ManualFormWrapper formLoad={this.state.formLoad} next={this.next} setActive = { (id) =>this.setActive(id)} />
+                :this.state.MultiChart===true? <ChartShowMulti  ButtonText = {"NEXT"} JointMapArray={ this.state.AllJoints } next={this.handleDone}/>
+                : this.state.active===null? <ManualFormWrapper handleShowMultiChart={this.handleShowMultiChart} formLoad={this.state.formLoad} next={this.next} setActive = { (id) =>this.setActive(id)} />
                 : this.state.active.toString()=='3'?
                     this.getPageRight():this.getPageLeft()
                     }
