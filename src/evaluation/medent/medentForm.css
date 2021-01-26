@@ -16,11 +16,17 @@
 }
 
 #Medent-Form-box_1 {
-    padding: 50px 0px 0px 40px
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #Medent-Form-heading {
     color: white;
+    padding-left: 18px;
+    font-size: 30px;
 }
 
 #Medent-Form-header1 , #Medent-Form-header2 , #Medent-Form-header3 , #Medent-Form-header4 {
@@ -68,13 +74,9 @@
     margin-left: 43px !important;
 }
 
-
-#Evaluaion_RequiredReminder_Next_Button_Div1 {
-    display: block;
-    display: flex;
-    flex-direction: row;
-    margin-top: 25px;
-  }
+#Evaluaion_RequiredReminder_Next_Button_Div {
+    height: 15vh;
+}
 
 .Medent-Form-btn-layer1 {
     flex-grow: 1;
@@ -99,20 +101,33 @@
     font-family: Lato, sans-serif;
   }
 
+#Evaluaion_RequiredReminder_Next_Button_1 {
+    display: block;
+    width: auto;
+    min-width: 300px;
+    padding: 10px 20px;
+    float: left;
+    font-size: 20px;
+    line-height: 25px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: Lato, sans-serif;
+}
+
   @media screen and ( max-width: 800px ) {
-    #Evaluaion_RequiredReminder_Next_Button {
+    #Evaluaion_RequiredReminder_Next_Button , #Evaluaion_RequiredReminder_Next_Button_1 {
         min-width: 200px;
         font-size: 20px;
     }
 }
 
 @media screen and ( max-width : 500px ) {
-    #Evaluaion_RequiredReminder_Next_Button {
+    #Evaluaion_RequiredReminder_Next_Button , #Evaluaion_RequiredReminder_Next_Button_1 {
         min-width: 100px;
         font-size: 24px;
     }
 }
 
 #Medent-Form-Wrapper {
-    margin: 50px !important;
+    margin: 0px 50px 0px 50px !important;
 }

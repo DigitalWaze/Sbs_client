@@ -21,7 +21,7 @@ const MedentIntro = () => {
 
                         <div id="Tutorials_Welcome_Heading2_Div"> Knee: Clinical Evaluation Information </div>
 
-                        <div id="Tutorials_Welcome_Text_Div"> Please complete this simple survey. </div>
+                        <div id="Tutorials_Welcome_Text_Div" className="footer-header"> Please complete this simple survey. </div>
 
                         <div id="Medent_Welcome_Next_Button_Div">
                             <div className="btn-layer1">
