@@ -35,7 +35,7 @@ class PRO extends Component {
     {
         switch(this.state.page)
         {
-            case 0: return <ProGate handleBackClick = {()=> this.context.history.push('./patient-profile')} handleYesClick={()=>this.handlePageChange(ProEntryPage)} handleNoClick={()=>this.handlePageChange(PROReqInfoPage)} />;
+            case 0: return <ProGate handleBackClick = {()=> this.context.history.push('./patient-profile')} handleYesClick={()=>this.context.history.push('./form-type')} handleNoClick={()=>this.handlePageChange(PROReqInfoPage)} />;
             case 1: return <ProReqInfo handleBackClick={()=>this.handlePageChange(PROGatePage)} />;
             // case 2: return <FormType handle={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             // case 3: return <PatientReportManual  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
