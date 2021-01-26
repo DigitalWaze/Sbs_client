@@ -16,7 +16,7 @@ class ManualFormWrapper extends Component {
     {
         if(this.context.state.Eval.length>1)
         {
-            this.context.history.push('./pro-summary')
+            this.props.handleShowMultiChart();
         }
         else this.context.history.push('./patient-profile')
     }

@@ -19,6 +19,11 @@ import ExportScript from './exportScript';
 import { SemipolarLoading } from 'react-loadingg';
 // import PostData from '../../Fetch/postData3';
 import PostFormData from './uploadPostForm';
+import UploadType from './uploadType';
+import UploadTypeOne from './uploadTypeOne';
+import UploadTypeTwo from './uploadTypeTwo';
+import UploadTypeThree from './uploadTypeThree';
+
 
 
 let uploaded=0;
@@ -27,6 +32,10 @@ const AcknowledgePage = 0
 const ExportScriptPage = 1
 const OverviewPage = 2
 const UploadPage = 3
+const UploadTypePage = 4
+const UploadTypeOnePage = 5
+const UploadTypeTwoPage = 6
+const UploadTypeThreePage = 7
 
 class UploadXray extends Component {
     constructor(props) {
@@ -252,10 +261,16 @@ class UploadXray extends Component {
     {
         switch(this.state.page)
         {
-            case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('./patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(OverviewPage)} handleNoClick={()=>this.handlePageChange(ExportScriptPage)} />;
-            case 1: return <ExportScript Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} handleEntryClick={()=>this.handlePageChange(OverviewPage)} handleBackClick={()=>this.handlePageChange(AcknowledgePage)} />;
+            case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('./patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(UploadTypePage)} handleNoClick={()=>this.handlePageChange(ExportScriptPage)} />;
+            case 1: return <ExportScript Xrays={this.state.Xrays} handleEntryClick={()=>this.handlePageChange(UploadTypePage)} handleBackClick={()=>this.handlePageChange(AcknowledgePage)} />;
             case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
+            case 4: return <UploadType handleTypeOneClick={()=>this.handlePageChange(UploadTypeOnePage)} handleTypeTwoClick={()=>this.handlePageChange(UploadTypeTwoPage)} handleTypeThreeClick={()=>this.handlePageChange(UploadTypeThreePage)} handleTypeFourClick={()=>this.handlePageChange(OverviewPage)}/>
+            case 5: return <UploadTypeOne handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
+            case 6: return <UploadTypeTwo handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
+            case 7: return <UploadTypeThree handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
+
+
             default: return <div> Unreachable step</div>;
         }
 
@@ -269,7 +284,7 @@ class UploadXray extends Component {
 
                 <SemipolarLoading size={"large"} color={'#b4ec51'}/>
 
-            :
+            : this.state.page<4?
                 <div  id="Evaluaion_UploadXray_Content1_Wrapper">
                     <div id="Evaluaion_UploadXray_Heading1_Div">
                         Upload X-rays
@@ -278,6 +293,9 @@ class UploadXray extends Component {
                         this.getPage()
                     }
                 </div>
+            :   
+                this.getPage()
+                
             }
 
             

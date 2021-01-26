@@ -106,3 +106,17 @@
     font-size: 24px;
 }
 
+.Chart-Joint-Name-Header-Wrapper
+{
+    display: inline-block;
+}
+
+.Chart-Joint-Name-Header
+{
+    width: 130px;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+

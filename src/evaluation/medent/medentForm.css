@@ -89,10 +89,10 @@
   justify-content: flex-end;
 }
 
-#Evaluaion_RequiredReminder_Next_Button {
+#Evaluaion_MedentForm_Next_Button {
     display: block;
     width: auto;
-    min-width: 300px;
+    min-width: 200px;
     padding: 10px 20px;
     float: left;
     font-size: 20px;
@@ -102,10 +102,10 @@
     font-family: Lato, sans-serif;
   }
 
-#Evaluaion_RequiredReminder_Next_Button_1 {
+#Evaluaion_MedentForm_Next_Button_1 {
     display: block;
     width: auto;
-    min-width: 300px;
+    min-width: 200px;
     padding: 10px 20px;
     float: left;
     font-size: 20px;
