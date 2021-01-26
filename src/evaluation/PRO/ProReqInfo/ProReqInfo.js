@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MyContext from '../../../helper/themeContext';
 
 class ProReqInfo extends Component {
     constructor(props) {
@@ -17,4 +18,5 @@ class ProReqInfo extends Component {
     }
 }
  
+ProReqInfo.contextType=MyContext;
 export default ProReqInfo;

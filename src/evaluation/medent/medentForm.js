@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 import "./medentForm.css";
+import MyContext from '../../helper/themeContext';
 
 class MedentForm extends Component {
     constructor(props) {
@@ -78,6 +79,7 @@ class MedentForm extends Component {
                             <Button
                                 id="Evaluaion_RequiredReminder_Next_Button"
                                 variant="contained"
+                                onClick={()=>{this.context.history.push('./patient-profile')}}
                             >
                                 {" "} Back {" "}
                             </Button>
@@ -97,4 +99,5 @@ class MedentForm extends Component {
     }
 }
 
+MedentForm.contextType=MyContext;
 export default MedentForm;
