@@ -88,7 +88,6 @@ class PatientDemoGraphics extends Component {
     {
         if(this.state.patient_name.length<3)
         {
-
             console.log(this.state.birth_date.toString().length)
             this.setState({patient_name_error:'Must be more than 2 words',error:'Patient name must be more than 2 words'});
             // let input = document.getElementById('patient_name')
@@ -110,85 +109,85 @@ class PatientDemoGraphics extends Component {
             return false;
         }
 
-        if(this.state.age==null)
-        {
-            this.setState({age_error:'Should not be empty',error:'Please enter Age'});
-            return false;
-        }
-        if(this.state.gender==='')
-        {
-            this.setState({gender_error:'Should not be empty',error:'Please enter Gender'});
-            return false;
-        }
+        // if(this.state.age==null)
+        // {
+        //     this.setState({age_error:'Should not be empty',error:'Please enter Age'});
+        //     return false;
+        // }
+        // if(this.state.gender==='')
+        // {
+        //     this.setState({gender_error:'Should not be empty',error:'Please enter Gender'});
+        //     return false;
+        // }
 
-        if(this.state.height==='')
-        {
-            this.setState({height_error:'Height Empty',error:'Height Empty'});
-            return false;
-        }
+        // if(this.state.height==='')
+        // {
+        //     this.setState({height_error:'Height Empty',error:'Height Empty'});
+        //     return false;
+        // }
 
-        let height_num=this.state.height.toString().match(/\d+/g).map(Number);
-        if(height_num.length<2 || height_num[0].toString().length<1 || height_num[1].toString().length<1)
-        {
-            this.setState({height_error:'Enter Correctly as Foot and Inch',error:'Please enter height correctly'});
-            return false;
-        }
+        // let height_num=this.state.height.toString().match(/\d+/g).map(Number);
+        // if(height_num.length<2 || height_num[0].toString().length<1 || height_num[1].toString().length<1)
+        // {
+        //     this.setState({height_error:'Enter Correctly as Foot and Inch',error:'Please enter height correctly'});
+        //     return false;
+        // }
 
-        if(this.state.home_phone==='')
-        {
-            this.setState({home_phone_error:'Home Phone Empty',error:'Home Phone Empty'});
-            return false;
-        }
+        // if(this.state.home_phone==='')
+        // {
+        //     this.setState({home_phone_error:'Home Phone Empty',error:'Home Phone Empty'});
+        //     return false;
+        // }
 
-        let home_num=this.state.home_phone.toString().match(/\d+/g).map(Number);
-        if(home_num.length<3 || home_num[0].toString().length<3 || home_num[1].toString().length<3 || home_num[2].toString().length<4)
-        {
-            this.setState({home_phone_error:'Badly Formatted',error:'Home Phone Badly Formatted'});
-            return false;
-        }
+        // let home_num=this.state.home_phone.toString().match(/\d+/g).map(Number);
+        // if(home_num.length<3 || home_num[0].toString().length<3 || home_num[1].toString().length<3 || home_num[2].toString().length<4)
+        // {
+        //     this.setState({home_phone_error:'Badly Formatted',error:'Home Phone Badly Formatted'});
+        //     return false;
+        // }
 
-        if(this.state.cell_phone==='')
-        {
-            this.setState({cell_phone_error:'Cell Phone Empty',error:'Cell Phone Empty'});
-            return false;
-        }
+        // if(this.state.cell_phone==='')
+        // {
+        //     this.setState({cell_phone_error:'Cell Phone Empty',error:'Cell Phone Empty'});
+        //     return false;
+        // }
 
-        let cell_num=this.state.cell_phone.toString().match(/\d+/g).map(Number);
-        if(cell_num.length<3 || cell_num[0].toString().length<3 || cell_num[1].toString().length<3 || cell_num[2].toString().length<4)
-        {
-            this.setState({cell_phone_error:'Badly Formatted',error:'Cell Phone Badly Formatted'});
-            return false;
-        }
+        // let cell_num=this.state.cell_phone.toString().match(/\d+/g).map(Number);
+        // if(cell_num.length<3 || cell_num[0].toString().length<3 || cell_num[1].toString().length<3 || cell_num[2].toString().length<4)
+        // {
+        //     this.setState({cell_phone_error:'Badly Formatted',error:'Cell Phone Badly Formatted'});
+        //     return false;
+        // }
 
-        if(this.state.weight<1)
-        {
-            this.setState({weight_error:'Nullify Formatted',error:'Weight Nullify Formatted'});
-            return false;
-        }
+        // if(this.state.weight<1)
+        // {
+        //     this.setState({weight_error:'Nullify Formatted',error:'Weight Nullify Formatted'});
+        //     return false;
+        // }
 
-        if(this.state.home_address==="" || this.state.home_address===" ")
-        {
-            this.setState({home_address_error:'Empty',error:'Home Address Empty'});
-            return false;
-        }
+        // if(this.state.home_address==="" || this.state.home_address===" ")
+        // {
+        //     this.setState({home_address_error:'Empty',error:'Home Address Empty'});
+        //     return false;
+        // }
 
-        if(this.state.email==="" || this.state.email===" ")
-        {
-            this.setState({email_error:'Empty',error:'Email Empty'});
-            return false;
-        }
+        // if(this.state.email==="" || this.state.email===" ")
+        // {
+        //     this.setState({email_error:'Empty',error:'Email Empty'});
+        //     return false;
+        // }
 
-        if ( !(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) )
-        {
-            this.setState({email_error:'Badly Formatted',error:'Email Badly Formatted'});
-            return false;
-        }
+        // if ( !(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) )
+        // {
+        //     this.setState({email_error:'Badly Formatted',error:'Email Badly Formatted'});
+        //     return false;
+        // }
 
-        if(this.state.martial_status==='')
-        {
-            this.setState({martial_status_error:'Should not be empty',error:'Please enter Martial Status'});
-            return false;
-        }
+        // if(this.state.martial_status==='')
+        // {
+        //     this.setState({martial_status_error:'Should not be empty',error:'Please enter Martial Status'});
+        //     return false;
+        // }
 
         if(this.state.date==='' || this.state.date===' ' )
         {
@@ -208,7 +207,7 @@ class PatientDemoGraphics extends Component {
         return true;
     }
 
-    updateContext = (report_id,patient_id,oldEvaluations,currEvaluation) =>
+    updateContext = (report_id,patient_id,oldEvaluations) =>
     {
         let patient={};
         patient["name"]=this.state.patient_name;
@@ -223,18 +222,14 @@ class PatientDemoGraphics extends Component {
         patient["email"]=this.state.email;
         patient["marital_status"]=this.state.martial_status;
         patient["date"]=this.state.date;
-
-
-        this.context.multipleUpdateValue([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currEvaluation}])
-        this.context.updateSession();
-        this.context.history.push('./new-evaluation')
+        this.context.multipleUpdateValueWithHistory([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id},{key:'oldEvaluations',value:oldEvaluations}],'./new-evaluation')
     } 
 
     handleClick = () =>
     {
-        if(this.context.state.activeEvaluation)
+        if(this.context.state.evaluation_stage)
         {
-            if(parseInt(this.context.state.activeEvaluation.stage.id)>0)
+            if(parseInt(this.context.state.evaluation_stage)>0)
             {
                 this.context.history.push('./new-evaluation');
             }
@@ -264,16 +259,9 @@ class PatientDemoGraphics extends Component {
             this.setState({loading:true})
 
             GetData(this.context.baseUrl+'/api/v1/create/patient',201,patient,this.context.state.token,this.setMe)
-            // this.context.history.push('./new-evaluation')
         }
         
     }
-
-    // handleClick = () =>
-    // {
-        
-    //     this.context.multipleUpdateValueWithHistory([{key:'report_id',value:'2'},{key:'patient_id',value:'22'}],'./new-evaluation')
-    // }
 
     setMe = (response) =>
     {
@@ -285,7 +273,7 @@ class PatientDemoGraphics extends Component {
             let currEvaluation = { id:response._visitor.id , stage:{id:1 , stage:'Patient Demographics Submitted'},visitor:{id:response._visitor.id,patient_id:response._visitor.patient_id} }
             oldEvaluations.push(currEvaluation);
 
-            this.updateContext(response._visitor.id,response._visitor.patient_id,oldEvaluations,currEvaluation);
+            this.updateContext(response._visitor.id,response._visitor.patient_id,oldEvaluations);
             // this.setState({loading:false})
         }
         else
@@ -301,7 +289,7 @@ class PatientDemoGraphics extends Component {
     }
     render() { 
         // const {classes} = this.props;
-        const old=this.context.state.old;
+        const old=parseInt(this.context.state.evaluation_stage)>0;
         return ( 
             
             <div id="Evaluaion_PatientDemoGraphics_Main_Div">

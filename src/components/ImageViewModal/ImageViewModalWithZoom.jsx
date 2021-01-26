@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import html2canvas from 'html2canvas'
 
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import './ImageViewModal.css'
 
 class ImageViewModalWithZoom extends Component {
@@ -22,13 +25,7 @@ class ImageViewModalWithZoom extends Component {
         const myimage = document.createElement("IMG");
         myimage.id = "abcd"
 
-        // var newImg = new Image,
-        // canvas = document.createElement("canvas"),
-        // ctx = canvas.getContext("2d"),
-        // src = img.src;
-
         myimage.crossOrigin = "Anonymous";
-
         myimage.onload = async function() {
 
            
@@ -164,7 +161,13 @@ class ImageViewModalWithZoom extends Component {
             open={this.props.modalState}
             onClose={this.props.modalClose}
         >
+
             <div className="XrayImage_Modal_Wrapper">
+
+                <Backdrop style={{zIndex:4,color:'#fff'}} open={this.props.loader}>
+                    <CircularProgress color="inherit" />
+                </Backdrop>
+
                 <div className="XrayImage_Modal">
                     {
                         this.props.ActiveImage!=null?
@@ -172,7 +175,7 @@ class ImageViewModalWithZoom extends Component {
                         :null
                     }
                     <Button onClick={this.props.modalClose} variant="contained" id="XrayImage_Modal_Close_Button"> Close </Button>
-                    <Button onClick={this.props.modalClose} variant="contained" id="XrayImage_Modal_Update_View_Button" onClick={this.updateView}> Update View </Button>
+                    {this.props.showUpdateView ? <Button onClick={this.props.modalClose} variant="contained" id="XrayImage_Modal_Update_View_Button" onClick={this.props.updateView}> Update View </Button> : null}
 
                 </div>
             </div>

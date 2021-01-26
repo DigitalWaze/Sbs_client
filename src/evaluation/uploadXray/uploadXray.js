@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import MyContext from '../../helper/themeContext';
-import firebase from '../../helper/firebase';
+// import firebase from '../../helper/firebase';
 
 import './uploadXray.css';
 
@@ -11,11 +11,12 @@ import Xray3 from '../../assets/uploadBoxThumb/xray3.jpg';
 import Xray4Left from '../../assets/uploadBoxThumb/xray4Left.jpg';
 import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
 
+import Acknowledge from './acknowledge';
 import OverviewBox from './overview'; 
 import UploadBox from './upload';
 
 import { SemipolarLoading } from 'react-loadingg';
-import PostData from '../../Fetch/postData3';
+// import PostData from '../../Fetch/postData3';
 import PostFormData from './uploadPostForm';
 
 
@@ -26,7 +27,7 @@ class UploadXray extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            OverView:true,
+            page:0,
             activeId:0,
             Xrays:[],
             files:[],
@@ -87,7 +88,7 @@ class UploadXray extends Component {
                     {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4Right,enable:false},
 
                 ] 
-                this.setState({Xrays,OverView:true,
+                this.setState({Xrays,page:1,
                 activeId:0,
                 files:[],
                 req:[],
@@ -104,7 +105,7 @@ class UploadXray extends Component {
                     {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                 ] 
-                this.setState({Xrays,OverView:true,
+                this.setState({Xrays,page:1,
                 activeId:0,
                 files:[],
                 req:[],
@@ -131,7 +132,7 @@ class UploadXray extends Component {
         else
         {
             Xrays[this.state.activeId+1].enable=true;
-            this.setState({Xrays,OverView:true,file})
+            this.setState({Xrays,page:1,file})
         }
        
 
@@ -141,17 +142,16 @@ class UploadXray extends Component {
 
     handleOverviewClick = (id) =>
     {
-        this.setState({OverView:false,activeId:id})
+        this.setState({page:3,activeId:id})
     }
 
 
     Old = () =>
     {
-        console.log('here')
         this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true}],'./patient-profile')
     }
 
-  handleUploadClick = () =>
+    handleUploadClick = () =>
     {
         if(this.state.activeId===this.state.Xrays.length-1) // always true because button appear on this condition - reference *appendFile function 
         {
@@ -197,55 +197,64 @@ class UploadXray extends Component {
     {
         console.log(response);
         if(response.responseCode==="Success")
-        {
-            let oldEvaluations = this.context.state.oldEvaluations;
-            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
-
-            oldEvaluations[currEvaIndex].stage.id=4;
-            oldEvaluations[currEvaIndex].stage.stage="All Xrays Uploaded";
-
-            let currentEvaluation = oldEvaluations[currEvaIndex];
-            
-            this.context.multipleUpdateValue([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
-            this.context.updateSession();
+        {   
+            this.context.multipleUpdateValue([{key:'UXray',value:true},{key:'evaluation_stage',value:4},{key:'Xrays',value:this.state.Xrays}])
             this.context.history.push('./patient-profile')
-                // this.setState({loading:false});
         }
     }
 
-    checkAllUploaded = (uploaded,url,visitor_id,xray_type_id)  =>
+    // checkAllUploaded = (uploaded,url,visitor_id,xray_type_id)  =>
+    // {
+    //     let req=this.state.req;
+    //     req.push({visitor_id:visitor_id,xray_type_id:xray_type_id,image_url:url})
+    //     if(uploaded===this.state.files.length)
+    //     {
+    //         PostData(this.context.baseUrl+'/api/v1/upload/xray',201,req,this.context.state.token,this.setMe)
+    //     }
+    // }
+
+    // setMe = (response) =>
+    // {
+    //     if(response.length>0)
+    //     {
+
+    //         let oldEvaluations = this.context.state.oldEvaluations;
+    //         let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
+
+    //         oldEvaluations[currEvaIndex].stage.id=4;
+    //         oldEvaluations[currEvaIndex].stage.stage="All Xrays Uploaded";
+
+    //         let currentEvaluation = oldEvaluations[currEvaIndex];
+            
+    //         this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
+
+    //         this.context.updateSession();
+    //         this.context.history.push('./patient-profile')
+
+
+    //     }
+    // }
+
+
+    handlePageChange = (page) =>
     {
-        let req=this.state.req;
-        req.push({visitor_id:visitor_id,xray_type_id:xray_type_id,image_url:url})
-        if(uploaded===this.state.files.length)
-        {
-            // this.setState({loading:false});
-            // PostData =   (url,statusCode,req,token,callback) 
-            PostData(this.context.baseUrl+'/api/v1/upload/xray',201,req,this.context.state.token,this.setMe)
-        }
+        alert('here')
+        console.log(page)
+        this.setState({page})
     }
 
-    setMe = (response) =>
+
+    getPage = () =>
     {
-        if(response.length>0)
+        switch(this.state.page)
         {
-
-            let oldEvaluations = this.context.state.oldEvaluations;
-            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
-
-            oldEvaluations[currEvaIndex].stage.id=4;
-            oldEvaluations[currEvaIndex].stage.stage="All Xrays Uploaded";
-
-            let currentEvaluation = oldEvaluations[currEvaIndex];
-            
-            this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
-
-            this.context.updateSession();
-            this.context.history.push('./patient-profile')
-
-            // this.setState({loading:false});
-
+            case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('/patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(1)} handleNoClick={()=>this.handlePageChange(2)} />;
+            case 1: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
+            case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
+            case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
+            default: return <div> Unreachable step</div>;
         }
+
     }
 
     render() { 
@@ -262,12 +271,7 @@ class UploadXray extends Component {
                         Upload X-rays
                     </div>
                     {
-                        this.state.OverView===true?
-                            <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />
-                        :
-                            <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
-
-
+                        this.getPage()
                     }
                 </div>
             }

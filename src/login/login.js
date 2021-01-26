@@ -65,19 +65,6 @@ class Login extends Component {
       if (response.isTutorialCompleted == 1) {
         isTutorialCompleted = true;
       }
-      this.context.updateValue("token", response.token || null);
-      this.context.updateValue("type", response.type || null);
-      this.context.updateValue("user_id", response.id || null);
-      this.context.updateValue("user_email", response.email || null);
-      this.context.updateValue("user_type", response.user_type || null);
-      this.context.updateValue("isTutorialCompleted", isTutorialCompleted || null);
-      this.context.updateValue("organization", response.organization);
-      this.context.updateValue("old", false);
-      let tutorial_rem = this.context.getCookie("tutorial-" + response.id);
-      this.context.updateValue("tutorial", tutorial_rem);
-      this.context.updateValue("loggedIn", true);
-
-      this.context.updateSession();
 
       let oldEvaluations = [];
 
@@ -88,9 +75,16 @@ class Login extends Component {
           }
         }
       }
-      console.log(oldEvaluations);
-      this.context.multipleUpdateValue([{ key: "oldEvaluations", value: response.state }]);
-      this.context.setCookie("oldEvaluations", JSON.stringify(oldEvaluations), 30);
+      this.context.multipleUpdateValue([{key:'token',value:response.token || null},
+      {key:'type',value:response.type || null},
+      {key:'user_id',value:response.id || null},
+      {key:'user_email',value:response.email || null},
+      {key:'user_type',value:response.user_type || null},
+      {key:'isTutorialCompleted',value:isTutorialCompleted || null},
+      {key:'organization',value:response.organization},
+      {key:'loggedIn',value:true},
+      {key: "oldEvaluations", value: oldEvaluations }
+      ]);
 
       // ------------------ redirection after loading previous session----------------------------------
 

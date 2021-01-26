@@ -32,7 +32,7 @@ class FormType extends Component {
                     </div>
                    
                     <div  className="Evaluaion_Forms_Box1_Content2">
-                        <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>this.props.history.push('./manual-form')}> KOOS Manual Entry </Button>
+                        <Button className="Evaluaion_Forms_Box_Button"  variant="contained" onClick={()=>this.props.history.push('./manual-form')}> KOOS Entry </Button>
                     </div>
                 
                     <div className="Evaluaion_Forms_Box1_Content1">

@@ -34,8 +34,11 @@ class ShowReport extends Component {
 
     UNSAFE_componentWillMount()
     {
-        let priority_id=this.context.state.Eval.filter(eva=>eva.joint_id==this.context.state.joint_id)[0].priority_id;
-        let Evaluation = this.context.state.Evaluations.filter(eva=> eva.joint_id==this.context.state.joint_id)[0];
+        console.log(this.context.state.activeJointIndex)
+        let Eval = this.context.state.Eval[this.context.state.activeJointIndex];
+        let priority_id=Eval.priority_id;
+
+        let Evaluation = this.context.state.Evaluations.filter(eva=> eva.joint_id.toString()===Eval.joint_id.toString())[0];
         this.setState({Evaluation,total:this.context.state.Eval.length,priority_id})
         console.log(this.context.state.Eval.length)
     }
@@ -117,28 +120,23 @@ class ShowReport extends Component {
         {
             let joint_id=null;
             let priority_id=null
+            let activeJointIndex=this.context.state.activeJointIndex
             console.log(this.context.state.Eval)
-            let joint_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated.toString()=='false');
-            if(joint_idall.length>0)
-            {joint_id=joint_idall[0].joint_id;}
-            console.log(joint_idall)
-            let priority_idall=this.context.state.Eval.filter(eva=>eva.joint_id.toString()!=this.context.state.joint_id.toString() && eva.isEvaluated.toString()=='false');
-            if(priority_idall.length>0)
-            {priority_id=priority_idall[0].priority_id;}
+
+            if(this.context.state.Eval.length-1 > activeJointIndex  )             //loadNextEval
+
+            {
+                activeJointIndex = activeJointIndex+1;
+                joint_id = this.context.state.Eval[activeJointIndex].joint_id;
+                priority_id = this.context.state.Eval[activeJointIndex].priority_id;
+                this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:1},{key:'activeJointIndex',value:activeJointIndex}],'./x-ray-matching')
+            }
             
             console.log(joint_id)
             
-            if(joint_id!=null)
-            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:1},{key:'joint_id',value:joint_id},{key:'activePriority',value:priority_id}],'./x-ray-matching')
-
-            else alert('Something Wrong')
+            if(joint_id==null)
+            alert('Something Wrong')
         }
-        // {
-        //     let Evaluation=this.context.state.Evaluations.filter(eva=> eva.joint_id!=this.context.state.joint_id)[0];
-        //     let priority_id=this.context.state.Eval.filter(eva=>eva.joint_id!=this.context.state.joint_id)[0].priority_id;
-        //     this.setState({total:this.state.total-1,Evaluation,priority_id})
-        // }
-        // else this.context.history.push('./chart')
     }
 
     handleNextClicks = () =>

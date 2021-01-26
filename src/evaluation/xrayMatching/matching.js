@@ -4,25 +4,27 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import NoMatching from '../../assets/no_matching.png'
 import NotesIcon from '../../assets/notes.png'
-
+import html2canvas from 'html2canvas'
 
 import './matching.css'
 import MyContext from '../../helper/themeContext';
 import GetDataJson from '../../Fetch/getDataJson';
 import GetImage from '../../Fetch/getImage';
+import PostFormData from './uploadPostForm';
+
 import ImageViewModalWithZoom from '../../components/ImageViewModal/ImageViewModalWithZoom';
 
 class Matching extends Component {
     constructor(props) {
         super(props);
-        this.state = { image:null,            
+        this.state = { temp_url:null,image:null,            
              Notes:'',openModal:false,openModal1:false,fullXrayModalState:false,tempNotes:null,textIndent:'0px',Aiprediction:5,loadingImage:true}
     }
 
     componentDidMount()
     {
         console.log('on component Did mount')
-        if(this.context.state.joint_id.toString()==='3')
+        if(this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='3')
         {
             if(this.props.ActiveXray==="Flexion View")
             {
@@ -36,7 +38,7 @@ class Matching extends Component {
 
         }
         
-        else if(this.context.state.joint_id.toString()==='4')
+        else if(this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='4')
         {
 
             if(this.props.ActiveXray==="Flexion View")
@@ -107,8 +109,16 @@ class Matching extends Component {
             Aiprediction=5;
         }
 
-        this.setState({Active:Aiprediction.toString(),Aiprediction:Aiprediction,imageExist:imageExist,xrayImage:xrayImage})
-        this.GetImage();        
+        if(currProccessedXray.roi_updated.toString() === "1")
+        {
+            this.setState({Active:Aiprediction.toString(),Aiprediction:Aiprediction,imageExist:imageExist,xrayImage:xrayImage,image:currProccessedXray.roi_updated_url})
+        }
+        else
+        {
+            this.setState({Active:Aiprediction.toString(),Aiprediction:Aiprediction,imageExist:imageExist,xrayImage:xrayImage})
+            this.GetImage(); 
+        }
+               
     }
 
     GetImage = () =>
@@ -246,9 +256,68 @@ class Matching extends Component {
     {
         this.setState({fullXrayModalState:true})
     }
+
+    updateView = async () =>
+    {
+        //start loader
+        this.setState({backdrop:true})
+        let global = this;
+        let processed_xray_id = this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].processed_xray_id;  
+
+        let pagetwo=document.getElementById("Myfigure");
+        await new html2canvas(pagetwo,{
+        useCORS: true,
+        allowTaint: false,
+        letterRendering: true,
+        logging:true,
+        }).then( async function(canvas2) {
+            
+            // const link = document.createElement('a');
+            // link.download = "myfile";
+            // link.href    = canvas2.toDataURL("image/png")
+            // link.click();
+
+            var file = global.dataURItoBlob(canvas2.toDataURL("image/png"));
+
+
+            let form_data = new FormData();
+            form_data.append('visitor_id',global.context.state.report_id)
+            form_data.append('processed_xray_id',processed_xray_id)
+            form_data.append('image',file)
+            global.setState({temp_url:canvas2.toDataURL("image/png")})
+
+            PostFormData(global.context.baseUrl+'/api/v1/update-roi',200,form_data,global.context.state.token,global.setNewRoi)
+
+        })
+    }
+
+    dataURItoBlob(dataURI) {
+        // convert base64/URLEncoded data component to raw binary data held in a string
+        var byteString;
+        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+            byteString = atob(dataURI.split(',')[1]);
+        else
+            byteString = unescape(dataURI.split(',')[1]);
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        // write the bytes of the string to a typed array
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ia], {type:mimeString});
+    }
+
+    setNewRoi = (response) =>
+    {
+        //loader false
+        this.setState({backdrop:false,image:this.state.temp_url})
+    }
     render() { 
         return (  
             <div>
+                
+
                 <div  id="Evaluaion_XrayMatching_Matching_Content1_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading1_Div">
                         X-Ray Matching
@@ -286,7 +355,7 @@ class Matching extends Component {
                 </div>
                 <div  id="Evaluaion_XrayMatching_Matching_Content2_Wrapper">
                     <div id="Evaluaion_XrayMatching_Matching_Heading3_Div">
-                        {this.context.state.joint_id.toString()==='3'?"RIGHT KNEE":"LEFT KNEE"} - {this.props.ActiveType.toString()==="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
+                        {this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='3'?"RIGHT KNEE":"LEFT KNEE"} - {this.props.ActiveType.toString()==="Kneecap"?'KNEECAP': <span> {this.props.ActiveType.toUpperCase()}  <br/> <span> {this.props.ActiveXray.toUpperCase()} </span>  </span> }
                     </div>
                     <div className="Evaluaion_XrayMatching_Matching_Xray_Image_Wrapper">
                             {/* <img className="Evaluaion_XrayMatching_Matching_Xray_Image" src={this.props.eval.Xrays[this.props.ActiveTypeIndex].xrays[this.props.ActiveXrayIndex].up}/> */}
@@ -349,7 +418,7 @@ class Matching extends Component {
                             Notes
                         </div>
                         <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Div" >
-                            <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Heading">{(this.context.state.joint_id.toString()==='3'?"Right ":"Left ") + (this.props.ActiveXray.toString()==="Flexion View"?"Flexion "  + this.props.ActiveType + " : " :this.props.ActiveXray==="Non-Flexion View" ?"Non-Flexion " + this.props.ActiveType +" : " : "Kneecap : ")}</div> 
+                            <div className="Evaluaion_XrayMatching_Matching_Modal_Notes_Heading">{(this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='3'?"Right ":"Left ") + (this.props.ActiveXray.toString()==="Flexion View"?"Flexion "  + this.props.ActiveType + " : " :this.props.ActiveXray==="Non-Flexion View" ?"Non-Flexion " + this.props.ActiveType +" : " : "Kneecap : ")}</div> 
                             <textarea style={{textIndent:this.state.textIndent}} className="Evaluaion_XrayMatching_Matching_Modal_Notes_TextArea" value={this.state.tempNotes} onChange={this.textAreaChange}>
                             </textarea>
                         </div>
@@ -404,7 +473,7 @@ class Matching extends Component {
 
                 </Modal>
 
-                <ImageViewModalWithZoom modalState={this.state.fullXrayModalState} modalClose={this.fullXrayModalClose} ActiveImage={this.state.xrayImage}/>
+                <ImageViewModalWithZoom loader={this.state.backdrop} showUpdateView={true} updateView={this.updateView} modalState={this.state.fullXrayModalState} modalClose={this.fullXrayModalClose} ActiveImage={this.state.xrayImage}/>
             
             </div>
         );

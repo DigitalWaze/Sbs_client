@@ -226,7 +226,7 @@ class Routes extends Component {
   }
 
   updateValue = (key, value) => {
-    this.setState({ [key]: value });
+    this.setState({ [key]: value},()=>{this.updateSession()});    
   };
 
   multipleUpdateValue = (objects) => {
@@ -234,26 +234,15 @@ class Routes extends Component {
     for (var obj in objects) {
       newState[objects[obj].key] = objects[obj].value;
     }
-    console.log(newState);
-    this.setState(newState);
+    this.setState(newState,()=>{this.updateSession()});
   };
 
   multipleUpdateValueWithHistory = (objects, url) => {
     let newState = {};
-    let updateSession = false;
     for (var obj in objects) {
       newState[objects[obj].key] = objects[obj].value;
-      if(objects[obj].key==="oldEvaluations")
-      {
-        updateSession=true;
-      }
     }
-
-    if(updateSession===true)
-    {
-      this.setState(newState,()=>{this.updateSession()});
-    }
-    else this.setState(newState);
+    this.setState(newState,()=>{this.updateSession()});
     history.push(url);
   };
 
@@ -278,7 +267,7 @@ class Routes extends Component {
         ] 
       }
     ]
-    this.setState({old:false,Xrays:[],evaluation_stage:0,noOfEvalRemainToUpload:null,XrayMatch:false,UXray:false,Pro:false,Evaluations:Evaluations,Eval:[],form:[],patient:{},report_id:null,patient_id:null,activePriority:5,joint_id:0})
+    this.setState({old:false,Xrays:[],evaluation_stage:0,noOfEvalRemainToUpload:null,XrayMatch:false,UXray:false,Pro:false,Evaluations:Evaluations,Eval:[],form:[],patient:{},report_id:null,patient_id:null,activeJointIndex:0})
   }
 
   evalDone = () => {
@@ -427,7 +416,7 @@ class Routes extends Component {
             updateSession: this.updateSession,
             multipleUpdateValueWithHistory: this.multipleUpdateValueWithHistory,
             multipleUpdateValue: this.multipleUpdateValue,
-            baseUrl: baseUrlA,
+            baseUrl: baseUrlL,
             state: this.state,
             updateValue: this.updateValue,
             history: history,

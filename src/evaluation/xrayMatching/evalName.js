@@ -35,12 +35,12 @@ class EvalName extends Component {
 
                     <div  id="Evaluaion_XrayMatching_EvalName_Content2_Wrapper">
 
-                        {this.context.state.joint_id=='3'?
+                        { this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='3'?
                             <div className="Evaluaion_XrayMatching_EvalName_Image_Left_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down" >
                                     <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content1">
-                                        <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                        <TextField value={"Priority: "+this.context.state.Eval[this.context.state.activeJointIndex].priority_id.toString()} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
 
                                     </div>  
                                     <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content2">
@@ -56,9 +56,9 @@ class EvalName extends Component {
 
 
 
-                        <div id="Evaluaion_XrayMatching_EvalName_Image_Bone_Div"> <img src={this.context.state.joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_XrayMatching_EvalName_Image_Bone" /></div>
+                        <div id="Evaluaion_XrayMatching_EvalName_Image_Bone_Div"> <img src={this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_XrayMatching_EvalName_Image_Bone" /></div>
 
-                        {this.context.state.joint_id=='4'?
+                        {this.context.state.Eval[this.context.state.activeJointIndex].joint_id.toString()==='4'?
                             <div className="Evaluaion_XrayMatching_EvalName_Image_Right_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down" >
@@ -69,7 +69,7 @@ class EvalName extends Component {
                                         <img style={{width:'40px',marginBottom:'20px'}} src={LeftHipIconRed}/>
                                     </div>
                                     <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down_Content1">
-                                        <TextField value={"Priority: "+this.context.state.activePriority} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                        <TextField value={"Priority: "+this.context.state.Eval[this.context.state.activeJointIndex].priority_id.toString()} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
 
                                     </div>  
                                     

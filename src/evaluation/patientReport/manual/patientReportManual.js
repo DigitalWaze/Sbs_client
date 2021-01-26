@@ -23,18 +23,7 @@ class PatientReportManual extends Component {
 
     UNSAFE_componentWillMount()
     {
-
-        this.setState({totalLeft:this.context.state.Eval.length,active:null,formLoad:{total:this.context.state.Eval.length,active:this.context.state.joint_id,firstDone:false} })
-
-        // if(this.context.state.Eval.length>1)
-        // {
-        //     this.setState({totalLeft:2,active:null,formLoad:{total:2,active:this.context.state.joint_id,firstDone:false} })
-        // }
-
-        // else
-        // {
-        //     this.setState({totalLeft:1,active:null,formLoad:{total:1,active:this.context.state.joint_id,firstDone:false}} )
-        // }
+        this.setState({totalLeft:this.context.state.Eval.length,active:null,formLoad:{total:this.context.state.Eval.length,active:this.context.state.Eval[this.context.state.activeJointIndex].joint_id,firstDone:false} })
     }
 
     componentDidMount()
@@ -46,16 +35,6 @@ class PatientReportManual extends Component {
         }
     }
 
-    // componentDidUpdate()
-    // {
-    //    if(this.state.form==null)
-    //    {
-    //        if(this.context.state.form)
-    //         {
-    //             this.setState({form:this.context.state.form})
-    //         }
-    //    }
-    // }
 
     handleChange = (e) =>
     {
@@ -120,9 +99,9 @@ class PatientReportManual extends Component {
         switch(this.state.page)
         {
             case 0: return <RightIntroPage handleBack = {this.handleBack0} handlePageChange={this.handlePageChange} />;
-            case 1: return <Page1 handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
-            case 2: return <Page2 handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
-            case 3: return <Page3 handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 1: return <Page1 handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1" && question.joint_id.toString()===this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
+            case 2: return <Page2 handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2" && question.joint_id.toString()===this.state.active.toString()).pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 3: return <Page3 handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6" && question.joint_id.toString()===this.state.active.toString()).pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
             case 4: return <ChartShow  ButtonText = {"NEXT"} JointMapObject={ this.state.JointMapObject } next={this.next}/>;
             default: return <div> Unreachable step</div>;
         }
@@ -133,9 +112,9 @@ class PatientReportManual extends Component {
         switch(this.state.page)
         {
             case 0: return <LeftIntroPage handleBack = {this.handleBack0} handlePageChange={this.handlePageChange} />;
-            case 1: return <Page1Left handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
-            case 2: return <Page2Left handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange}  changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
-            case 3: return <Page3Left handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange}  changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 1: return <Page1Left handleBack = {this.handleBack1} Answer1={this.state.form.find((question)=>question.name=="Question1" && question.joint_id.toString()===this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange} changeAnswer={(state,value)=>this.changeAnswer(state,value)} />;
+            case 2: return <Page2Left handleBack = {this.handleBack2} Answer2={this.state.form.find((question)=>question.name=="Question2" && question.joint_id.toString()===this.state.active.toString()).pro_severity_id} Answer3={this.state.form.find((question)=>question.name=="Question3" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer4={this.state.form.find((question)=>question.name=="Question4" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} Answer5={this.state.form.find((question)=>question.name=="Question5" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange}  changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
+            case 3: return <Page3Left handleBack = {this.handleBack3} Answer6={this.state.form.find((question)=>question.name=="Question6" && question.joint_id.toString()===this.state.active.toString()).pro_severity_id} Answer7={this.state.form.find((question)=>question.name=="Question7" && question.joint_id.toString()==this.state.active.toString()).pro_severity_id} handlePageChange={this.handlePageChange}  changeAnswer={(state,value)=>this.changeAnswer(state,value)}/>;
             case 4: return <ChartShow ButtonText = {"NEXT"} JointMapObject={ this.state.JointMapObject } next={this.next}/>;
             default: return <div> Unreachable step</div>;
         }
@@ -177,17 +156,13 @@ class PatientReportManual extends Component {
         else if(this.state.totalLeft==2 && this.state.active == null)
         {
             let joint_id=null;
-            if(this.context.state.joint_id=='3')
-            {
-                joint_id='4'
-            }
-
-            else  joint_id='3'
+            joint_id = this.context.state.Eval[this.context.state.activeJointIndex+1].joint_id //next eval;
+            console.log(joint_id)
             this.setState({totalLeft:1,page:0,active:joint_id})
         }
 
 
-        else if(parseInt(this.context.state.activeEvaluation.stage.id)>2)
+        else if(parseInt(this.context.state.evaluation_stage)>2)
         {
             // this.context.multipleUpdateValueWithHistory([{key:'Pro',value:true}],'./forms')
             this.context.multipleUpdateValue([{key:'Pro',value:true}]); //it enables next button navigation functionality
@@ -207,20 +182,8 @@ class PatientReportManual extends Component {
     {
         if(response.length>0)
         {
-
-            let oldEvaluations = this.context.state.oldEvaluations;
-            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
-
-            oldEvaluations[currEvaIndex].stage.id=3;
-            oldEvaluations[currEvaIndex].stage.stage="Question Form Submitted";
-
-            let currentEvaluation = oldEvaluations[currEvaIndex];
-            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation} ]);
-            // this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'form',value:this.state.form},{key:'stage_id',value : 3} ]);
-
-            this.context.updateSession();
+            this.context.multipleUpdateValue([{key:'Pro',value:true},{key:'evaluation_stage',value:3},{key:'form',value:this.state.form}]);
             this.setState({loading:false,active:null})
-
         }
     }
 

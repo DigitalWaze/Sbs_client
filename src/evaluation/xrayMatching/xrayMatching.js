@@ -53,20 +53,7 @@ class XrayMatching extends Component {
     {
 
         console.log(this.context.state.Evaluations);
-        this.setState({Evaluations:this.context.state.Evaluations});
-
-        // if(!this.context.state.Matching || this.context.state.Matching==null || this.context.state.Matching.length<1 )
-        // {
-        //     let req={
-        //         visitor_id:this.context.state.report_id,
-        //         joint_hurt_id:this.context.state.Eval.filter(e => e.joint_id.toString()==this.context.state.joint_id.toString())[0].joint_hurt_id
-        //     }
-       
-        //     this.setState({loading:true,Evaluations:this.context.state.Evaluations,Matching:null});
-        //     GetData(this.context.baseUrl+'/api/v1/processed/xrays',200,req,this.context.state.token,this.setMe)
-
-        // }
-        // else this.setState({Evaluations:this.context.state.Evaluations,loading:false,Matching:this.context.state.Matching})
+        this.setState({Evaluations:this.context.state.Evaluations,Next:false});
     }
 
     setMe = (response) =>
@@ -283,8 +270,8 @@ class XrayMatching extends Component {
 
     handleEvalChange = (state,notes) =>
     {
-        let Evaluations=this.state.Evaluations;
-        let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
+        let Eval=this.context.state.Eval[this.context.state.activeJointIndex];
+        let Evaluation=this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())
         let type=Evaluation.Xrays.find(type => type.name===this.state.ActiveType)
         let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
         Xray.state=state;
@@ -301,18 +288,16 @@ class XrayMatching extends Component {
     }
     handleOverviewClick = (ActiveType,ActiveXray) =>
     {
-        let Evaluations=this.state.Evaluations;
-        let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
+        let Eval=this.context.state.Eval[this.context.state.activeJointIndex];
+        let Evaluation=this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())
         let ActiveTypeIndex=Evaluation.Xrays.findIndex(ev=>ev.name==ActiveType);
         let ActiveXrayIndex=Evaluation.Xrays[ActiveTypeIndex].xrays.findIndex(eva=>eva.name==ActiveXray);
-        console.log(ActiveTypeIndex,'ActiveTypeIndex')
-        console.log(ActiveXrayIndex,'ActiveXrayIndex')
         this.setState({ActivePage:'Matching',ActiveType,ActiveXray,ActiveXrayIndex,ActiveTypeIndex})
     }
     handleMatchingClick = async (state,notes) =>
     {
-        let Evaluations=this.state.Evaluations;
-        let Evaluation=Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
+        let Eval=this.context.state.Eval[this.context.state.activeJointIndex];
+        let Evaluation=this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())
         let type=Evaluation.Xrays.find(type => type.name===this.state.ActiveType)
         let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
         let XrayIndex=type.xrays.findIndex(xray => xray.name===this.state.ActiveXray)
@@ -339,7 +324,6 @@ class XrayMatching extends Component {
                 // this.setState({mountImages:true,loading:true})
 
                 let req=[];
-                let Evaluation=this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0];
                 Evaluation.Xrays.forEach(element => {
 
                     element.xrays.forEach(ele => {
@@ -394,7 +378,7 @@ class XrayMatching extends Component {
 
             if(this.context.state.noOfEvalRemainToUpload>1)
             {
-                this.context.state.Eval.filter(eva=>eva.joint_id.toString()==this.context.state.joint_id.toString())[0].isEvaluated=true;
+                this.state.Evaluations[this.context.state.activeJointIndex].isEvaluated=true;
                 
                 console.log('SECOND EVAL');
                 console.log(joint_id,'joint_id')
@@ -414,29 +398,30 @@ class XrayMatching extends Component {
     }
     handleNextClick = async () =>
     {
-        this.context.updateSession();
         this.context.multipleUpdateValueWithHistory([{key:'Evaluations',value:this.state.Evaluations}],'./report')
     }
 
     render() { 
+
+        let Eval=this.context.state.Eval[this.context.state.activeJointIndex];
+        
         return ( 
             <div id="Evaluaion_XrayMatching_Intro_Main_Div">
                 {this.state.loading===true?<div style={{height:'100vh',width:'100vw'}}> <SemipolarLoading size={"large"} color={'#b4ec51'}/> </div>
             
             
                 :   <div>
-                    {console.log(this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0])}
                         {   
                             this.state.ActivePage==='Intro' && <Introduction handleClick={this.handleIntroClick}/>
                         }
                         {
-                            this.state.ActivePage==='EvalName' && <EvalName eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={this.handleEvalClick}/>
+                            this.state.ActivePage==='EvalName' && <EvalName eval={this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())} handleClick={this.handleEvalClick}/>
                         }
                         {
-                            this.state.ActivePage==='Overview' && <Overview Next={Next} Evaluation={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
+                            this.state.ActivePage==='Overview' && <Overview Next={Next} Evaluation={this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())} handleClick={(ActiveType,ActiveXray)=>this.handleOverviewClick(ActiveType,ActiveXray)} handleNextClick={this.handleNextClick}/>
                         }
                         {
-                            this.state.ActivePage==='Matching' && <Matching  apiKey={this.state.Evaluations.apiKey} Nonce={this.state.Evaluations.Nonce} baseUrl={this.state.Evaluations.baseUrl}  eval={this.state.Evaluations.filter(Eval => Eval.joint_id.toString()==this.context.state.joint_id.toString())[0]} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>
+                            this.state.ActivePage==='Matching' && <Matching  apiKey={this.state.Evaluations.apiKey} Nonce={this.state.Evaluations.Nonce} baseUrl={this.state.Evaluations.baseUrl}  eval={this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())} ActiveTypeIndex={this.state.ActiveTypeIndex}  ActiveXrayIndex={this.state.ActiveXrayIndex} ActiveType={this.state.ActiveType} ActiveXray={this.state.ActiveXray} handleClick={(state,notes)=>this.handleMatchingClick(state,notes)}/>
                         }
                     </div>
                 }

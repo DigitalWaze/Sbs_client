@@ -1,4 +1,9 @@
 import React from "react";
 
-const MyContext = React.createContext('app');
+let state={};
+const MyContext = React.createContext({
+    state, 
+    setState : (state) => {  }
+    
+});
 export default MyContext;

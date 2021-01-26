@@ -105,6 +105,18 @@ class PatientProfile extends Component {
                         updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['processed_xray_id']=flexLateral.id; //lateral flexion
                         updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['processed_xray_id']=nonFlexLateral.id; // lateral non flexion
                         updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['processed_xray_id']=Kneecap.id; //kneecap prediction
+
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0]['roi_updated']=flexMedial.roi_updated; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1]['roi_updated']=nonFlexMedial.roi_updated; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['roi_updated']=flexLateral.roi_updated; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['roi_updated']=nonFlexLateral.roi_updated; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['roi_updated']=Kneecap.roi_updated; //kneecap 
+
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0]['roi_updated_url']=flexMedial.roi_updated_url; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1]['roi_updated_url']=nonFlexMedial.roi_updated_url; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['roi_updated_url']=flexLateral.roi_updated_url; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['roi_updated_url']=nonFlexLateral.roi_updated_url; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['roi_updated_url']=Kneecap.roi_updated_url; //kneecap
                     }
                     
                     if(evalu.joint_id.toString()==="4")  //for right
@@ -133,6 +145,19 @@ class PatientProfile extends Component {
                         updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['processed_xray_id']=flexLateral.id; //lateral flexion
                         updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['processed_xray_id']=nonFlexLateral.id; // lateral non flexion
                         updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['processed_xray_id']=Kneecap.id; //kneecap prediction
+                    
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0]['roi_updated']=flexMedial.roi_updated; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1]['roi_updated']=nonFlexMedial.roi_updated; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['roi_updated']=flexLateral.roi_updated; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['roi_updated']=nonFlexLateral.roi_updated; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['roi_updated']=Kneecap.roi_updated; //kneecap 
+
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[0]['roi_updated_url']=flexMedial.roi_updated_url; //medial flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[0].xrays[1]['roi_updated_url']=nonFlexMedial.roi_updated_url; //medial non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[0]['roi_updated_url']=flexLateral.roi_updated_url; //lateral flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[1].xrays[1]['roi_updated_url']=nonFlexLateral.roi_updated_url; // lateral non flexion
+                        updatedEvaluations[updatedEvaluationsIndex].Xrays[2].xrays[0]['roi_updated_url']=Kneecap.roi_updated_url; //kneecap
+                    
                     } 
                     
                 }
@@ -151,7 +176,10 @@ class PatientProfile extends Component {
     }
 
 
+
+
     render() { 
+        console.log(this.context.state)
         return ( 
             <div id="Evaluaion_PatientProfile_Main_Div">
                 <div id="Evaluaion_PatientProfile_Content_Wrapper">
@@ -242,12 +270,12 @@ class PatientProfile extends Component {
 
                     <div  id="Evaluaion_PatientProfile_Content2_Wrapper">
 
-                        {this.context.state.Eval.length>1||this.context.state.joint_id=='3'?
+                        {this.context.state.Eval.find(evalu => evalu.joint_id.toString()==="3")?
                             <div className="Evaluaion_PatientProfile_Image_Left_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down" >
                                     <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content1">
-                                        <TextField value={"Priority: "+this.context.state.Eval.find(eva=>eva.joint_id.toString()=='3').priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                        <TextField value={"Priority: "+this.context.state.Eval.find(eva=>eva.joint_id.toString()==='3').priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
             
                                     </div>  
                                     <div className="Evaluaion_PatientProfile_Image_Left_Inner_Down_Content2">
@@ -262,8 +290,9 @@ class PatientProfile extends Component {
                         :null}
 
 
-                        <div id="Evaluaion_PatientProfile_Image_Bone_Div"> <img src={this.context.state.Eval.length>1?BoneImage2:this.context.state.joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_PatientProfile_Image_Bone" /></div>
-                        {this.context.state.Eval.length>1||this.context.state.joint_id=='4'?
+                        <div id="Evaluaion_PatientProfile_Image_Bone_Div"> <img src={this.context.state.Eval.length>1?BoneImage2:this.context.state.Eval[0].joint_id=='3'?BoneImage:BoneImage1} alt="SBS" id="Evaluaion_PatientProfile_Image_Bone" /></div>
+                        
+                        {this.context.state.Eval.find(evalu => evalu.joint_id.toString()==="4")?
                             <div className="Evaluaion_PatientProfile_Image_Right_Div">
 
                                 <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down" >
@@ -274,7 +303,7 @@ class PatientProfile extends Component {
                                         <img style={{width:'40px',marginBottom:'20px'}} src={LeftKneeIconRed}/>
                                     </div>
                                     <div className="Evaluaion_PatientProfile_Image_Right_Inner_Down_Content1">
-                                        <TextField value={"Priority: "+this.context.state.Eval.find(eva=>eva.joint_id.toString()=='4').priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
+                                        <TextField value={"Priority: "+this.context.state.Eval.find(evalu => evalu.joint_id.toString()==="4").priority_id} style={{width:'115px'}} variant="outlined" inputProps = { {className:"textbox-height"} }/> 
                                     </div>  
                                     
                                 </div>

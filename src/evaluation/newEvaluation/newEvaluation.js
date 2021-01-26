@@ -129,10 +129,7 @@ class NewEvaluation extends Component {
             console.log(Eval,'Eval')
         
             this.setState({loading:true,active:active,activePriority:activePriority,Eval:Eval})
-            PostData(this.context.baseUrl+'/api/v1/joint/priority',200,Eval,this.context.state.token,this.setMe)
-
-        // this.context.multipleUpdateValueWithHistory([{key:'activePriority',value:activePriority},{key:'joint_id',active},{key:'Eval',Eval}],'./patient-profile')
-      
+            PostData(this.context.baseUrl+'/api/v1/joint/priority',200,Eval,this.context.state.token,this.setMe)      
         }
     }
 
@@ -142,9 +139,9 @@ class NewEvaluation extends Component {
 
         console.log('here')
 
-        if(this.context.state.old==true && this.context.state.activeEvaluation)
+        if(this.context.state.evaluation_stage)
         {
-            if(parseInt(this.context.state.activeEvaluation.stage.id)>1)
+            if(parseInt(this.context.state.evaluation_stage)>1)
             {
                 this.context.history.push('./patient-profile');
             }
@@ -164,20 +161,16 @@ class NewEvaluation extends Component {
     {
         let form=[];
 
-            for(let i=0; i<this.state.Eval.length;i++)
-            {
-                form.push({name:'Question1',question_id:1,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-                form.push({name:'Question2',question_id:2,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-                form.push({name:'Question3',question_id:3,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-                form.push({name:'Question4',question_id:4,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-                form.push({name:'Question5',question_id:5,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-                form.push({name:'Question6',question_id:6,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-                form.push({name:'Question7',question_id:7,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
-            }
-
-
-
-
+        for(let i=0; i<this.state.Eval.length;i++)
+        {
+            form.push({name:'Question1',question_id:1,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            form.push({name:'Question2',question_id:2,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            form.push({name:'Question3',question_id:3,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            form.push({name:'Question4',question_id:4,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            form.push({name:'Question5',question_id:5,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            form.push({name:'Question6',question_id:6,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+            form.push({name:'Question7',question_id:7,pro_severity_id:null,visitor_id:null,joint_id:this.state.Eval[i].joint_id});
+        }
         if(response.res && response.res.length>0)
         {
             let Eval=this.state.Eval;
@@ -185,24 +178,9 @@ class NewEvaluation extends Component {
             response.res.forEach(element => {
                 Eval.filter(eva => eva.joint_id==element.joint_id)[0].joint_hurt_id=element.id;    
             });
-            console.log(Eval);
-            console.log(this.state.Eval.length)
-            console.log(SettingEval)
 
-
-            let oldEvaluations = this.context.state.oldEvaluations;
-            let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
-
-            oldEvaluations[currEvaIndex].stage.id=2;
-            oldEvaluations[currEvaIndex].stage.stage="Joints Priority Selected";
-
-            let currentEvaluation = oldEvaluations[currEvaIndex];
-
-
-            this.context.multipleUpdateValue([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activePriority',value:this.state.activePriority},{key:'joint_id',value:this.state.active},{key:'Eval',value:SettingEval},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
-            this.context.updateSession();
-            this.context.history.push('./patient-profile')
-
+            SettingEval.sort(function(a, b){ return a.priority_id-b.priority_id});
+            this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:this.state.Eval.length},{key:'form',value:form},{key:'activeJointIndex',value:0},{key:'Eval',value:SettingEval},{key:'evaluation_stage',value:'2'}],'./patient-profile')
             // this.setState({loading:false})
         }
 
