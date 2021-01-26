@@ -8,15 +8,16 @@ class MedentForm extends Component {
         super(props);
         this.state = {}
     }
+
     render() {
         return (
             <div className="container-fluid" id="Medent-Form-main-container">
                 <div id="Medent-Form-Wrapper">
                     <div id="Medent-Form-box_1">
-                        <h2 id="Medent-Form-heading"> Please fill in the patient information below </h2>
 
                         {/* Form Box */}
                         <div>
+                            <h1 id="Medent-Form-heading"> Please fill in the patient information below </h1>
 
                             {/* Div: 1 */}
                             <div id="Medent-Form-div_1">
@@ -74,7 +75,7 @@ class MedentForm extends Component {
                         </div>
                     </div>
 
-                    <div id="Evaluaion_RequiredReminder_Next_Button_Div1">
+                    <div id="Evaluaion_RequiredReminder_Next_Button_Div">
                         <div className="Medent-Form-btn-layer1">
                             <Button
                                 id="Evaluaion_RequiredReminder_Next_Button"
@@ -83,9 +84,10 @@ class MedentForm extends Component {
                                 {" "} Back {" "}
                             </Button>
                         </div>
+
                         <div className="Medent-Form-btn-layer2">
                             <Button
-                                id="Evaluaion_RequiredReminder_Next_Button"
+                                id="Evaluaion_RequiredReminder_Next_Button_1"
                                 variant="contained"
                                 onClick={()=>{this.context.history.push('./patient-profile')}}                            >
                                 {" "} Next {" "}
@@ -98,5 +100,5 @@ class MedentForm extends Component {
     }
 }
 
-MedentForm.contextType=MyContext;
+MedentForm.contextType = MyContext;
 export default MedentForm;

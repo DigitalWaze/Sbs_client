@@ -1,11 +1,9 @@
-
-  
-
-  #Medent_Welcome_Next_Button_Div {
+ #Medent_Welcome_Next_Button_Div {
     display: block;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
+    margin-bottom: 0px;
   }
 
   .btn-layer1 {
@@ -62,5 +60,9 @@
 }
 
 #box_1 {
-    height: 90vh;
+    height: 100vh;
+}
+
+.footer-header {
+  margin-bottom: 80px !important;
 }

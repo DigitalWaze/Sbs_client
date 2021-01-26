@@ -14,7 +14,7 @@ class ManualFormWrapper extends Component {
 
     handleClick = () =>
     {
-        if(this.context.state.Eval.length>2)
+        if(this.context.state.Eval.length>1)
         {
             this.context.history.push('./pro-summary')
         }

@@ -9,7 +9,7 @@ import './chart.css'
 
 import FooterImage from '../../assets/charts-footer-image.PNG'
 
-class ChartShow extends Component {
+class ChartShowMulti extends Component {
     constructor(props) {
         super(props);
         this.state = { date:'0'  }
@@ -154,5 +154,5 @@ class ChartShow extends Component {
     }
 }
  
-ChartShow.contextType=MyContext;
-export default ChartShow;
+ChartShowMulti.contextType=MyContext;
+export default ChartShowMulti;
