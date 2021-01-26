@@ -14,6 +14,7 @@ import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
 import Acknowledge from './acknowledge';
 import OverviewBox from './overview'; 
 import UploadBox from './upload';
+import ExportScript from './exportScript';
 
 import { SemipolarLoading } from 'react-loadingg';
 // import PostData from '../../Fetch/postData3';
@@ -22,12 +23,16 @@ import PostFormData from './uploadPostForm';
 
 let uploaded=0;
 
+const AcknowledgePage = 0
+const ExportScriptPage = 1
+const OverviewPage = 2
+const UploadPage = 3
 
 class UploadXray extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            page:0,
+            page:AcknowledgePage,
             activeId:0,
             Xrays:[],
             files:[],
@@ -43,8 +48,9 @@ class UploadXray extends Component {
         uploaded=0;
         if(this.context.state.Xrays && this.context.state.Xrays!=null && this.context.state.Xrays.length>0)
         {
+            alert('here')
             let activeId=this.context.state.Xrays.length-1;
-            this.setState({Xrays:this.context.state.Xrays,activeId,files:[],OverView:true,req:[],loading:false})
+            this.setState({Xrays:this.context.state.Xrays,activeId,files:[],OverView:true,req:[],loading:false,page:OverviewPage})
         }
         else 
         {
@@ -72,7 +78,7 @@ class UploadXray extends Component {
                     {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                 ] 
-                this.setState({Xrays,OverView:true,
+                this.setState({Xrays,page:AcknowledgePage,
                 activeId:0,
                 files:[],
                 req:[],
@@ -88,7 +94,7 @@ class UploadXray extends Component {
                     {id:3,name:'Right Lateral',isDone:false,image:null,thumbnail:Xray4Right,enable:false},
 
                 ] 
-                this.setState({Xrays,page:1,
+                this.setState({Xrays,page:AcknowledgePage,
                 activeId:0,
                 files:[],
                 req:[],
@@ -105,7 +111,7 @@ class UploadXray extends Component {
                     {id:5,name:'Left Lateral',isDone:false,image:null,thumbnail:Xray4Left,enable:false},
 
                 ] 
-                this.setState({Xrays,page:1,
+                this.setState({Xrays,page:AcknowledgePage,
                 activeId:0,
                 files:[],
                 req:[],
@@ -126,13 +132,13 @@ class UploadXray extends Component {
 
         if(this.state.activeId===this.state.Xrays.length-1) //last one for upload
         {
-            this.setState({Xrays,OverView:true,file,uploadButton:true})
+            this.setState({Xrays,page:OverviewPage,file,uploadButton:true})
         }
 
         else
         {
             Xrays[this.state.activeId+1].enable=true;
-            this.setState({Xrays,page:1,file})
+            this.setState({Xrays,page:OverviewPage,file})
         }
        
 
@@ -142,7 +148,7 @@ class UploadXray extends Component {
 
     handleOverviewClick = (id) =>
     {
-        this.setState({page:3,activeId:id})
+        this.setState({page:UploadPage,activeId:id})
     }
 
 
@@ -238,8 +244,6 @@ class UploadXray extends Component {
 
     handlePageChange = (page) =>
     {
-        alert('here')
-        console.log(page)
         this.setState({page})
     }
 
@@ -248,9 +252,9 @@ class UploadXray extends Component {
     {
         switch(this.state.page)
         {
-            case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('/patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(1)} handleNoClick={()=>this.handlePageChange(2)} />;
-            case 1: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
-            case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
+            case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('./patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(OverviewPage)} handleNoClick={()=>this.handlePageChange(ExportScriptPage)} />;
+            case 1: return <ExportScript Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
+            case 2: return <OverviewPage Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
             default: return <div> Unreachable step</div>;
         }
