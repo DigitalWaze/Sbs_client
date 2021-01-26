@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MyContext from '../../helper/themeContext';
 import PatientReportManual from './manual/patientReportManual';
 import FormType from './ProEntry/formType';
 import ProGate from './ProGate/ProGate';
@@ -21,7 +22,7 @@ class PRO extends Component {
     {
         if(parseInt(this.context.state.evaluation_stage)>2)
         {
-            this.setState({page:ProEntryPage})
+            this.context.history.push('./form-type')
         }
     }
 
@@ -47,5 +48,7 @@ class PRO extends Component {
         return ( this.getPage()  );
     }
 }
- 
+
+
+PRO.contextType=MyContext; 
 export default PRO;

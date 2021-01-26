@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 
 class ProGate extends Component {
