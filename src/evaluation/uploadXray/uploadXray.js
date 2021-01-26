@@ -14,6 +14,7 @@ import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
 import Acknowledge from './acknowledge';
 import OverviewBox from './overview'; 
 import UploadBox from './upload';
+import ExportScript from './exportScript';
 
 import { SemipolarLoading } from 'react-loadingg';
 // import PostData from '../../Fetch/postData3';
@@ -249,7 +250,7 @@ class UploadXray extends Component {
         switch(this.state.page)
         {
             case 0: return <Acknowledge handleBackClick = {()=> this.context.history.push('/patient-profile')} Xrays={this.state.Xrays} handleYesClick={()=>this.handlePageChange(1)} handleNoClick={()=>this.handlePageChange(2)} />;
-            case 1: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
+            case 1: return <ExportScript Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
             default: return <div> Unreachable step</div>;

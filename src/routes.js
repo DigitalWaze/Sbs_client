@@ -416,7 +416,7 @@ class Routes extends Component {
             updateSession: this.updateSession,
             multipleUpdateValueWithHistory: this.multipleUpdateValueWithHistory,
             multipleUpdateValue: this.multipleUpdateValue,
-            baseUrl: baseUrlL,
+            baseUrl: baseUrlA,
             state: this.state,
             updateValue: this.updateValue,
             history: history,

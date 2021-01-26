@@ -30,10 +30,10 @@ class Acknowledge extends Component {
                 </div>
 
                 <div className="Evaluation_Acknowledge_Button_Div_Left">
-                    <Button className="Evaluation_Acknowledge_Button" variant="contained" onClick={()=>this.props.handleYesClick()}> Yes </Button>
+                    <Button className="Evaluation_Acknowledge_Button" variant="contained" onClick={()=>this.props.handleYesClick}> Yes </Button>
                 </div>
                 <div className="Evaluation_Acknowledge_Button_Div_Right">
-                    <Button className="Evaluation_Acknowledge_Button" variant="contained" onClick={()=>this.props.handleNoClick()}> No </Button>
+                    <Button className="Evaluation_Acknowledge_Button" variant="contained" onClick={()=>this.props.handleNoClick}> No </Button>
                 </div>
 
                 
