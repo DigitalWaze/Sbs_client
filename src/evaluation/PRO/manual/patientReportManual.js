@@ -14,6 +14,8 @@ import RightIntroPage from './rightPages/rightIntroPage';
 import LeftIntroPage from './leftPages/introPage';
 import ManualFormWrapper from './ManualFormWrapper';
 import ChartShow from '../../../components/chartShow/chartShow';
+import ChartShowMulti from '../../../components/chartShow/chartShowMulti';
+
 
 class PatientReportManual extends Component {
     constructor(props) {
