@@ -1,0 +1,127 @@
+/* Screen 34 */
+
+#upload-type-three-main-container {
+    background-image: linear-gradient(
+      119deg,
+      #3023ae,
+      #53a0fd 47%,
+      #6eb6cc 81%,
+      #b4ec51
+    );
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#upload-type-three-box-1 {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-type-three-box-2 {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+#upload-type-three-heading {
+    color: white;
+    font-family: Lato, sans-serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+#upload-type-three-raw-2 {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.upload-type-three-app-images {
+    height: 100px;
+    width: 100px;
+}
+
+#upload-type-three-handler-2 {
+    flex-grow: 1;
+    width: 50%;
+}
+
+#upload-type-three-handler-1 {
+    color: white;
+    font-family: Lato, sans-serif;
+    font-size: 25px;
+    padding: 10px 20px 10px 20px;
+}
+
+#upload-type-three-handler-2 {
+    display: flex;
+    flex-direction: row;;
+}
+
+.upload-type-three-top-images-box {
+    flex-grow: 1;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-type-three-paragraph-1 , #upload-type-three-paragraph-2 {
+    color: white;
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#upload-type-three-box_2 {
+    height: 10vh;
+}
+
+#upload-type-three_Next_Button_Div {
+    display: block;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .upload-type-three-btn-layer1 {
+    flex-grow: 1;
+    margin-left: 45px;
+}
+
+.upload-type-three-btn-layer2 {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 45px;
+}
+
+#upload-type-three_Next_Button {
+    display: block;
+    padding: 10px 20px;
+    font-size: 22px;
+    line-height: 32px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: Lato, sans-serif;
+    text-transform: none;
+    width: 200px;
+  }
+
+  #upload-type-three_Next_Button1 {
+    display: block;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 22px;
+    line-height: 32px;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    font-family: Lato, sans-serif;
+    text-transform: none;
+    width: 200px;
+  }
