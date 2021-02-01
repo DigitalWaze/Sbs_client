@@ -10,10 +10,11 @@
 }
 
 #RCPE-Welcome-for-screen-4-care-grid {
-    height: 50vh;
+    height: auto;
     float: right;
     width: 50%;
     margin-right: 90px;
+    max-width: 720px;
 }
 
 @media screen and ( max-width: 800px ) {
