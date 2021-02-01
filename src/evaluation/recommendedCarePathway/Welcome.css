@@ -1,0 +1,155 @@
+/* Welcome Screen */
+
+#RCPE-Welcome-main-container {
+    background-image: linear-gradient(
+    119deg,
+    #3023ae,
+    #53a0fd 47%,
+    #6eb6cc 81%,
+    #b4ec51
+  );
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;   
+}
+
+#RCPE-Welcome-box-1 {
+    /* border: 1px solid black; */
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#RCPE-Welcome-box-2 {
+    /* border: 1px solid blue; */
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#RCPE-Welcome-inner-box-1 {
+    /* border: 2px solid yellow; */
+    flex-grow: 2;
+    padding: 30px;
+}
+
+#RCPE-Welcome-inner-box-2 {
+    /* border: 2px solid yellow; */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#RCPE-Welcome-Heading {
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-weight: 400;
+    font-size: 65px;
+    line-height: 75px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  #RCPE_Welcome_Neon_Line {
+    width: 300px;
+    height: 3px;
+    margin-top: 35px;
+    margin-bottom: 50px;
+    background-color: #b4ec51;
+    box-sizing: border-box;
+  }
+
+  #RCPE_Welcome_Heading2 {
+    margin-bottom: 15px;
+    font-size: 34px;
+    line-height: 48px;
+    font-weight: 700;
+    font-family: Lato, sans-serif;
+    color: #fff;
+    box-sizing: border-box;
+  }
+
+  #RCPE_Welcome_Text_Div {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-weight: 400;
+    box-sizing: border-box;
+  }
+
+  #RCPE_Welcome_Text_Div2 {
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-weight: 400;
+    box-sizing: border-box;
+  }
+
+#bone-image {
+    height: 90vh;
+    margin-top: 120px;
+}
+
+#RCPE-Welcome-footer-div1 {
+    flex-grow: 1;
+    /* border: 1px solid red; */
+}
+
+#RCPE-Welcome-footer-div2 {
+    flex-grow: 2;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+}
+
+#RCPE-Welcome-footer-div3 {
+    flex-grow: 1;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+#RCPE-Welcome-btn-1 , #RCPE-Welcome-btn-2 , #RCPE-Welcome-btn-3 {
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    text-transform: none;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    height: 40px;
+}
+
+#RCPE-Welcome-btn-1 {
+    width: 150px;
+    margin-left: 15px;
+}
+
+#RCPE-Welcome-btn-3 {
+    width: 150px;
+    margin-right: 15px;
+}
+
+@media screen and ( max-width: 800px ) {
+  #RCPE-Welcome-Heading {
+    font-size: 40px;
+    margin-bottom: 5px;
+  }
+
+  #RCPE_Welcome_Heading2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+
+  #RCPE-Welcome-btn-2 {
+    /* width: 200px; */
+    font-size: 15px;
+    padding: 5px 2px;
+    font-weight: bold;
+  }
+}
