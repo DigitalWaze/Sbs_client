@@ -18,14 +18,10 @@
 .RCPNOI-form-field {
     font-family: Lato, sans-serif;
     color: #fff;
-    font-size: 25px;
+    font-size: 17px;
+    /* font-weight: bold; */
     text-decoration: underline;
-}
-
-#RCPNOI-image1 {
-    height: 300px;
-    /* width: 300px; */
-    margin-top: 10px;
+    /* vertical-align: middle; */
 }
 
 /* Styling for checkbox */
@@ -97,13 +93,18 @@
 
     #RCPNOI-heading {
         margin-top: 50px;
+        padding-left: 10px;
+    }
+
+    .RCPNOI-unstyled li {
+      padding-left: 10px;
     }
 }
 
 #RKOCI-Image {
     height: 250px;
     width: 250px;
-    margin-top: 100px;
+    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -117,4 +118,13 @@
     #RKOCI-Image {
         font-size: 16px;
     }
+}
+
+#JointNoi3-inner-box-1 {
+  /* border: 1px solid black; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

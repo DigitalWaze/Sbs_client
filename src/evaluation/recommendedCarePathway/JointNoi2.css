@@ -1,0 +1,59 @@
+* {
+    font-family: Lato, sans-serif;
+}
+
+#RCPNO-inner-box-1 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#RCPNO-inner-box-2 {
+    flex-grow: 1;
+}
+
+#RCPNO-heading {
+    color: white;
+    width: 100%;
+    padding-left: 75%;
+}
+
+.RCPNO-List {
+    list-style-type: none;
+}
+
+.RCPNO-List li {
+    margin: 40px 0;
+}
+
+#RCPNO-Image {
+    height: auto;
+    width: 300px;
+    margin-left: 40px;
+}
+
+.RCPNO-2nd-List {
+    margin-top: 155px !important;
+}
+
+@media screen and ( max-width: 800px ) {
+    #RCPNO-field1 , #RCPNO-field2 , #RCPNO-field3 , #RCPNO-field4 , #RCPNO-field5 , #RCPNO-field6 {
+        font-size: 18px;
+    }
+
+    #RCPNO-heading {
+        padding-top: 10px;
+        margin-left: -30%;
+    }
+
+    .RCPNO-2nd-List {
+        margin-top: 210px !important;
+    }
+
+    #RCPNO-Image {
+        height: 150px;
+        width: 150px;
+    }
+}

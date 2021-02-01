@@ -219,7 +219,7 @@ class RecommendedCarePathway extends Component {
             case 1: return <CRM handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
             case 2: return <JointSummary Joint_Name={this.state.Joint_Name} Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
             case 3: return <JointTreatment Joint_Name={this.state.Joint_Name} Recommendation="NOC" Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
-            case 4: return <JointNoi1  Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
+            case 4: return <JointNoi1 Joint_Name={this.state.Joint_Name} Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
             default: return <div> Unreachable step</div>;
         }  
     }
@@ -232,7 +232,7 @@ class RecommendedCarePathway extends Component {
             case 1: return <CRM handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
             case 2: return <JointSummary Joint_Name={this.state.Joint_Name} Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
             case 3: return <JointTreatment Joint_Name={this.state.Joint_Name} Recommendation="NOC" Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
-            case 4: return <JointNoi2  Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
+            case 4: return <JointNoi2 Joint_Name={this.state.Joint_Name} Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
             default: return <div> Unreachable step</div>;
         }  
     }
@@ -247,7 +247,7 @@ class RecommendedCarePathway extends Component {
             case 3: return <JointTreatment Joint_Name={this.state.Joint_Name} Recommendation="OC" Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;           
             case 4: return <Replacement Joint_Name={this.state.Joint_Name} Recommendation="TKR" Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
             case 5: return <JointNoi3 Joint_Name={this.state.Joint_Name}  Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
-            case 6: return <JointNoi4  Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
+            case 6: return <JointNoi4 Joint_Name={this.state.Joint_Name} Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
             default: return <div> Unreachable step</div>;
         }  
     }

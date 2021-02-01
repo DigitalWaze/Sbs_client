@@ -12,7 +12,7 @@ class JointNoi3 extends Component {
         return (
             <div id="RCPE-Welcome-main-container">
                 <div id="RCPE-Welcome-box-1">
-                    <div id="RCPE-Welcome-inner-box-1">
+                    <div id="JointNoi3-inner-box-1">
 
                         {/* Dic 1 */}
                         <div id="RCPNOI-container-1">
