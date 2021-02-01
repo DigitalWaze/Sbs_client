@@ -380,6 +380,15 @@ export function LoadDummyEvaluation(Store)
         { name: "Question7", question_id: 7, joint_id:4, pro_severity_id: 2, visitor_id: 39, },
     ];
 
+    let Xrays=[
+        {id:7,name:'PA Standing Bilateral Flexion',isDone:false,image:Xray1,thumbnail:Xray1,enable:true},
+        {id:1,name:'PA Standing Bilateral Non-Flexion',isDone:false,image:Xray2,thumbnail:Xray2,enable:false},
+        {id:6,name:'Bilateral Kneecap',isDone:false,image:Xray3,thumbnail:Xray3,enable:false},
+        {id:3,name:'Right Lateral',isDone:false,image:Xray4Right,thumbnail:Xray4Right,enable:false},
+        {id:5,name:'Left Lateral',isDone:false,image:Xray4Left,thumbnail:Xray4Left,enable:false},
+
+    ];
+
     let patient={};
     patient.name="Muhammad Ammar";
     patient.date="08-15-2020"
@@ -415,7 +424,7 @@ export function LoadDummyEvaluation(Store)
         {key:'user_type',value:{id:'2',type:'admin'}},
         {key:'isTutorialCompleted',value:'true'},
         {key:'loading',value:false},
-        {key:'patient_id',value:'4948'},{key:'activeJointIndex',value:0},{key:'Eval',value:Eval},{key:'form',value:form},{key:'patient',value:patient},{key:'evaluation_stage',value:4},{key:'report_id',value:39},{key:'Evaluations',value:Evaluations},{key:'token',value:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU4OTIwNTk4N30.k8ywG7mAJjyGq3lCmCwY-VVBzqvyP_9kmIKufZYIghs'},
+        {key:'patient_id',value:'4948'},{key:'Xrays',value:Xrays},{key:'activeJointIndex',value:0},{key:'Eval',value:Eval},{key:'form',value:form},{key:'patient',value:patient},{key:'evaluation_stage',value:4},{key:'report_id',value:39},{key:'Evaluations',value:Evaluations},{key:'token',value:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU4OTIwNTk4N30.k8ywG7mAJjyGq3lCmCwY-VVBzqvyP_9kmIKufZYIghs'},
         {key:'UXray',value:'true'},
 
         
