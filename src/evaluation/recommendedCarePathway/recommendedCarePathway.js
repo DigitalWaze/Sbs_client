@@ -64,7 +64,7 @@ class RecommendedCarePathway extends Component {
 
         const OverAll = this.context.ChartOverAll();
 
-        let Question1Answer = parseInt(this.context.state.form.find(ques => ques.question_id.toString()=="1" && ques.joint_id.toString()===joint_id.toString()).pro_severity_id);
+        let Question1Answer = parseInt(this.context.state.form.find(ques => ques.question_id.toString()==="1" && ques.joint_id.toString()===joint_id.toString()).pro_severity_id);
         if(Question1Answer.toString()!=="NaN")
         {
             SumStiff=Question1Answer - 1;
@@ -86,7 +86,7 @@ class RecommendedCarePathway extends Component {
     LoadCurrRCP = (state=null) =>
     {
         let RemainingJointRCP;
-        let NoOfJoints = this.context.Evaluations.length;
+        let NoOfJoints = this.context.state.Evaluations.length;
         let Replacement="";
         let Path="";
         let Score=0;
@@ -113,7 +113,7 @@ class RecommendedCarePathway extends Component {
         let Compartment1 = this.getAggregate(Curr_Evaluation.Xrays[0].xrays[0],Curr_Evaluation.Xrays[0].xrays[1])
         let Compartment2 = this.getAggregate(Curr_Evaluation.Xrays[1].xrays[0],Curr_Evaluation.Xrays[1].xrays[1])
         let Compartment3 = parseInt(Curr_Evaluation.Xrays[2].xrays[0]);
-        Score  = this.getScore();
+        Score  = this.getScore(Curr_Joint_id);
         if(Score < 74)
         {
             if(Compartment1>2 || Compartment2>2 || Compartment3>2)
@@ -219,7 +219,7 @@ class RecommendedCarePathway extends Component {
             default: return <div> Unreachable step</div>;
         }  
     }
-    
+
     getTjrPages = () =>
     {
         switch(this.state.page)
