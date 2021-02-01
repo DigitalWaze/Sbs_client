@@ -1,0 +1,120 @@
+* {
+    font-family: Lato, sans-serif;
+}
+
+#RCPNOI-form-box-1 {
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid yellow; */
+}
+
+#RCPNOI-heading {
+    font-family: Lato, sans-serif;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.RCPNOI-form-field {
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+#RCPNOI-image1 {
+    height: 300px;
+    /* width: 300px; */
+    margin-top: 10px;
+}
+
+/* Styling for checkbox */
+
+.RCPNOI-styled-checkbox {
+    position: absolute;
+    opacity: 0;
+  }
+  .RCPNOI-styled-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+  .RCPNOI-styled-checkbox + label:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid white;
+  }
+
+  .RCPNOI-styled-checkbox:checked + label:before {
+    background: darkblue;
+  }
+
+  .RCPNOI-styled-checkbox:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+  .RCPNOI-styled-checkbox:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+  .RCPNOI-styled-checkbox:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+  
+  .RCPNOI-unstyled {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .RCPNOI-unstyled li {
+    margin: 20px 0;
+    /* border: 1px solid white; */
+  }
+  
+  .RCPNOI-centered {
+    width: 300px;
+    margin: auto;
+  }
+
+  @media screen and ( max-width: 800px ) {
+    .RCPNOI-form-field {
+        font-size: 18px;
+    }
+
+    #RCPNOI-heading {
+        margin-top: 50px;
+    }
+}
+
+#RKOCI-Image {
+    height: 250px;
+    width: 250px;
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+@media screen and ( max-width: 800px ) {
+    #RKOCI-Image {
+        width: 200px;
+        height: 200px;
+        margin-top: 110px;
+    }
+
+    #RKOCI-Image {
+        font-size: 16px;
+    }
+}

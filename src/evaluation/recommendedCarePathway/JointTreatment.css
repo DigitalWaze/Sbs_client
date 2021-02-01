@@ -1,0 +1,36 @@
+/* Joint Treatment Screen */
+
+#Joint-Treatment-Options-box-2 {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid black; */
+}
+
+#Joint-Treatment-Options-small-box-1 {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    width: 170px;
+    margin-left: 35px;
+    margin-top: 15px;
+}
+
+#Joint-Treatment-Options-small-box-2 {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#Joint-Treatment-Options-header {
+    color: white;
+    margin-top: 30px;
+}
