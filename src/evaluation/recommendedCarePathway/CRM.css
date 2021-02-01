@@ -1,0 +1,48 @@
+/* CRM Screen */
+
+.RCPE-Welcome-for-screen-4-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#RCPE-Welcome-for-screen-4-box1 {
+    width: 100%;
+}
+
+#RCPE-Welcome-for-screen-4-care-grid {
+    height: 50vh;
+    float: right;
+    width: 50%;
+    margin-right: 90px;
+}
+
+@media screen and ( max-width: 800px ) {
+    #RCPE-Welcome-for-screen-4-care-grid {
+        width: 75%;
+        height: auto;
+        margin-right: 60px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and ( max-width : 500px ) {
+    #RCPE-Welcome-for-screen-4-care-grid {
+        width: 70%;
+        height: auto;
+    }
+}
+
+#RCPE-Welcome-for-screen-4-heading-1 {
+    color: white;
+    padding: 20px;
+    font-family: Lato, sans-serif;
+    padding-top: 30px;
+    padding-left: 50px;
+}
+
+#RCPE-Welcome-for-screen-4-heading-2 {
+    font-family: Lato, sans-serif;
+    color: white;
+    padding: 20px;
+    padding-left: 50px;
+}

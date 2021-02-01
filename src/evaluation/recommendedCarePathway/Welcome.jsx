@@ -38,6 +38,7 @@ class Welcome extends Component {
                         <Button
                             id="RCPE-Welcome-btn-1"
                             variant="contained"
+                            onClick={this.props.handleBackClick}
                         >
                             {" "} Back {" "}
                         </Button>
@@ -47,6 +48,7 @@ class Welcome extends Component {
                         <Button
                             id="RCPE-Welcome-btn-2"
                             variant="contained"
+                            onClick={this.props.handleReviewClick}
                         >
                             {" "} Review Care Pathway Education {" "}
                         </Button>
@@ -56,6 +58,7 @@ class Welcome extends Component {
                         <Button
                             id="RCPE-Welcome-btn-3"
                             variant="contained"
+                            onClick={this.props.handleNextClick }
                         >
                             {" "} Next {" "}
                         </Button>
