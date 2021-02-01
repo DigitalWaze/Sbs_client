@@ -1,69 +1,31 @@
 import React, { Component } from "react";
 import { Route, Router } from "react-router-dom";
+
+//helpers
 import history from "./helper/history";
 import MyContext from "./helper/themeContext";
+
+//components
 import Evaluation from "./evaluation/evaluation";
 import Drawer from "./general/drawer/drawer";
 import Tutorials from "./tutorials/tutorials";
 import LearnMore from "./tutorials/LearnMore/LearnMore";
-
-import Bone1Image from "./assets/bone3_Bitmap.png";
-import MFV from "./assets/medial-flexion.png";
-import MNFV from "./assets/medial-nonflexion.png";
-import LFV from "./assets/lateral-flexion.png";
-import LNFV from "./assets/lateral-nonflexion.png";
-import KV from "./assets/kneecapview.jpg";
-
-import LMFV from "./assets/left-medial-flexion.png";
-import LMNFV from "./assets/left-medial-nonflexion.png";
-import LLFV from "./assets/left-lateral-flexion.png";
-import LLNFV from "./assets/left-lateral-nonflexion.png";
-
-import MFVUP from "./assets/medial-flexion-up.png";
-import MNFVUP from "./assets/medial-nonflexion-up.png";
-import LFVUP from "./assets/lateral-flexion-up.png";
-import LNFVUP from "./assets/lateral-nonflexion-up.png";
-import KVUP from "./assets/kneecap-up.png";
-
-import LMFVUP from "./assets/left-medial-flexion-up.png";
-import LMNFVUP from "./assets/left-medial-nonflexion-up.png";
-import LLFVUP from "./assets/left-lateral-flexion-up.png";
-import LLNFVUP from "./assets/left-lateral-nonflexion-up.png";
-import LKVUP from "./assets/left-kneecap-up.png";
-
-import MFVUP1 from "./assets/eval-comp-xrays/medial-flexion-up-1.png";
-import MNFVUP1 from "./assets/eval-comp-xrays/medial-nonflexion-up-1.png";
-import LFVUP1 from "./assets/eval-comp-xrays/lateral-flexion-up-1.png";
-import LNFVUP1 from "./assets/eval-comp-xrays/lateral-nonflexion-up-1.png";
-import KVUP1 from "./assets/eval-comp-xrays/kneecap-up-1.png";
-
-import MFVUP2 from "./assets/eval-comp-xrays/medial-flexion-up-2.png";
-import MNFVUP2 from "./assets/eval-comp-xrays/medial-nonflexion-up-2.png";
-import LFVUP2 from "./assets/eval-comp-xrays/lateral-flexion-up-2.png";
-import LNFVUP2 from "./assets/eval-comp-xrays/lateral-nonflexion-up-2.png";
-import KVUP2 from "./assets/eval-comp-xrays/kneecap-up-2.png";
-
-import MFVUP3 from "./assets/eval-comp-xrays/medial-flexion-up-3.png";
-import MNFVUP3 from "./assets/eval-comp-xrays/medial-nonflexion-up-3.png";
-import LFVUP3 from "./assets/eval-comp-xrays/lateral-flexion-up-3.png";
-import LNFVUP3 from "./assets/eval-comp-xrays/lateral-nonflexion-up-3.png";
-import KVUP3 from "./assets/eval-comp-xrays/kneecap-up-3.png";
-
-import MFVUP4 from "./assets/eval-comp-xrays/medial-flexion-up-4.png";
-import MNFVUP4 from "./assets/eval-comp-xrays/medial-nonflexion-up-4.png";
-import LFVUP4 from "./assets/eval-comp-xrays/lateral-flexion-up-4.png";
-import LNFVUP4 from "./assets/eval-comp-xrays/lateral-nonflexion-up-4.png";
-import KVUP4 from "./assets/eval-comp-xrays/kneecap-up-4.png";
-
-import CEimage from "./assets/eval-comp-xrays/cannotEval.jpg";
-
+import EvaluationHistory from "./pages/evaluationHistory/evaluationHistory";
+import IncompleteEvaluations from "./pages/incompleteEvaluations/incompleteEvaluations";
 import Login from "./login/login";
 import CreateUser from "./admin/createUser/createUser";
 import Home from "./home/homeNew";
+import EditProfile from "./editprofile/EditProfile";
+
+
+//functions
+import {emptyEvalState, LoadDummyEvaluation}  from './StoreFunctions/evaluationStoreFunctions'
+
+
+
 
 import StartOver from "./offer/startOver";
 // import RecomCarePath from "./tutorials/PatientEvaluation/recomCarePath/recomendedcarepathway";
-import EditProfile from "./editprofile/EditProfile";
 // import UploadReport from './evaluation/patientReport/upload/uploadReports';
 
 const baseUrlH = "https://sbs-server-adonis.herokuapp.com"; //old Env
@@ -74,6 +36,83 @@ class Routes extends Component {
   constructor(props) {
     super(props);
     this.state = { loading: true,oldEvaluations:[] };
+  }
+
+  UNSAFE_componentWillMount() {
+
+
+    LoadDummyEvaluation(this);
+    // this.loadPrevSession();
+
+  }
+
+
+  loadPrevSession = () =>
+  {
+    if (this.state.token == null || !this.state.token || this.state.token == "" || this.state.token == " ")
+    {
+      // will always be true
+
+      let token = this.getCookie("token");
+      let type = this.getCookie("type");
+      let user_id = this.getCookie("user_id");
+      let user_email = this.getCookie("user_email");
+      let user_type_id = this.getCookie("user_type_id");
+      let user_type_name = this.getCookie("user_type_name");
+      let organization = this.getCookie("organization");
+      let isTutorialCompleted = this.getCookie("isTutorialCompleted");
+
+      let oldEvaluations = this.getCookie("oldEvaluations");
+
+      
+      if(oldEvaluations && oldEvaluations.toString() !== 'undefined' && oldEvaluations.toString() !== 'null' )
+      {
+        oldEvaluations = JSON.parse(oldEvaluations);
+      }
+
+      else oldEvaluations=[];
+         
+      let tutorial_rem = this.getCookie("tutorial-" + user_id);
+      if( 
+          token == undefined || token == "" || token == " " ||
+          type == undefined || type == "" || type == " " ||
+          user_id == undefined || user_id == "" || user_id == " " ||
+          user_email == undefined || user_email == "" || user_email == " " ||
+          user_type_id == undefined || user_type_id == "" || user_type_id == " " ||
+          user_type_name == undefined || user_type_name == "" || user_type_name == " " ||
+          organization == undefined || organization == "" || organization == " "
+        )
+      {
+        //on No previous session from cookie
+        // console.log("No Login Session");
+        this.setState({ loading: false });
+        history.push("/login");
+      } 
+      else {
+        // ------------------ redirection after loading previous session----------------------------------
+
+        this.setState({
+          oldEvaluations:oldEvaluations,
+          loading: false,
+          loggedIn: true,
+          token: token,
+          isTutorialCompleted: isTutorialCompleted,
+          type: type,
+          user_id: user_id,
+          user_email: user_email,
+          user_type: { id: user_type_id, type: user_type_name },
+          organization: organization,
+          tutorial_rem:tutorial_rem,
+        });
+
+        //----------- start --------- new setup after login session from cookie
+
+        history.push("/home"); // ------ home will cater resume and tutorials
+
+        //----------- end --------- new setup after login session from cookie
+      }
+    }
+
   }
 
   getCookie(cname) {
@@ -138,92 +177,7 @@ class Routes extends Component {
 
   };
 
-  UNSAFE_componentWillMount() {
-    if (this.state.token == null || !this.state.token || this.state.token == "" || this.state.token == " ")
-    {
-      // will always be true
-
-      let token = this.getCookie("token");
-      let type = this.getCookie("type");
-      let user_id = this.getCookie("user_id");
-      let user_email = this.getCookie("user_email");
-      let user_type_id = this.getCookie("user_type_id");
-      let user_type_name = this.getCookie("user_type_name");
-      let organization = this.getCookie("organization");
-      let isTutorialCompleted = this.getCookie("isTutorialCompleted");
-
-      let oldEvaluations = this.getCookie("oldEvaluations");
-
-      
-      if(oldEvaluations && oldEvaluations.toString() !== 'undefined' && oldEvaluations.toString() !== 'null' )
-      {
-        oldEvaluations = JSON.parse(oldEvaluations);
-      }
-
-      else oldEvaluations=[];
-         
-      let tutorial_rem = this.getCookie("tutorial-" + user_id);
-      if( 
-          token == undefined || token == "" || token == " " ||
-          type == undefined || type == "" || type == " " ||
-          user_id == undefined || user_id == "" || user_id == " " ||
-          user_email == undefined || user_email == "" || user_email == " " ||
-          user_type_id == undefined || user_type_id == "" || user_type_id == " " ||
-          user_type_name == undefined || user_type_name == "" || user_type_name == " " ||
-          organization == undefined || organization == "" || organization == " "
-        ){
-        //on No previous session from cookie
-        // console.log("No Login Session");
-        this.setState({ loading: false });
-        history.push("/login");
-      } else {
-        // ------------------ redirection after loading previous session----------------------------------
-
-        this.setState({
-          oldEvaluations:oldEvaluations,
-          loading: false,
-          loggedIn: true,
-          token: token,
-          isTutorialCompleted: isTutorialCompleted,
-          type: type,
-          user_id: user_id,
-          user_email: user_email,
-          user_type: { id: user_type_id, type: user_type_name },
-          organization: organization,
-          tutorial_rem:tutorial_rem,
-        });
-
-        //----------- start --------- new setup after login session from cookie
-
-        history.push("/home"); // ------ home will cater resume and tutorials
-
-        //----------- end --------- new setup after login session from cookie
-
-        
-
-        //----------- start --------- old setup after login session from cookie
-
-        // if(tutorial_rem!="" && tutorial_rem!=" " && tutorial_rem!=null && tutorial_rem && tutorial_rem!=41 )
-        // {
-        //   history.push("/tutorials/resume-tutorial");
-        // }
-        // else if (parseInt(evaluation_stage) > 0) {
-
-        //   history.push("/evaluation/resume-evaluation");
-
-        // }
-
-        // else if(tutorial_rem==41)
-        // {
-        //   history.push('/tutorials/resume-tutorial');
-        // }
-
-        // else  history.push("/tutorials/sbs/welcome");
-
-        //----------- end --------- old setup after login session from cookie
-      }
-    }
-  }
+  
 
   updateValue = (key, value) => {
     this.setState({ [key]: value},()=>{this.updateSession()});    
@@ -246,143 +200,31 @@ class Routes extends Component {
     history.push(url);
   };
 
-  newEval = () =>
-  {
-    let Evaluations=
-    [   
-      {name:'Right Knee',image:Bone1Image  , joint_id:'3',
-        Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,up5:CEimage,prediction:''}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,up5:CEimage,prediction:''}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,up5:CEimage,prediction:''}]},
-
-        ] 
-      },
-
-      {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
-        Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,up5:CEimage,prediction:''}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,up5:CEimage,prediction:''}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,up5:CEimage,prediction:''}]},
-        ] 
-      }
-    ]
-    this.setState({old:false,Xrays:[],evaluation_stage:0,noOfEvalRemainToUpload:null,XrayMatch:false,UXray:false,Pro:false,Evaluations:Evaluations,Eval:[],form:[],patient:{},report_id:null,patient_id:null,activeJointIndex:0})
-  }
+  
 
   evalDone = () => {
     let oldEvaluations = this.state.oldEvaluations;
     if(oldEvaluations)
     {
-      // if(oldEvaluations.length > 1)
-      // {
-        console.log('i ran')
+    
+      console.log('i ran')
 
-        let oldEvaluationNew = oldEvaluations.filter(evalution => evalution.visitor.id.toString() !== this.state.report_id.toString() );
+      let oldEvaluationNew = oldEvaluations.filter(evalution => evalution.visitor.id.toString() !== this.state.report_id.toString() );
 
-        console.log('evalution.visitor.id.toString() ')
-        console.log('this.state.report_id.toString() ',this.state.report_id.toString())
+      console.log('evalution.visitor.id.toString() ')
+      console.log('this.state.report_id.toString() ',this.state.report_id.toString())
 
-        console.log('oldEvaluationNew) ',oldEvaluationNew)
+      console.log('oldEvaluationNew) ',oldEvaluationNew)
 
 
-        this.setCookie("oldEvaluations", JSON.stringify(oldEvaluationNew), 30);
-        this.setState({oldEvaluations:oldEvaluationNew})
-      // }
-
-      // else 
-      // {
-
-      // }
+      this.updateValue(oldEvaluations,oldEvaluationNew)
     }
   };
 
-  clearEvalState = () => {
-    let Evaluations=
-    [   
-      {name:'Right Knee',image:Bone1Image  , joint_id:'3',
-        Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
-
-        ] 
-      },
-
-      {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
-        Xrays:[ 
-            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
-        ] 
-      }
-    ]
-    let form = [
-      { name: "Question1",
-        question_id: 1,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-      {
-        name: "Question2",
-        question_id: 2,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-      {
-        name: "Question3",
-        question_id: 3,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-      {
-        name: "Question4",
-        question_id: 4,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-      {
-        name: "Question5",
-        question_id: 5,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-      {
-        name: "Question6",
-        question_id: 6,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-      {
-        name: "Question7",
-        question_id: 7,
-        pro_severity_id: null,
-        visitor_id: null,
-      },
-    ];
-
-    this.setState({
-      report_id: null,
-      patient: {},
-      Xrays: [],
-      XrayMatch: false,
-      UXray: false,
-      Pro: false,
-      old: null,
-      tutorial: null,
-      evaluation_stage: null,
-      temp_report_id: null,
-      temp_patient_id: null,
-      joint_id: null,
-      activePriority: null,
-      Evaluations,
-      Eval: [],
-      form,
-    });
-    this.setCookie("evaluation_stage", "", 0);
-    this.setCookie("temp_report_id", "", 0);
-    this.setCookie("temp_patient_id", "", 0);
-  };
+  newEval = () =>
+  {
+    emptyEvalState(this);
+  }
 
   discardLeft = () => {
     //api  to delete old evaluation;
@@ -406,7 +248,6 @@ class Routes extends Component {
       <Router history={history}>
         <MyContext.Provider
           value={{
-            // clearEvalState: this.clearEvalState,
             newEval: this.newEval,
             evalDone: this.evalDone,
             setCookie: this.setCookie,
@@ -430,6 +271,9 @@ class Routes extends Component {
           <Route path="/Learn-more" component={LearnMore} />
           <Route path="/edit-profile" component={EditProfile} />
           <Route path="/evaluation" component={Evaluation} /> {/* CHECKER */} {/* ROUTER */}
+          <Route path="/evaluation-history" component={EvaluationHistory} />
+          <Route path="/incomplete-evaluations" component={IncompleteEvaluations} />
+
           <Route path="/admin/create-user" component={CreateUser} />{" "}
           {/* <Route path="/recommended-care-pathway/" component={RecomCarePath} /> ROUTER */}
           {/* CHECKER */} {/* ROUTER */}

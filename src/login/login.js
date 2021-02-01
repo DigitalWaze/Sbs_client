@@ -62,7 +62,7 @@ class Login extends Component {
     console.log(response);
     if (response.id !== null && response.id) {
       let isTutorialCompleted = null;
-      if (response.isTutorialCompleted == 1) {
+      if (response.isTutorialCompleted.toString() === "1") {
         isTutorialCompleted = true;
       }
 
@@ -125,7 +125,7 @@ class Login extends Component {
     const { classes } = this.props;
     return (
       <div id="Login_Main_Div">
-        {this.state.loading == true ? (
+        {this.state.loading === true ? (
           <SemipolarLoading size={"large"} color={"#b4ec51"} />
         ) : (
           <Grid container xs={12} direction="row" justify="center" alignItems="center">
@@ -173,7 +173,7 @@ class Login extends Component {
                 </div>
               </div>
 
-              {this.state.error == true ? (
+              {this.state.error === true ? (
                 <div style={{ marginTop: "20px", color: "red" }}> wrong email or password </div>
               ) : null}
 

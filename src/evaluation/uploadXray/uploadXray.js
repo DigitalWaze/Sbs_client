@@ -265,7 +265,7 @@ class UploadXray extends Component {
             case 1: return <ExportScript Xrays={this.state.Xrays} handleEntryClick={()=>this.handlePageChange(UploadTypePage)} handleBackClick={()=>this.handlePageChange(AcknowledgePage)} />;
             case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
-            case 4: return <UploadType handleTypeOneClick={()=>this.handlePageChange(UploadTypeOnePage)} handleTypeTwoClick={()=>this.handlePageChange(UploadTypeTwoPage)} handleTypeThreeClick={()=>this.handlePageChange(UploadTypeThreePage)} handleTypeFourClick={()=>this.handlePageChange(OverviewPage)}/>
+            case 4: return <UploadType handleBackClick={()=>this.handlePageChange(AcknowledgePage)} handleTypeOneClick={()=>this.handlePageChange(UploadTypeOnePage)} handleTypeTwoClick={()=>this.handlePageChange(UploadTypeTwoPage)} handleTypeThreeClick={()=>this.handlePageChange(UploadTypeThreePage)} handleTypeFourClick={()=>this.handlePageChange(OverviewPage)}/>
             case 5: return <UploadTypeOne handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
             case 6: return <UploadTypeTwo handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
             case 7: return <UploadTypeThree handleNextClick={()=>this.handlePageChange(OverviewPage)}/>

@@ -31,8 +31,8 @@ class Home extends Component {
     handleRecover = () =>
     {
         // console.log(this.context.state.temp_patient_id)
-        this.setState({loading:true,resumeOldEval:0})
-        let report_id =  this.context.state.oldEvaluations[0].id; 
+        this.setState({loading:true})
+        let report_id =  this.context.state.oldEvaluations[this.context.state.oldEvaluations.length-1].id; 
         this.context.newEval();
         GetData(this.context.baseUrl+`/api/v1/get/report?report_id=${report_id}`,200,this.context.state.token,this.setMe)
     }
@@ -45,16 +45,18 @@ class Home extends Component {
 
     startEvaluation = () =>
     {
-      if(parseInt(this.context.state.oldEvaluations.length)>0)  
-      {
-        this.setState({resumeWarningModal:true})
-      }
+
+        this.setMeTwo();
+    //   if(parseInt(this.context.state.oldEvaluations.length)>0)  
+    //   {
+    //     this.setState({resumeWarningModal:true})
+    //   }
   
-      else 
-      {
-        this.context.newEval();
-        this.context.history.push('/evaluation/welcome');
-      }
+    //   else 
+    //   {
+    //     this.context.newEval();
+    //     this.context.history.push('/evaluation/welcome');
+    //   }
     }
 
     setMe = (response) =>
@@ -69,7 +71,7 @@ class Home extends Component {
     setMeTwo = () =>
     {
         this.context.newEval();
-        this.context.multipleUpdateValueWithHistory([{key:'oldEvaluations',value:[]}],'/evaluation/welcome')
+        this.context.history.push('/evaluation/welcome')
     }
 
 
@@ -169,13 +171,13 @@ class Home extends Component {
 
                                     <div className="Home_Button_Div">
                                         <Button id="Home_Button" variant="contained" 
-                                            onClick={() => { this.context.history.push("/evaluation/evaluation-history"); }} >
+                                            onClick={() => { this.context.history.push("/evaluation-history"); }} >
                                             {" "} Evalution History {" "}
                                         </Button>
                                     </div>
 
                                     <div className="Home_Button_Div">
-                                        <Button id="Home_Button" variant="contained" style={{opacity:'0.5'}} disabled={true}>
+                                        <Button id="Home_Button" variant="contained" style={{opacity:this.context.state.oldEvaluations.length<1?'0.5':'1'}} onClick={()=>this.context.history.push('/incomplete-evaluations')} disabled={this.context.state.oldEvaluations.length<1}>
                                             {" "} Incomplete Evaluations {" "}
                                         </Button>
                                     </div>

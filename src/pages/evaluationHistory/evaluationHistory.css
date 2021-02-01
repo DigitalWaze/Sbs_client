@@ -1,7 +1,7 @@
 #Evalution_History_Table_Wrapper
 {
     height:76vh;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
 
 #Evalution_History_Table_Head
@@ -11,6 +11,7 @@
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
+    width: 100%;
 }
 
 
@@ -24,6 +25,7 @@
 {
     height:60px;
     margin-top: 10px;
+    width:100%
 }
 
 .Evalution_History_Table_Body_Text
@@ -37,7 +39,8 @@
 {
   display: block;
   width:auto;
-  min-width: 170px !important;
+  min-width: 10px !important;
+  max-width: 100% !important;
   padding: 10px 15px !important;
   float: right;
   font-size: 28px;

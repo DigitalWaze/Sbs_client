@@ -24,6 +24,16 @@
     font-family: Lato, sans-serif;
     font-size: 20px;
     padding: 5px 0px 5px 10px;
+    max-width: calc(60% - 10px);
+    display: inline-block;
+}
+
+#Export-Script-child_2{
+    display: inline-block;
+    max-width: calc(40%);
+    vertical-align: super;
+    vertical-align: top;
+
 }
 
 #Evaluaion_Export-Script_Next_Button_Div2 {
@@ -61,7 +71,7 @@
 }
 
 /* Re-use from newEvaluation.css */
-#Evaluaion_ExportScript_Next_Button1 {
+#Evaluaion_ExportScript_Save_Button1 {
     display: block;
     min-width: 280px;
     padding: 10px 20px;
@@ -70,6 +80,8 @@
     border-radius: 25px;
     background-color: #b4ec51;
     font-family: Lato, sans-serif;
+    text-transform: none;
+
   }
 
  
@@ -94,6 +106,8 @@
     border-radius: 25px;
     background-color: #b4ec51;
     font-family: Lato, sans-serif;
+    text-transform: none;
+
   }
 
   #ExportScript_Welcome_Next_Button2 {
@@ -107,6 +121,7 @@
     border-radius: 25px;
     background-color: #b4ec51;
     font-family: Lato, sans-serif;
+    text-transform: none;
   }
 
   @media screen and ( max-width: 800px ) {
@@ -122,3 +137,32 @@
         font-size: 24px;
     }
 }
+
+.Evaluation_ExportScript_Heading2_Div
+{
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    line-height: 48px;
+    font-weight: 700;
+    text-align: left;
+}
+
+#Evaluaion_ExportScript_Export_Button
+{
+  display: block;
+  width:auto;
+  min-width: 100%;
+  padding: 15px 25px;
+  float: right;
+  font-size: 28px;
+  line-height: 32px;
+  border-radius: 25px;
+  background-color: #b4ec51;
+  font-family: Lato, sans-serif;
+  text-transform: none;
+}
+

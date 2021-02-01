@@ -1,11 +1,80 @@
 
 import React from 'react';
+
+import GetDataJson from '../Fetch/getDataJsonAsync';
+
+//images
+
+    //general
+import Bone1Image from "../assets/bone3_Bitmap.png";
+
+    //upload-xray-thumbnails
 import Xray1 from '../assets/uploadBoxThumb/xray1.jpg';
 import Xray2 from '../assets/uploadBoxThumb/xray2.jpg';
 import Xray3 from '../assets/uploadBoxThumb/xray3.jpg';
 import Xray4Left from '../assets/uploadBoxThumb/xray4Left.jpg';
 import Xray4Right from '../assets/uploadBoxThumb/xray4Right.jpg';
-import GetDataJson from '../Fetch/getDataJsonAsync';
+
+//matching evaluation static images
+
+    //right knee thumbnails
+import MFV from "../assets/medial-flexion.png";
+import MNFV from "../assets/medial-nonflexion.png";
+import LFV from "../assets/lateral-flexion.png";
+import LNFV from "../assets/lateral-nonflexion.png";
+import KV from "../assets/kneecapview.jpg";
+
+    //left knee thumbnails
+import LMFV from "../assets/left-medial-flexion.png";
+import LMNFV from "../assets/left-medial-nonflexion.png";
+import LLFV from "../assets/left-lateral-flexion.png";
+import LLNFV from "../assets/left-lateral-nonflexion.png";
+
+    //right-knee-matching-dummy-images 
+import MFVUP from "../assets/medial-flexion-up.png";
+import MNFVUP from "../assets/medial-nonflexion-up.png";
+import LFVUP from "../assets/lateral-flexion-up.png";
+import LNFVUP from "../assets/lateral-nonflexion-up.png";
+import KVUP from "../assets/kneecap-up.png";
+
+    //left-knee-matching-dummy-images 
+import LMFVUP from "../assets/left-medial-flexion-up.png";
+import LMNFVUP from "../assets/left-medial-nonflexion-up.png";
+import LLFVUP from "../assets/left-lateral-flexion-up.png";
+import LLNFVUP from "../assets/left-lateral-nonflexion-up.png";
+import LKVUP from "../assets/left-kneecap-up.png";
+
+    //matching images
+        //normal
+import MFVUP1 from "../assets/eval-comp-xrays/medial-flexion-up-1.png";
+import MNFVUP1 from "../assets/eval-comp-xrays/medial-nonflexion-up-1.png";
+import LFVUP1 from "../assets/eval-comp-xrays/lateral-flexion-up-1.png";
+import LNFVUP1 from "../assets/eval-comp-xrays/lateral-nonflexion-up-1.png";
+import KVUP1 from "../assets/eval-comp-xrays/kneecap-up-1.png"
+
+        //moderate
+import MFVUP2 from "../assets/eval-comp-xrays/medial-flexion-up-2.png";
+import MNFVUP2 from "../assets/eval-comp-xrays/medial-nonflexion-up-2.png";
+import LFVUP2 from "../assets/eval-comp-xrays/lateral-flexion-up-2.png";
+import LNFVUP2 from "../assets/eval-comp-xrays/lateral-nonflexion-up-2.png";
+import KVUP2 from "../assets/eval-comp-xrays/kneecap-up-2.png";
+
+        //near-end-stage
+import MFVUP3 from "../assets/eval-comp-xrays/medial-flexion-up-3.png";
+import MNFVUP3 from "../assets/eval-comp-xrays/medial-nonflexion-up-3.png";
+import LFVUP3 from "../assets/eval-comp-xrays/lateral-flexion-up-3.png";
+import LNFVUP3 from "../assets/eval-comp-xrays/lateral-nonflexion-up-3.png";
+import KVUP3 from "../assets/eval-comp-xrays/kneecap-up-3.png";
+
+        //end-stage
+import MFVUP4 from "../assets/eval-comp-xrays/medial-flexion-up-4.png";
+import MNFVUP4 from "../assets/eval-comp-xrays/medial-nonflexion-up-4.png";
+import LFVUP4 from "../assets/eval-comp-xrays/lateral-flexion-up-4.png";
+import LNFVUP4 from "../assets/eval-comp-xrays/lateral-nonflexion-up-4.png";
+import KVUP4 from "../assets/eval-comp-xrays/kneecap-up-4.png";
+
+        //cannot-eval-image
+import CEimage from '../assets/eval-comp-xrays/cannotEval.jpg'
 
 export async function LoadNewEval(Store,oldEvaluation)   {
 
@@ -264,6 +333,94 @@ function initializeFormAndEval(joint_hurts)
 
     Eval.sort(function(a, b){ return a.priority_id-b.priority_id});
     return {Eval,Form}    
+}
+
+
+export function emptyEvalState(global)
+{
+    let Evaluations=
+    [   
+        {name:'Right Knee',image:Bone1Image  , joint_id:'3',
+            Xrays:[ 
+                {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,up5:CEimage,prediction:''}]},
+                {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,up5:CEimage,prediction:''}]},
+                {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,up5:CEimage,prediction:''}]},
+
+            ] 
+        },
+
+        {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
+            Xrays:[ 
+                {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4,up5:CEimage,prediction:''}]},
+                {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4,up5:CEimage,prediction:''},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4,up5:CEimage,prediction:''}]},
+                {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4,up5:CEimage,prediction:''}]},
+            ] 
+        }
+    ]
+    global.setState({old:false,Xrays:[],evaluation_stage:0,noOfEvalRemainToUpload:null,XrayMatch:false,UXray:false,Pro:false,Evaluations:Evaluations,Eval:[],form:[],patient:{},report_id:null,patient_id:null,activeJointIndex:0})
+}
+
+
+export function LoadDummyEvaluation(Store)
+{
+    let form = [
+        { name: "Question1",question_id: 1, joint_id:3, pro_severity_id: 4, visitor_id: 39, },
+        { name: "Question2", question_id: 2, joint_id:3, pro_severity_id: 4,visitor_id: 39,},
+        { name: "Question3", question_id: 3, joint_id:3, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question4", joint_id:3, question_id: 4, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question5", question_id: 5, joint_id:3, pro_severity_id: 2,visitor_id: 39, },
+        { name: "Question6", joint_id:3, question_id: 6, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question7", question_id: 7, joint_id:3, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question1",question_id: 1, joint_id:4, pro_severity_id: 4, visitor_id: 39, },
+        { name: "Question2", question_id: 2, joint_id:4, pro_severity_id: 4,visitor_id: 39,},
+        { name: "Question3", question_id: 3, joint_id:4, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question4", joint_id:4, question_id: 4, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question5", question_id: 5, joint_id:4, pro_severity_id: 2,visitor_id: 39, },
+        { name: "Question6", joint_id:4, question_id: 6, pro_severity_id: 2, visitor_id: 39, },
+        { name: "Question7", question_id: 7, joint_id:4, pro_severity_id: 2, visitor_id: 39, },
+    ];
+
+    let patient={};
+    patient.name="Muhammad Ammar";
+    patient.date="08-15-2020"
+
+    //[{name:'Normal to Slight',id:'1'},{name:'Moderate',id:'2'},{name:'Near End Stage',id:'3'},{name:'End Stage',id:'4'},{name:'Cannot Evaluate',id:'5'}]
+
+  
+    let Evaluations=
+    [
+        {name:'Right Knee',image:Bone1Image  , joint_id:'3',
+            Xrays:[
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:'4',state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:'4',state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:'4',state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:'4',state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:'4',state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+            ]
+        },
+        {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
+            Xrays:[
+            {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:null,notes:null,thumbnail:LMFV,up:LMFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LMNFV,up:LMNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+            {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:null,notes:null,thumbnail:LLFV,up:LLFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:null,notes:'',thumbnail:LLNFV,up:LLNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+            {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:null,notes:'',thumbnail:KV,up:LKVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+            ]
+        }
+    ]
+    let Eval=[];
+    Eval.push({joint_hurt_id:'11',visitor_id:'39',joint_id:'3',name:'Right Knee',priority_id:2,isEvaluated:false})   // Right Knee
+    Eval.push({joint_hurt_id:'12',visitor_id:'39',joint_id:'4',name:'Left Knee',priority_id:1,isEvaluated:false})   // Left Knee
+
+    Store.multipleUpdateValueWithHistory([
+        {key:'type',value:'2'},
+        {key:'user_id',value:'2'},
+        {key:'user_email',value:'Dummy_ammar@sbs.com'},
+        {key:'user_type',value:{id:'2',type:'admin'}},
+        {key:'isTutorialCompleted',value:'true'},
+        {key:'loading',value:false},
+        {key:'patient_id',value:'4948'},{key:'activeJointIndex',value:0},{key:'Eval',value:Eval},{key:'form',value:form},{key:'patient',value:patient},{key:'evaluation_stage',value:4},{key:'report_id',value:39},{key:'Evaluations',value:Evaluations},{key:'token',value:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU4OTIwNTk4N30.k8ywG7mAJjyGq3lCmCwY-VVBzqvyP_9kmIKufZYIghs'},
+        {key:'UXray',value:'true'},
+
+        
+    ],'/evaluation/patient-summary')
+    console.log('----------- UpdateD store with dummy data ------------')
 }
     
 

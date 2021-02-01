@@ -2,14 +2,9 @@
 import React, { Component } from 'react';
 import MyContext from '../../helper/themeContext';
 import GetData from '../../Fetch/getData1';
-import PDFViewer from 'pdf-viewer-reactjs'  
 import './evalpdf.css'       
 import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
-
 import Button from '@material-ui/core/Button';
-
-
-
 class Pdf extends Component {
     constructor(props) {
         super(props);
@@ -71,7 +66,7 @@ class Pdf extends Component {
         return ( 
             <div id="Evaluation_PDF_MAIN_DIV">
                 
-            {this.state.loading==false?
+            {this.state.loading===false?
                 <div id="Evaluation_PDF_Content_Wrapper" >
                     
                     <div id="Evaluaion_pdf_Heading1_Div">
@@ -98,7 +93,7 @@ class Pdf extends Component {
         
                 /> */}
 
-                <iframe src={ this.state.blobUrl} height="100%" style={{width:'calc(100vw - 500px)',marginLeft:'150px'}} ></iframe>
+                <iframe title="pdf" src={ this.state.blobUrl} height="100%" style={{width:'calc(100vw - 500px)',marginLeft:'150px'}} ></iframe>
                     <div id="Evaluaion_PDF_Next_Button_Div">
                         <Button id="Evaluaion_PatientReport_Next_Button" variant="contained" onClick={this.handleDownload}> Download </Button>
                     </div>

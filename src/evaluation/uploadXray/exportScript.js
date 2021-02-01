@@ -15,7 +15,7 @@ class ExportScript extends Component {
             <React.Fragment>
                 <div className="Evaluation_Acknowledge_Content_Wrapper">
 
-                    <div className="Evaluation_Acknowledge_Heading2_Div">
+                    <div className="Evaluation_ExportScript_Heading2_Div">
                         <h2 id="heading1"> Below are the required X-rays and an exportable script. </h2>
                         <h2 id="heading2"> Required X-rays </h2>
                     </div>
@@ -33,7 +33,7 @@ class ExportScript extends Component {
 
                             <div id="Export-Script-child_2">
                                 <div id="Evaluaion_Export-Script_Next_Button_Div2">
-                                    <Button id="Evaluaion_NewEvaluation_Next_Button" variant="contained"> Export Script </Button>
+                                    <Button id="Evaluaion_ExportScript_Export_Button" variant="contained"> Export Script </Button>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@ class ExportScript extends Component {
                         </div>
 
                         <div id="Evaluaion_ExportScript_Next_Button_Div1">
-                            <Button id="Evaluaion_ExportScript_Next_Button1" variant="contained"
+                            <Button id="Evaluaion_ExportScript_Save_Button1" variant="contained"
                                 onClick={()=>this.context.history.push('/home')}>
                                 Save evaluation <br /> and return home
                             </Button>

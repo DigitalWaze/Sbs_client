@@ -6,12 +6,6 @@ import Overview from './overview';
 import Matching from './matching';
 import firebase from '../../helper/firebase';
 
-
-
-
-
-
-
 import './xrayMatching.css';
 import MyContext from '../../helper/themeContext';
 import GetData from '../../Fetch/getData1';
@@ -266,17 +260,6 @@ class XrayMatching extends Component {
        
       }
 
-
-
-    handleEvalChange = (state,notes) =>
-    {
-        let Eval=this.context.state.Eval[this.context.state.activeJointIndex];
-        let Evaluation=this.state.Evaluations.find(eva => eva.joint_id.toString()===Eval.joint_id.toString())
-        let type=Evaluation.Xrays.find(type => type.name===this.state.ActiveType)
-        let Xray=type.xrays.find(xray => xray.name===this.state.ActiveXray)
-        Xray.state=state;
-        Xray.notes=notes;
-    }
 
     handleIntroClick = () =>
     {

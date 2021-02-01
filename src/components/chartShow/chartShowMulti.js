@@ -19,19 +19,19 @@ class ChartShowMulti extends Component {
     componentDidMount()
     {
         var d = new Date;
-            let date="";
-            if(d.getMonth().toString().length==1)
-            {
-                date='0';
-            }
-            date=date+(d.getMonth()+1)+'-';
-            if(d.getDate().toString().length==1)
-            {
-                date=date+'0';
-            }
-            date=date+d.getDate()+'-'+d.getFullYear();
-            console.log(date)
-            this.setState({date})
+        let date="";
+        if(d.getMonth().toString().length==1)
+        {
+            date='0';
+        }
+        date=date+(d.getMonth()+1)+'-';
+        if(d.getDate().toString().length==1)
+        {
+            date=date+'0';
+        }
+        date=date+d.getDate()+'-'+d.getFullYear();
+        console.log(date)
+        this.setState({date})
     }
 
     
@@ -41,9 +41,9 @@ class ChartShowMulti extends Component {
         // console.log(joint);
         return ( 
             <div id="Evaluaion_Chart_Main_Div">
-                <div  id="Evaluaion_Chart_Content_Wrapper">
+                <div  id="Evaluaion_MultiChart_Content_Wrapper">
                     <div id="Evaluaion_Chart_Heading1_Div">
-                        <span style={{fontWeight:'bold'}}> PRO Summary: </span> 
+                        <span style={{fontWeight:'bold'}}> PRO Summary </span> 
                         {/* {joint.joint_id.toString()==="3"?'Right Knee':'Left Knee'} */}
                     </div>
                    

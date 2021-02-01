@@ -83,7 +83,7 @@ class CreateUser extends Component {
 
     handleClickAdd = () =>
     {
-        if(this.validate()==true)
+        if(this.validate()===true)
         {
             let req={
                 typeid:this.state.userTypeId,
@@ -164,11 +164,11 @@ class CreateUser extends Component {
         
             <div id="Admin_CreateUser_Main_Div">
                 <div  id="Admin_CreateUser_Content1_Wrapper">
-                    <div style={{marginBottom:this.state.loading==true?'480px':''}}id="Admin_CreateUser_Heading1_Div">
+                    <div style={{marginBottom:this.state.loading===true?'480px':''}}id="Admin_CreateUser_Heading1_Div">
                         Create User
                     </div>
 
-                    {this.state.loading==true?
+                    {this.state.loading===true?
                         <SemipolarLoading size={"large"} color={'#b4ec51'}/>
                     :
                         <SwipeableViews index={this.state.index}>

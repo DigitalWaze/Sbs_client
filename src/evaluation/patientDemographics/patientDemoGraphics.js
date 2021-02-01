@@ -222,11 +222,15 @@ class PatientDemoGraphics extends Component {
         patient["email"]=this.state.email;
         patient["marital_status"]=this.state.martial_status;
         patient["date"]=this.state.date;
+
+        console.log(oldEvaluations)
         this.context.multipleUpdateValueWithHistory([{key:'patient',value:patient},{key:'report_id',value:report_id},{key:'patient_id',value:patient_id},{key:'oldEvaluations',value:oldEvaluations}],'./new-evaluation')
     } 
 
     handleClick = () =>
     {
+        console.log(this.context.state.oldEvaluations);
+
         if(this.context.state.evaluation_stage)
         {
             if(parseInt(this.context.state.evaluation_stage)>0)
@@ -269,6 +273,8 @@ class PatientDemoGraphics extends Component {
         if(response._visitor)
         {
             let oldEvaluations = this.context.state.oldEvaluations;
+
+            console.log(oldEvaluations);
 
             let currEvaluation = { id:response._visitor.id , stage:{id:1 , stage:'Patient Demographics Submitted'},visitor:{id:response._visitor.id,patient_id:response._visitor.patient_id} }
             oldEvaluations.push(currEvaluation);

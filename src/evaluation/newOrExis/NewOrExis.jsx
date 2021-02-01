@@ -5,7 +5,6 @@ import { Button } from '@material-ui/core';
 import GetData from '../../Fetch/getDataUniversal';
 import MyContext from '../../helper/themeContext';
 import './NewOrExis.css'
-import SemipolarLoading from 'react-loadingg/lib/SemipolarLoading';
  
 
 class NewOrExis extends Component {
