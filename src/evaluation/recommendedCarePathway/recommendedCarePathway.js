@@ -102,6 +102,10 @@ class RecommendedCarePathway extends Component {
         let Curr_Joint_id = this.context.state.Eval[activeJointIndex].joint_id;
         let Curr_Evaluation = this.context.state.Evaluations.find(joint => joint.joint_id.toString()===Curr_Joint_id);
         
+
+        console.log(Curr_Joint_id)
+        console.log(Curr_Evaluation)
+
         if(Curr_Joint_id.toString()==="3")
         {
             Joint_Name="Right Knee"
@@ -110,6 +114,8 @@ class RecommendedCarePathway extends Component {
         {
             Joint_Name="Left Knee"
         }
+
+        console.log(Joint_Name)
         // matching ids => [{name:'Normal to Slight',id:'1'},{name:'Moderate',id:'2'},{name:'Near End Stage',id:'3'},{name:'End Stage',id:'4'},{name:'Cannot Evaluate',id:'5'}].map((text,id)=>
         //compartment levels
 
@@ -119,9 +125,9 @@ class RecommendedCarePathway extends Component {
         //nes           3
         //es            4
 
-        let Compartment1 = this.getAggregate(Curr_Evaluation.Xrays[0].xrays[0],Curr_Evaluation.Xrays[0].xrays[1])
-        let Compartment2 = this.getAggregate(Curr_Evaluation.Xrays[1].xrays[0],Curr_Evaluation.Xrays[1].xrays[1])
-        let Compartment3 = parseInt(Curr_Evaluation.Xrays[2].xrays[0]);
+        let Compartment1 = this.getAggregate(Curr_Evaluation.Xrays[0].xrays[0].state,Curr_Evaluation.Xrays[0].xrays[1].state)
+        let Compartment2 = this.getAggregate(Curr_Evaluation.Xrays[1].xrays[0].state,Curr_Evaluation.Xrays[1].xrays[1].state)
+        let Compartment3 = parseInt(Curr_Evaluation.Xrays[2].xrays[0].state);
         Score  = this.getScore(Curr_Joint_id);
         if(Score < 74)
         {
@@ -185,11 +191,13 @@ class RecommendedCarePathway extends Component {
                 Path=NOCPath;
             }
         }
-        this.setState({loading:false,Replacement,Path,Score,Compartment1,Compartment2,Compartment3})
+        console.log(Compartment1)
+        this.setState({Joint_Name,loading:false,Replacement,Path,Score,Compartment1,Compartment2,Compartment3})
     }
 
     getAggregate = (a,b) =>
     {
+        console.log(a);
         let int1 = parseInt(a)
         let int2 = parseInt(b)
 
