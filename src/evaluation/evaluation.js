@@ -29,6 +29,7 @@ import MedentForm from "./medent/medentForm";
 import PRO from "./PRO/ProWrapper";
 import PatientSummary from "./patientSummary/patientSummary";
 import RecommendedCarePathway from "./recommendedCarePathway/recommendedCarePathway";
+import CompletePdf from "./completePdf/completePdf";
 
 
 class Evaluation extends Component {
@@ -88,9 +89,9 @@ class Evaluation extends Component {
 
             <Route path="/Evaluation/patient-summary" component={PatientSummary} />
             <Route path="/Evaluation/recommended-care-pathway" component={RecommendedCarePathway} />
+            <Route path="/Evaluation/complete-pdf" component={CompletePdf} />
 
 
-            <Route path="/Evaluation/pdf" component={Pdf} />
             <Route path="/Evaluation/selected-patient-report" component={RandomPdf} />
           </Router>
         </div>

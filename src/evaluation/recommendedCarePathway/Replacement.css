@@ -2,7 +2,6 @@
     color: white;
     margin-top: 10px;
     width: 100%;
-    padding-left: 56%;
 }
 
 #Knee-Replacement-small-box-1 {
@@ -12,8 +11,8 @@
     padding: 10px;
     border: 1px solid black;
     text-align: center;
-    margin-left: 15px;
     margin-top: 20px;
+    width: max-content;
 }
 
 #Knee-Replacement-small-box-2 {
@@ -24,8 +23,7 @@
     /* border: 1px solid black; */
     text-align: center;
     margin-top: 15px;
-    width: 190px;
-    margin-left: 27px;
+    width: max-content;
 }
 
 #Knee-Replacement-heading {
@@ -43,4 +41,13 @@
     #Knee-Replacement {
         padding-left: 13%;
     }
+}
+
+.Knee-Replacement-Recommendation-Box
+{
+    text-align: center;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

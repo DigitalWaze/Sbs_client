@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 class JPR extends Component {
     constructor(props) {
@@ -5,7 +6,16 @@ class JPR extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <div></div> );
+        return ( <div>
+                <Button
+                    onClick={this.props.handleBackClick}>
+                        BACK
+                </Button>
+                <Button
+                    onClick={this.props.handleNextClick}>
+                        Next
+                </Button>
+        </div> );
     }
 }
  
