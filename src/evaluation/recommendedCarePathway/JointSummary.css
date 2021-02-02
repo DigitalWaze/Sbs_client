@@ -19,6 +19,7 @@
 
 #JointSummary-heading {
     color: white;
+    text-align: left;
 }
 
 #JointSummary-box-1 {
@@ -33,6 +34,7 @@
 #JointSummary-row-1 {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 #JointSummary-part-1 {
@@ -71,7 +73,17 @@
 #JointSummary-part-1-heading {
     color: white;
     /* border: 1px solid black; */
-    width: 120px;
+    width: 152px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+
+#JointSummary-part-2-heading {
+    color: white;
+    /* border: 1px solid black; */
+    width: 140px;
     text-align: center;
     margin-bottom: 10px;
     font-weight: lighter;

@@ -63,11 +63,11 @@ class Replacement extends Component {
                         <h2 id="Joint-Treatment-Options-header"> SBS Recommendation: </h2>
 
                         <div>
-                            <div id="Knee-Replacement-small-box-1" style={{ opacity: recommendation === "TKR" ? 0.5 : 1 }}>
-                                Total Knee Replacement
+                            <div id="Knee-Replacement-small-box-1" style={{ opacity: 1 }}>
+                                {recommendation==="TKR"?"Total Knee Replacement":"Partial Replacement"}
                             </div>
-                            <div id="Knee-Replacement-small-box-2" style={{ opacity: recommendation === "PR" ? 0.5 : 1 }}>
-                                Partial Replacement
+                            <div id="Knee-Replacement-small-box-2" style={{ opacity: 0.5 }}>
+                                {recommendation==="TKR"?"Partial Replacement":"Total Knee Replacement"}
                             </div>
                         </div>
                     </div>

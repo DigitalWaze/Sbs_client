@@ -11,154 +11,70 @@ class JointNoi2 extends Component {
     render() {
         return (
             <div id="RCPE-Welcome-main-container">
-                <div id="RCPE-Welcome-box-1">
-                    <div id="RCPNO-inner-box-1">
-                        <h2 id="RCPNO-heading"> Right Knee: <br /> Non-Operative Interventions </h2>
+                <div  id="all-content-wrapper">
 
-                        <ul className="RCPNO-List">
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-1"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="OptionalJointInjection"
-                                />
-                                <label for="RCPNO-styled-checkbox-1" id="RCPNO-field1" className="RCPNOI-form-field">
-                                    Optional joint injection
-                            </label>
-                            </li>
+                    <div id="RCPE-Welcome-box-1" style={{flexDirection:'column',justifyContent:'center'}}>
+                        <div id="RCPNO-outer-box-1">
+                            <h2 id="RCPNO-heading"> Right Knee: <br /> Non-Operative Interventions </h2>
+                        </div>
 
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-2"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="SmokingCessation"
-                                />
-                                <label for="RCPNO-styled-checkbox-2" id="RCPNO-field2" className="RCPNOI-form-field">
-                                    Smoking cessation
-                            </label>
-                            </li>
+                        <div id="RCPNO-outer-box-2">
+                            <div id="RCPNO-inner-box-1">
 
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-3"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="WeightLoss"
-                                />
-                                <label for="RCPNO-styled-checkbox-3" id="RCPNO-field3" className="RCPNOI-form-field">
-                                    Weight loss
-                            </label>
-                            </li>
+                                <ul className="RCPNO-List">
+                                    {["Optional joint injection","Smoking cessation","Weight Loss","Nutritional support","Home Exercise","Physical therapy"].map((text)=>
+                                        <li>
+                                            <span className="RCPNOI-square-box">
 
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-4"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="NutritionalSupport"
-                                />
-                                <label for="RCPNO-styled-checkbox-4" id="RCPNO-field4" className="RCPNOI-form-field">
-                                    Nutritional support
-                            </label>
-                            </li>
+                                            </span>
+                                            <span className="RCPNOI-text-field">
+                                                {text}
+                                            </span>
+                                        </li>
+                                    )}
 
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-5"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="HomeExercise"
-                                />
-                                <label for="RCPNO-styled-checkbox-5" id="RCPNO-field5" className="RCPNOI-form-field">
-                                    Home exercise
-                            </label>
-                            </li>
+                                </ul>
+                            </div>
 
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-6"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="PhysicalTherapy"
-                                />
-                                <label for="RCPNO-styled-checkbox-6" id="RCPNO-field6" className="RCPNOI-form-field">
-                                    Physical Therapy
-                            </label>
-                            </li>
-                        </ul>
+                            <div id="RCPNO-inner-box-2">
+                                <ul className="RCPNO-List RCPNO-2nd-List">
+                                {["Pain management","Complimentary alternative pain treatments","Anxiety reduction"].map((text)=>
+                                    <li>
+                                        <span className="RCPNOI-square-box">
+
+                                        </span>
+                                        <span className="RCPNOI-text-field">
+                                            {text}
+                                        </span>
+                                    </li>
+                                )}
+
+                                </ul>
+                                <img alt="App-Image" src={NonOp1Image} id="RCPNO-Image" />
+                            </div>
+                        </div>
                     </div>
 
-                    <div id="RCPNO-inner-box-2">
-                        <ul className="RCPNO-List RCPNO-2nd-List">
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-7"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="PainManagement"
-                                />
-                                <label for="RCPNO-styled-checkbox-7" id="RCPNO-field1" className="RCPNOI-form-field">
-                                    Pain management
-                            </label>
-                            </li>
+                    <div id="RCPE-Welcome-box-2">
+                        <div id="RCPE-Welcome-footer-div1">
+                            <Button
+                                id="RCPE-Welcome-btn-1"
+                                variant="contained"
+                                onClick={this.props.handleBackClick}
+                            >
+                                {" "} Back {" "}
+                            </Button>
+                        </div>
 
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-8"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="ComplimentaryAlternativePainTreatments"
-                                />
-                                <label for="RCPNO-styled-checkbox-8" id="RCPNO-field2" className="RCPNOI-form-field">
-                                    Complimentary alternative pain treatments
-                            </label>
-                            </li>
-
-                            <li>
-                                <input
-                                    className="RCPNOI-styled-checkbox"
-                                    id="RCPNO-styled-checkbox-9"
-                                    name="non-operative-interventions"
-                                    type="checkbox"
-                                    value="AnxietyReduction"
-                                />
-                                <label for="RCPNO-styled-checkbox-9" id="RCPNO-field3" className="RCPNOI-form-field">
-                                    Anxiety reduction
-                            </label>
-                            </li>
-
-                        </ul>
-                        <img alt="App-Image" src={NonOp1Image} id="RCPNO-Image" />
-                    </div>
-                </div>
-
-                <div id="RCPE-Welcome-box-2">
-                    <div id="RCPE-Welcome-footer-div1">
-                        <Button
-                            id="RCPE-Welcome-btn-1"
-                            variant="contained"
-                        >
-                            {" "} Back {" "}
-                        </Button>
-                    </div>
-
-                    <div id="RCPE-Welcome-footer-div3">
-                        <Button
-                            id="RCPE-Welcome-btn-3"
-                            variant="contained"
-                        >
-                            {" "} Next {" "}
-                        </Button>
+                        <div id="RCPE-Welcome-footer-div3">
+                            <Button
+                                id="RCPE-Welcome-btn-3"
+                                variant="contained"
+                                onClick={this.props.handleNextClick}
+                            >
+                                {" "} Next {" "}
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

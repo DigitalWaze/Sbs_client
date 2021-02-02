@@ -101,6 +101,24 @@
     }
 }
 
+.RCPNOI-square-box
+{
+  width:20px;
+  height:20px;
+  border:1px solid white;
+  display: inline-block;
+}
+
+.RCPNOI-text-field
+{
+  display: inline-block;
+  line-height: 20px;
+  vertical-align: top;
+  margin-left: 10px;
+  color:white;
+  border-bottom: 1px solid white;
+}
+
 #RKOCI-Image {
     height: 250px;
     width: 250px;
@@ -125,6 +143,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  margin-left: 20px;
+
 }

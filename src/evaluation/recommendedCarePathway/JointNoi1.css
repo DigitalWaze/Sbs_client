@@ -1,6 +1,5 @@
 #JN1-Image {
-    height: auto;
-    width: 300px;
-    height: 300px;
-    margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    margin: auto;
 }

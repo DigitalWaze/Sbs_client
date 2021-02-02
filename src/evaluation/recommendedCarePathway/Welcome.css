@@ -13,6 +13,12 @@
   overflow: hidden;   
 }
 
+#all-content-wrapper
+{
+  width: calc(100% - 150px);
+  margin-left: 150px;
+}
+
 #RCPE-Welcome-box-1 {
     /* border: 1px solid black; */
     height: 90vh;
