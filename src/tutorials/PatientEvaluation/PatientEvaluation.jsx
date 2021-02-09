@@ -24,7 +24,10 @@ class PatientEvaluation extends Component {
             <Grid item xs={12} md={4} lg={4} xl={4}>
               <div className="home-grid-left">
                 <div className="Home_Button_Div">
-                  <Button id="Home_Button" variant="contained" style={{ opacity: "0.5" }} disabled={true}>
+                  <Button id="Home_Button" variant="contained"
+                    onClick={() =>
+                      this.context.history.push("/tutorials/patient-evaluation-education/understanding-pros")
+                    } disabled={false}>
                     {" "}
                     Understanding PROs{" "}
                   </Button>
@@ -35,7 +38,7 @@ class PatientEvaluation extends Component {
                     id="Home_Button"
                     variant="contained"
                     onClick={() =>
-                      this.context.history.push("/tutorials/patient-evaluation-education/patient-specific")
+                      this.context.history.push("/tutorials/patient-evaluation-education/xray-evaluation")
                     }>
                     {" "}
                     Patient Specific Matching{" "}
@@ -56,12 +59,12 @@ class PatientEvaluation extends Component {
                   </Button>
                 </div>
 
-                <div className="Home_Button_Div">
+                {/* <div className="Home_Button_Div">
                   <Button id="Home_Button" variant="contained" style={{ opacity: "0.5" }} disabled={true}>
                     {" "}
                     Understanding SBS Reports{" "}
                   </Button>
-                </div>
+                </div> */}
               </div>
             </Grid>
 

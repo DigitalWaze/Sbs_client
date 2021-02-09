@@ -76,10 +76,14 @@ import KVUP4 from "../assets/eval-comp-xrays/kneecap-up-4.png";
         //cannot-eval-image
 import CEimage from '../assets/eval-comp-xrays/cannotEval.jpg'
 
-export async function LoadNewEval(Store,oldEvaluation)   {
+export async function LoadNewEval(Store,oldEvaluation,route=null)   {
 
     let patient = {};
-    let evaluation_stage =  oldEvaluation.stage.id; 
+    let evaluation_stage;
+    if(oldEvaluation.stage)
+    {
+        evaluation_stage =  oldEvaluation.stage.id; 
+    }
     patient["name"]=oldEvaluation.patient[0].name;    
     patient["birth_date"]=DateFormatter(oldEvaluation.patient[0].birthday,'/')
     patient["age"]=oldEvaluation.patient[0].age;
@@ -95,6 +99,10 @@ export async function LoadNewEval(Store,oldEvaluation)   {
 
     console.log(patient)
     let temp_report_id=oldEvaluation.incomplete_vistor_id;
+    if(!temp_report_id)
+    {
+        temp_report_id = oldEvaluation.report_id;
+    }
     console.log(temp_report_id)
     let temp_patient_id=oldEvaluation.patient[0].id;
     console.log(temp_patient_id)
@@ -186,6 +194,34 @@ export async function LoadNewEval(Store,oldEvaluation)   {
                 ] 
             }
         }
+
+        if(oldEvaluation.evaluation.length>0)
+        {
+            console.log('here at matching eva');
+            oldEvaluation.evaluation.forEach((matchingEval) => {
+
+                let curr_processed_xray = oldEvaluation.Processed_Xray.find( xray => xray.id.toString() === matchingEval.processed_xray_id.toString());
+                console.log(curr_processed_xray)
+                let curr_view_id = curr_processed_xray.view_id;
+                console.log(curr_view_id)
+                let curr_type_id = curr_processed_xray.processed_xray_type_id;
+                console.log(curr_type_id)
+
+                let Curr_Joint_id = oldEvaluation.joint_hurt_priority.find((joint) => joint.id.toString() === curr_processed_xray.joint_hurt_id.toString()).joint_id;
+                console.log(Curr_Joint_id)
+
+                let tempEvaluation = Store.state.Evaluations.find(eva => eva.joint_id.toString() === Curr_Joint_id.toString())
+                console.log(tempEvaluation)
+
+                let tempEvaType = tempEvaluation.Xrays.find(type => type.id.toString() === curr_type_id.toString())
+                console.log(tempEvaType)
+
+                tempEvaType.xrays.find( (view) => view.id.toString() === curr_view_id.toString()).state=matchingEval.xray_matching_id;
+
+            })
+
+            console.log('final',Store.state.Evaluations);
+        }
         
     }
 
@@ -195,16 +231,21 @@ export async function LoadNewEval(Store,oldEvaluation)   {
         
     }
 
+    if(route==null)
+    {
+        route="/evaluation/demographics";
+    }
+
     //get processed xrays images and move on
     if(evaluation_stage>3)    
     {
         await SetProcessedXrays(Xrays,temp_report_id,Store)
         let stateArray = [{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'evaluation_stage',value:evaluation_stage},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'activeJointIndex',value:activeJointIndex},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'patient',value:patient}]
-        Store.multipleUpdateValueWithHistory(stateArray,'/evaluation/demographics');
+        Store.multipleUpdateValueWithHistory(stateArray,route);
     }
 
     //move on
-    else Store.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'evaluation_stage',value:evaluation_stage},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'activeJointIndex',value:activeJointIndex},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'patient',value:patient}],'/evaluation/demographics')
+    else Store.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:noOfEvalRemainToUpload},{key:'evaluation_stage',value:evaluation_stage},{key:'Xrays',value:Xrays},{key:'form',value:newForm},{key:'Eval',value:Eval},{key:'activeJointIndex',value:activeJointIndex},{key:'report_id',value:temp_report_id},{key:'patient_id',value:temp_patient_id},{key:'patient',value:patient}],route)
 }
 
 async function SetProcessedXrays(Xrays,report_id,Store)
@@ -361,7 +402,7 @@ export function emptyEvalState(global)
 }
 
 
-export function LoadDummyEvaluation(Store)
+export function LoadDummyEvaluation(Store,route)
 {
     let form = [
         { name: "Question1",question_id: 1, joint_id:3, pro_severity_id: 4, visitor_id: 39, },
@@ -400,9 +441,9 @@ export function LoadDummyEvaluation(Store)
     [
         {name:'Right Knee',image:Bone1Image  , joint_id:'3',
             Xrays:[
-                {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:'3',state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:'2',state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
-                {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:'1',state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:'1',state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
-                {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:'1',state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
+                {name:'Medial',id:1,isDone:false,enable:true,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:true,state:'1',state_id:null,notes:null,thumbnail:MFV,up:MFVUP,up1:MFVUP1,up2:MFVUP2,up3:MFVUP3,up4:MFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:'1',state_id:null,notes:'',thumbnail:MNFV,up:MNFVUP,up1:MNFVUP1,up2:MNFVUP2,up3:MNFVUP3,up4:MNFVUP4}]},
+                {name:'Lateral',id:2,isDone:false,enable:false,xrays:[{name:'Flexion View',id:1,image:null,isDone:false,enable:false,state:'3',state_id:null,notes:null,thumbnail:LFV,up:LFVUP,up1:LFVUP1,up2:LFVUP2,up3:LFVUP3,up4:LFVUP4},{name:'Non-Flexion View',image:null,id:2,isDone:false,enable:false,state:'1',state_id:null,notes:'',thumbnail:LNFV,up:LNFVUP,up1:LNFVUP1,up2:LNFVUP2,up3:LNFVUP3,up4:LNFVUP4}]},
+                {name:'Kneecap',id:3,isDone:false,enable:false,xrays:[{name:'Kneecap',id:3,image:null,isDone:false,enable:false,state:'4',state_id:null,notes:null,thumbnail:KV,up:KVUP,up1:KVUP1,up2:KVUP2,up3:KVUP3,up4:KVUP4}]},
             ]
         },
         {name:'Left Knee',image:Bone1Image  , joint_id:'4' ,
@@ -414,8 +455,8 @@ export function LoadDummyEvaluation(Store)
         }
     ]
     let Eval=[];
-    Eval.push({joint_hurt_id:'11',visitor_id:'39',joint_id:'3',name:'Right Knee',priority_id:2,isEvaluated:false})   // Right Knee
-    Eval.push({joint_hurt_id:'12',visitor_id:'39',joint_id:'4',name:'Left Knee',priority_id:1,isEvaluated:false})   // Left Knee
+    Eval.push({joint_hurt_id:'12',visitor_id:'39',joint_id:'4',name:'Left Knee',priority_id:1,isEvaluated:false}) 
+    Eval.push({joint_hurt_id:'11',visitor_id:'39',joint_id:'3',name:'Right Knee',priority_id:3,isEvaluated:false})   // Right Knee
 
     Store.multipleUpdateValueWithHistory([
         {key:'type',value:'2'},
@@ -428,7 +469,7 @@ export function LoadDummyEvaluation(Store)
         {key:'UXray',value:'true'},
 
         
-    ],'/evaluation/patient-summary')
+    ],route)
     console.log('----------- UpdateD store with dummy data ------------')
 }
     

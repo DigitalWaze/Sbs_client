@@ -17,9 +17,10 @@ import XrayTraining from "./xrayTraining/xrayTraining";
 import Knee from "./Knee/Knee";
 import Hip from "./Hip/Hip";
 import PatientEvaluation from "./PatientEvaluation/PatientEvaluation";
-import PatientSM from "./PatientEvaluation/PatientSM/PatientSM";
 import RecomPathway from "./PatientEvaluation/recomCarePath/recomendedcarepathway";
 import AutoXrayEval from "./AutoXrayEval/AutoXrayEval";
+import UnderstandingPros from "./PatientEvaluation/UnderstandingPRO/UnderstandingPro";
+import XrayEval from "./PatientEvaluation/XrayEval/XrayEval";
 
 class Tutorials extends Component {
   constructor(props) {
@@ -49,7 +50,9 @@ class Tutorials extends Component {
         {/* Patient Evaluation Education ROUTES STARTS HERE */}
         <Route exact path="/tutorials/patient-evaluation-education/options" component={PatientEvaluation} />
         {/* Contains INNER ROUTES FOR Pa  */}
-        <Route path="/tutorials/patient-evaluation-education/patient-specific" component={PatientSM} />
+        <Route path="/tutorials/patient-evaluation-education/xray-evaluation" component={XrayEval} />
+        <Route path="/tutorials/patient-evaluation-education/understanding-pros" component={UnderstandingPros} />
+
         {/* Contains ROUTES FOR recommended Care Pathway */}
         <Route path="/tutorials/patient-evaluation-education/recommended-carepathway" component={RecomPathway} />
         {/* Contains ROUTES FOR automatic xray evaluation */}

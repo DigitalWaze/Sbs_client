@@ -7,12 +7,6 @@ import Modal from '@material-ui/core/Modal';
 
 import MyContext from '../../helper/themeContext';
 
-import Xray1 from '../../assets/uploadBoxThumb/xray1.jpg';
-import Xray2 from '../../assets/uploadBoxThumb/xray2.jpg';
-import Xray3 from '../../assets/uploadBoxThumb/xray3.jpg';
-import Xray4Left from '../../assets/uploadBoxThumb/xray4Left.jpg';
-import Xray4Right from '../../assets/uploadBoxThumb/xray4Right.jpg';
-
 import boxBg from '../../assets/boxbg3.png'
 
 import Tick from '../../assets/tick-black.png';
@@ -59,10 +53,7 @@ class ShowReport extends Component {
         this.setState({openModal:true})
     }
 
-    modalOpen = () =>
-    {
-        this.setState({modal:true})
-    }
+   
     modalClose = () =>
     {
         this.setState({modal:false})
@@ -118,8 +109,7 @@ class ShowReport extends Component {
 
         else
         {
-            let joint_id=null;
-            let priority_id=null
+    
             let activeJointIndex=this.context.state.activeJointIndex
             console.log(this.context.state.Eval)
 
@@ -127,15 +117,9 @@ class ShowReport extends Component {
 
             {
                 activeJointIndex = activeJointIndex+1;
-                joint_id = this.context.state.Eval[activeJointIndex].joint_id;
-                priority_id = this.context.state.Eval[activeJointIndex].priority_id;
                 this.context.multipleUpdateValueWithHistory([{key:'noOfEvalRemainToUpload',value:1},{key:'activeJointIndex',value:activeJointIndex}],'./x-ray-matching')
             }
             
-            console.log(joint_id)
-            
-            if(joint_id==null)
-            alert('Something Wrong')
         }
     }
 

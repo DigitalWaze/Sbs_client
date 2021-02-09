@@ -6,7 +6,9 @@ const comparments = [
     { name: 'Normal to Slight', id: '1',color:'#B3D89B' },
     { name: 'Moderate', id: '2' ,color:'#FAF075'},
     { name: 'Near End Stage', id: '3' , color:'#F26E82'},
-    { name: 'End Stage', id: '4' , color:'purple'}
+    { name: 'End Stage', id: '4' , color:'#F26E82'},
+    {name:'Cannot Evaluate',id:'5',color:'#E4E4E4'}
+
 ]
 
 class JointTreatment extends Component {

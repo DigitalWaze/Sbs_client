@@ -4,19 +4,36 @@ import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 import "./JointSummary.css";
 import MyContext from '../../helper/themeContext';
+
+import Search from '../../assets/search.png';
+import ImageViewModalWithZoom from '../../components/ImageViewModal/ImageViewModalWithZoom';
+
+
 const comparments = [
     { name: 'Normal to Slight', id: '1',color:'#B3D89B' },
     { name: 'Moderate', id: '2' ,color:'#FAF075'},
     { name: 'Near End Stage', id: '3' , color:'#F26E82'},
-    { name: 'End Stage', id: '4' , color:'purple'}
+    { name: 'End Stage', id: '4' , color:'#F26E82'},
+    {name:'Cannot Evaluate',id:'5',color:'#E4E4E4'}
 ]
 
 class JointSummary extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = { ActiveImage:null,modal:false}
         console.log(props);
     }
+
+    handleSearchClick = (Xray) =>
+    {
+        this.setState({ActiveImage:Xray,modal:true})
+    }
+    
+    modalClose = () =>
+    {
+        this.setState({modal:false})
+    }
+
     render() {
         return (
             // Main container
@@ -58,23 +75,22 @@ class JointSummary extends Component {
                             </div>
 
                             {/* Row: 2 */}
-                            <div id="JointSummary-row-1" style={{ borderTop: "2px solid white" }}>
+                            <div id="JointSummary-row-1" style={{ borderTop: "2px solid white", paddingTop:"20px" }}>
+                            
                                 {
                                     this.context.state.Xrays.map((xray) =>
-                                        <div>
-                                            <div id="JointSummary-row-2">
-                                                <img
-                                                    id="JointSummary-Image"
-                                                    alt="App-Image"
-                                                    src={xray.image}
-                                                />
+                                        <div style={{display:'inline-block',padding:'0px 10px 0px 0px',position:'relative',maxWidth:'25%'}}  >
+                                            <img src={xray.image} alt="Xray" style={{maxHeight:'125px' , height:'auto', width:'auto'}}/>
+                                            <div className="Evaluaion_Report_Box_Search_Box" onClick={()=>{this.handleSearchClick(xray.image)}}>
+                                                <img src={Search} alt="Search" style={{width:'20px'}} />
                                             </div>
                                         </div>
                                     )
                                 }
                             </div>
                         </div>
-                        
+                        <ImageViewModalWithZoom modalState={this.state.modal}  modalClose={this.modalClose} ActiveImage={this.state.ActiveImage} />
+
                     </div>
 
                     <div id="RCPE-Welcome-box-2">

@@ -62,7 +62,7 @@ class Page2Left extends Component {
                         <span key={id}>
                             <Radio
                                 disabled={old}
-                                checked={this.state.Answer2.toString() === option.id.toString()}
+                                checked={this.state.Answer2 == option.id}
                                 onChange={this.handleChange}
                                 value={option.id}
                                 name="Answer2"
@@ -86,7 +86,7 @@ class Page2Left extends Component {
                         <span key={id}>
                             <Radio
                                 disabled={old}
-                                checked={this.state.Answer3.toString() === option.id.toString()}
+                                checked={this.state.Answer3 == option.id}
                                 onChange={this.handleChange}
                                 value={option.id}
                                 name="Answer3"
@@ -110,7 +110,7 @@ class Page2Left extends Component {
                         <span key={id}>
                             <Radio
                                 disabled={old}
-                                checked={this.state.Answer4.toString() === option.id.toString()}
+                                checked={this.state.Answer4 == option.id}
                                 onChange={this.handleChange}
                                 value={option.id}
                                 name="Answer4"
@@ -134,7 +134,7 @@ class Page2Left extends Component {
                         <span key={id}>
                             <Radio
                                 disabled={old}
-                                checked={this.state.Answer5.toString() === option.id.toString()}
+                                checked={this.state.Answer5 == option.id}
                                 onChange={this.handleChange}
                                 value={option.id}
                                 name="Answer5"

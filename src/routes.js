@@ -41,8 +41,8 @@ class Routes extends Component {
   UNSAFE_componentWillMount() {
 
 
-    LoadDummyEvaluation(this);
-    // this.loadPrevSession();
+    // LoadDummyEvaluation(this,'/Evaluation/upload-report-images');
+    this.loadPrevSession();
 
   }
 
@@ -217,7 +217,7 @@ class Routes extends Component {
       console.log('oldEvaluationNew) ',oldEvaluationNew)
 
 
-      this.updateValue(oldEvaluations,oldEvaluationNew)
+      this.updateValue('oldEvaluations',oldEvaluationNew)
     }
   };
 

@@ -26,7 +26,7 @@ class OCP extends Component {
             </div>
             <div id="OCP_Image_Wrapper">
               <div id="OCP_Image_Container">
-                <img src={Img1} alt="OCP1" />
+                <img src={Img1} alt="OCP1" style={{maxWidth:'100%'}}/>
               </div>
             </div>
             <div id="OCP_Next_Button_Div">

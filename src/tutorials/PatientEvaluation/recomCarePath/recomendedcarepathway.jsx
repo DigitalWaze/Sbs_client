@@ -9,6 +9,7 @@ import OCP from "./OCP/OCP";
 import NOP from "./NOP/NOP";
 import OP from "./OP/OP";
 import BAJHASPP from "./BAJHASPP/BAJHASPP";
+import UnderstandingCarePathways from "./UnderstandingCarePathways/UnderstandingCarePathways";
 
 class recomendedcarepathway extends Component {
   render() {
@@ -49,6 +50,13 @@ class recomendedcarepathway extends Component {
           path="/tutorials/patient-evaluation-education/recommended-carepathway/bone-and-joint-health-and-surgery-prep-program"
           component={BAJHASPP}
         />
+        <Route
+          exact
+          path="/tutorials/patient-evaluation-education/recommended-carepathway/understanding-care-pathways"
+          component={UnderstandingCarePathways}
+        />
+
+
       </Router>
     );
   }

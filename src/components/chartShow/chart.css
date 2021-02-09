@@ -2,9 +2,8 @@
 {
     background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
     min-height: 100vh;
-    
+    overflow: auto;
     position: relative;
-    overflow: hidden;
 }
 
 #Evaluaion_Chart_Content_Wrapper
@@ -119,7 +118,7 @@
 {
   float:left;
   /* margin-left:15%; */
-  width:80%;
+  width:max-content;
   min-width: 1200px;
   flex-direction: column;
   justify-content: center;
@@ -127,6 +126,7 @@
   top:50%;
   left: 50%;
   transform: translate(-50%,-50%);
+
 }
 
 @media only screen and (max-height:1140px)
@@ -144,9 +144,9 @@
   #Evaluaion_MultiChart_Content_Wrapper
   {
     height: 100%;
-    margin-left: 100px;
-    transform: translateY(-50%);
-    left: '';
+    /* margin-left: 100px; */
+    transform: translate(-50%,-50%);
+    left: 50%;
 
   }
 }

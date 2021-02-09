@@ -29,6 +29,15 @@ import MedentForm from "./medent/medentForm";
 import PRO from "./PRO/ProWrapper";
 import PatientSummary from "./patientSummary/patientSummary";
 import RecommendedCarePathway from "./recommendedCarePathway/recommendedCarePathway";
+import CompletePdf from "./completePdf/completePdf";
+
+//check Pdf Images
+import ChartImage from "./pdfImages/chartImage";
+import ReportPage1 from "./pdfImages/reportPage1";
+import GetImage from "./pdfImages/getImage";
+import GetImage1 from "./pdfImages/getImage1";
+import UploadReportImages from "./uploadReportImages/uploadReportImages";
+
 
 
 class Evaluation extends Component {
@@ -47,6 +56,8 @@ class Evaluation extends Component {
           this.context.history.location.pathname !== "/evaluation/Demographics" &&
           this.context.history.location.pathname !== "/evaluation/welcome" &&
           this.context.history.location.pathname !== "/evaluation/demographics" &&
+          this.context.history.location.pathname !== "/evaluation/new-or-existing" &&
+          this.context.history.location.pathname !== "/evaluation/required-info" &&
           this.context.history.location.pathname !== "/evaluation" ? (
             this.context.state.patient ? (
               <div id="Evaluation_Main_Div_Top_Name">{this.context.state.patient.name}</div>
@@ -88,23 +99,19 @@ class Evaluation extends Component {
 
             <Route path="/Evaluation/patient-summary" component={PatientSummary} />
             <Route path="/Evaluation/recommended-care-pathway" component={RecommendedCarePathway} />
+            <Route path="/Evaluation/complete-pdf" component={CompletePdf} />
 
 
-            <Route path="/Evaluation/pdf" component={Pdf} />
             <Route path="/Evaluation/selected-patient-report" component={RandomPdf} />
+
+            <Route path="/Evaluation/chart-image" component={GetImage1} />
+            <Route path="/Evaluation/upload-report-images" component={UploadReportImages} />
+
+            {/* <Route path="/Evaluation/chart-image" component={ChartImage} /> */}
+
           </Router>
         </div>
 
-        {/* { this.context.history.location.pathname!=="/Evalutaion/Welcome"?
-                 
-                    <div id="Evaluation_Main_Div_Top_Name">
-                        aa
-                    </div> 
-                :console.log('a')
-                } */}
-        {/* <div id="Evaluation_Main_Div_Top_Name">
-                        aa
-                    </div>  */}
       </div>
     );
   }

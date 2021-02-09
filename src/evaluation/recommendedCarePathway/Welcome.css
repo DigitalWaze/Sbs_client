@@ -15,8 +15,16 @@
 
 #all-content-wrapper
 {
-  width: calc(100% - 150px);
+  width: calc(100% - 300px);
   margin-left: 150px;
+}
+
+@media only screen and (max-width:980px)
+{
+  #all-content-wrapper
+  {
+    width: calc(100% - 150px);
+  }
 }
 
 #RCPE-Welcome-box-1 {

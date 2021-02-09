@@ -36,16 +36,11 @@ class RecommendedCarePathway extends Component {
     componentDidMount()
     {
         let Evaluations = this.context.state.Evaluations
-        if(Evaluations)
+        let Eval =  this.context.state.Eval;
+        if(Eval)
         {
-            if(Evaluations.length>0)
+            if(Eval.length>0)
             {
-                if(this.context.state.Eval.length.toString() !== Evaluations.length.toString())
-                {
-                    this.handleFailure();
-                    return;
-                }
-
                 this.setState({loading:true,NoOfJoints:this.context.state.Eval.length,RemainingJointRCP:this.context.state.Eval.length,page:0})
                 this.LoadCurrRCP(this.context.state.Eval.length);
             }
@@ -74,10 +69,6 @@ class RecommendedCarePathway extends Component {
 
         this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 1 && parseInt(ques.question_id) < 6) && ques.joint_id.toString()===joint_id.toString() )  {  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ SumPain=SumPain+parseInt(ques.pro_severity_id) -1 } } });
         this.context.state.form.filter(ques=> { if( (parseInt(ques.question_id) > 5 && parseInt(ques.question_id) < 8) && ques.joint_id.toString()===joint_id.toString() )  {  if( parseInt(ques.pro_severity_id).toString()!="NaN"){ SumFunction=SumFunction+parseInt(ques.pro_severity_id) -1 } } });
-       
-        // let PainInterval = Math.round(( (1 - SumPain/16) *100) * 10) /10;
-        // let StiffInterval =  Math.round(((1 - SumStiff/4) *100) * 10) /10;
-        // let FunctionInterval = Math.round( ( (1 - SumFunction/8) *100 ) * 10)/10;
 
         OverallInterval = Math.round( ( OverAll[SumPain+SumStiff+SumFunction]) * 10)/10; 
         return OverallInterval
@@ -87,7 +78,7 @@ class RecommendedCarePathway extends Component {
     LoadCurrRCP = (remaining=null) =>
     {
         let RemainingJointRCP;
-        let NoOfJoints = this.context.state.Evaluations.length;
+        let NoOfJoints = this.context.state.Eval.length;
         let Replacement="";
         let Path="";
         let Score=0;
@@ -101,7 +92,7 @@ class RecommendedCarePathway extends Component {
 
         let activeJointIndex=NoOfJoints-RemainingJointRCP;
         let Curr_Joint_id = this.context.state.Eval[activeJointIndex].joint_id;
-        let Curr_Evaluation = this.context.state.Evaluations.find(joint => joint.joint_id.toString()===Curr_Joint_id);
+        let Curr_Evaluation = this.context.state.Evaluations.find(joint => joint.joint_id.toString()===Curr_Joint_id.toString());
         
 
         console.log(Curr_Joint_id)
@@ -262,9 +253,9 @@ class RecommendedCarePathway extends Component {
             case 3: return <JointTreatment Joint_Name={this.state.Joint_Name} Recommendation="OC" Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;           
             case 4: return <Replacement Joint_Name={this.state.Joint_Name} Recommendation="PKR" Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
             case 5: return <JPR Joint_Name={this.state.Joint_Name} Replacement={this.state.Replacement} Score={this.state.Score} Compartment1={this.state.Compartment1} Compartment2={this.state.Compartment2} Compartment3={this.state.Compartment3} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick} />;
-            case 6: return <JointNoi5  Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
-            case 7: return <JointNoi6  Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextEval}/>;
-            default: return <div> Unreachable step</div>;
+            case 6: return <JointNoi3 Joint_Name={this.state.Joint_Name} Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextClick}/>;
+            case 7: return <JointNoi4  Joint_Name={this.state.Joint_Name} Noi={[]} handleBackClick = {this.handleBackClick} handleNextClick={this.handleNextEval}/>;
+            default: return <div> Unreachable step</div>; 
         }  
     }
 
@@ -292,6 +283,7 @@ class RecommendedCarePathway extends Component {
 
     handleReviewClick = () =>
     {
+        this.context.history.push('/tutorials/patient-evaluation-education')
         //go to review education page
     }
 
@@ -306,7 +298,7 @@ class RecommendedCarePathway extends Component {
 
         else
         {
-
+            this.context.history.push('./complete-pdf')
         }
 
     }

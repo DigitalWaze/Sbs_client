@@ -30,11 +30,10 @@ class Home extends Component {
 
     handleRecover = () =>
     {
-        // console.log(this.context.state.temp_patient_id)
         this.setState({loading:true})
         let report_id =  this.context.state.oldEvaluations[this.context.state.oldEvaluations.length-1].id; 
         this.context.newEval();
-        GetData(this.context.baseUrl+`/api/v1/get/report?report_id=${report_id}`,200,this.context.state.token,this.setMe)
+        GetData(this.context.baseUrl+`/api/v1/get/incomplete-report?report_id=${report_id}`,200,this.context.state.token,this.setMe)
     }
 
     deleteReportAndStartNew = () =>
@@ -126,17 +125,18 @@ class Home extends Component {
                                     </div>
 
                                     <div className="Home_Button_Div">
-                                        <Button id="Home_Button" variant="contained" onClick={() => { this.context.history.push("./tutorials/automatic-xray-evaluation"); }}   >
-                                            {" "} Automatic X-ray Evaluation {" "}
+                                        <Button id="Home_Button" variant="contained" 
+                                            onClick={() => { this.context.history.push("/tutorials/patient-evaluation-education/options"); }} >
+                                            {" "} Patient Evaluation and Care Pathways {" "}
                                         </Button>
                                     </div>
 
                                     <div className="Home_Button_Div">
-                                        <Button id="Home_Button" variant="contained" 
-                                            onClick={() => { this.context.history.push("/tutorials/patient-evaluation-education/options"); }} >
-                                            {" "} Patient Evaluation {" "}
+                                        <Button id="Home_Button" variant="contained" onClick={() => { this.context.history.push("./tutorials/automatic-xray-evaluation"); }}   >
+                                            {" "} Machine Learning {" "}
                                         </Button>
                                     </div>
+
                                 </div>
                             </Grid>
 

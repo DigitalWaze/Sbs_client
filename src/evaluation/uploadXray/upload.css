@@ -62,7 +62,7 @@
 
 #Evaluaion_UploadXray_Upload_Box_Complete_Div
 {
-    width: 200px;
+    width: 220px;
     margin-top: 15px;
     margin-right: auto;
     margin-left: auto;
@@ -79,7 +79,7 @@
     justify-content: center;
     font-family: 'Lato', sans-serif;
     color: #fff;
-    vertical-align:top;
+    vertical-align:middle;
     /* margin-bottom:10px;  */
     margin-left:10px;
     display: inline-block;
@@ -87,7 +87,7 @@
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis; 
-    width: 150px;
+    width: 170px;
 }
 
 .complete-circle-with-arrow
@@ -98,6 +98,7 @@
     margin-right: auto;
     margin-left: auto;
     border-radius: 500px;
+    vertical-align: middle;
     background-color:  #b4ec51;
     background-image: url('../../assets/button-tick.png');
     background-position: 50% 50%;
@@ -159,6 +160,22 @@
   background-color: #b4ec51;
   font-family: 'Lato', sans-serif;
   text-transform:none;
+}
+
+.Evaluaion_UploadXray_Upload_Box_Loader_Text
+{
+    color:white;
+}
+
+.Evaluaion_UploadXray_Upload_Box_Delete_Button
+{
+    background-color: #b4ec51 !important;
+    color:grey;
+    margin-left: 20px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    min-width: 40px !important;
+
 }
 
 
