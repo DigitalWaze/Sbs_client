@@ -20,27 +20,23 @@
 }
 
 #RCPE-Welcome-box-1 {
-    /* border: 1px solid black; */
     height: 90vh;
     display: flex;
     flex-direction: row;
 }
 
 #RCPE-Welcome-box-2 {
-    /* border: 1px solid blue; */
     height: 10vh;
     display: flex;
     flex-direction: row;
 }
 
 #RCPE-Welcome-inner-box-1 {
-    /* border: 2px solid yellow; */
     flex-grow: 2;
     padding: 30px;
 }
 
 #RCPE-Welcome-inner-box-2 {
-    /* border: 2px solid yellow; */
     flex-grow: 1;
     display: flex;
     justify-content: center;
@@ -99,25 +95,22 @@
   }
 
 #bone-image {
-    height: 90vh;
+    height: 80vh;
     margin-top: 120px;
 }
 
 #RCPE-Welcome-footer-div1 {
     flex-grow: 1;
-    /* border: 1px solid red; */
 }
 
 #RCPE-Welcome-footer-div2 {
     flex-grow: 2;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
 }
 
 #RCPE-Welcome-footer-div3 {
     flex-grow: 1;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: flex-end;
 }
@@ -150,5 +143,14 @@
   #RCPE_Welcome_Heading2 {
     font-size: 30px;
     margin-bottom: 5px;
+  }
+
+  #RCPE-Welcome-btn-1 , #RCPE-Welcome-btn-3 {
+    font-size: 17px;
+    width: 100px;
+  }
+
+  #RCPE-Welcome-btn-2 {
+    font-size: 17px;
   }
 }
