@@ -54,7 +54,7 @@ class ChartShowMulti extends Component {
                     {
                         this.props.JointMapArray.map((joint,id)=>
                     
-                        <div style={{display:'inline-block',width:'fit-content',marginRight:'20px',height:ChartHeight+'px',background:'white'}}>
+                        <div style={{display:'block',width:'fit-content',marginRight:'20px',height:ChartHeight+'px',background:'white'}}>
                             
                             <div style={{height:ChartHeight+'px'}} className="Chart-Joint-Name-Header-Wrapper">
                                 <div style={{marginTop:ChartHeight/2+'px'}}className="Chart-Joint-Name-Header">

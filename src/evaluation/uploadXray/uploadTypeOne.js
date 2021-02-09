@@ -69,6 +69,7 @@ class UploadTypeOne extends Component {
                                 id="upload-type-one_Next_Button"
                                 className="upload-type-one_Next_Button_Final"
                                 variant="contained"
+                                onClick={this.props.handleBackClick}
                             >
                                 {" "} Back {" "}
                             </Button>

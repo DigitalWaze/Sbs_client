@@ -17,9 +17,9 @@ class CompletePdf extends Component {
     componentDidMount = () =>
     {
         let req={
-            visitor_id:288
+            visitor_id:this.context.state.report_id
         }
-        GetData(this.context.baseUrl+'/api/v1/get/pdf',200,req,this.context.state.token,this.setMe)
+        GetData(this.context.baseUrl+'/api/v1/get-prc/pdf',200,req,this.context.state.token,this.setMe)
         // Get  (this.context.baseUrl+'/api/v1/download/pdf',token,callback)
     
     }

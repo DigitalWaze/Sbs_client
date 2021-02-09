@@ -26,7 +26,7 @@ class NOP extends Component {
             </div>
             <div id="NOP_Image_Wrapper">
               <div id="NOP_Image_Container">
-                <img src={Img1} alt="NOP1" />
+                <img src={Img1} alt="NOP1" style={{maxWidth:'100%'}}/>
               </div>
             </div>
             <div id="NOP_Next_Button_Div">

@@ -13,28 +13,52 @@ import { LoadNewEval } from '../../StoreFunctions/evaluationStoreFunctions';
 class IncompleteEvaluations extends Component {
     constructor(props) {
         super(props);
-        this.state = { loading:false}
+        this.state = { loading:true,rows:[]}
     }
 
-    handleClick = () =>
-    {
-        this.context.clearEvalState();
-        this.context.history.push('./welcome')
-    }
 
     componentDidMount()
     {
+      GetData(this.context.baseUrl+'/api/v1/user/all-incomplete-reports',200,this.context.state.token,this.setMe);
+    }
 
+    setMe = (response) =>
+    { 
+      if(response.reports.length>0)
+      {
+        // response.forEach(element => {
+        // let mydate=element.patient[0].date.toString().match(/\d+/g).map(Number);
+        // let mydate_year=mydate[0];
+        // let mydate_month=mydate[1];
+        // let mydate_date=mydate[2];
+
+        // if(mydate_month.toString().length==1)
+        // {
+        //     mydate_month='0'+mydate_month;
+        // }
+        
+        // if(mydate_date.toString().length==1)
+        // {
+        //     mydate_date='0'+mydate_date;
+        // }
+        // let newdate=mydate_month+'-'+mydate_date+'-'+mydate_year;
+        //     rows.push({patient_id:element.patient[0].id,patient_name:element.patient[0].name,evaluation_date:newdate,report_id:element.id})
+        // });
+
+        this.setState({rows:response.reports,loading:false})
+      }
+      else this.setState({loading:false})
     }
 
     handleRecover = (id) =>
     {
       this.setState({loading:true})
       this.context.newEval();
-      GetData(this.context.baseUrl+`/api/v1/get/report?report_id=${id}`,200,this.context.state.token,this.setMe)
+      GetData(this.context.baseUrl+`/api/v1/get/incomplete-report?report_id=${id}`,200,this.context.state.token,this.setMeTwo)
     }
+    
 
-    setMe = (response) =>
+    setMeTwo = (response) =>
     {
       if(response.incomplete_vistor_id!=null && response.incomplete_vistor_id!=undefined && response.incomplete_vistor_id!=="" && response.incomplete_vistor_id!==" ")
       {
@@ -65,7 +89,7 @@ class IncompleteEvaluations extends Component {
                   </div>
 
                   <div id="Evalution_History_Table_Body">
-                    {this.context.state.oldEvaluations.map((row, id) => (
+                    {this.state.rows.map((row, id) => (
                       
                       <div className="Evalution_History_Table_Body_Row">
                         <div

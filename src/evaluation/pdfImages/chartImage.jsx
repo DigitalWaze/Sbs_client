@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MyContext from '../../helper/themeContext';
 import { VictoryStack,VictoryArea } from 'victory';
-import Arrow from '@elsdoerfer/react-arrow'
 import FooterImage from '../../assets/charts-pdf-footer-image.PNG'
 import FooterImage1 from '../../assets/charts-pdf-footer-image1.PNG'
 import FooterImage2 from '../../assets/charts-pdf-footer-image2.PNG'
@@ -19,7 +18,7 @@ class ChartImage extends Component {
 
     UNSAFE_componentWillMount()
     {
-        let OverAll = this.context.ChartOverAll
+        let OverAll = this.context.ChartOverAll();
         let JointMapArray;
         
         let SumPain=0;
@@ -95,11 +94,11 @@ class ChartImage extends Component {
         <div className="chart-image-wrapper">
 
             <div className="chart-pdf-header">
-                Patient Reported Profile
+                Patient Reported Pain and Function Profile
             </div>
 
             <div className="chart-pdf-patient-header">
-                {this.context.state.patient.name}  <span className="chart-patient-header-middle"> Measure Date : {this.context.state.patient.date} </span>
+                {this.context.state.patient.name}  <span className="chart-patient-header-middle"> Evaluation Date : {this.context.state.patient.date} </span>
                 <span className="chart-patient-header-right"> ID: {this.context.state.patient_id} </span>
             </div>
         
@@ -114,14 +113,14 @@ class ChartImage extends Component {
                         BETTER &nbsp; JOINT &nbsp; HEALTH
                     </span>
                     <span id="arrow-image-div">
-                        <Arrow
+                        {/* <Arrow
                                 angle={0}
                                 length={90}
                                 style={{
                                 width: '50px',
                                 height:'375px'
                                 }}
-                            />
+                            /> */}
                             <img src={ArrowImage} id="arrow-image-tag" />
                     </span>
 

@@ -1,0 +1,26 @@
+
+
+.Evaluation_Upload_Report_Images_Next_Button_Wrapper
+{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+
+}
+
+.Evaluation_Upload_Report_Images_Next_Button
+{
+    font-weight: 600;
+    color: white !important;
+}
+
+.Evaluation_Upload_Report_Images_Text
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color:white;
+    font-size: 32px;
+    font-weight: 600;
+}

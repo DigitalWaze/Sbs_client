@@ -103,7 +103,7 @@ class ChartJs extends Component {
             this.setState({totalLeft:1,active:joint_id,NextButtonText:"Next"})
         }
 
-        else this.context.history.push('./pdf')
+        else this.context.history.push('./upload-report-images')
     }
 
     render() { 

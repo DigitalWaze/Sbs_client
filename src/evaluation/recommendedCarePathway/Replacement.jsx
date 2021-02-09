@@ -3,11 +3,13 @@ import Button from "@material-ui/core/Button";
 import "./Replacement.css";
 
 const comparments = [
-    { name: 'Normal to Slight', id: '1' },
-    { name: 'Moderate', id: '2' },
-    { name: 'Near End Stage', id: '3' },
-    { name: 'End Stage', id: '4' }
-];
+    { name: 'Normal to Slight', id: '1',color:'#B3D89B' },
+    { name: 'Moderate', id: '2' ,color:'#FAF075'},
+    { name: 'Near End Stage', id: '3' , color:'#F26E82'},
+    { name: 'End Stage', id: '4' , color:'#F26E82'},
+    {name:'Cannot Evaluate',id:'5',color:'#E4E4E4'}
+
+]
 
 class Replacement extends Component {
     constructor(props) {
@@ -29,28 +31,28 @@ class Replacement extends Component {
                             <div id="JointSummary-row-1">
                                 <div>
                                     <h3 id="JointSummary-part-1-heading"> Medial </h3>
-                                    <div id="JointSummary-part-1" style={{ backgroundColor: this.props.Compartment1.toString() === "1" ? "#F26E82" : "#B3D89B" }}>
+                                    <div id="JointSummary-part-1" style={{ backgroundColor: comparments.find((comp) => comp.id.toString() === this.props.Compartment1.toString()).color }} >
                                         {comparments.find((comp) => comp.id.toString() === this.props.Compartment1.toString()).name}
                                     </div>
                                 </div>
 
                                 <div>
                                     <h3 id="JointSummary-part-1-heading">  Lateral </h3>
-                                    <div id="JointSummary-part-1" style={{ backgroundColor: this.props.Compartment2.toString() === "2" ? "#B4D99C" : "#B3D89B" }}>
+                                    <div id="JointSummary-part-1" style={{ backgroundColor: comparments.find((comp) => comp.id.toString() === this.props.Compartment2.toString()).color }} >
                                         {comparments.find((comp) => comp.id.toString() === this.props.Compartment2.toString()).name}
                                     </div>
                                 </div>
 
                                 <div>
                                     <h3 id="JointSummary-part-1-heading"> Kneecap </h3>
-                                    <div id="JointSummary-part-1" style={{ backgroundColor: this.props.Compartment3.toString() === "3" ? "#FAF075" : "#B3D89B" }}>
+                                    <div id="JointSummary-part-1" style={{ backgroundColor: comparments.find((comp) => comp.id.toString() === this.props.Compartment3.toString()).color }} >
                                         {comparments.find((comp) => comp.id.toString() === this.props.Compartment3.toString()).name}
                                     </div>
                                 </div>
 
                                 <div id="JointSummary-part-last-box">
                                     <h3 id="JointSummary-part-1-heading">  KOOS </h3>
-                                    <div id="JointSummary-part-4" style={{ backgroundColor: "#F26E82" }}>
+                                    <div id="JointSummary-part-4" style={{ backgroundColor: this.props.Score < 74 ? "#F26E82" : "#B3D89B"}}>
                                         {this.props.Score}
                                     </div>
                                 </div>

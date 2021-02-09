@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player'
 import SemipolarLoading from "react-loadingg/lib/SemipolarLoading";
 
 
-class PatientSM extends Component {
+class XrayEval extends Component {
   constructor(props) {
     super(props);
     this.state = {light:false,loading:true};
@@ -63,5 +63,5 @@ class PatientSM extends Component {
     );
   }
 }
-PatientSM.contextType = MyContext;
-export default PatientSM;
+XrayEval.contextType = MyContext;
+export default XrayEval;

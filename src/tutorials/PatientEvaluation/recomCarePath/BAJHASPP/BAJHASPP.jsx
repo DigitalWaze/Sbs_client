@@ -47,7 +47,7 @@ class BAJHASPP extends Component {
                 variant="contained"
                 onClick={() => {
                   this.context.setCookie("tutorial-" + this.context.state.user_id, 8);
-                  this.context.history.push("/tutorials/patient-evaluation-education/options");
+                  this.context.history.push("./understanding-care-pathways");
                 }}>
                 {" "}
                 NEXT{" "}

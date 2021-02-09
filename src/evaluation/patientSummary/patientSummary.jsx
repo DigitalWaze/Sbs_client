@@ -16,10 +16,11 @@ class PatientSummary extends Component {
 
     componentDidMount = () =>
     {
+        console.log(this.context.state);
         let req={
-            visitor_id:288
+            visitor_id:this.context.state.report_id
         }
-        GetData(this.context.baseUrl+'/api/v1/get/pdf',200,req,this.context.state.token,this.setMe)
+        GetData(this.context.baseUrl+'/api/v1/get/patient-summary',200,req,this.context.state.token,this.setMe)
         // Get  (this.context.baseUrl+'/api/v1/download/pdf',token,callback)
     
     }

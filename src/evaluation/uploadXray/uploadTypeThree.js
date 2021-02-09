@@ -54,6 +54,7 @@ class UploadTypeThree extends Component {
                                 id="upload-type-three_Next_Button"
                                 className="upload-type-three_Next_Button_Final"
                                 variant="contained"
+                                onClick={this.props.handleBackClick}
                             >
                                 {" "} Back {" "}
                             </Button>

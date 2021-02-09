@@ -1,0 +1,11 @@
+.JPR-footer-box1 , .JPR-footer-box2 , .JPR-footer-box3 {
+    width: 160px;
+}
+
+.JPR-footer-box2 , .JPR-footer-box3 {
+    border: none !important;
+}
+
+.JPR-header {
+    margin-left: 200px;
+}

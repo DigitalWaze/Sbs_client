@@ -23,6 +23,7 @@ import UploadType from './uploadType';
 import UploadTypeOne from './uploadTypeOne';
 import UploadTypeTwo from './uploadTypeTwo';
 import UploadTypeThree from './uploadTypeThree';
+import ConfirmedViewType from './confirmedViewType';
 
 
 
@@ -36,6 +37,7 @@ const UploadTypePage = 4
 const UploadTypeOnePage = 5
 const UploadTypeTwoPage = 6
 const UploadTypeThreePage = 7
+const ConfirmedViewTypePage = 8
 
 class UploadXray extends Component {
     constructor(props) {
@@ -131,9 +133,9 @@ class UploadXray extends Component {
 
     appendFile = (file,xrayname,xrayid) =>
     {
-        let files=this.state.files;
-        let fileObj={visitor_id:this.context.state.report_id,xray_type_id:xrayid,file:file,name:xrayname};
-        files.push(fileObj);
+        // let files=this.state.files;
+        // let fileObj={visitor_id:this.context.state.report_id,xray_type_id:xrayid,file:file,name:xrayname};
+        // files.push(fileObj);
 
         let Xrays=this.state.Xrays;
         Xrays[this.state.activeId].isDone=true;
@@ -141,18 +143,14 @@ class UploadXray extends Component {
 
         if(this.state.activeId===this.state.Xrays.length-1) //last one for upload
         {
-            this.setState({Xrays,page:OverviewPage,file,uploadButton:true})
+            this.setState({Xrays,page:ConfirmedViewTypePage,file,uploadButton:true})
         }
 
         else
         {
             Xrays[this.state.activeId+1].enable=true;
-            this.setState({Xrays,page:OverviewPage,file})
+            this.setState({Xrays,page:ConfirmedViewTypePage,file})
         }
-       
-
-       
-
     }
 
     handleOverviewClick = (id) =>
@@ -194,19 +192,9 @@ class UploadXray extends Component {
                 form_data.append(file.xray_type_id,file.file)
             }
 
-            PostFormData(this.context.baseUrl+'/api/v1/upload/xray',200,form_data,this.context.state.token,this.newSetMe)
-
-
-            
+            PostFormData(this.context.baseUrl+'/api/v1/upload/xray',200,form_data,this.context.state.token,this.newSetMe) 
         }
-
-       
-        
     }
-
-    
-  
-
 
     newSetMe = (response) =>
     {
@@ -217,39 +205,6 @@ class UploadXray extends Component {
             this.context.history.push('./patient-profile')
         }
     }
-
-    // checkAllUploaded = (uploaded,url,visitor_id,xray_type_id)  =>
-    // {
-    //     let req=this.state.req;
-    //     req.push({visitor_id:visitor_id,xray_type_id:xray_type_id,image_url:url})
-    //     if(uploaded===this.state.files.length)
-    //     {
-    //         PostData(this.context.baseUrl+'/api/v1/upload/xray',201,req,this.context.state.token,this.setMe)
-    //     }
-    // }
-
-    // setMe = (response) =>
-    // {
-    //     if(response.length>0)
-    //     {
-
-    //         let oldEvaluations = this.context.state.oldEvaluations;
-    //         let currEvaIndex = oldEvaluations.findIndex(evaluation => evaluation.id.toString() === this.context.state.activeEvaluation.id.toString() );
-
-    //         oldEvaluations[currEvaIndex].stage.id=4;
-    //         oldEvaluations[currEvaIndex].stage.stage="All Xrays Uploaded";
-
-    //         let currentEvaluation = oldEvaluations[currEvaIndex];
-            
-    //         this.context.multipleUpdateValueWithHistory([{key:'UXray',value:true},{key:'Xrays',value:this.state.Xrays},{key:'oldEvaluations',value:oldEvaluations},{key:'activeEvaluation',value:currentEvaluation}])
-
-    //         this.context.updateSession();
-    //         this.context.history.push('./patient-profile')
-
-
-    //     }
-    // }
-
 
     handlePageChange = (page) =>
     {
@@ -266,9 +221,10 @@ class UploadXray extends Component {
             case 2: return <OverviewBox Old={this.Old} handleUpload={this.handleUploadClick}  Xrays={this.state.Xrays} handleClick={(id)=>this.handleOverviewClick(id)} uploadButton={this.state.uploadButton} />;
             case 3: return <UploadBox  appendFile={(file,name,id)=>this.appendFile(file,name,id)} Xray={this.state.Xrays[this.state.activeId]} />
             case 4: return <UploadType handleBackClick={()=>this.handlePageChange(AcknowledgePage)} handleTypeOneClick={()=>this.handlePageChange(UploadTypeOnePage)} handleTypeTwoClick={()=>this.handlePageChange(UploadTypeTwoPage)} handleTypeThreeClick={()=>this.handlePageChange(UploadTypeThreePage)} handleTypeFourClick={()=>this.handlePageChange(OverviewPage)}/>
-            case 5: return <UploadTypeOne handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
-            case 6: return <UploadTypeTwo handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
-            case 7: return <UploadTypeThree handleNextClick={()=>this.handlePageChange(OverviewPage)}/>
+            case 5: return <UploadTypeOne handleNextClick={()=>this.handlePageChange(OverviewPage)} handleBackClick={()=>this.handlePageChange(UploadTypePage)}/>
+            case 6: return <UploadTypeTwo handleNextClick={()=>this.handlePageChange(OverviewPage)} handleBackClick={()=>this.handlePageChange(UploadTypePage)}/>
+            case 7: return <UploadTypeThree handleNextClick={()=>this.handlePageChange(OverviewPage)} handleBackClick={()=>this.handlePageChange(UploadTypePage)}/>
+            case 8: return <ConfirmedViewType handleBackClick={()=>this.handlePageChange(UploadBox)} handleNextClick={()=>this.handlePageChange(OverviewPage)} Xray={this.state.Xrays[this.state.activeId]}/>
 
 
             default: return <div> Unreachable step</div>;

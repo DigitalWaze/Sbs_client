@@ -27,7 +27,7 @@ class WIACP extends Component {
             </div>
             <div id="WIACP_Image_Wrapper">
               <div id="WIACP_Image_Container">
-                <img src={Img1} alt="WIACP1" />
+                <img src={Img1} alt="WIACP1" style={{maxWidth:'100%'}} />
               </div>
             </div>
             <div id="WIACP_Next_Button_Div">

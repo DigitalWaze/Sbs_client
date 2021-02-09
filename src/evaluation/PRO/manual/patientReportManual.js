@@ -132,7 +132,7 @@ class PatientReportManual extends Component {
 
     handleBack0 = () =>
     {
-        this.context.history.push('./forms')
+        this.setState({active:null})
     }
 
     handleBack1 = () =>
@@ -169,6 +169,13 @@ class PatientReportManual extends Component {
             joint_id = this.context.state.Eval[this.context.state.activeJointIndex+1].joint_id //next eval;
             console.log(joint_id)
             this.setState({totalLeft:1,page:0,active:joint_id})
+        }
+
+        else if(this.state.totalLeft==1 && this.state.active == null)  //next loaded eval
+        {
+            let joint_id=null;
+            joint_id = this.context.state.Eval[this.context.state.activeJointIndex+1].joint_id //next eval;
+            this.setState({page:0,active:joint_id})
         }
 
 

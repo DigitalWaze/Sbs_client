@@ -1,0 +1,143 @@
+.Joint-Rcp-Image-Header-Hr
+{
+    
+}
+
+.Joint-Rcp-Image-Inner-Header
+{
+    font-size: 30px;
+    margin: 40px;
+    font-weight: bold;
+
+}
+.Joint-Rcp-Image-Box-Wrapper
+{
+    margin:auto;
+    width: fit-content;
+    border: 1px solid black;
+    padding: 20px 40px;
+}
+
+
+.Joint-Rcp-Image-Compartment-Box-Wrapper
+{
+    display: inline-block;
+    width:160px;
+    text-align: center;
+}
+
+.Joint-Rcp-Image-Compartment-Head
+{
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.Joint-Rcp-Image-Compartment-Box
+{
+    width:100%;
+    height:160px;
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.Joint-Rcp-Image-Score-Box-Wrapper
+{
+    display: inline-block;
+    width:160px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+
+.Joint-Rcp-Image-Score-Box
+{
+    width: 100%;
+    height: 160px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid black;
+}
+
+.Centered
+{
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.Centerer
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+.Joint-Rcp-Image-Compartment-Hr
+{
+    width: calc(100% + 80px);
+    transform: translateX(-40px);
+    background-color: black;
+    height: 1px;
+    margin:40px 0px 40px;
+}
+
+.Joint-Rcp-Image-Compartment-Path
+{
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.margin-top-20
+{
+    margin-top: 40px;
+}
+
+.Joint-Rcp-Image-OI-List-Wrapper
+{
+    margin-top:20px
+}
+
+.Joint-Rcp-Image-OI-List-Left
+{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+
+}
+
+.Joint-Rcp-Image-OI-List-Right
+{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+
+}
+
+.Joint-Rcp-Image-OI-List-Item
+{
+    display: block;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.Joint-Rcp-Image-OI-List-Box
+{
+    width:20px;
+    height: 20px;
+    border:2px solid black;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.Joint-Rcp-Image-OI-List-Text
+{
+    display: inline-block;
+    width: calc(100% - 34px);
+    font-size: 24px;
+    font-weight: 600;
+}

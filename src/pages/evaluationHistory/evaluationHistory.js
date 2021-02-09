@@ -7,6 +7,8 @@ import './evaluationHistory.css';
 import MyContext from '../../helper/themeContext';
 import GetData from '../../Fetch/getDataUniversal';
 import { SemipolarLoading } from 'react-loadingg';
+import { Route } from 'react-router-dom';
+import { LoadNewEval } from '../../StoreFunctions/evaluationStoreFunctions';
 class EvaluationHistory extends Component {
   constructor(props) {
       super(props);
@@ -16,7 +18,7 @@ class EvaluationHistory extends Component {
 
   componentDidMount()
   {
-      GetData(this.context.baseUrl+'/api/v1/user/reports',400,this.context.state.token,this.setMe);
+    GetData(this.context.baseUrl+'/api/v1/user/reports',200,this.context.state.token,this.setMe);
   }
 
   setMe = (response) =>
@@ -52,11 +54,24 @@ class EvaluationHistory extends Component {
 
   handleViewReport = (report_id) =>
   {
-      this.context.multipleUpdateValueWithHistory([{key:'random_report_id',value:report_id}],'./evaluation/selected-patient-report')
+    this.context.multipleUpdateValueWithHistory([{key:'random_report_id',value:report_id}],'./evaluation/selected-patient-report')
   }
 
-    
+  handleRecover = (id) =>
+  {
+    this.setState({loading:true})
+    this.context.newEval();   
+    GetData(this.context.baseUrl+`/api/v1/get/report?report_id=${id}`,200,this.context.state.token,this.setMeTwo)   //getCompletedReportsOnlyForPathway
+  }
 
+  setMeTwo = (response) =>
+  {
+    console.log(response)
+    if(response.report_id!=null && response.report_id!=undefined && response.report_id!=="" && response.report_id!==" ")
+    {
+      LoadNewEval(this.context,response,'/evaluation/recommended-care-pathway');
+    }      
+  } 
     
   render() { 
       return (
@@ -109,9 +124,7 @@ class EvaluationHistory extends Component {
                         <Button
                           className="Evaluaion_History_Button"
                           variant="contained"
-                          onClick={() => {
-                            this.context.history.push("/recommended-care-pathway/welcome");
-                          }}>
+                          onClick={() => this.handleRecover(row.report_id)}>
                           {" "}
                           Suggested Care Pathway{" "}
                         </Button>
