@@ -1,0 +1,120 @@
+#XRConfirmation {
+    background-image: linear-gradient(119deg, #3023ae, #53a0fd 47%, #6eb6cc 81%, #b4ec51);
+    min-height: 100vh;   
+    position: relative;
+    overflow: hidden;
+}
+
+#all-content-wrapper {
+    width: calc(100% - 150px);
+    margin-left: 150px;
+    /* border: 1px solid white; */
+}
+
+* {
+    font-family: Lato,sans-serif;
+}
+
+#XRConfirmation-box-1 {
+    /* border: 1px solid yellow; */
+    height: 90vh;
+    line-height: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#XRConfirmation-box-2 {
+    /* border: 1px solid white; */
+    height: 9.5vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#XRConfirmation-inner-box-1 , #XRConfirmation-inner-box-2 , #XRConfirmation-inner-box-3 {
+    /* border: 1px solid yellow; */
+    width: 57%;
+    margin-top: 10px;
+}
+
+#XRConfirmation-inner-box-1 {
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+}
+
+/* Image Area */
+#XRConfirmation-img-1 , #XRConfirmation-img-2 {
+    height: auto;
+    width: 250px;
+    margin: 0 50px;
+}
+
+#XRConfirmation-inner-box-2 {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+#XRConfirmation-Upper-Btn {
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    text-transform: none;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    height: 40px;
+    width: 180px;
+    margin-right: 40px;
+    opacity: 0.5;
+}
+
+#XRConfirmation-inner-box-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media screen and ( max-width: 800px ) {
+    #XRConfirmation-inner-box-1{
+        min-width: 90%;
+    }
+
+    #XRConfirmation-inner-box-2{
+        min-width: 90%;
+    }
+
+    #XRConfirmation-Upper-Btn {
+        margin-right: 25px;
+    }
+
+    #XRConfirmation-img-1 , #XRConfirmation-img-2 {
+        margin: 0 25px;
+    }
+}
+
+/* Buttons Area */
+#XRConfirmation-footer-box-1 , #XRConfirmation-footer-box-2 {
+    flex-grow: 1;
+    /* border: 1px solid red; */
+}
+
+#XRConfirmation-btn-1 , #XRConfirmation-btn-2 {
+    font-family: Lato, sans-serif;
+    font-size: 20px;
+    text-transform: none;
+    border-radius: 25px;
+    background-color: #b4ec51;
+    height: 40px;
+    width: 180px;
+}
+
+#XRConfirmation-btn-1 {
+    margin-left: 10px;
+}
+
+#XRConfirmation-btn-2 {
+    float: right;
+    margin-right: 10px;
+}
